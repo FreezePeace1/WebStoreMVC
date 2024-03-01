@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStoreMVC", "WebStoreMVC\WebStoreMVC.csproj", "{1F83E04A-8AD6-4479-B2D5-46E666CBF266}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStoreMVC.DAL", "WebStoreMVC.DAL\WebStoreMVC.DAL.csproj", "{EB0A1D6A-4D54-4F95-91BD-0F5F355D2544}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStoreMVC.Domain", "WebStoreMVC.Domain\WebStoreMVC.Domain.csproj", "{E3EAFD6D-9179-42D7-A33E-5E800985156D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1F83E04A-8AD6-4479-B2D5-46E666CBF266}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F83E04A-8AD6-4479-B2D5-46E666CBF266}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F83E04A-8AD6-4479-B2D5-46E666CBF266}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F83E04A-8AD6-4479-B2D5-46E666CBF266}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB0A1D6A-4D54-4F95-91BD-0F5F355D2544}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB0A1D6A-4D54-4F95-91BD-0F5F355D2544}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB0A1D6A-4D54-4F95-91BD-0F5F355D2544}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB0A1D6A-4D54-4F95-91BD-0F5F355D2544}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3EAFD6D-9179-42D7-A33E-5E800985156D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3EAFD6D-9179-42D7-A33E-5E800985156D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3EAFD6D-9179-42D7-A33E-5E800985156D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3EAFD6D-9179-42D7-A33E-5E800985156D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

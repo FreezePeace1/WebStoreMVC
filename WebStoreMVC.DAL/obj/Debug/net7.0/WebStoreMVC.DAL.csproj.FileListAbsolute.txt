@@ -1,0 +1,17 @@
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.DAL\bin\Debug\net7.0\WebStoreMVC.DAL.deps.json
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.DAL\bin\Debug\net7.0\WebStoreMVC.DAL.runtimeconfig.json
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.DAL\bin\Debug\net7.0\WebStoreMVC.DAL.dll
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.DAL\bin\Debug\net7.0\WebStoreMVC.DAL.pdb
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.DAL\bin\Debug\net7.0\WebStoreMVC.Domain.dll
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.DAL\bin\Debug\net7.0\WebStoreMVC.Domain.pdb
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.DAL\obj\Debug\net7.0\WebStoreMVC.DAL.csproj.AssemblyReference.cache
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.DAL\obj\Debug\net7.0\WebStoreMVC.DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.DAL\obj\Debug\net7.0\WebStoreMVC.DAL.AssemblyInfoInputs.cache
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.DAL\obj\Debug\net7.0\WebStoreMVC.DAL.AssemblyInfo.cs
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.DAL\obj\Debug\net7.0\WebStoreMVC.DAL.csproj.CoreCompileInputs.cache
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.DAL\obj\Debug\net7.0\WebStoreMVC.DAL.csproj.CopyComplete
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.DAL\obj\Debug\net7.0\WebStoreMVC.DAL.dll
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.DAL\obj\Debug\net7.0\refint\WebStoreMVC.DAL.dll
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.DAL\obj\Debug\net7.0\WebStoreMVC.DAL.pdb
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.DAL\obj\Debug\net7.0\WebStoreMVC.DAL.genruntimeconfig.cache
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.DAL\obj\Debug\net7.0\ref\WebStoreMVC.DAL.dll
