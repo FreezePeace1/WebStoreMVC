@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Sd7+GDxz0eyKCS3b86dRgL/q+205gF5GdHhzOIkoQFpbqcJ2KH2tm/NROda+8nCQ0XWiMl9oB9aETS3iP4GdTw==",
+  "dgSpecHash": "/oZA5Ra19ZoGLDlKIQx1k0/GDJ1rSD0+BIoAh/2FuXEg/arRFVX740U7e+OpouzMc3cS0MuX9ZiwpvuHiwTQRQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\WebStoreMVC.csproj",
   "expectedPackageFiles": [
@@ -91,6 +91,7 @@
     "C:\\Users\\Ryzen\\.nuget\\packages\\microsoft.net.stringtools\\17.3.2\\microsoft.net.stringtools.17.3.2.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "C:\\Users\\Ryzen\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\Ryzen\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration\\7.0.11\\microsoft.visualstudio.web.codegeneration.7.0.11.nupkg.sha512",
     "C:\\Users\\Ryzen\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.core\\7.0.11\\microsoft.visualstudio.web.codegeneration.core.7.0.11.nupkg.sha512",
     "C:\\Users\\Ryzen\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.design\\7.0.11\\microsoft.visualstudio.web.codegeneration.design.7.0.11.nupkg.sha512",
@@ -130,6 +131,9 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
+    "C:\\Users\\Ryzen\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
+    "C:\\Users\\Ryzen\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
+    "C:\\Users\\Ryzen\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.5.0\\swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.appcontext\\4.3.0\\system.appcontext.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.buffers\\4.3.0\\system.buffers.4.3.0.nupkg.sha512",
     "C:\\Users\\Ryzen\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",

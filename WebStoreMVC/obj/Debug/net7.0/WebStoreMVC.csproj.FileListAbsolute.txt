@@ -533,3 +533,7 @@ C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC\bin\Debug\net7.0\refs\Micro
 C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC\bin\Debug\net7.0\refs\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC\bin\Debug\net7.0\refs\Microsoft.Extensions.Identity.Core.dll
 C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC\bin\Debug\net7.0\refs\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC\bin\Debug\net7.0\Microsoft.OpenApi.dll
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll

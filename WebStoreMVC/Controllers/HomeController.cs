@@ -1,31 +1,24 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using WebStoreMVC.DAL.Context;
+using WebStoreMVC.Domain.Entities;
 using WebStoreMVC.Models;
 
 namespace WebStoreMVC.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    private readonly WebStoreContext _context;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(WebStoreContext context)
     {
-        _logger = logger;
+        _context = context;
     }
-
-    public IActionResult Index()
+    
+    public async Task<ActionResult<List<Product>>> Index()
     {
-        return View();
+        return View(await _context.Products.Distinct().Take(10).ToListAsync());
     }
-
-    public IActionResult Privacy()
-    {
-        return View();
-    }
-
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-    }
+    
 }

@@ -1,0 +1,97 @@
+@using WebStoreMVC.Controllers
+
+<header>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap reboot (для сброса стилей) -->
+    <link rel="stylesheet" href="lib/bootstrap-reboot.min.css">
+
+
+    <!-- Bootstrap сетка -->
+    <link rel="stylesheet" href="lib/bootstrap-grid.min.css">
+
+
+    <!-- Шрифты с Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!--ШАПКА МАГАЗА-->
+    <!-- Стили сайта -->
+    <link rel="stylesheet" href="css/site.css">
+</header>
+<nav class="navbar">
+    <div class="container">
+        <a asp-controller="Home" asp-action="Index" class="navbar-brand">Mobile Store</a>
+        <div class="navbar-wrap">
+            <ul class="navbar-menu">
+                <li>
+                    <form asp-controller="Search" asp-action="SearchMobilePhones" method="get">
+                        <input placeholder="Поиск" style="width: 240px" type="text" name="searchString"/>
+                        <button type="submit">Поиск</button>
+                    </form>
+                </li>
+                <li>
+                    <a href="#">Профиль</a>
+                </li>
+                <li>
+                    <a href="#">Корзина</a>
+                </li>
+                <li>
+                    <a href="#">Вход</a>
+                </li>
+
+            </ul>
+
+            <body>
+
+            <!-- Модальное окно -->
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="document.getElementById('myModal').style.display = 'none'">&times;</span>
+
+                    <div class="contact-container">
+                        <h1>Контактная информация</h1>
+
+                        <div class="contact-info">
+                            <i>
+                                <p>Электронная почта: example@mail.com</p>
+                            </i>
+                        </div>
+
+                        <div class="contact-info">
+                            <i>
+                                <p>Телефон: +7-234-567-22-01</p>
+                            </i>
+                        </div>
+                    </div>
+
+                    <div class="questions">
+                        <p>Если у вас есть вопросы</p>
+                        <p>
+                            <input href="#" placeholder="Введите ваш email для контакта" style="width: 340px;" type="text"/>
+                        </p>
+                        <p>
+                            <textarea rows="5" cols="40" id="TITLE" placeholder="Введите ваш вопрос"></textarea>
+                        </p>
+                        <p>
+                            <button href="#" class="btn btn-success">Продолжить</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <a onclick="document.getElementById('myModal').style.display = 'block'" class="callback">Обратная связь</a>
+            <script>
+                window.onclick = function(event) {
+                    var modal = document.getElementById('myModal');
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                }
+            </script>
+
+            </body>
+
+        </div>
+    </div>
+</nav>

@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\WebStoreMVC.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap.min.css"
+    },
+    {
       "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -13,8 +17,80 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\images\\products\\58aefac1c869e092af51ee68.png",
+      "PackagePath": "staticwebassets\\images\\products\\58aefac1c869e092af51ee68.png"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\images\\products\\Alcatel.png",
+      "PackagePath": "staticwebassets\\images\\products\\Alcatel.png"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\images\\products\\Apple.png",
+      "PackagePath": "staticwebassets\\images\\products\\Apple.png"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\images\\products\\Arcticsky_9.png",
+      "PackagePath": "staticwebassets\\images\\products\\Arcticsky_9.png"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\images\\products\\Asus.png",
+      "PackagePath": "staticwebassets\\images\\products\\Asus.png"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\images\\products\\Htc.png",
+      "PackagePath": "staticwebassets\\images\\products\\Htc.png"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\images\\products\\Huawei.png",
+      "PackagePath": "staticwebassets\\images\\products\\Huawei.png"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\images\\products\\Lg.png",
+      "PackagePath": "staticwebassets\\images\\products\\Lg.png"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\images\\products\\Meizu.png",
+      "PackagePath": "staticwebassets\\images\\products\\Meizu.png"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\images\\products\\Motorola.png",
+      "PackagePath": "staticwebassets\\images\\products\\Motorola.png"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\images\\products\\Nokia.png",
+      "PackagePath": "staticwebassets\\images\\products\\Nokia.png"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\images\\products\\OnePlus.png",
+      "PackagePath": "staticwebassets\\images\\products\\OnePlus.png"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\images\\products\\Samsung.png",
+      "PackagePath": "staticwebassets\\images\\products\\Samsung.png"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\images\\products\\Sony.png",
+      "PackagePath": "staticwebassets\\images\\products\\Sony.png"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\images\\products\\Xiaomi.png",
+      "PackagePath": "staticwebassets\\images\\products\\Xiaomi.png"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap.min.js"
+    },
+    {
       "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\lib\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\lib\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-reboot.min.css"
     },
     {
       "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\lib\\bootstrap\\LICENSE",
