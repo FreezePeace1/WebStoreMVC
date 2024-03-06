@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using WebStoreMVC.DAL.Context;
+using WebStoreMVC.Services;
+using WebStoreMVC.Services.Data;
+using WebStoreMVC.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +31,7 @@ builder.Services.Configure<IdentityOptions>(opt =>
     opt.Password.RequireUppercase = false;
     opt.Password.RequireNonAlphanumeric = false;
 
+    //Не реализовано
     opt.Lockout.AllowedForNewUsers = true;
     opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
     opt.Lockout.MaxFailedAccessAttempts = 5;
@@ -57,6 +61,10 @@ builder.Services.AddAuthentication(opt =>
     };
 });
 
+//Подключаем сервис аккаунта
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<Initializer>();
+
 var app = builder.Build();
 
 app.UseSwagger()
@@ -77,6 +85,12 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+app.UseAuthentication();
+
+//Чтобы сервис включался при запуске (добавляем автоматически роли и админа если этого нет в БД)
+var scope = app.Services.CreateScope();
+var service = scope.ServiceProvider.GetService<Initializer>();
+service.Initialize();
 
 app.MapControllerRoute(
     name: "default",
