@@ -16,12 +16,28 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC/Views/Home/Blank.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxCbGFuay5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC/Views/Home/Checkout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDaGVja291dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC/Views/Home/Partial/_GetMobilePhonesLimited.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQYXJ0aWFsXF9HZXRNb2JpbGVQaG9uZXNMaW1pdGVkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC/Views/Home/Product.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcm9kdWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC/Views/Home/Store.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTdG9yZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC/Views/Search/SearchMobilePhones.cshtml]
