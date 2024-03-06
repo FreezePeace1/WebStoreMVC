@@ -9,16 +9,30 @@ namespace WebStoreMVC.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly WebStoreContext _context;
-
-    public HomeController(WebStoreContext context)
-    {
-        _context = context;
-    }
     
-    public async Task<ActionResult<List<Product>>> Index()
+    public IActionResult Index()
     {
-        return View(await _context.Products.Distinct().Take(10).ToListAsync());
+        return View();
+    }
+
+    public IActionResult Checkout()
+    {
+        return View();
+    }
+
+    public IActionResult Blank()
+    {
+        return View();
+    }
+
+    public IActionResult Product()
+    {
+        return View();
+    }
+
+    public IActionResult Store()
+    {
+        return View();
     }
     
 }

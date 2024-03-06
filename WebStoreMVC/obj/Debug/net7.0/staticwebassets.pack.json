@@ -9,12 +9,72 @@
       "PackagePath": "staticwebassets\\css\\bootstrap.min.css"
     },
     {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\css\\font-awesome.min.css",
+      "PackagePath": "staticwebassets\\css\\font-awesome.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\css\\nouislider.min.css",
+      "PackagePath": "staticwebassets\\css\\nouislider.min.css"
+    },
+    {
       "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\css\\slick-theme.css",
+      "PackagePath": "staticwebassets\\css\\slick-theme.css"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\css\\slick.css",
+      "PackagePath": "staticwebassets\\css\\slick.css"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\css\\style.css",
+      "PackagePath": "staticwebassets\\css\\style.css"
+    },
+    {
       "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\fonts\\FontAwesome.otf",
+      "PackagePath": "staticwebassets\\fonts\\FontAwesome.otf"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\fonts\\fontawesome-webfont.eot",
+      "PackagePath": "staticwebassets\\fonts\\fontawesome-webfont.eot"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\fonts\\fontawesome-webfont.svg",
+      "PackagePath": "staticwebassets\\fonts\\fontawesome-webfont.svg"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\fonts\\fontawesome-webfont.ttf",
+      "PackagePath": "staticwebassets\\fonts\\fontawesome-webfont.ttf"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\fonts\\fontawesome-webfont.woff",
+      "PackagePath": "staticwebassets\\fonts\\fontawesome-webfont.woff"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\fonts\\fontawesome-webfont.woff2",
+      "PackagePath": "staticwebassets\\fonts\\fontawesome-webfont.woff2"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\fonts\\slick.eot",
+      "PackagePath": "staticwebassets\\fonts\\slick.eot"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\fonts\\slick.svg",
+      "PackagePath": "staticwebassets\\fonts\\slick.svg"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\fonts\\slick.ttf",
+      "PackagePath": "staticwebassets\\fonts\\slick.ttf"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\fonts\\slick.woff",
+      "PackagePath": "staticwebassets\\fonts\\slick.woff"
     },
     {
       "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\images\\products\\58aefac1c869e092af51ee68.png",
@@ -77,12 +137,88 @@
       "PackagePath": "staticwebassets\\images\\products\\Xiaomi.png"
     },
     {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\images\\products\\hotdeal.png",
+      "PackagePath": "staticwebassets\\images\\products\\hotdeal.png"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\images\\products\\logo.png",
+      "PackagePath": "staticwebassets\\images\\products\\logo.png"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\images\\products\\product01.png",
+      "PackagePath": "staticwebassets\\images\\products\\product01.png"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\images\\products\\product02.png",
+      "PackagePath": "staticwebassets\\images\\products\\product02.png"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\images\\products\\product03.png",
+      "PackagePath": "staticwebassets\\images\\products\\product03.png"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\images\\products\\product04.png",
+      "PackagePath": "staticwebassets\\images\\products\\product04.png"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\images\\products\\product05.png",
+      "PackagePath": "staticwebassets\\images\\products\\product05.png"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\images\\products\\product06.png",
+      "PackagePath": "staticwebassets\\images\\products\\product06.png"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\images\\products\\product07.png",
+      "PackagePath": "staticwebassets\\images\\products\\product07.png"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\images\\products\\product08.png",
+      "PackagePath": "staticwebassets\\images\\products\\product08.png"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\images\\products\\product09.png",
+      "PackagePath": "staticwebassets\\images\\products\\product09.png"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\images\\products\\shop01.png",
+      "PackagePath": "staticwebassets\\images\\products\\shop01.png"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\images\\products\\shop02.png",
+      "PackagePath": "staticwebassets\\images\\products\\shop02.png"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\images\\products\\shop03.png",
+      "PackagePath": "staticwebassets\\images\\products\\shop03.png"
+    },
+    {
       "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\js\\bootstrap.min.js",
       "PackagePath": "staticwebassets\\js\\bootstrap.min.js"
     },
     {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\js\\jquery.min.js",
+      "PackagePath": "staticwebassets\\js\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\js\\jquery.zoom.min.js",
+      "PackagePath": "staticwebassets\\js\\jquery.zoom.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\js\\main.js",
+      "PackagePath": "staticwebassets\\js\\main.js"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\js\\nouislider.min.js",
+      "PackagePath": "staticwebassets\\js\\nouislider.min.js"
+    },
+    {
       "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\js\\slick.min.js",
+      "PackagePath": "staticwebassets\\js\\slick.min.js"
     },
     {
       "Id": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC\\wwwroot\\lib\\bootstrap-grid.min.css",
