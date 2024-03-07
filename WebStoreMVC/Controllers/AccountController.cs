@@ -1,4 +1,5 @@
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WebStoreMVC.Domain.Entities;
@@ -22,6 +23,7 @@ public class AccountController : Controller
     }
     
     [HttpPost("SeedingRoles")]
+    [Authorize(Roles = UserRoles.ADMINISTRATOR)]
     public async Task<IActionResult> SeedingRoles()
     {
         return Ok(await _authService.SeedRoles());
@@ -54,6 +56,7 @@ public class AccountController : Controller
     }
 
     [HttpPost("MakeAdmin")]
+    [Authorize(Roles = UserRoles.ADMINISTRATOR)]
     public async Task<IActionResult> FromUserToAdmin(UpdateDto updateRoleDto)
     {
         var changeRoleResult = await _authService.FromUserToAdmin(updateRoleDto);
@@ -72,5 +75,19 @@ public class AccountController : Controller
         await _signInManager.SignOutAsync();
 
         return RedirectToAction("Index", "Home");   
+    }
+    
+    [HttpPost("DowngradeFromAdminToUser")]
+    [Authorize(Roles = UserRoles.ADMINISTRATOR)]
+    public async Task<IActionResult> FromAdminToUser(UpdateDto updateDto)
+    {
+        var changeRoleResult = await _authService.FromAdminToUser(updateDto);
+
+        if (changeRoleResult.IsSucceed)
+        {
+            return Ok(changeRoleResult);
+        }
+
+        return BadRequest(changeRoleResult);
     }
 }

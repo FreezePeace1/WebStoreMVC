@@ -1,6 +1,7 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -159,7 +160,7 @@ public class AuthService : IAuthService
 
         return token;
     }
-
+    
     public async Task<AuthResponseDto> FromUserToAdmin(UpdateDto updateDto)
     {
         //Проверяем есть ли пользователь
@@ -180,6 +181,28 @@ public class AuthService : IAuthService
         {
             Message = $"Now {user} стал Админом!",
             IsSucceed = true
+        };
+    }
+    
+    public async Task<AuthResponseDto> FromAdminToUser(UpdateDto updateDto)
+    {
+        var user = await _userManager.FindByNameAsync(updateDto.Username);
+
+        if (user is null)
+        {
+            return new AuthResponseDto
+            {
+                IsSucceed = false,
+                Message = $"Пользователя под именем {updateDto.Username} не сущетсвует!"
+            };
+        }
+
+        await _userManager.RemoveFromRoleAsync(user, UserRoles.ADMINISTRATOR);
+
+        return new AuthResponseDto
+        {
+            IsSucceed = true,
+            Message = $"Пользователь {updateDto.Username} теперь стал обычным Пользователем"
         };
     }
 }
