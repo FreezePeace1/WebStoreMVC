@@ -32,6 +32,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQYXJ0aWFsXF9HZXRNb2JpbGVQaG9uZXNMaW1pdGVkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC/Views/Home/Partial/_NewProductsTransitionsAndSlider.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQYXJ0aWFsXF9OZXdQcm9kdWN0c1RyYW5zaXRpb25zQW5kU2xpZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC/Views/Home/Partial/_ProductCollectionsExceptPhones.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQYXJ0aWFsXF9Qcm9kdWN0Q29sbGVjdGlvbnNFeGNlcHRQaG9uZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC/Views/Home/Partial/_TopSellingMiniSliders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQYXJ0aWFsXF9Ub3BTZWxsaW5nTWluaVNsaWRlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC/Views/Home/Partial/_TopSellingTransitionsAndSlider.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQYXJ0aWFsXF9Ub3BTZWxsaW5nVHJhbnNpdGlvbnNBbmRTbGlkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC/Views/Home/Product.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcm9kdWN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -44,8 +60,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VhcmNoXFNlYXJjaE1vYmlsZVBob25lcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC/Views/Shared/Partial/_Footer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxcX0Zvb3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC/Views/Shared/Partial/_Header.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxcX0hlYWRlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC/Views/Shared/Partial/_NavigationUpperTransitions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxcX05hdmlnYXRpb25VcHBlclRyYW5zaXRpb25zLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC/Views/_ViewImports.cshtml]
