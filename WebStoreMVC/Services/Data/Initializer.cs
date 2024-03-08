@@ -5,10 +5,10 @@ namespace WebStoreMVC.Services.Data;
 
 public class Initializer
 {
-    private readonly UserManager<IdentityUser> _userManager;
+    private readonly UserManager<AppUser> _userManager;
     private readonly RoleManager<IdentityRole> _roleManager;
 
-    public Initializer(UserManager<IdentityUser> userManager,RoleManager<IdentityRole> roleManager)
+    public Initializer(UserManager<AppUser> userManager,RoleManager<IdentityRole> roleManager)
     {
         _userManager = userManager;
         _roleManager = roleManager;
@@ -44,15 +44,15 @@ public class Initializer
 
         }
 
-        if (await _userManager.FindByNameAsync(User.ADMINNAME) is null)
+        if (await _userManager.FindByNameAsync(AdminUser.ADMINNAME) is null)
         {
-            var admin = new IdentityUser()
+            var admin = new AppUser()
             {
-                UserName = User.ADMINNAME,
-                Email = User.EMAIL
+                UserName = AdminUser.ADMINNAME,
+                Email = AdminUser.EMAIL
             };
 
-            var createResult = await _userManager.CreateAsync(admin, User.PASSWORD);
+            var createResult = await _userManager.CreateAsync(admin, AdminUser.PASSWORD);
 
             if (createResult.Succeeded)
             {

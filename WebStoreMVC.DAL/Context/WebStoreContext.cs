@@ -5,7 +5,7 @@ using WebStoreMVC.Domain.Entities;
 
 namespace WebStoreMVC.DAL.Context;
 
-public class WebStoreContext : IdentityDbContext<IdentityUser,IdentityRole,string>
+public class WebStoreContext : IdentityDbContext<AppUser,IdentityRole,string>
 {
     public WebStoreContext(DbContextOptions<WebStoreContext> options) : base(options) { }
 
