@@ -1,25 +1,20 @@
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
 using WebStoreMVC.Domain.Entities;
 using WebStoreMVC.Dtos;
 using WebStoreMVC.Services.Interfaces;
+
 
 namespace WebStoreMVC.Services;
 
 public class AuthService : IAuthService
 {
-    private readonly UserManager<IdentityUser> _userManager;
+    private readonly UserManager<AppUser> _userManager;
     private readonly RoleManager<IdentityRole> _roleManager;
-    private readonly SignInManager<IdentityUser> _signInManager;
+    private readonly SignInManager<AppUser> _signInManager;
     private readonly IConfiguration _configuration;
 
-    public AuthService(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager,
-        SignInManager<IdentityUser> signInManager, IConfiguration configuration)
+    public AuthService(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager,
+        SignInManager<AppUser> signInManager, IConfiguration configuration)
     {
         _userManager = userManager;
         _roleManager = roleManager;
@@ -64,7 +59,7 @@ public class AuthService : IAuthService
         }
 
         //Если пользователь существует,то создаем его
-        var user = new IdentityUser
+        var user = new AppUser
         {
             UserName = registerDto.Username,
             Email = registerDto.Email
@@ -97,7 +92,7 @@ public class AuthService : IAuthService
         };
     }
 
-    public async Task<AuthResponseDto> Login(LoginDto loginDto)
+    /*public async Task<AuthResponseDto> Login(LoginDto loginDto)
     {
         var user = await _userManager.FindByNameAsync(loginDto.Username);
 
@@ -144,6 +139,7 @@ public class AuthService : IAuthService
             IsSucceed = true
         };
     }
+    
 
     private string GenerateJsonWebToken(List<Claim> claims)
     {
@@ -159,7 +155,7 @@ public class AuthService : IAuthService
         string token = new JwtSecurityTokenHandler().WriteToken(tokenObject);
 
         return token;
-    }
+    }*/
     
     public async Task<AuthResponseDto> FromUserToAdmin(UpdateDto updateDto)
     {

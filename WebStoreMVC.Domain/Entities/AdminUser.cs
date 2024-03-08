@@ -1,6 +1,6 @@
 namespace WebStoreMVC.Domain.Entities;
 
-public class User
+public class AdminUser
 {
     public const string ADMINNAME = "Administrator";
     public const string PASSWORD = "Gyh54vi31GoKu9345123!@#";
