@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Identity;
+
 namespace WebStoreMVC.Domain.Entities;
 
 public class UserRoles

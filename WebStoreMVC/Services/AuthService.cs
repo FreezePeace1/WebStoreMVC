@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using WebStoreMVC.Domain.Entities;
 using WebStoreMVC.Dtos;
 using WebStoreMVC.Services.Interfaces;
@@ -170,7 +172,15 @@ public class AuthService : IAuthService
                 IsSucceed = false
             };
         }
-
+        
+        if (updateDto.Username == AdminUser.ADMINNAME)
+        {
+            return new AuthResponseDto
+            {
+                IsSucceed = false,
+                Message = $"Пользователь под именем {updateDto.Username} уже является админом"
+            };
+        }
         await _userManager.AddToRoleAsync(user, UserRoles.ADMINISTRATOR);
 
         return new AuthResponseDto()
@@ -183,7 +193,7 @@ public class AuthService : IAuthService
     public async Task<AuthResponseDto> FromAdminToUser(UpdateDto updateDto)
     {
         var user = await _userManager.FindByNameAsync(updateDto.Username);
-
+        
         if (user is null)
         {
             return new AuthResponseDto
@@ -193,6 +203,15 @@ public class AuthService : IAuthService
             };
         }
 
+        if (updateDto.Username == AdminUser.ADMINNAME)
+        {
+            return new AuthResponseDto
+            {
+                IsSucceed = false,
+                Message = $"Нельзя занизить права пользователя под именем {updateDto.Username}"
+            };
+        }
+        
         await _userManager.RemoveFromRoleAsync(user, UserRoles.ADMINISTRATOR);
 
         return new AuthResponseDto

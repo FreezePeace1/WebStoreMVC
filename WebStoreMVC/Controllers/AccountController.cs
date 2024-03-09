@@ -15,7 +15,6 @@ using WebStoreMVC.Services.Interfaces;
 
 namespace WebStoreMVC.Controllers;
 
-[ApiController]
 [Route("Api/[controller]")]
 public class AccountController : Controller
 {
@@ -35,14 +34,14 @@ public class AccountController : Controller
     }
     
     [HttpPost("SeedingRoles")]
-    [Authorize(Roles = UserRoles.ADMINISTRATOR)]
+    [Authorize(AuthenticationSchemes = "Bearer",Roles = "Admin")]
     public async Task<IActionResult> SeedingRoles()
     {
         return Ok(await _authService.SeedRoles());
     }
 
     [HttpPost("Registration")]
-    public async Task<IActionResult> Registration(RegisterDto registerDto)
+    public async Task<IActionResult> Registration([FromBody] RegisterDto registerDto)
     {
         var registerResult = await _authService.Register(registerDto);
 
@@ -55,7 +54,7 @@ public class AccountController : Controller
     }
 
     [HttpPost("Login")]
-    public async Task<IActionResult> Login(LoginDto loginDto)
+    public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
     {
         var user = await _userManager.FindByNameAsync(loginDto.Username);
 
@@ -158,8 +157,8 @@ public class AccountController : Controller
     }
 
     [HttpPost("MakeAdmin")]
-    [Authorize(Roles = UserRoles.ADMINISTRATOR)]
-    public async Task<IActionResult> FromUserToAdmin(UpdateDto updateRoleDto)
+    [Authorize(AuthenticationSchemes = "Bearer",Roles = "Admin")]
+    public async Task<IActionResult> FromUserToAdmin([FromBody] UpdateDto updateRoleDto)
     {
         var changeRoleResult = await _authService.FromUserToAdmin(updateRoleDto);
 
@@ -180,8 +179,9 @@ public class AccountController : Controller
     }
     
     [HttpPost("DowngradeFromAdminToUser")]
+    [Authorize(AuthenticationSchemes = "Bearer",Roles = "Admin")]
     [Authorize(Roles = UserRoles.ADMINISTRATOR)]
-    public async Task<IActionResult> FromAdminToUser(UpdateDto updateDto)
+    public async Task<IActionResult> FromAdminToUser([FromBody] UpdateDto updateDto)
     {
         var changeRoleResult = await _authService.FromAdminToUser(updateDto);
 

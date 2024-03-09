@@ -1,8 +1,13 @@
 using System.Text;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.Net.Http.Headers;
+using Microsoft.OpenApi.Models;
+using Newtonsoft.Json.Serialization;
 using WebStoreMVC.DAL.Context;
 using WebStoreMVC.Domain.Entities;
 using WebStoreMVC.Services;
@@ -15,7 +20,42 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<WebStoreContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
-builder.Services.AddSwaggerGen();
+
+
+builder.Services.AddSwaggerGen(
+    c =>
+    {
+        c.SwaggerDoc("v1", new OpenApiInfo { Title = "ApiPlayground", Version = "v1" });
+        c.AddSecurityDefinition(
+            "token",
+            new OpenApiSecurityScheme
+            {
+                Type = SecuritySchemeType.Http,
+                BearerFormat = "JWT",
+                Scheme = "Bearer",
+                In = ParameterLocation.Header,
+                Name = HeaderNames.Authorization
+            }
+        );
+        c.AddSecurityRequirement(
+            new OpenApiSecurityRequirement
+            {
+                {
+                    new OpenApiSecurityScheme
+                    {
+                        Reference = new OpenApiReference
+                        {
+                            Type = ReferenceType.SecurityScheme,
+                            Id = "token"
+                        },
+                    },
+                    Array.Empty<string>()
+                }
+            }
+        );
+    }
+);
+
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
 //Подключаем Identity
@@ -62,9 +102,30 @@ builder.Services.AddAuthentication(opt =>
         };
     });
 
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("Default", new AuthorizationPolicyBuilder()
+        .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
+        .RequireAuthenticatedUser()
+        .Build());
+
+    options.AddPolicy("Admin", new AuthorizationPolicyBuilder()
+        .RequireRole("Admin")
+        .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
+        .RequireAuthenticatedUser()
+        .Build());
+    
+    options.AddPolicy("User", new AuthorizationPolicyBuilder()
+        .RequireRole("Admin")
+        .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
+        .RequireAuthenticatedUser()
+        .Build());
+});
+
 //Подключаем сервис аккаунта
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<Initializer>();
+
 
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
