@@ -221,7 +221,7 @@ namespace WebStoreMVC.DAL.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("WebStoreMVC.Domain.Entities.Product", b =>
+            modelBuilder.Entity("WebStoreMVC.Api.Domain.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

@@ -1,0 +1,17 @@
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Application\bin\Debug\net7.0\WebStoreMVC.Application.deps.json
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Application\bin\Debug\net7.0\WebStoreMVC.Application.dll
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Application\bin\Debug\net7.0\WebStoreMVC.Application.pdb
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Application\bin\Debug\net7.0\WebStoreMVC.DAL.dll
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Application\bin\Debug\net7.0\WebStoreMVC.Domain.dll
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Application\bin\Debug\net7.0\WebStoreMVC.DAL.pdb
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Application\bin\Debug\net7.0\WebStoreMVC.Domain.pdb
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Application\obj\Debug\net7.0\WebStoreMVC.Application.csproj.AssemblyReference.cache
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Application\obj\Debug\net7.0\WebStoreMVC.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Application\obj\Debug\net7.0\WebStoreMVC.Application.AssemblyInfoInputs.cache
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Application\obj\Debug\net7.0\WebStoreMVC.Application.AssemblyInfo.cs
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Application\obj\Debug\net7.0\WebStoreMVC.Application.csproj.CoreCompileInputs.cache
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Application\obj\Debug\net7.0\WebStoreMVC.Application.csproj.CopyComplete
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Application\obj\Debug\net7.0\WebStoreMVC.Application.dll
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Application\obj\Debug\net7.0\refint\WebStoreMVC.Application.dll
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Application\obj\Debug\net7.0\WebStoreMVC.Application.pdb
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Application\obj\Debug\net7.0\ref\WebStoreMVC.Application.dll

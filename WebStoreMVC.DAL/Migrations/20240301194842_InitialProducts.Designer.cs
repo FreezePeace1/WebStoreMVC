@@ -24,7 +24,7 @@ namespace WebStoreMVC.DAL.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("WebStoreMVC.Domain.Entities.Product", b =>
+            modelBuilder.Entity("WebStoreMVC.Api.Domain.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

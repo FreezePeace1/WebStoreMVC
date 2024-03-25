@@ -1,0 +1,93 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = WebStoreMVC
+build_property.RootNamespace = WebStoreMVC
+build_property.ProjectDir = C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Api\
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
+build_property.MSBuildProjectDirectory = C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Api
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Account/Registration.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3RyYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Home/Blank.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxCbGFuay5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Home/Checkout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDaGVja291dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Home/Partial/_GetMobilePhonesLimited.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQYXJ0aWFsXF9HZXRNb2JpbGVQaG9uZXNMaW1pdGVkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Home/Partial/_NewProductsTransitionsAndSlider.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQYXJ0aWFsXF9OZXdQcm9kdWN0c1RyYW5zaXRpb25zQW5kU2xpZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Home/Partial/_ProductCollectionsExceptPhones.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQYXJ0aWFsXF9Qcm9kdWN0Q29sbGVjdGlvbnNFeGNlcHRQaG9uZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Home/Partial/_TopSellingMiniSliders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQYXJ0aWFsXF9Ub3BTZWxsaW5nTWluaVNsaWRlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Home/Partial/_TopSellingTransitionsAndSlider.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQYXJ0aWFsXF9Ub3BTZWxsaW5nVHJhbnNpdGlvbnNBbmRTbGlkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Home/Product.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcm9kdWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Home/Store.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTdG9yZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Search/SearchMobilePhones.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VhcmNoXFNlYXJjaE1vYmlsZVBob25lcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Shared/Partial/_Footer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxcX0Zvb3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Shared/Partial/_Header.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxcX0hlYWRlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Shared/Partial/_NavigationUpperTransitions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxcX05hdmlnYXRpb25VcHBlclRyYW5zaXRpb25zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-u7lyqrvtxw
