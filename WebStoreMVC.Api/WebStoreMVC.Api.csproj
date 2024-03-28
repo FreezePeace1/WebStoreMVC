@@ -5,6 +5,8 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <RootNamespace>WebStoreMVC</RootNamespace>
+        <UserSecretsId>626fa7a2-37b8-4715-97ba-2b65113404ab</UserSecretsId>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
     </PropertyGroup>
 
     <ItemGroup>
@@ -26,6 +28,10 @@
       <ProjectReference Include="..\WebStoreMVC.Application\WebStoreMVC.Application.csproj" />
       <ProjectReference Include="..\WebStoreMVC.DAL\WebStoreMVC.DAL.csproj" />
       <ProjectReference Include="..\WebStoreMVC.Domain\WebStoreMVC.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="logs\" />
     </ItemGroup>
 
 </Project>

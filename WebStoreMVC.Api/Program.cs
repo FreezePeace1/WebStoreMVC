@@ -1,53 +1,26 @@
-using Microsoft.AspNetCore.Identity;
 using WebStoreMVC;
-using WebStoreMVC.DAL.Context;
+using WebStoreMVC.Application.DependencyInjection;
 using WebStoreMVC.DAL.DependencyInjection;
-using WebStoreMVC.Domain.Entities;
-using WebStoreMVC.Services;
 using WebStoreMVC.Services.Data;
-using WebStoreMVC.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+//From DAL
 //Add DB connection
 builder.Services.AddDataAccessLayer(builder.Configuration);
 
+//From Startup
 builder.Services.AddAuthenticationAndAuthorization(builder);
-
 builder.Services.AddSwagger();
+builder.Services.AddIdentity();
 
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
-//Подключаем Identity
-builder.Services.AddIdentity<AppUser, IdentityRole>()
-    .AddEntityFrameworkStores<WebStoreContext>()
-    .AddDefaultTokenProviders();
-
-//Настраиваем Identity
-builder.Services.Configure<IdentityOptions>(opt =>
-{
-    opt.Password.RequireDigit = true;
-    opt.Password.RequiredLength = 8;
-    opt.Password.RequireLowercase = true;
-    opt.Password.RequireUppercase = false;
-    opt.Password.RequireNonAlphanumeric = false;
-
-    //Не реализовано
-    opt.Lockout.AllowedForNewUsers = true;
-    opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
-    opt.Lockout.MaxFailedAccessAttempts = 5;
-
-    opt.User.RequireUniqueEmail = false;
-});
-
-
-//Подключаем сервис аккаунта
-builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddScoped<Initializer>();
-
+//From application
+builder.Services.AddServices();
 
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 

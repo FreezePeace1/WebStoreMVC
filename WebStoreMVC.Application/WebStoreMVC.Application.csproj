@@ -8,7 +8,6 @@
 
     <ItemGroup>
       <Folder Include="Mapping\" />
-      <Folder Include="Resources\" />
       <Folder Include="Validations\" />
     </ItemGroup>
 
@@ -23,6 +22,30 @@
     <ItemGroup>
       <ProjectReference Include="..\WebStoreMVC.DAL\WebStoreMVC.DAL.csproj" />
       <ProjectReference Include="..\WebStoreMVC.Domain\WebStoreMVC.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="Resources\ErrorMessage.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>ErrorMessage.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Resources\SuccessMessage.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>SuccessMessage.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Resources\ErrorMessage.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>ErrorMessage.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Resources\SuccessMessage.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>SuccessMessage.resx</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>

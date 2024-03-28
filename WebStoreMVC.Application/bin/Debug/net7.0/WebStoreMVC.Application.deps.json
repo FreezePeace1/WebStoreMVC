@@ -18,6 +18,14 @@
         },
         "runtime": {
           "WebStoreMVC.Application.dll": {}
+        },
+        "resources": {
+          "en/WebStoreMVC.Application.resources.dll": {
+            "locale": "en"
+          },
+          "ru/WebStoreMVC.Application.resources.dll": {
+            "locale": "ru"
+          }
         }
       },
       "Microsoft.AspNetCore.Authentication/2.2.0": {

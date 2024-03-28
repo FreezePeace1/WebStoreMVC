@@ -15,3 +15,16 @@ C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Application\obj\Debug\net7.
 C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Application\obj\Debug\net7.0\refint\WebStoreMVC.Application.dll
 C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Application\obj\Debug\net7.0\WebStoreMVC.Application.pdb
 C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Application\obj\Debug\net7.0\ref\WebStoreMVC.Application.dll
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Application\obj\Debug\net7.0\WebStoreMVC.Application.Resources.ErrorMessage.resources
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Application\obj\Debug\net7.0\WebStoreMVC.Application.csproj.GenerateResource.cache
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Application\bin\Debug\net7.0\en\WebStoreMVC.Application.resources.dll
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Application\bin\Debug\net7.0\ru\WebStoreMVC.Application.resources.dll
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Application\obj\Debug\net7.0\WebStoreMVC.Application.Resources.SuccessMessage.resources
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Application\obj\Debug\net7.0\WebStoreMVC.Application.Resources.ErrorMessage.en.resources
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Application\obj\Debug\net7.0\WebStoreMVC.Application.Resources.ErrorMessage.ru.resources
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Application\obj\Debug\net7.0\WebStoreMVC.Application.Resources.SuccessMessage.en.resources
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Application\obj\Debug\net7.0\WebStoreMVC.Application.Resources.SuccessMessage.ru.resources
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Application\obj\Debug\net7.0\en\WebStoreMVC.Application.resources.cs
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Application\obj\Debug\net7.0\en\WebStoreMVC.Application.resources.dll
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Application\obj\Debug\net7.0\ru\WebStoreMVC.Application.resources.cs
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Application\obj\Debug\net7.0\ru\WebStoreMVC.Application.resources.dll

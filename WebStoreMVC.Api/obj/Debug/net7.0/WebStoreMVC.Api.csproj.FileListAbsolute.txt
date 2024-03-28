@@ -552,3 +552,7 @@ C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Api\bin\Debug\net7.0\Asp.Ve
 C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Api\bin\Debug\net7.0\Asp.Versioning.Http.dll
 C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Api\bin\Debug\net7.0\Asp.Versioning.Mvc.dll
 C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Api\bin\Debug\net7.0\Asp.Versioning.Mvc.ApiExplorer.dll
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Api\bin\Debug\net7.0\WebStoreMVC.Api.xml
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Api\bin\Debug\net7.0\en\WebStoreMVC.Application.resources.dll
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Api\bin\Debug\net7.0\ru\WebStoreMVC.Application.resources.dll
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Api\obj\Debug\net7.0\WebStoreMVC.Api.xml

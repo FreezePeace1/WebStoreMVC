@@ -4,12 +4,44 @@ using Microsoft.OpenApi.Models;
 using Asp.Versioning;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
+using WebStoreMVC.DAL.Context;
+using WebStoreMVC.Domain.Entities;
 
 namespace WebStoreMVC;
 
 public static class Startup
 {
+    /// <summary>
+    /// Подключение и настройка Identity
+    /// </summary>
+    /// <param name="services"></param>
+    public static void AddIdentity(this IServiceCollection services)
+    {
+        //Подключаем Identity
+        services.AddIdentity<AppUser, IdentityRole>()
+            .AddEntityFrameworkStores<WebStoreContext>()
+            .AddDefaultTokenProviders();
+
+        //Настраиваем Identity
+        services.Configure<IdentityOptions>(opt =>
+        {
+            opt.Password.RequireDigit = true;
+            opt.Password.RequiredLength = 8;
+            opt.Password.RequireLowercase = true;
+            opt.Password.RequireUppercase = false;
+            opt.Password.RequireNonAlphanumeric = false;
+
+            //Не реализовано
+            opt.Lockout.AllowedForNewUsers = true;
+            opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
+            opt.Lockout.MaxFailedAccessAttempts = 5;
+
+            opt.User.RequireUniqueEmail = false;
+        });
+    }
+
     /// <summary>
     /// Добавление swagger
     /// </summary>
@@ -72,9 +104,16 @@ public static class Startup
                     Array.Empty<string>()
                 }
             });
+            var xmlFileName = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+            opt.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory,xmlFileName));
         });
     }
 
+    /// <summary>
+    /// Добавление аутентификации и авторизации с помощью JWT
+    /// </summary>
+    /// <param name="services"></param>
+    /// <param name="builder"></param>
     public static void AddAuthenticationAndAuthorization(this IServiceCollection services,
         WebApplicationBuilder builder)
     {
@@ -112,7 +151,7 @@ public static class Startup
                 .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
                 .RequireAuthenticatedUser()
                 .Build());
-    
+
             options.AddPolicy("User", new AuthorizationPolicyBuilder()
                 .RequireRole("Admin")
                 .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)

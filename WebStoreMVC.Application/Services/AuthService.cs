@@ -6,12 +6,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using WebStoreMVC.Application.Resources;
 using WebStoreMVC.DAL.Context;
 using WebStoreMVC.Domain.Entities;
+using WebStoreMVC.Domain.Enum;
 using WebStoreMVC.Dtos;
 using WebStoreMVC.Models;
 using WebStoreMVC.Services.Interfaces;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace WebStoreMVC.Services;
 
@@ -35,39 +36,38 @@ public class AuthService : IAuthService
         _httpContextAccessor = httpContextAccessor;
     }
 
-    public async Task<AuthResponseDto> SeedRoles()
+    public async Task<ResponseDto> SeedRoles()
     {
         var isUserRoleExists = await _roleManager.RoleExistsAsync(UserRoles.USER);
         var isAdminRoleExists = await _roleManager.RoleExistsAsync(UserRoles.ADMINISTRATOR);
 
         if (isUserRoleExists && isAdminRoleExists)
         {
-            return new AuthResponseDto()
+            return new ResponseDto()
             {
-                Message = "Роли уже созданы!",
-                IsSucceed = true
+                ErrorMessage = ErrorMessage.RolesAlreadyExists,
+                ErrorCode = (int)ErrorCode.RolesAlreadyExists
             };
         }
 
         await _roleManager.CreateAsync(new IdentityRole(UserRoles.USER));
         await _roleManager.CreateAsync(new IdentityRole(UserRoles.ADMINISTRATOR));
 
-        return new AuthResponseDto()
+        return new ResponseDto()
         {
-            Message = "Создание ролей выполнено!",
-            IsSucceed = true
+            SuccessMessage = SuccessMessage.CreatingRolesIsDone,
         };
     }
 
-    public async Task<AuthResponseDto> Register(RegisterDto registerDto)
+    public async Task<ResponseDto> Register(RegisterDto registerDto)
     {
         //Проверяем существует ли пользователь 
         if (await _userManager.FindByNameAsync(registerDto.Username) is not null)
         {
-            return new AuthResponseDto()
+            return new ResponseDto()
             {
-                Message = $"{registerDto.Username} уже существует!",
-                IsSucceed = false
+                ErrorMessage = $"{ErrorMessage.UserAlreadyExists} ({registerDto.Username})",
+                ErrorCode = (int)ErrorCode.UserAlreadyExists
             };
         }
 
@@ -85,10 +85,10 @@ public class AuthService : IAuthService
         {
             var errors = registerResult.Errors.Select(e => e.Description);
 
-            return new AuthResponseDto()
+            return new ResponseDto()
             {
-                Message = $"{errors}",
-                IsSucceed = false
+                ErrorMessage = $"{ErrorMessage.ModelCreatingIsFalied} \n {errors}",
+                ErrorCode = (int)ErrorCode.CreatingModelIsFailed
             };
         }
 
@@ -98,34 +98,33 @@ public class AuthService : IAuthService
         //Мы не запоминаем пользователя при регистрации
         await _signInManager.SignInAsync(user, false);
 
-        return new AuthResponseDto()
+        return new ResponseDto()
         {
-            Message = $"Пользователь {user} создано успешно!",
-            IsSucceed = true
+            SuccessMessage = $"{SuccessMessage.CreatingUserIsDone} ({user})",
         };
     }
 
-    public async Task<AuthResponseDto> Login(LoginDto loginDto)
+    public async Task<ResponseDto> Login(LoginDto loginDto)
     {
         var user = await _userManager.FindByNameAsync(loginDto.Username);
 
         //Проверяем пароль и логин пользователя
         if (user is null)
         {
-            return new AuthResponseDto()
+            return new ResponseDto()
             {
-                Message = "Проверьте правильность логина или пароля",
-                IsSucceed = false
+                ErrorMessage = ErrorMessage.IncorrectCredentials,
+                ErrorCode = (int)ErrorCode.IncorrectCredentials
             };
         }
 
         if (!(await _userManager.CheckPasswordAsync(user, loginDto.Password)))
         {
-            return new AuthResponseDto()
+            return new ResponseDto()
             {
-                Message = "Проверьте правильность логина или пароля",
-                IsSucceed = false
-            };
+                ErrorMessage = ErrorMessage.IncorrectCredentials,
+                ErrorCode = (int)ErrorCode.IncorrectCredentials
+            };  
         }
 
         var userRoles = await _userManager.GetRolesAsync(user);
@@ -162,10 +161,10 @@ public class AuthService : IAuthService
 
             if (!user.RefreshToken.Equals(refreshTokenFromCookies) || user.TokenExpires < DateTime.Now)
             {
-                return new AuthResponseDto()
+                return new ResponseDto()
                 {
-                    Message = $"Неверный токен",
-                    IsSucceed = false
+                    ErrorMessage = ErrorMessage.IncorrectToken,
+                    ErrorCode = (int)ErrorCode.IncorrectToken
                 };
             }
 
@@ -176,10 +175,9 @@ public class AuthService : IAuthService
 
         await _context.SaveChangesAsync();
         
-        return new AuthResponseDto()
+        return new ResponseDto()
         {
-            Message = $"{token}",
-            IsSucceed = true
+            SuccessMessage = $"{token}",
         };
     }
     
@@ -200,7 +198,6 @@ public class AuthService : IAuthService
         return token;
     }
     
-
     private RefreshToken GenerateRefreshToken()
     {
         var refreshToken = new RefreshToken
@@ -226,65 +223,73 @@ public class AuthService : IAuthService
         _httpContextAccessor.HttpContext.Response.Cookies.Append("refreshToken", refreshToken.Token, cookieOpt);
     }
     
-    public async Task<AuthResponseDto> FromUserToAdmin(UpdateDto updateDto)
+    public async Task<ResponseDto> FromUserToAdmin(UpdateDto updateDto)
     {
         //Проверяем есть ли пользователь
         var user = await _userManager.FindByNameAsync(updateDto.Username);
 
         if (user is null)
         {
-            return new AuthResponseDto()
+            return new ResponseDto()
             {
-                Message = $"{updateDto.Username} не существует!",
-                IsSucceed = false
+                ErrorMessage = $"{ErrorMessage.UserDoesNotExist} ({updateDto.Username})",
+                ErrorCode = (int)ErrorCode.UserDoesNotExist
             };
         }
         
         if (updateDto.Username == AdminUser.ADMINNAME)
         {
-            return new AuthResponseDto
+            return new ResponseDto
             {
-                IsSucceed = false,
-                Message = $"Пользователь под именем {updateDto.Username} уже является админом"
+                ErrorMessage = $"{ErrorMessage.UserAlreadyIsAdmin} ({updateDto.Username})",
+                ErrorCode = (int)ErrorCode.UserAlreadyIsAdmin
             };
         }
         await _userManager.AddToRoleAsync(user, UserRoles.ADMINISTRATOR);
 
-        return new AuthResponseDto()
+        return new ResponseDto()
         {
-            Message = $"Now {user} стал Админом!",
-            IsSucceed = true
+            SuccessMessage = $"{SuccessMessage.UpgradeUserToAdmin} ({user})",
         };
     }
     
-    public async Task<AuthResponseDto> FromAdminToUser(UpdateDto updateDto)
+    public async Task<ResponseDto> FromAdminToUser(UpdateDto updateDto)
     {
         var user = await _userManager.FindByNameAsync(updateDto.Username);
         
         if (user is null)
         {
-            return new AuthResponseDto
+            return new ResponseDto
             {
-                IsSucceed = false,
-                Message = $"Пользователя под именем {updateDto.Username} не сущетсвует!"
+                ErrorMessage = $"{ErrorMessage.UserDoesNotExist} ({updateDto.Username})",
+                ErrorCode = (int)ErrorCode.UserDoesNotExist
             };
         }
 
         if (updateDto.Username == AdminUser.ADMINNAME)
         {
-            return new AuthResponseDto
+            return new ResponseDto
             {
-                IsSucceed = false,
-                Message = $"Нельзя занизить права пользователя под именем {updateDto.Username}"
+                ErrorMessage = ErrorMessage.AccessError,
+                ErrorCode = (int)ErrorCode.AccessError
             };
         }
         
         await _userManager.RemoveFromRoleAsync(user, UserRoles.ADMINISTRATOR);
 
-        return new AuthResponseDto
+        return new ResponseDto
         {
-            IsSucceed = true,
-            Message = $"Пользователь {updateDto.Username} теперь стал обычным Пользователем"
+            SuccessMessage = $"{SuccessMessage.DowngradeAdminToUser} ({updateDto.Username})"
+        };
+    }
+    
+    public async Task<ResponseDto> Logout()
+    {
+        await _signInManager.SignOutAsync();
+
+        return new ResponseDto()
+        {
+            SuccessMessage = SuccessMessage.LogoutIsDone 
         };
     }
 }
