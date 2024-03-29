@@ -1,5 +1,6 @@
 using WebStoreMVC;
 using WebStoreMVC.Application.DependencyInjection;
+using WebStoreMVC.Components;
 using WebStoreMVC.DAL.DependencyInjection;
 using WebStoreMVC.Services.Data;
 

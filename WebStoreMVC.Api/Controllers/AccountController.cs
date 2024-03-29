@@ -1,9 +1,5 @@
-using Asp.Versioning;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.AspNetCore.Server.HttpSys;
 using WebStoreMVC.Domain.Entities;
 using WebStoreMVC.Dtos;
 using WebStoreMVC.Services.Interfaces;
