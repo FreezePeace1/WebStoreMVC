@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebStoreMVC.Api</name>
+    </assembly>
+    <members>
+        <member name="M:WebStoreMVC.Controllers.AccountController.#ctor(WebStoreMVC.Services.Interfaces.IAuthService)">
+            <summary>
+            DI сервиса AuthService
+            </summary>
+            <param name="authService"></param>
+        </member>
+        <member name="M:WebStoreMVC.Controllers.AccountController.SeedingRoles">
+            <summary>
+            Создание ролей
+            </summary>
+            <param name=""></param>
+            <remarks>
+                Request for creating roles
+                POST
+            </remarks>
+            <response code = "200">Создание ролей прошло успешно</response>
+            <response code = "400">Создание ролей прошло неудачно</response>
+        </member>
+        <member name="M:WebStoreMVC.Controllers.AccountController.Registration(WebStoreMVC.Dtos.RegisterDto)">
+            <summary>
+            Регистрация пользователя
+            </summary>
+            <param name="registerDto"></param>
+            <remarks>
+                Request for user registration
+                POST
+                {
+                    "username": "string",
+                    "password": "string",
+                    "confirmedPassword": "string",
+                    "email": "string"
+                }
+            </remarks>
+            <response code = "200">Регистрация пользователя прошла успешно</response>
+            <response code = "400">Регистрация пользователя прошла неудачно</response>
+        </member>
+        <member name="M:WebStoreMVC.Controllers.AccountController.Login(WebStoreMVC.Dtos.LoginDto)">
+            <summary>
+            Авторизация пользователя
+            </summary>
+            <param name="loginDto"></param>
+            <remarks>
+                Request for user authorization
+                POST
+                {
+                    "username": "string",
+                    "password": "string"
+                }
+            </remarks>
+            <response code = "200">Авторизация пользователя прошла успешно</response>
+            <response code = "400">Авторизация пользователя прошла неудачно</response>
+        </member>
+        <member name="M:WebStoreMVC.Controllers.AccountController.FromUserToAdmin(WebStoreMVC.Dtos.UpdateDto)">
+            <summary>
+            Перевод роли с обычного пользователя (User) к роли администратора (Admin)
+            </summary>
+            <param name="updateRoleDto"></param>
+            <remarks>
+                Request for transferring User to Admin 
+                POST
+                {
+                    "username": "string"
+                }
+            </remarks>
+            <response code = "200">Перевод пользователя к админу прошел успешно</response>
+            <response code = "400">Перевод пользователя к админу прошел неудачно</response>
+        </member>
+        <member name="M:WebStoreMVC.Controllers.AccountController.Logout">
+            <summary>
+            Выход пользователя из аккаунта
+            </summary>
+            <remarks>
+                Request for log out User 
+                POST
+            </remarks>
+            <response code = "200">Выход пользователя прошел успешно</response>
+            <response code = "400">Выход пользователя прошел неудачно</response>
+        </member>
+        <member name="M:WebStoreMVC.Controllers.AccountController.FromAdminToUser(WebStoreMVC.Dtos.UpdateDto)">
+            <summary>
+            Перевод роли с администратора (Admin) к роли пользователя (User)
+            </summary>
+            <remarks>
+                Request for transferring Admin to User  
+                POST
+                {
+                    "username": "string"
+                }
+            </remarks>
+            <response code = "200">Перевод админа к пользователю прошел успешно</response>
+            <response code = "400">Перевод админа к пользователю прошел неудачно</response>
+        </member>
+        <member name="M:WebStoreMVC.Startup.AddIdentity(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Подключение и настройка Identity
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:WebStoreMVC.Startup.AddSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Добавление swagger
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:WebStoreMVC.Startup.AddAuthenticationAndAuthorization(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.AspNetCore.Builder.WebApplicationBuilder)">
+            <summary>
+            Добавление аутентификации и авторизации с помощью JWT
+            </summary>
+            <param name="services"></param>
+            <param name="builder"></param>
+        </member>
+    </members>
+</doc>

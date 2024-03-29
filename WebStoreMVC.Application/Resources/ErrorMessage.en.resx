@@ -1,0 +1,38 @@
+<root>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="RolesAlreadyExists" xml:space="preserve">
+        <value>Roles already exists!</value>
+    </data>
+    <data name="UserAlreadyExists" xml:space="preserve">
+        <value>User already exists!</value>
+    </data>
+    <data name="ModelCreatingIsFalied" xml:space="preserve">
+        <value>Model creating is failed</value>
+    </data>
+    <data name="IncorrectCredentials" xml:space="preserve">
+        <value>Check your credeintials</value>
+    </data>
+    <data name="IncorrectToken" xml:space="preserve">
+        <value>Incorrect refresh token</value>
+    </data>
+    <data name="UserDoesNotExist" xml:space="preserve">
+        <value>User does not exist</value>
+    </data>
+    <data name="UserAlreadyIsAdmin" xml:space="preserve">
+        <value>User already is admin</value>
+    </data>
+    <data name="AccessError" xml:space="preserve">
+        <value>Access Error</value>
+    </data>
+</root>

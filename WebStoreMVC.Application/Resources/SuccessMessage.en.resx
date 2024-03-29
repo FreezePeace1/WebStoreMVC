@@ -1,0 +1,29 @@
+<root>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="CreatingRolesIsDone" xml:space="preserve">
+        <value>Creating roles is done</value>
+    </data>
+    <data name="CreatingUserIsDone" xml:space="preserve">
+        <value>Creating user is done</value>
+    </data>
+    <data name="UpgradeUserToAdmin" xml:space="preserve">
+        <value>Upgrading user to admin is done</value>
+    </data>
+    <data name="DowngradeAdminToUser" xml:space="preserve">
+        <value>Downgrading admin to user is done</value>
+    </data>
+    <data name="LogoutIsDone" xml:space="preserve">
+        <value>Logout is done</value>
+    </data>
+</root>
