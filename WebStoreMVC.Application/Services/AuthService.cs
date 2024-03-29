@@ -4,6 +4,7 @@ using System.Security.Cryptography;
 using System.Text;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using WebStoreMVC.Application.Resources;
@@ -84,7 +85,7 @@ public class AuthService : IAuthService
         if (!registerResult.Succeeded)
         {
             var errors = registerResult.Errors.Select(e => e.Description);
-
+            
             return new ResponseDto()
             {
                 ErrorMessage = $"{ErrorMessage.ModelCreatingIsFalied} \n {errors}",
@@ -95,9 +96,19 @@ public class AuthService : IAuthService
         //Добавляем роль пользователю
         await _userManager.AddToRoleAsync(user, UserRoles.USER);
 
-        //Мы не запоминаем пользователя при регистрации
-        await _signInManager.SignInAsync(user, false);
+        /*//Мы не запоминаем пользователя при регистрации
+        await _signInManager.SignInAsync(user, false);*/
+        
+        //Генерируем refresh token
+        var refreshToken = GenerateRefreshToken();
+        SetRefreshToken(refreshToken);
 
+        user.RefreshToken = refreshToken.Token;
+        user.TokenCreated = refreshToken.Created;
+        user.TokenExpires = refreshToken.Expired;
+        
+        await _context.SaveChangesAsync();
+        
         return new ResponseDto()
         {
             SuccessMessage = $"{SuccessMessage.CreatingUserIsDone} ({user})",
@@ -142,18 +153,19 @@ public class AuthService : IAuthService
         {
             claims.Add(new Claim(ClaimTypes.Role, userRole));
         }
+        
+        var accessToken = GenerateJsonWebToken(claims);
+        SetAccessToken(accessToken);
 
-        var token = GenerateJsonWebToken(claims);
-
-        //Генерируем refresh token
-        var refreshToken = GenerateRefreshToken();
-
-        SetRefreshToken(refreshToken);
-
-        user.RefreshToken = refreshToken.Token;
-        user.TokenCreated = refreshToken.Created;
-        user.TokenExpires = refreshToken.Expired;
-
+        RefreshToken existingRefreshToken = new RefreshToken()
+        {
+            Token = user.RefreshToken,
+            Expired = user.TokenExpires,
+            Created = user.TokenCreated
+        };
+        
+        SetRefreshToken(existingRefreshToken);
+       
         //Проверяем на срок истечения,если истекает то обновляем и записываем новый в БД
         if (user.TokenExpires < DateTime.Now)
         {
@@ -167,21 +179,20 @@ public class AuthService : IAuthService
                     ErrorCode = (int)ErrorCode.IncorrectToken
                 };
             }
-
+            
             var newRefreshToken = GenerateRefreshToken();
+            
             SetRefreshToken(newRefreshToken);
             user.RefreshToken = newRefreshToken.Token;
+            await _context.SaveChangesAsync();
         }
-
-        await _context.SaveChangesAsync();
         
         return new ResponseDto()
         {
-            SuccessMessage = $"{token}",
+            SuccessMessage = $"{accessToken}",
         };
     }
     
-
     private string GenerateJsonWebToken(List<Claim> claims)
     {
         var secret = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtSettings:Key"]));
@@ -221,6 +232,19 @@ public class AuthService : IAuthService
         };
 
         _httpContextAccessor.HttpContext.Response.Cookies.Append("refreshToken", refreshToken.Token, cookieOpt);
+    }
+    
+    private void SetAccessToken(string accessToken)
+    {
+        var cookieOpt = new CookieOptions
+        {
+            HttpOnly = true,
+            //Для передачи только по https
+            /*Secure = true,*/
+            Expires = DateTime.Now.AddHours(12)
+        };
+
+        _httpContextAccessor.HttpContext.Response.Cookies.Append("accessToken", accessToken, cookieOpt);
     }
     
     public async Task<ResponseDto> FromUserToAdmin(UpdateDto updateDto)
@@ -286,6 +310,8 @@ public class AuthService : IAuthService
     public async Task<ResponseDto> Logout()
     {
         await _signInManager.SignOutAsync();
+        _httpContextAccessor.HttpContext.Response.Cookies.Delete("accessToken");
+        _httpContextAccessor.HttpContext.Response.Cookies.Delete("refreshToken");
 
         return new ResponseDto()
         {

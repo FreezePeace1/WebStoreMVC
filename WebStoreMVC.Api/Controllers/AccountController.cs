@@ -1,17 +1,21 @@
 using Asp.Versioning;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Server.HttpSys;
+using WebStoreMVC.Domain.Entities;
 using WebStoreMVC.Dtos;
 using WebStoreMVC.Services.Interfaces;
 
 namespace WebStoreMVC.Controllers;
 
-[Route("Api/[controller]")]
-[ApiVersion("1.0")]
+[Route("[controller]")]
+/*[ApiVersion("1.0")]*/
 public class AccountController : Controller
 {
     private readonly IAuthService _authService;
-    
+
     /// <summary>
     /// DI сервиса AuthService
     /// </summary>
@@ -20,7 +24,7 @@ public class AccountController : Controller
     {
         _authService = authService;
     }
-    
+
     /// <summary>
     /// Создание ролей
     /// </summary>
@@ -40,7 +44,12 @@ public class AccountController : Controller
     {
         return Ok(await _authService.SeedRoles());
     }
-    
+
+    public IActionResult Registration()
+    {
+        return View(new RegisterDto());
+    }
+
     /// <summary>
     /// Регистрация пользователя
     /// </summary>
@@ -58,23 +67,33 @@ public class AccountController : Controller
     /// <response code = "200">Регистрация пользователя прошла успешно</response>
     /// <response code = "400">Регистрация пользователя прошла неудачно</response>
     [HttpPost("Registration")]
+    [Route("Registration")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult> Registration([FromBody] RegisterDto registerDto)
+    public async Task<ActionResult> Registration(RegisterDto registerDto)
     {
-        /*if (!ModelState.IsValid)
+        if (!ModelState.IsValid)
         {
             return View(registerDto);
-        }*/
+        }
 
         var registerResult = await _authService.Register(registerDto);
 
+        var error = registerResult.ErrorMessage;
+        ModelState.AddModelError(string.Empty, error.ToString());
+
+
         if (registerResult.IsSucceed)
         {
-            return Ok(registerResult);
+            return RedirectToAction("Index", "Home");
         }
 
-        return BadRequest(registerResult);
+        return View(registerDto);
+    }
+
+    public IActionResult Login()
+    {
+        return View(new LoginDto());
     }
 
     /// <summary>
@@ -92,23 +111,24 @@ public class AccountController : Controller
     /// <response code = "200">Авторизация пользователя прошла успешно</response>
     /// <response code = "400">Авторизация пользователя прошла неудачно</response>
     [HttpPost("Login")]
+    [Route("Login")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
+    public async Task<IActionResult> Login([FromForm] LoginDto loginDto)
     {
-        /*if (!ModelState.IsValid)
+        if (!ModelState.IsValid)
         {
             return View(loginDto);
-        }*/
+        }
 
         var loginResult = await _authService.Login(loginDto);
 
         if (loginResult.IsSucceed)
         {
-            return Ok(loginResult);
+            return RedirectToAction("Index", "Home");
         }
 
-        return BadRequest(loginResult);
+        return View(loginDto);
     }
 
     /// <summary>
@@ -125,11 +145,12 @@ public class AccountController : Controller
     /// <response code = "200">Перевод пользователя к админу прошел успешно</response>
     /// <response code = "400">Перевод пользователя к админу прошел неудачно</response>
     [HttpPost("MakeAdmin")]
+    [Route("MakeAdmin")]
     [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    public async Task<ActionResult<ResponseDto>> FromUserToAdmin([FromBody] UpdateDto updateRoleDto)
+    public async Task<ActionResult<ResponseDto>> FromUserToAdmin([FromForm] UpdateDto updateRoleDto)
     {
         var changeRoleResult = await _authService.FromUserToAdmin(updateRoleDto);
 
@@ -151,18 +172,14 @@ public class AccountController : Controller
     /// <response code = "200">Выход пользователя прошел успешно</response>
     /// <response code = "400">Выход пользователя прошел неудачно</response>
     [HttpPost("Logout")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
+    [Route("Logout")]
+    /*[ProducesResponseType(StatusCodes.Status200OK)]*/
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult> Logout()
     {
-        var logoutResult = await _authService.Logout();
+        await _authService.Logout();
 
-        if (logoutResult.IsSucceed)
-        {
-            return RedirectToAction("Index", "Home");   
-        }
-
-        return BadRequest();
+        return RedirectToAction("Index", "Home");
     }
 
     /// <summary>
@@ -179,10 +196,11 @@ public class AccountController : Controller
     /// <response code = "400">Перевод админа к пользователю прошел неудачно</response>
     [HttpPost("DowngradeFromAdminToUser")]
     [Authorize(AuthenticationSchemes = "Bearer", Roles = "Admin")]
+    [Route("DowngradeFromAdminToUser")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    public async Task<ActionResult<ResponseDto>> FromAdminToUser([FromBody] UpdateDto updateDto)
+    public async Task<ActionResult<ResponseDto>> FromAdminToUser([FromForm] UpdateDto updateDto)
     {
         var changeRoleResult = await _authService.FromAdminToUser(updateDto);
 

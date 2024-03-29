@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddRazorPages();
 //From DAL
 //Add DB connection
 builder.Services.AddDataAccessLayer(builder.Configuration);
@@ -25,6 +25,7 @@ builder.Services.AddServices();
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 var app = builder.Build();
+app.MapRazorPages();
 
 app.UseSwagger()
     .UseSwaggerUI();
@@ -42,8 +43,8 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthorization();
 app.UseAuthentication();
+app.UseAuthorization();
 
 //Чтобы сервис включался при запуске (добавляем автоматически роли и админа если этого нет в БД)
 var scope = app.Services.CreateScope();

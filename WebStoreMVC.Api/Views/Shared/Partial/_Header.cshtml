@@ -19,7 +19,7 @@
                     <a href="#"><i class="fa fa-dollar"></i> USD</a>
                 </li>
                 <li>
-                    <a asp-controller="Account" asp-action="Registration"><i class="fa fa-user-o"></i> My Account</a>
+                    @await Component.InvokeAsync("UserInfo")
                 </li>
             </ul>
         </div>
