@@ -1,6 +1,12 @@
 @using System.Net
 
 <div class="shop-menu pull-right">
+    @if (User.IsInRole(WebStoreMVC.Domain.Entities.UserRoles.ADMINISTRATOR))
+    {
+        <li>
+            <a asp-area="Admin" asp-controller="Home" asp-action="Products"><i class="fa fa-user-o"></i> Админ панель</a>
+        </li>
+    }
     <li>
         <a asp-controller="Account" asp-action="Logout"><i class="fa fa-user-o"></i> Выход</a>
     </li>

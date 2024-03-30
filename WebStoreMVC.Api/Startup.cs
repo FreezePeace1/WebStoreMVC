@@ -20,7 +20,7 @@ public static class Startup
     public static void AddIdentity(this IServiceCollection services)
     {
         //Подключаем Identity
-        services.AddIdentity<AppUser, IdentityRole>()
+        services.AddIdentity<AppUser, IdentityRole>(/*options => options.SignIn.RequireConfirmedAccount = true*/)
             .AddEntityFrameworkStores<WebStoreContext>()
             .AddDefaultTokenProviders();
 

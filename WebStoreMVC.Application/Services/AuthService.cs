@@ -138,6 +138,14 @@ public class AuthService : IAuthService
             };  
         }
 
+        //Adding for getting access to user roles
+        var loginResult = await _signInManager.PasswordSignInAsync(
+            loginDto.Username,
+            loginDto.Password,
+            false,
+            false
+        ); // если true то блокируем после всех попыток войти на аккаунт
+        
         var userRoles = await _userManager.GetRolesAsync(user);
 
         //Создаем доп инфу для пользователя во время авторизации

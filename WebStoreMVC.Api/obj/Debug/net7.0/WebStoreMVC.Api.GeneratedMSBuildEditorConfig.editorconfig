@@ -22,6 +22,10 @@ build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VhcmNoaW5nUHJvZHVjdHNcU2Vh
 build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Areas/Admin/Views/Home/Products.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxQcm9kdWN0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
