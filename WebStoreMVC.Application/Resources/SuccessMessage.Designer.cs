@@ -96,6 +96,15 @@ namespace WebStoreMVC.Application.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Товары получены.
+        /// </summary>
+        internal static string ProductsAreReceived {
+            get {
+                return ResourceManager.GetString("ProductsAreReceived", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Пользователь стал админом.
         /// </summary>
         internal static string UpgradeUserToAdmin {

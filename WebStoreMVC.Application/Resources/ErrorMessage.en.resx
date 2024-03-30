@@ -35,4 +35,7 @@
     <data name="AccessError" xml:space="preserve">
         <value>Access Error</value>
     </data>
+    <data name="ProductsAreNotFound" xml:space="preserve">
+        <value>Products are not found</value>
+    </data>
 </root>

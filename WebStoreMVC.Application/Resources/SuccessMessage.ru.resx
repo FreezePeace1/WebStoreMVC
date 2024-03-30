@@ -26,4 +26,7 @@
     <data name="LogoutIsDone" xml:space="preserve">
         <value>Выход выполнен</value>
     </data>
+    <data name="ProductsAreReceived" xml:space="preserve">
+        <value>Товары получены</value>
+    </data>
 </root>

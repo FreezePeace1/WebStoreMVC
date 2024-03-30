@@ -1,13 +1,14 @@
+using Asp.Versioning;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using WebStoreMVC.Domain.Entities;
 using WebStoreMVC.Dtos;
 using WebStoreMVC.Services.Interfaces;
 
 namespace WebStoreMVC.Controllers;
 
 [Route("[controller]")]
-/*[ApiVersion("1.0")]*/
+/*[ApiController]
+[ApiVersion("1.0")]*/
 public class AccountController : Controller
 {
     private readonly IAuthService _authService;
@@ -40,7 +41,7 @@ public class AccountController : Controller
     {
         return Ok(await _authService.SeedRoles());
     }
-
+    
     public IActionResult Registration()
     {
         return View(new RegisterDto());
@@ -68,6 +69,11 @@ public class AccountController : Controller
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult> Registration(RegisterDto registerDto)
     {
+        if (HttpContext.Request.Cookies["accessToken"] != null || HttpContext.Request.Cookies["refreshToken"] != null)
+        {
+            return RedirectToAction("Index", "Home");
+        }
+        
         if (!ModelState.IsValid)
         {
             return View(registerDto);
@@ -86,6 +92,7 @@ public class AccountController : Controller
 
         return View(registerDto);
     }
+
 
     public IActionResult Login()
     {
@@ -112,6 +119,11 @@ public class AccountController : Controller
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> Login([FromForm] LoginDto loginDto)
     {
+        if (HttpContext.Request.Cookies["accessToken"] != null || HttpContext.Request.Cookies["refreshToken"] != null)
+        {
+            return RedirectToAction("Index", "Home");
+        }
+        
         if (!ModelState.IsValid)
         {
             return View(loginDto);
@@ -173,6 +185,11 @@ public class AccountController : Controller
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult> Logout()
     {
+        if (HttpContext.Request.Cookies["accessToken"] == null || HttpContext.Request.Cookies["refreshToken"] == null)
+        {
+            return RedirectToAction("Index", "Home");
+        }
+        
         await _authService.Logout();
 
         return RedirectToAction("Index", "Home");

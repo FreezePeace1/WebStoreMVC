@@ -34,4 +34,12 @@
       <Folder Include="logs\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Views\SearchingProducts\SearchingProducts.cshtml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <AdditionalFiles Include="Views\SearchingProducts\SearchingProducts.cshtml" />
+    </ItemGroup>
+
 </Project>

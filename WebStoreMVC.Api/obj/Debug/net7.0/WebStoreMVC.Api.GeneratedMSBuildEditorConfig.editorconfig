@@ -16,6 +16,12 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Api
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/SearchingProducts/SearchingProducts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VhcmNoaW5nUHJvZHVjdHNcU2VhcmNoaW5nUHJvZHVjdHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -64,16 +70,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTdG9yZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Search/SearchMobilePhones.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VhcmNoXFNlYXJjaE1vYmlsZVBob25lcy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Shared/Components/UserInfo/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcVXNlckluZm9cRGVmYXVsdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Shared/Components/UserInfo/UserInfo.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcVXNlckluZm9cVXNlckluZm8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Shared/Partial/SearchingProducts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhcnRpYWxcU2VhcmNoaW5nUHJvZHVjdHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Shared/Partial/_Footer.cshtml]

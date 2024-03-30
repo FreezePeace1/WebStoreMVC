@@ -42,4 +42,7 @@
     <data name="AccessError" xml:space="preserve">
         <value>Ошибка доступа</value>
     </data>
+    <data name="ProductsAreNotFound" xml:space="preserve">
+        <value>Товар не был найден</value>
+    </data>
 </root>
