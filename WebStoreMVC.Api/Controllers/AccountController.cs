@@ -70,7 +70,7 @@ public class AccountController : Controller
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult> Registration(RegisterDto registerDto)
     {
-        if (HttpContext.Request.Cookies["accessToken"] != null || HttpContext.Request.Cookies["refreshToken"] != null)
+        if (HttpContext.Request.Cookies["accessToken"] != null && HttpContext.Request.Cookies["refreshToken"] != null && User.Identity.IsAuthenticated)
         {
             return RedirectToAction("Index", "Home");
         }
@@ -81,10 +81,12 @@ public class AccountController : Controller
         }
 
         var registerResult = await _authService.Register(registerDto);
-
-        var error = registerResult.ErrorMessage;
-        ModelState.AddModelError(string.Empty, error.ToString());
-
+        
+        if (!registerResult.IsSucceed)
+        {
+            var error = registerResult.ErrorMessage;
+            ModelState.AddModelError(string.Empty, error.ToString());
+        }
 
         if (registerResult.IsSucceed)
         {
@@ -120,7 +122,7 @@ public class AccountController : Controller
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> Login([FromForm] LoginDto loginDto)
     {
-        if (HttpContext.Request.Cookies["accessToken"] != null || HttpContext.Request.Cookies["refreshToken"] != null)
+        if (HttpContext.Request.Cookies["accessToken"] != null && HttpContext.Request.Cookies["refreshToken"] != null && User.Identity.IsAuthenticated)
         {
             return RedirectToAction("Index", "Home");
         }
@@ -129,9 +131,15 @@ public class AccountController : Controller
         {
             return View(loginDto);
         }
-
+        
         var loginResult = await _authService.Login(loginDto);
-
+        
+        if (!loginResult.IsSucceed)
+        {
+            var error = loginResult.ErrorMessage;
+            ModelState.AddModelError(string.Empty, error.ToString());
+        }
+        
         if (loginResult.IsSucceed)
         {
             return RedirectToAction("Index", "Home");
@@ -186,7 +194,7 @@ public class AccountController : Controller
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult> Logout()
     {
-        if (HttpContext.Request.Cookies["accessToken"] == null || HttpContext.Request.Cookies["refreshToken"] == null)
+        if (HttpContext.Request.Cookies["accessToken"] == null && HttpContext.Request.Cookies["refreshToken"] == null && !(User.Identity.IsAuthenticated))
         {
             return RedirectToAction("Index", "Home");
         }

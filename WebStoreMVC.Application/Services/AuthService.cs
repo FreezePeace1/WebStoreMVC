@@ -4,7 +4,6 @@ using System.Security.Cryptography;
 using System.Text;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using WebStoreMVC.Application.Resources;
@@ -27,7 +26,8 @@ public class AuthService : IAuthService
     private readonly IHttpContextAccessor _httpContextAccessor;
 
     public AuthService(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager,
-        SignInManager<AppUser> signInManager, IConfiguration configuration,WebStoreContext context,IHttpContextAccessor httpContextAccessor)
+        SignInManager<AppUser> signInManager, IConfiguration configuration, WebStoreContext context,
+        IHttpContextAccessor httpContextAccessor)
     {
         _userManager = userManager;
         _roleManager = roleManager;
@@ -85,7 +85,7 @@ public class AuthService : IAuthService
         if (!registerResult.Succeeded)
         {
             var errors = registerResult.Errors.Select(e => e.Description);
-            
+
             return new ResponseDto()
             {
                 ErrorMessage = $"{ErrorMessage.ModelCreatingIsFalied} \n {errors}",
@@ -95,10 +95,10 @@ public class AuthService : IAuthService
 
         //Добавляем роль пользователю
         await _userManager.AddToRoleAsync(user, UserRoles.USER);
-
-        /*//Мы не запоминаем пользователя при регистрации
-        await _signInManager.SignInAsync(user, false);*/
         
+        //For seeing roles after registration
+        await _signInManager.SignInAsync(user, false);
+
         //Генерируем refresh token
         var refreshToken = GenerateRefreshToken();
         SetRefreshToken(refreshToken);
@@ -106,15 +106,36 @@ public class AuthService : IAuthService
         user.RefreshToken = refreshToken.Token;
         user.TokenCreated = refreshToken.Created;
         user.TokenExpires = refreshToken.Expired;
-        
+
         await _context.SaveChangesAsync();
         
+        //Violated DRY------------------------------------------------------------------
+        var userRoles = await _userManager.GetRolesAsync(user);
+        
+        //Создаем доп инфу для пользователя во время авторизации
+        var claims = new List<Claim>()
+        {
+            new Claim(ClaimTypes.Name, user.UserName),
+            new Claim(ClaimTypes.NameIdentifier, user.Id),
+            new Claim("JWTID", Guid.NewGuid().ToString())
+        };
+
+        //Передаем всем пользователям клеймы
+        foreach (var userRole in userRoles)
+        {
+            claims.Add(new Claim(ClaimTypes.Role, userRole));
+        }
+
+        var accessToken = GenerateJsonWebToken(claims);
+        SetAccessToken(accessToken);
+        //-----------------------------------------------------------------------------
+
         return new ResponseDto()
         {
             SuccessMessage = $"{SuccessMessage.CreatingUserIsDone} ({user})",
         };
     }
-
+    
     public async Task<ResponseDto> Login(LoginDto loginDto)
     {
         var user = await _userManager.FindByNameAsync(loginDto.Username);
@@ -135,19 +156,19 @@ public class AuthService : IAuthService
             {
                 ErrorMessage = ErrorMessage.IncorrectCredentials,
                 ErrorCode = (int)ErrorCode.IncorrectCredentials
-            };  
+            };
         }
 
         //Adding for getting access to user roles
-        var loginResult = await _signInManager.PasswordSignInAsync(
+        await _signInManager.PasswordSignInAsync(
             loginDto.Username,
             loginDto.Password,
             false,
             false
         ); // если true то блокируем после всех попыток войти на аккаунт
-        
-        var userRoles = await _userManager.GetRolesAsync(user);
 
+        var userRoles = await _userManager.GetRolesAsync(user);
+        
         //Создаем доп инфу для пользователя во время авторизации
         var claims = new List<Claim>()
         {
@@ -161,7 +182,7 @@ public class AuthService : IAuthService
         {
             claims.Add(new Claim(ClaimTypes.Role, userRole));
         }
-        
+
         var accessToken = GenerateJsonWebToken(claims);
         SetAccessToken(accessToken);
 
@@ -171,9 +192,9 @@ public class AuthService : IAuthService
             Expired = user.TokenExpires,
             Created = user.TokenCreated
         };
-        
+
         SetRefreshToken(existingRefreshToken);
-       
+
         //Проверяем на срок истечения,если истекает то обновляем и записываем новый в БД
         if (user.TokenExpires < DateTime.Now)
         {
@@ -187,20 +208,20 @@ public class AuthService : IAuthService
                     ErrorCode = (int)ErrorCode.IncorrectToken
                 };
             }
-            
+
             var newRefreshToken = GenerateRefreshToken();
-            
+
             SetRefreshToken(newRefreshToken);
             user.RefreshToken = newRefreshToken.Token;
             await _context.SaveChangesAsync();
         }
-        
+
         return new ResponseDto()
         {
             SuccessMessage = $"{accessToken}",
         };
     }
-    
+
     private string GenerateJsonWebToken(List<Claim> claims)
     {
         var secret = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtSettings:Key"]));
@@ -216,7 +237,7 @@ public class AuthService : IAuthService
 
         return token;
     }
-    
+
     private RefreshToken GenerateRefreshToken()
     {
         var refreshToken = new RefreshToken
@@ -241,7 +262,7 @@ public class AuthService : IAuthService
 
         _httpContextAccessor.HttpContext.Response.Cookies.Append("refreshToken", refreshToken.Token, cookieOpt);
     }
-    
+
     private void SetAccessToken(string accessToken)
     {
         var cookieOpt = new CookieOptions
@@ -254,7 +275,7 @@ public class AuthService : IAuthService
 
         _httpContextAccessor.HttpContext.Response.Cookies.Append("accessToken", accessToken, cookieOpt);
     }
-    
+
     public async Task<ResponseDto> FromUserToAdmin(UpdateDto updateDto)
     {
         //Проверяем есть ли пользователь
@@ -268,7 +289,7 @@ public class AuthService : IAuthService
                 ErrorCode = (int)ErrorCode.UserDoesNotExist
             };
         }
-        
+
         if (updateDto.Username == AdminUser.ADMINNAME)
         {
             return new ResponseDto
@@ -277,6 +298,7 @@ public class AuthService : IAuthService
                 ErrorCode = (int)ErrorCode.UserAlreadyIsAdmin
             };
         }
+
         await _userManager.AddToRoleAsync(user, UserRoles.ADMINISTRATOR);
 
         return new ResponseDto()
@@ -284,11 +306,11 @@ public class AuthService : IAuthService
             SuccessMessage = $"{SuccessMessage.UpgradeUserToAdmin} ({user})",
         };
     }
-    
+
     public async Task<ResponseDto> FromAdminToUser(UpdateDto updateDto)
     {
         var user = await _userManager.FindByNameAsync(updateDto.Username);
-        
+
         if (user is null)
         {
             return new ResponseDto
@@ -306,7 +328,7 @@ public class AuthService : IAuthService
                 ErrorCode = (int)ErrorCode.AccessError
             };
         }
-        
+
         await _userManager.RemoveFromRoleAsync(user, UserRoles.ADMINISTRATOR);
 
         return new ResponseDto
@@ -314,7 +336,7 @@ public class AuthService : IAuthService
             SuccessMessage = $"{SuccessMessage.DowngradeAdminToUser} ({updateDto.Username})"
         };
     }
-    
+
     public async Task<ResponseDto> Logout()
     {
         await _signInManager.SignOutAsync();
@@ -323,7 +345,7 @@ public class AuthService : IAuthService
 
         return new ResponseDto()
         {
-            SuccessMessage = SuccessMessage.LogoutIsDone 
+            SuccessMessage = SuccessMessage.LogoutIsDone
         };
     }
 }
