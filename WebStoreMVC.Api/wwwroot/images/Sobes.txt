@@ -1,0 +1,13 @@
+Протоколы и вообще теория по сетям
+
+Json vs Xml
+
+https://aws.amazon.com/ru/compare/the-difference-between-json-xml/
+
+Понимание сетевых протоколов (TCP/IP, HTTP).
+
+
+C# теория (закрепляем практикой):
+
+
+БД теория (закрепляем практикой):

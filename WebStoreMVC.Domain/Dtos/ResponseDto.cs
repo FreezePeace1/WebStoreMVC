@@ -8,13 +8,13 @@ public class ResponseDto
 
     public string? SuccessMessage { get; set; }
     public bool IsSucceed => ErrorMessage == null;
-    
+
     public int? ErrorCode { get; set; }
 }
 
-public class ResponseDto <T> : ResponseDto
+public class ResponseDto<T> : ResponseDto
 {
-    public ResponseDto(string errorMessage,string successMessage,int errorCode)
+    public ResponseDto(string errorMessage, string successMessage, int errorCode)
     {
         ErrorMessage = errorMessage;
         SuccessMessage = successMessage;
@@ -23,7 +23,6 @@ public class ResponseDto <T> : ResponseDto
 
     public ResponseDto()
     {
-        
     }
 
     public T Data { get; set; }

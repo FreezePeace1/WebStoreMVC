@@ -22,8 +22,44 @@ build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VhcmNoaW5nUHJvZHVjdHNcU2Vh
 build_metadata.AdditionalFiles.CssScope = 
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Areas/Admin/Views/Home/Products.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxQcm9kdWN0cy5jc2h0bWw=
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Areas/Admin/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Areas/Admin/Views/Products/DeleteById.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdHNcRGVsZXRlQnlJZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Areas/Admin/Views/Products/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Areas/Admin/Views/Products/GetAllProducts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdHNcR2V0QWxsUHJvZHVjdHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Areas/Admin/Views/Products/PostProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvZHVjdHNcUG9zdFByb2R1Y3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Areas/Admin/Views/Shared/Partial/ProductChanging.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXFBhcnRpYWxcUHJvZHVjdENoYW5naW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Areas/Admin/Views/Shared/Partial/ProductDescription.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXFBhcnRpYWxcUHJvZHVjdERlc2NyaXB0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Areas/Admin/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Areas/Admin/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Areas/Admin/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Ryzen/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Account/Login.cshtml]

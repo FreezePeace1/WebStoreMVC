@@ -31,12 +31,13 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Areas\Admin\Shared\" />
       <Folder Include="logs\" />
+      <Folder Include="wwwroot\Admin\" />
     </ItemGroup>
 
     <ItemGroup>
       <_ContentIncludedByDefault Remove="Views\SearchingProducts\SearchingProducts.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Admin\Shared\_Layout.cshtml" />
     </ItemGroup>
 
     <ItemGroup>

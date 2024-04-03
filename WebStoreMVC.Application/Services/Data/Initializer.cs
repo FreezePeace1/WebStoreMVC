@@ -8,7 +8,7 @@ public class Initializer
     private readonly UserManager<AppUser> _userManager;
     private readonly RoleManager<IdentityRole> _roleManager;
 
-    public Initializer(UserManager<AppUser> userManager,RoleManager<IdentityRole> roleManager)
+    public Initializer(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager)
     {
         _userManager = userManager;
         _roleManager = roleManager;
@@ -26,7 +26,6 @@ public class Initializer
 
     private async Task GenerateIdentity()
     {
-        
         if (!await _roleManager.RoleExistsAsync(UserRoles.ADMINISTRATOR))
         {
             await _roleManager.CreateAsync(new IdentityRole()
@@ -41,7 +40,6 @@ public class Initializer
             {
                 Name = UserRoles.USER
             });
-
         }
 
         if (await _userManager.FindByNameAsync(AdminUser.ADMINNAME) is null)

@@ -1,0 +1,150 @@
+@model Product
+
+<body>
+
+<div class="container tm-mt-big tm-mb-big">
+    <div class="row">
+        <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 mx-auto">
+            <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="tm-block-title d-inline-block">Изменение товара</h2>
+                    </div>
+                </div>
+
+                <form asp-area="Admin" asp-controller="Products" asp-action="EditProduct" asp-route-product="@Model" method="post">
+                    <div class="row tm-edit-product-row">
+                        <div class="col-xl-6 col-lg-6 col-md-12">
+
+                            <div class="form-group mb-3">
+                                <label
+
+                                    for="name">
+                                    Название товара
+                                </label>
+                                <input asp-for="ProductName" id="name"
+                                       type="text"
+                                       class="form-control validate"/>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label
+                                    for="description">
+                                    Описание
+                                </label>
+                                <textarea  asp-for="Description" class="form-control validate tm-small"rows="5"required type="text"></textarea>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label
+                                    for="category">
+                                    Категория
+                                </label>
+                                <select
+                                    class="custom-select tm-select-accounts"
+                                    id="category">
+                                    <option>ИЗМЕНЕНИЕ КАТЕГОРИИ НЕДОСТУПНО</option>
+                                    <option value="1" selected>Смартфон</option>
+                                    <option value="2">Гарнитура</option>
+                                    <option value="3">Ноутбуки</option>
+                                </select>
+                            </div>
+                            <div class="row">
+                                <div class="form-group mb-3 col-xs-12 col-sm-6">
+                                    <label for="expire_date"> Количество </label>
+                                    <input asp-for="Quantity" type="text"
+                                           class="form-control validate"
+                                           data-large-mode="true"/>
+                                </div>
+                                <div class="form-group mb-3 col-xs-12 col-sm-6">
+                                    <label
+                                        for="stock">
+                                        Цена
+                                    </label>
+                                    <label asp-for="Price" class="control-label"></label>
+                                    <input asp-for="Price" type="text"
+                                           class="form-control validate"/>
+                                    <span asp-validation-for="Price"></span>
+                                </div>
+                            </div>
+                        </div >
+                        <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
+                            <div class="tm-product-img-edit mx-auto">
+                                <img src="~/images/products/@Model.Images" alt="Product image" height="256px" width="256px" class="img-fluid d-block mx-auto">
+                                <i
+                                    class="fas fa-cloud-upload-alt tm-upload-icon"
+                                    onclick="document.getElementById('fileInput').click();">
+                                </i >
+                            </div >
+                            <div class="custom-file mt-3 mb-3">
+                                <input id="fileInput" type="file" style="display:none;">
+                                <input
+                                    type="button"
+                                    class="btn btn-primary btn-block mx-auto"
+                                    value="Изменить картинку товара"
+                                    onclick="document.getElementById('fileInput').click();">
+                            </div >
+                            <br>
+                        </div>
+                        <div class="form-group mb-3 col-xs-12 col-sm-6">
+                            <label
+                                for="stock">
+                                Остальная информация
+                            </label>
+                            <br>
+                            <label>
+                                Article
+                            </label>
+                            <input asp-for="Article" type="text"
+                                   class="form-control validate"/>
+                            <br>
+                            <label>
+                                Хештеги
+                            </label>
+                            <input asp-for="Hashtags" type="text"
+                                   class="form-control validate"/>
+                            <br>
+                            <label>
+                                Цвет
+                            </label>
+                            <input asp-for="Colour" type="text"
+                                   class="form-control validate"/>
+                            <br>
+                            <label>
+                                Производитель
+                            </label>
+                            <input asp-for="Manufacturer" type="text"
+                                   class="form-control validate"/>
+                            <br>
+                            <label>
+                                Название картинки
+                            </label>
+                            <input asp-for="Images" type="text"
+                                   class="form-control validate"/>
+                        </div>
+
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary btn-block text-uppercase">
+                            Обновить информацию
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/jquery-3.3.1.min.js"></script>
+<!-- https://jquery.com/download/ -->
+<script src="~/js/jquery-ui.min.js"></script>
+<!-- https://jqueryui.com/download/ -->
+<script src="~/js/bootstrap.min.js"></script>
+<!-- https://getbootstrap.com/ -->
+<script>
+      $(function() {
+        $("#expire_date").datepicker({
+          defaultDate: "10/22/2020"
+        });
+      });
+    </script>
+</body>

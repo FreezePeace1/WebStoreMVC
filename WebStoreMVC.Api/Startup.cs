@@ -40,6 +40,19 @@ public static class Startup
 
             opt.User.RequireUniqueEmail = false;
         });
+        
+        services.ConfigureApplicationCookie(opt =>
+        {
+            opt.Cookie.Name = "WebStoreMvc_Cookie";
+            opt.Cookie.HttpOnly = true;
+            opt.ExpireTimeSpan = TimeSpan.FromDays(30);
+            /*opt.LoginPath = "/Account/Login";
+            opt.LogoutPath = "/Account/Logout";
+            opt.AccessDeniedPath = "/Account/AccessDenied";*/
+
+            //Чтобы состояние пользователя во время сессии менялось (например если он зарегистрировался или залогинился то сразу переключаем на эти права)
+            opt.SlidingExpiration = true;
+        });
     }
 
     /// <summary>

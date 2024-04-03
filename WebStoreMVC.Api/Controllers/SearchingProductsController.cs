@@ -17,7 +17,7 @@ public class SearchingProductsController : Controller
     {
         _productsService = productsService;
     }
-    
+
 
     [HttpGet("SearchingProducts")]
     [Route("SearchingProducts")]

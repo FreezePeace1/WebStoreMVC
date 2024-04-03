@@ -8,7 +8,8 @@ namespace WebStoreMVC.Areas.Admin.Controllers;
 [Area("Admin"),Authorize(Roles = "Admin")]
 public class HomeController : Controller
 {
-    public IActionResult Products()
+    [Route("Index")]
+    public IActionResult Index()
     {
         return View();
     }

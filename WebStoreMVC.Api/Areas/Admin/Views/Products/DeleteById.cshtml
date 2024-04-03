@@ -1,0 +1,31 @@
+@model WebStoreMVC.Domain.Entities.Product
+
+@{
+    ViewBag.Title = "Удаление";
+    Layout = "_Layout";
+}
+
+<div id="confirmDeleteModal" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            </div>
+            <tbody>
+
+            </tbody>
+            <div class="modal-body">
+                <p>Точно ли вы хотите удалить товар?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                @Html.ActionLink("Удалить", "DeleteProduct", new { id = Model.Id }, new { @class = "btn btn-danger" })
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#confirmDeleteModal").modal('show');
+    });
+</script>

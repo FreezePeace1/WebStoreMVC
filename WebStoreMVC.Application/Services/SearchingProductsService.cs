@@ -17,7 +17,7 @@ public class SearchingProductsService : ISearchingProductsService
     {
         _context = context;
     }
-    
+
     //Приведение строки к нормальному виду
     private string StringTransformation(string searchString)
     {
@@ -84,7 +84,7 @@ public class SearchingProductsService : ISearchingProductsService
 
         return words;
     }
-    
+
     public async Task<ResponseDto<List<Product>>> SearchingProducts(string searchString = "")
     {
         // Исключение, которые приводят сразу к выводу ошибки 
@@ -142,5 +142,4 @@ public class SearchingProductsService : ISearchingProductsService
             Data = await products.Distinct().ToListAsync()
         };
     }
-    
 }

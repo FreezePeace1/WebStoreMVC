@@ -95,7 +95,7 @@ public class AuthService : IAuthService
 
         //Добавляем роль пользователю
         await _userManager.AddToRoleAsync(user, UserRoles.USER);
-        
+
         //For seeing roles after registration
         await _signInManager.SignInAsync(user, false);
 
@@ -108,10 +108,10 @@ public class AuthService : IAuthService
         user.TokenExpires = refreshToken.Expired;
 
         await _context.SaveChangesAsync();
-        
+
         //Violated DRY------------------------------------------------------------------
         var userRoles = await _userManager.GetRolesAsync(user);
-        
+
         //Создаем доп инфу для пользователя во время авторизации
         var claims = new List<Claim>()
         {
@@ -130,12 +130,15 @@ public class AuthService : IAuthService
         SetAccessToken(accessToken);
         //-----------------------------------------------------------------------------
 
+        //Запоминаем пользователя после регистрации
+        await _signInManager.SignInAsync(user,true);
+
         return new ResponseDto()
         {
             SuccessMessage = $"{SuccessMessage.CreatingUserIsDone} ({user})",
         };
     }
-    
+
     public async Task<ResponseDto> Login(LoginDto loginDto)
     {
         var user = await _userManager.FindByNameAsync(loginDto.Username);
@@ -163,12 +166,13 @@ public class AuthService : IAuthService
         await _signInManager.PasswordSignInAsync(
             loginDto.Username,
             loginDto.Password,
-            false,
+            //После логина сохраняем данные Identity пользователя чтобы после закрытия браузера не проподали cookie
+            true,
             false
         ); // если true то блокируем после всех попыток войти на аккаунт
 
         var userRoles = await _userManager.GetRolesAsync(user);
-        
+
         //Создаем доп инфу для пользователя во время авторизации
         var claims = new List<Claim>()
         {
@@ -229,7 +233,7 @@ public class AuthService : IAuthService
         var tokenObject = new JwtSecurityToken(
             issuer: _configuration["JwtSettings:Issuer"],
             audience: _configuration["JwtSettings:Audience"],
-            expires: DateTime.Now.AddHours(12),
+            expires: DateTime.Now.AddDays(1),
             claims: claims,
             signingCredentials: new SigningCredentials(secret, SecurityAlgorithms.HmacSha256));
 
