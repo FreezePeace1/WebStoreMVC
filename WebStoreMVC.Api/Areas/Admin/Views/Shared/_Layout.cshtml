@@ -88,7 +88,12 @@
                     </a>
                 </li>
             </ul>
+
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">
+                <h1 class="tm-site-title mb-0">To Store</h1>
+            </a>
         </div>
+
     </div>
 </nav>
 <div class="container mt-5">
@@ -114,7 +119,7 @@
 <!-- https://getbootstrap.com/ -->
 <script src="~/js/jquery.zoom.min.js"></script>
 <script src="~/js/main.js"></script>
-    <script>
+<script>
           $(function() {
             $(".tm-product-name").on("click", function() {
               window.location.href = "EditProduct";

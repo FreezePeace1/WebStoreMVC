@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "DyYXiu/YgufiWfKboT5SUdRAb/uz3ofjxUag9E4gZtEOwAsF5B/nb75j+AvYArHGtCFEJn5/yALU6NZYwskExw==",
+  "dgSpecHash": "YOa4FEdBu3kLnapEUsyVbCC3jBVG5ID+MhzvLRAZWgL7tolUpBvmGsZCtumzjaH5Y53XJhCk+1QManbupy2H9A==",
   "success": true,
   "projectFilePath": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC.Application\\WebStoreMVC.Application.csproj",
   "expectedPackageFiles": [
@@ -47,6 +47,7 @@
     "C:\\Users\\Ryzen\\.nuget\\packages\\microsoft.net.http.headers\\2.2.0\\microsoft.net.http.headers.2.2.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
+    "C:\\Users\\Ryzen\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\Ryzen\\.nuget\\packages\\npgsql\\7.0.6\\npgsql.7.0.6.nupkg.sha512",
     "C:\\Users\\Ryzen\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\7.0.11\\npgsql.entityframeworkcore.postgresql.7.0.11.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",

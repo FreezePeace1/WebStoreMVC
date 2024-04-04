@@ -96,6 +96,15 @@ namespace WebStoreMVC.Application.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Данный товар уже существует.
+        /// </summary>
+        internal static string ProductAlreadyExists {
+            get {
+                return ResourceManager.GetString("ProductAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Товар не был найден.
         /// </summary>
         internal static string ProductsAreNotFound {

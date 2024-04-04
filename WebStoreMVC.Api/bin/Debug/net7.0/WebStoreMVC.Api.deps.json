@@ -36,6 +36,7 @@
       "WebStoreMVC.Api/1.0.0": {
         "dependencies": {
           "Asp.Versioning.Mvc.ApiExplorer": "7.1.0",
+          "BuildBundlerMinifier": "3.2.449",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.11",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.11",
           "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": "7.0.11",
@@ -403,6 +404,7 @@
           "lib/net7.0/Asp.Versioning.Mvc.ApiExplorer.dll": {}
         }
       },
+      "BuildBundlerMinifier/3.2.449": {},
       "Humanizer/2.14.1": {
         "dependencies": {
           "Humanizer.Core.af": "2.14.1",
@@ -3210,6 +3212,7 @@
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.11",
           "Microsoft.Extensions.Identity.Core": "7.0.11",
           "Microsoft.IdentityModel.Tokens": "6.15.1",
+          "Newtonsoft.Json": "13.0.1",
           "System.IdentityModel.Tokens.Jwt": "6.15.1",
           "WebStoreMVC.DAL": "1.0.0",
           "WebStoreMVC.Domain": "1.0.0"
@@ -5041,6 +5044,13 @@
       "sha512": "sha512-SEqEAeOXH4bP5g5IzdRarmNCrUxbk4pu10zxu57hgnHop7mXikwoDshE1cI4ZcxN7soKLGw2qOgLjJTIim5fiw==",
       "path": "asp.versioning.mvc.apiexplorer/7.1.0",
       "hashPath": "asp.versioning.mvc.apiexplorer.7.1.0.nupkg.sha512"
+    },
+    "BuildBundlerMinifier/3.2.449": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uA9sYDy4VepL3xwzBTLcP2LyuVYMt0ZIT3gaSiXvGoX15Ob+rOP+hGydhevlSVd+rFo+Y+VQFEHDuWU8HBW+XA==",
+      "path": "buildbundlerminifier/3.2.449",
+      "hashPath": "buildbundlerminifier.3.2.449.nupkg.sha512"
     },
     "Humanizer/2.14.1": {
       "type": "package",

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "aj8mYpdrJ+dZphnCCap05Pgk7mV4Nqt2SrRe0LuGN/HZo144Y9C8fNBFhn4uIULGwWeCHsqBQniQdFHFIEQgDA==",
+  "dgSpecHash": "dc1NrucG8ACF/pti7wSTOEA4vor68dqK9QODXJY7GWNwBN44QES+JjQya0h1il6IOgcc38Uqawt6MaxnCXA/Xg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC.Api\\WebStoreMVC.Api.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "C:\\Users\\Ryzen\\.nuget\\packages\\asp.versioning.http\\7.1.0\\asp.versioning.http.7.1.0.nupkg.sha512",
     "C:\\Users\\Ryzen\\.nuget\\packages\\asp.versioning.mvc\\7.1.0\\asp.versioning.mvc.7.1.0.nupkg.sha512",
     "C:\\Users\\Ryzen\\.nuget\\packages\\asp.versioning.mvc.apiexplorer\\7.1.0\\asp.versioning.mvc.apiexplorer.7.1.0.nupkg.sha512",
+    "C:\\Users\\Ryzen\\.nuget\\packages\\buildbundlerminifier\\3.2.449\\buildbundlerminifier.3.2.449.nupkg.sha512",
     "C:\\Users\\Ryzen\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\Ryzen\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Ryzen\\.nuget\\packages\\humanizer.core.af\\2.14.1\\humanizer.core.af.2.14.1.nupkg.sha512",

@@ -13,6 +13,8 @@ public static class DependencyInjection
         services.AddScoped<IAuthService, AuthService>();
         //Подключаем сервис поиска товаров
         services.AddScoped<ISearchingProductsService, SearchingProductsService>();
+        //Покдлючаем сервис товаров
+        services.AddScoped<IProductsService, ProductsService>();
 
         services.AddScoped<Initializer>();
     }

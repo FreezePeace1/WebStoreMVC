@@ -18,4 +18,5 @@ public enum ErrorCode
 
     //For SearchingProducts Service 11 - 20
     ProductsAreNotFound = 11,
+    ProductAlreadyExists = 12,
 }

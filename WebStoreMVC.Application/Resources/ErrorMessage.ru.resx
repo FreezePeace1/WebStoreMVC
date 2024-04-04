@@ -38,4 +38,7 @@
     <data name="ProductsAreNotFound" xml:space="preserve">
         <value>Товар не был найден</value>
     </data>
+    <data name="ProductAlreadyExists" xml:space="preserve">
+        <value>Данный товар уже существует</value>
+    </data>
 </root>

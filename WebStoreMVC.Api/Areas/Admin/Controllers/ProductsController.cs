@@ -1,8 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using WebStoreMVC.DAL.Context;
 using WebStoreMVC.Domain.Entities;
+using WebStoreMVC.Services.Interfaces;
 
 namespace WebStoreMVC.Areas.Admin.Controllers;
 
@@ -11,38 +10,55 @@ namespace WebStoreMVC.Areas.Admin.Controllers;
 [Area("Admin"), Authorize(Roles = UserRoles.ADMINISTRATOR)]
 public class ProductsController : Controller
 {
-    private readonly WebStoreContext _context;
+    private readonly IProductsService _productsService;
 
-    public ProductsController(WebStoreContext context)
+    /// <summary>
+    /// DI сервиса CRUD товаров
+    /// </summary>
+    /// <param name="productsService"></param>
+    public ProductsController(IProductsService productsService)
     {
-        _context = context;
+        _productsService = productsService;
     }
 
-    [HttpGet("GetImage")]
-    public IActionResult GetImage(string imageName)
-    {
-        var path = Path.Combine(Directory.GetCurrentDirectory(), "Images", imageName);
-        var image = System.IO.File.OpenRead(path);
-
-        return File(image, "image/png");
-    }
-
+    /// <summary>
+    /// Получение всех товаров (ограничение на 3000 товаров)
+    /// </summary>
+    /// <param name=""></param>
+    /// <remarks>
+    ///     Request for getting all products
+    ///     GET
+    /// </remarks>
     [HttpGet("GetAllProducts")]
     [Route("GetAllProducts")]
     public async Task<ActionResult<List<Product>>> GetAllProducts()
     {
-        var productList = await _context.Products.AsNoTracking().Take(1000).ToListAsync();
+        var productList = await _productsService.GetAllProducts();
 
         return View(productList);
     }
 
+    /// <summary>
+    /// Получение товара по Id
+    /// </summary>
+    /// <param name=""></param>
+    /// <remarks>
+    ///     Request for getting product by id
+    ///     GET
+    ///     {
+    ///         "id": "26"
+    ///     }
+    /// </remarks>
+    /// <response code = "200">Получение товара прошло успешно</response>
+    /// <response code = "500">Получение товара прошло неудачно</response>
     [HttpGet("GetProductById")]
     public async Task<ActionResult<Product>?> GetProductById(int id)
     {
-        var product = await _context.Products.FirstOrDefaultAsync(x => x.Id == id);
+        var product = await _productsService.GetProductById(id);
 
         return Ok(product);
     }
+
     
     [HttpGet]
     [Route("PostProduct")]
@@ -50,101 +66,98 @@ public class ProductsController : Controller
     {
         return View(new Product());
     }
-    
+
+    /// <summary>
+    /// Создание товара
+    /// </summary>
+    /// <param name=""></param>
+    /// <remarks>
+    ///     Request for editing product
+    ///     POST
+    /// </remarks>
     [HttpPost("PostProduct")]
     [Route("PostProduct")]
     public async Task<ActionResult<Product>> PostProduct(Product product)
     {
-        
-        if (product is null)
+        var postResult = await _productsService.PostProduct(product);
+
+        if (postResult.IsSucceed)
         {
-            throw new ArgumentNullException(nameof(product));
-        }
-        
-        if (await _context.Products.ContainsAsync(product))
-        {
-            return RedirectToAction("PostProduct","Products");
+            return RedirectToAction("GetAllProducts", "Products");
         }
 
-        var lastProduct = await _context.Products.OrderByDescending(x => x.Id)
-            .FirstAsync();
-
-        var newProduct = new Product()
-        {
-            Article = product.Article,
-            Colour = product.Colour,
-            Description = product.Description,
-            Hashtags = product.Hashtags,
-            Id = lastProduct.Id + 1,
-            Images = product.Images,
-            Manufacturer = product.Manufacturer,
-            Price = product.Price,
-            ProductName = product.ProductName,
-            Quantity = product.Quantity
-        };
-        
-        await _context.AddAsync(newProduct);
-        await _context.SaveChangesAsync();
-
-        return RedirectToAction("GetAllProducts","Products");
+        return RedirectToAction("PostProduct", "Products");
     }
-
+    
     [HttpGet]
     [Route("EditProduct/{id}")]
     public IActionResult Edit(int id)
     {
-        var product = _context.Products.FirstOrDefault(x => x.Id == id);
-        
+        var product = _productsService.Edit(id);
+
         return View(product);
     }
-
+    
+    /// <summary>
+    /// Изменение товара
+    /// </summary>
+    /// <param name=""></param>
+    /// <remarks>
+    ///     Request for getting product by id
+    ///     POST
+    /// </remarks>
+    /// <response code = "404">Товар не был найден</response> 
     [HttpPost("EditProduct")]
     [Route("EditProduct/{id}")]
     public async Task<IActionResult> EditProduct(Product product)
     {
-        if (product == null)
+        var editResult = await _productsService.EditProduct(product);
+
+        if (!editResult.IsSucceed)
         {
-            return NotFound();
+            return NotFound("Product is not found");
         }
-
-        await _context.Products.Where(x => x.Id == product.Id).ExecuteUpdateAsync(s => s
-            .SetProperty(p => p.Id, product.Id)
-            .SetProperty(c => c.Description, product.Description)
-            .SetProperty(p => p.Manufacturer, product.Manufacturer)
-            .SetProperty(p => p.Colour, product.Colour)
-            .SetProperty(p => p.ProductName, product.ProductName)
-            .SetProperty(p => p.Article, product.Article)
-            .SetProperty(p => p.Quantity, product.Quantity)
-            .SetProperty(p => p.Hashtags, product.Hashtags)
-            .SetProperty(p => p.Images, product.Images)
-            .SetProperty(p => p.Price, product.Price)
-        );
-
-        await _context.SaveChangesAsync();
 
         return RedirectToAction("GetAllProducts", "Products");
     }
 
-    [HttpDelete("Delete")]
+    /// <summary>
+    /// Удаление товара
+    /// </summary>
+    /// <param name=""></param>
+    /// <remarks>
+    ///     Request for deleting product
+    ///     POST
+    /// </remarks>
+    /// <response code = "404">Товар не был найден</response> 
+    [HttpPost("Delete")]
     [Route("Delete/{id}")]
-    public async Task<IActionResult> DeleteProduct(int id)
+    public async Task<IActionResult> DeleteProduct(int? id)
     {
-        var product = await _context.Products.FindAsync(id);
+        var deletingResult = await _productsService.DeleteProduct(id);
 
-        if (product == null)
+        if (deletingResult.IsSucceed)
         {
-            return NotFound("MobilePhones not found");
+            return RedirectToAction("GetAllProducts", "Products");
         }
 
-        _context.Products.Remove(product);
-        await _context.SaveChangesAsync();
-
-        return RedirectToAction("GetAllProducts", "Products");
+        return NotFound("Product is not found");
     }
 
+    /// <summary>
+    /// Пагинация
+    /// </summary>
+    /// <param name=""></param>
+    /// <remarks>
+    ///     Request for getting product by page
+    ///     GET
+    /// </remarks>
+    /// <response code = "200">Пагинация прошла успешно</response> 
     [HttpGet("GetByPage")]
-    public async Task<List<Product>> GetProductByPage(int page, int pageSize)
+    public async Task<IActionResult> GetProductByPage(int page, int pageSize)
     {
-        return await _context.Products.AsNoTracking().Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
+        var res = await _productsService.GetProductByPage(page, pageSize);
+
+        return Ok(res);
     }
 }

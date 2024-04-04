@@ -38,4 +38,7 @@
     <data name="ProductsAreNotFound" xml:space="preserve">
         <value>Products are not found</value>
     </data>
+    <data name="ProductAlreadyExists" xml:space="preserve">
+        <value>Product already exists</value>
+    </data>
 </root>
