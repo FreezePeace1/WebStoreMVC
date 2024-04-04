@@ -4,6 +4,80 @@
         <name>WebStoreMVC.Api</name>
     </assembly>
     <members>
+        <member name="M:WebStoreMVC.Areas.Admin.Controllers.ProductsController.#ctor(WebStoreMVC.Services.Interfaces.IProductsService)">
+            <summary>
+            DI сервиса CRUD товаров
+            </summary>
+            <param name="productsService"></param>
+        </member>
+        <member name="M:WebStoreMVC.Areas.Admin.Controllers.ProductsController.GetAllProducts">
+            <summary>
+            Получение всех товаров (ограничение на 3000 товаров)
+            </summary>
+            <param name=""></param>
+            <remarks>
+                Request for getting all products
+                GET
+            </remarks>
+        </member>
+        <member name="M:WebStoreMVC.Areas.Admin.Controllers.ProductsController.GetProductById(System.Int32)">
+            <summary>
+            Получение товара по Id
+            </summary>
+            <param name=""></param>
+            <remarks>
+                Request for getting product by id
+                GET
+                {
+                    "id": "26"
+                }
+            </remarks>
+            <response code = "200">Получение товара прошло успешно</response>
+            <response code = "500">Получение товара прошло неудачно</response>
+        </member>
+        <member name="M:WebStoreMVC.Areas.Admin.Controllers.ProductsController.PostProduct(WebStoreMVC.Domain.Entities.Product)">
+            <summary>
+            Создание товара
+            </summary>
+            <param name=""></param>
+            <remarks>
+                Request for editing product
+                POST
+            </remarks>
+        </member>
+        <member name="M:WebStoreMVC.Areas.Admin.Controllers.ProductsController.EditProduct(WebStoreMVC.Domain.Entities.Product)">
+            <summary>
+            Изменение товара
+            </summary>
+            <param name=""></param>
+            <remarks>
+                Request for getting product by id
+                POST
+            </remarks>
+            <response code = "404">Товар не был найден</response> 
+        </member>
+        <member name="M:WebStoreMVC.Areas.Admin.Controllers.ProductsController.DeleteProduct(System.Nullable{System.Int32})">
+            <summary>
+            Удаление товара
+            </summary>
+            <param name=""></param>
+            <remarks>
+                Request for deleting product
+                POST
+            </remarks>
+            <response code = "404">Товар не был найден</response> 
+        </member>
+        <member name="M:WebStoreMVC.Areas.Admin.Controllers.ProductsController.GetProductByPage(System.Int32,System.Int32)">
+            <summary>
+            Пагинация
+            </summary>
+            <param name=""></param>
+            <remarks>
+                Request for getting product by page
+                GET
+            </remarks>
+            <response code = "200">Пагинация прошла успешно</response> 
+        </member>
         <member name="M:WebStoreMVC.Controllers.AccountController.#ctor(WebStoreMVC.Services.Interfaces.IAuthService)">
             <summary>
             DI сервиса AuthService

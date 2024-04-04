@@ -15,6 +15,10 @@ public static class DependencyInjection
         services.AddScoped<ISearchingProductsService, SearchingProductsService>();
         //Покдлючаем сервис товаров
         services.AddScoped<IProductsService, ProductsService>();
+        
+        
+        //Подключаем HomeService(будет доработан)
+        services.AddScoped<IHomeService, HomeService>();
 
         services.AddScoped<Initializer>();
     }

@@ -1,20 +1,23 @@
-﻿using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebStoreMVC.DAL.Context;
 using WebStoreMVC.Domain.Entities;
-using WebStoreMVC.Dtos;
-using WebStoreMVC.Models;
+using WebStoreMVC.Services.Interfaces;
+
 
 namespace WebStoreMVC.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly WebStoreContext _context;
+    private readonly IHomeService _homeService;
 
-    public HomeController(WebStoreContext context)
+    public HomeController(IHomeService homeService)
     {
-        _context = context;
+        _homeService = homeService;
+    }
+    public HomeController()
+    {
+        
     }
 
     public IActionResult Index()
@@ -39,7 +42,7 @@ public class HomeController : Controller
 
     public async Task<ActionResult<List<Product>>> Store()
     {
-        var products = await _context.Products.Take(15).ToListAsync();
+        var products = await _homeService.Store();
         return View(products);
     }
 }
