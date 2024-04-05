@@ -190,7 +190,16 @@ public static class Startup
             
             options.AddPolicy("AdminCookie", policy =>
             {
-                policy.Requirements.Add(new CookieRequirement());
+                policy.Requirements.Add(new CookieAdminRequirement());
+                policy.RequireAuthenticatedUser();
+                policy.RequireRole(UserRoles.ADMINISTRATOR);
+            });
+            
+            options.AddPolicy("UserCookie", policy =>
+            {
+                policy.Requirements.Add(new CookieUserRequirement());
+                policy.RequireAuthenticatedUser();
+                policy.RequireRole(UserRoles.USER);
             });
         });
     }

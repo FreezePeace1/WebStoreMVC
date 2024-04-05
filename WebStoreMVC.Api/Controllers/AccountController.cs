@@ -69,7 +69,7 @@ public class AccountController : Controller
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult> Registration(RegisterDto registerDto)
     {
-        if (HttpContext.Request.Cookies["accessToken"] != null && HttpContext.Request.Cookies["refreshToken"] != null &&
+        if (HttpContext.Request.Cookies["accessToken"] != null || HttpContext.Request.Cookies["refreshToken"] != null &&
             User.Identity.IsAuthenticated)
         {
             return RedirectToAction("Index", "Home");
@@ -122,7 +122,7 @@ public class AccountController : Controller
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> Login([FromForm] LoginDto loginDto)
     {
-        if (HttpContext.Request.Cookies["accessToken"] != null && HttpContext.Request.Cookies["refreshToken"] != null &&
+        if (HttpContext.Request.Cookies["accessToken"] != null || HttpContext.Request.Cookies["refreshToken"] != null &&
             User.Identity.IsAuthenticated)
         {
             return RedirectToAction("Index", "Home");
@@ -195,7 +195,7 @@ public class AccountController : Controller
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult> Logout()
     {
-        if (HttpContext.Request.Cookies["accessToken"] == null && HttpContext.Request.Cookies["refreshToken"] == null &&
+        if (HttpContext.Request.Cookies["accessToken"] == null || HttpContext.Request.Cookies["refreshToken"] == null &&
             !(User.Identity.IsAuthenticated))
         {
             return RedirectToAction("Index", "Home");

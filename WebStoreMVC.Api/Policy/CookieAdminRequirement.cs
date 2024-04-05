@@ -2,12 +2,12 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace WebStoreMVC.Policy;
 
-public class CookieRequirement : IAuthorizationRequirement
+public class CookieAdminRequirement : IAuthorizationRequirement
 {
     // Это просто маркерный интерфейс, реализация логики находится в Handler
 }
 
-public class CookieRequirementHandler : AuthorizationHandler<CookieRequirement>
+public class CookieRequirementHandler : AuthorizationHandler<CookieAdminRequirement>
 {
     private readonly IHttpContextAccessor _httpContextAccessor;
 
@@ -16,7 +16,7 @@ public class CookieRequirementHandler : AuthorizationHandler<CookieRequirement>
         _httpContextAccessor = httpContextAccessor;
     }
 
-    protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, CookieRequirement requirement)
+    protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, CookieAdminRequirement adminRequirement)
     {
         var httpContext = _httpContextAccessor.HttpContext;
         var accessToken = httpContext.Request.Cookies["accessToken"];
@@ -24,7 +24,7 @@ public class CookieRequirementHandler : AuthorizationHandler<CookieRequirement>
 
         if (accessToken != null && refreshToken != null)
         {
-            context.Succeed(requirement);
+            context.Succeed(adminRequirement);
         }
 
         return Task.CompletedTask;
