@@ -556,3 +556,12 @@ C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Api\bin\Debug\net7.0\WebSto
 C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Api\bin\Debug\net7.0\en\WebStoreMVC.Application.resources.dll
 C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Api\bin\Debug\net7.0\ru\WebStoreMVC.Application.resources.dll
 C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Api\obj\Debug\net7.0\WebStoreMVC.Api.xml
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Api\bin\Debug\net7.0\Serilog.dll
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Api\bin\Debug\net7.0\Serilog.AspNetCore.dll
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Api\bin\Debug\net7.0\Serilog.Extensions.Hosting.dll
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Api\bin\Debug\net7.0\Serilog.Extensions.Logging.dll
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Api\bin\Debug\net7.0\Serilog.Formatting.Compact.dll
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Api\bin\Debug\net7.0\Serilog.Settings.Configuration.dll
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Api\bin\Debug\net7.0\Serilog.Sinks.Console.dll
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Api\bin\Debug\net7.0\Serilog.Sinks.Debug.dll
+C:\Users\Ryzen\RiderProjects\WebStoreMVC\WebStoreMVC.Api\bin\Debug\net7.0\Serilog.Sinks.File.dll

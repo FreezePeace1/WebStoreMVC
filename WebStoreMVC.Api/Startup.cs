@@ -2,12 +2,17 @@ using System.Reflection;
 using System.Text;
 using Microsoft.OpenApi.Models;
 using Asp.Versioning;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.IdentityModel.Tokens;
+using NuGet.Protocol;
 using WebStoreMVC.DAL.Context;
 using WebStoreMVC.Domain.Entities;
+using WebStoreMVC.Policy;
 
 namespace WebStoreMVC;
 
@@ -137,7 +142,7 @@ public static class Startup
                 opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             })
-            .AddJwtBearer(opt =>
+            .AddJwtBearer("Bearer",opt =>
             {
                 opt.SaveToken = true;
                 opt.TokenValidationParameters = new TokenValidationParameters()
@@ -152,8 +157,20 @@ public static class Startup
                 };
             });
 
+        //Для добавления Policy
+        services.AddHttpContextAccessor();
+        services.AddSingleton<IAuthorizationHandler, CookieRequirementHandler>();
+        
         services.AddAuthorization(options =>
         {
+            var defaultAuthorizationPolicyBuilder = new AuthorizationPolicyBuilder(
+                JwtBearerDefaults.AuthenticationScheme,
+                CookieAuthenticationDefaults.AuthenticationScheme,
+                "Bearer");
+            defaultAuthorizationPolicyBuilder =
+                defaultAuthorizationPolicyBuilder.RequireAuthenticatedUser();
+            options.DefaultPolicy = defaultAuthorizationPolicyBuilder.Build();
+            
             options.AddPolicy("Default", new AuthorizationPolicyBuilder()
                 .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
                 .RequireAuthenticatedUser()
@@ -161,7 +178,7 @@ public static class Startup
 
             options.AddPolicy("Admin", new AuthorizationPolicyBuilder()
                 .RequireRole("Admin")
-                .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
+                .AddAuthenticationSchemes()
                 .RequireAuthenticatedUser()
                 .Build());
 
@@ -170,6 +187,11 @@ public static class Startup
                 .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
                 .RequireAuthenticatedUser()
                 .Build());
+            
+            options.AddPolicy("AdminCookie", policy =>
+            {
+                policy.Requirements.Add(new CookieRequirement());
+            });
         });
     }
 }

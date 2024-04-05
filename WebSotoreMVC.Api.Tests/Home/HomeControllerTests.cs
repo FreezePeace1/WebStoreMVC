@@ -13,7 +13,13 @@ public class HomeControllerTests
     [TestMethod]
     public void Index_Returns_View()
     {
-        var controller = new HomeController();
+        var products = new List<Product> { };
+
+        var home_service_mock = new Mock<IHomeService>();
+        home_service_mock.Setup(service => service.Store()).
+            ReturnsAsync(products);
+        
+        var controller = new HomeController(home_service_mock.Object);
         var result = controller.Index();
 
         Assert.IsType<ViewResult>(result);
@@ -22,7 +28,13 @@ public class HomeControllerTests
     [TestMethod]
     public void Checkout_Returns_View()
     {
-        var controller = new HomeController();
+        var products = new List<Product> { };
+
+        var home_service_mock = new Mock<IHomeService>();
+        home_service_mock.Setup(service => service.Store()).
+            ReturnsAsync(products);
+        
+        var controller = new HomeController(home_service_mock.Object);
         var result = controller.Checkout();
 
         Assert.IsType<ViewResult>(result);
@@ -31,7 +43,13 @@ public class HomeControllerTests
     [TestMethod]
     public void Blank_Returns_View()
     {
-        var controller = new HomeController();
+        var products = new List<Product> { };
+
+        var home_service_mock = new Mock<IHomeService>();
+        home_service_mock.Setup(service => service.Store()).
+            ReturnsAsync(products);
+        
+        var controller = new HomeController(home_service_mock.Object);
         var result = controller.Blank();
 
         Assert.IsType<ViewResult>(result);
@@ -40,7 +58,13 @@ public class HomeControllerTests
     [TestMethod]
     public void Product_Returns_View()
     {
-        var controller = new HomeController();
+        var products = new List<Product> { };
+
+        var home_service_mock = new Mock<IHomeService>();
+        home_service_mock.Setup(service => service.Store()).
+            ReturnsAsync(products);
+        
+        var controller = new HomeController(home_service_mock.Object);
         var result = controller.Product();
 
         Assert.IsType<ViewResult>(result);

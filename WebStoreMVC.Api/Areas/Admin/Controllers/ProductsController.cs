@@ -7,7 +7,7 @@ namespace WebStoreMVC.Areas.Admin.Controllers;
 
 /*[ApiController]*/
 [Route("[controller]")]
-[Area("Admin"), Authorize(Roles = UserRoles.ADMINISTRATOR)]
+[Area("Admin"), Authorize(Policy = "AdminCookie",Roles = UserRoles.ADMINISTRATOR)]
 public class ProductsController : Controller
 {
     private readonly IProductsService _productsService;

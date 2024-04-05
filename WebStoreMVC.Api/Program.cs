@@ -1,3 +1,4 @@
+using Serilog;
 using WebStoreMVC;
 using WebStoreMVC.Application.DependencyInjection;
 using WebStoreMVC.Components;
@@ -13,6 +14,7 @@ builder.Services.AddRazorPages();
 //Add DB connection
 builder.Services.AddDataAccessLayer(builder.Configuration);
 
+
 //From Startup
 builder.Services.AddAuthenticationAndAuthorization(builder);
 builder.Services.AddSwagger();
@@ -22,6 +24,9 @@ builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
 //From application
 builder.Services.AddServices();
+
+//Serilog
+builder.Host.UseSerilog((context, configuration) => configuration.ReadFrom.Configuration(context.Configuration));
 
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 

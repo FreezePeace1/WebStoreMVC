@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using WebStoreMVC.DAL.Context;
 using WebStoreMVC.Domain.Entities;
 using WebStoreMVC.Services.Interfaces;
 
@@ -14,10 +12,6 @@ public class HomeController : Controller
     public HomeController(IHomeService homeService)
     {
         _homeService = homeService;
-    }
-    public HomeController()
-    {
-        
     }
 
     public IActionResult Index()

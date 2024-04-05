@@ -109,7 +109,21 @@ public class AuthService : IAuthService
 
         await _context.SaveChangesAsync();
 
-        //Violated DRY------------------------------------------------------------------
+        
+        var accessToken = await GetAllAndSetAccessToken(user);
+       
+
+        //Запоминаем пользователя после регистрации
+        await _signInManager.SignInAsync(user,true);
+
+        return new ResponseDto()
+        {
+            SuccessMessage = $"{SuccessMessage.CreatingUserIsDone} ({user})",
+        };
+    }
+
+    private async Task<string> GetAllAndSetAccessToken(AppUser user)
+    {
         var userRoles = await _userManager.GetRolesAsync(user);
 
         //Создаем доп инфу для пользователя во время авторизации
@@ -128,15 +142,8 @@ public class AuthService : IAuthService
 
         var accessToken = GenerateJsonWebToken(claims);
         SetAccessToken(accessToken);
-        //-----------------------------------------------------------------------------
 
-        //Запоминаем пользователя после регистрации
-        await _signInManager.SignInAsync(user,true);
-
-        return new ResponseDto()
-        {
-            SuccessMessage = $"{SuccessMessage.CreatingUserIsDone} ({user})",
-        };
+        return accessToken;
     }
 
     public async Task<ResponseDto> Login(LoginDto loginDto)
@@ -171,25 +178,8 @@ public class AuthService : IAuthService
             false
         ); // если true то блокируем после всех попыток войти на аккаунт
 
-        var userRoles = await _userManager.GetRolesAsync(user);
-
-        //Создаем доп инфу для пользователя во время авторизации
-        var claims = new List<Claim>()
-        {
-            new Claim(ClaimTypes.Name, user.UserName),
-            new Claim(ClaimTypes.NameIdentifier, user.Id),
-            new Claim("JWTID", Guid.NewGuid().ToString())
-        };
-
-        //Передаем всем пользователям клеймы
-        foreach (var userRole in userRoles)
-        {
-            claims.Add(new Claim(ClaimTypes.Role, userRole));
-        }
-
-        var accessToken = GenerateJsonWebToken(claims);
-        SetAccessToken(accessToken);
-
+        var accessToken = await GetAllAndSetAccessToken(user);
+        
         RefreshToken existingRefreshToken = new RefreshToken()
         {
             Token = user.RefreshToken,
