@@ -41,4 +41,7 @@
     <data name="ProductAlreadyExists" xml:space="preserve">
         <value>Данный товар уже существует</value>
     </data>
+    <data name="InternalServerError" xml:space="preserve">
+        <value>Внутренняя ошибка сервера</value>
+    </data>
 </root>

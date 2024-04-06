@@ -4,13 +4,13 @@
         <name>WebStoreMVC.Api</name>
     </assembly>
     <members>
-        <member name="M:WebStoreMVC.Areas.Admin.Controllers.ProductsController.#ctor(WebStoreMVC.Services.Interfaces.IProductsService)">
+        <member name="M:WebStoreMVC.Areas.Admin.Controllers.ProductsController.#ctor(WebStoreMVC.Services.Interfaces.IProductsService,WebStoreMVC.Services.Interfaces.ISearchingProductsService)">
             <summary>
             DI сервиса CRUD товаров
             </summary>
             <param name="productsService"></param>
         </member>
-        <member name="M:WebStoreMVC.Areas.Admin.Controllers.ProductsController.GetAllProducts">
+        <member name="M:WebStoreMVC.Areas.Admin.Controllers.ProductsController.GetAllProducts(System.String)">
             <summary>
             Получение всех товаров (ограничение на 3000 товаров)
             </summary>
@@ -169,6 +169,12 @@
             </remarks>
             <response code = "200">Перевод админа к пользователю прошел успешно</response>
             <response code = "400">Перевод админа к пользователю прошел неудачно</response>
+        </member>
+        <member name="M:WebStoreMVC.Controllers.AccountController.AccessDenied">
+            <summary>
+            Если пользователю отказали в доступе
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:WebStoreMVC.Startup.AddIdentity(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>

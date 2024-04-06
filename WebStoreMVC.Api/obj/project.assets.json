@@ -4480,6 +4480,8 @@
           "Microsoft.Extensions.Identity.Core": "7.0.11",
           "Microsoft.IdentityModel.Tokens": "6.15.1",
           "Newtonsoft.Json": "13.0.1",
+          "Serilog": "3.1.1",
+          "Serilog.AspNetCore": "7.0.0",
           "System.IdentityModel.Tokens.Jwt": "6.15.1",
           "WebStoreMVC.DAL": "1.0.0",
           "WebStoreMVC.Domain": "1.0.0"
@@ -12416,8 +12418,6 @@
       "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation >= 7.0.11",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.11",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 7.0.11",
-      "Serilog >= 3.1.1",
-      "Serilog.AspNetCore >= 7.0.0",
       "Swashbuckle.AspNetCore.Swagger >= 6.5.0",
       "Swashbuckle.AspNetCore.SwaggerGen >= 6.5.0",
       "Swashbuckle.AspNetCore.SwaggerUI >= 6.5.0",
@@ -12508,14 +12508,6 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
             "version": "[7.0.11, )"
-          },
-          "Serilog": {
-            "target": "Package",
-            "version": "[3.1.1, )"
-          },
-          "Serilog.AspNetCore": {
-            "target": "Package",
-            "version": "[7.0.0, )"
           },
           "Swashbuckle.AspNetCore.Swagger": {
             "target": "Package",

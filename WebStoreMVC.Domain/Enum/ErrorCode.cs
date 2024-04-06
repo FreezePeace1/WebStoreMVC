@@ -4,6 +4,7 @@ public enum ErrorCode
 {
     //GeneralErrors 200 - ?
     AccessError = 200,
+    InternalServerError = 201,
 
     //For models 100 - ?
     CreatingModelIsFailed = 100,

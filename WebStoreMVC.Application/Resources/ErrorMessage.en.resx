@@ -41,4 +41,7 @@
     <data name="ProductAlreadyExists" xml:space="preserve">
         <value>Product already exists</value>
     </data>
+    <data name="InternalServerError" xml:space="preserve">
+        <value>Internal server error</value>
+    </data>
 </root>

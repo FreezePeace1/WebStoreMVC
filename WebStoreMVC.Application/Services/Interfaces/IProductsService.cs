@@ -5,7 +5,7 @@ namespace WebStoreMVC.Services.Interfaces;
 
 public interface IProductsService
 {
-    public Task<List<Product>> GetAllProducts();
+    public Task<ResponseDto<List<Product>>> GetAllProducts();
 
     public Task<ResponseDto<Product>> GetProductById(int id);
 

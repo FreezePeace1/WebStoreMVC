@@ -1,24 +1,27 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebStoreMVC.Domain.Entities;
+using WebStoreMVC.Dtos;
 using WebStoreMVC.Services.Interfaces;
 
 namespace WebStoreMVC.Areas.Admin.Controllers;
 
 /*[ApiController]*/
 [Route("[controller]")]
-[Area("Admin"), Authorize(Policy = "AdminCookie",Roles = UserRoles.ADMINISTRATOR)]
+[Area("Admin"), Authorize(Policy = "AdminCookie", Roles = UserRoles.ADMINISTRATOR)]
 public class ProductsController : Controller
 {
     private readonly IProductsService _productsService;
+    private readonly ISearchingProductsService _searchingProductsService;
 
     /// <summary>
     /// DI сервиса CRUD товаров
     /// </summary>
     /// <param name="productsService"></param>
-    public ProductsController(IProductsService productsService)
+    public ProductsController(IProductsService productsService, ISearchingProductsService searchingProductsService)
     {
         _productsService = productsService;
+        _searchingProductsService = searchingProductsService;
     }
 
     /// <summary>
@@ -31,9 +34,16 @@ public class ProductsController : Controller
     /// </remarks>
     [HttpGet("GetAllProducts")]
     [Route("GetAllProducts")]
-    public async Task<ActionResult<List<Product>>> GetAllProducts()
+    public async Task<ActionResult<ResponseDto<List<Product>>>> GetAllProducts(string searchString = "")
     {
+        ViewData["CurrentFilter"] = searchString;
+        
         var productList = await _productsService.GetAllProducts();
+
+        if (searchString != "")
+        {
+            productList = await _searchingProductsService.SearchingProducts(searchString);
+        }
 
         return View(productList);
     }
@@ -59,7 +69,7 @@ public class ProductsController : Controller
         return Ok(product);
     }
 
-    
+
     [HttpGet]
     [Route("PostProduct")]
     public IActionResult PostProduct()
@@ -88,16 +98,16 @@ public class ProductsController : Controller
 
         return RedirectToAction("PostProduct", "Products");
     }
-    
+
     [HttpGet]
     [Route("EditProduct/{id}")]
-    public IActionResult Edit(int id)
+    public IActionResult EditProduct(int id)
     {
         var product = _productsService.Edit(id);
 
         return View(product);
     }
-    
+
     /// <summary>
     /// Изменение товара
     /// </summary>

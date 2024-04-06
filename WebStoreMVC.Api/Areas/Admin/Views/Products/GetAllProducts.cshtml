@@ -1,13 +1,15 @@
-@model List<Product>
+@model WebStoreMVC.Dtos.ResponseDto<List<Product>>
 
 @{
     ViewBag.Title = "title";
     Layout = "_Layout";
 }
 
-@{
-    ViewData["Title"] = "Products";
-}
+<form asp-area="Admin" asp-controller="Products" asp-action="GetAllProducts" method="get">
+    <label for="searchString"></label>
+    <input placeholder="Поиск" style="width: 240px" type="text" name="searchString" value="@ViewData["CurrentFilter"]"/>
+    <input class="btn-primary" type="submit" value="Найти"/>
+</form>
 
 <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 tm-block-col">
     <div class="tm-bg-primary-dark tm-block tm-block-products">
@@ -27,11 +29,11 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach (var item in Model)
+                @foreach (var item in Model.Data)
                 {
                     <tr>
                         <td>
-                            <a asp-area="Admin" asp-controller="Products" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success">
+                            <a asp-area="Admin" asp-controller="Products" asp-action="EditProduct" asp-route-id="@item.Id" class="btn btn-success">
                                 Изменить
                             </a>
                         </td>
@@ -55,7 +57,7 @@
         </div>
         <!-- table container -->
         <a asp-area="Admin" asp-controller="Products" asp-action="PostProduct"
-            class="btn btn-primary btn-block text-uppercase mb-3">
+           class="btn btn-primary btn-block text-uppercase mb-3">
             Добавить новый товар
         </a>
         @*<button class="btn btn-primary btn-block text-uppercase">

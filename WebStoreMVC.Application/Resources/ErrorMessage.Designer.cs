@@ -87,6 +87,15 @@ namespace WebStoreMVC.Application.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Внутренняя ошибка сервера.
+        /// </summary>
+        internal static string InternalServerError {
+            get {
+                return ResourceManager.GetString("InternalServerError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Создание модели неуспешно!.
         /// </summary>
         internal static string ModelCreatingIsFalied {

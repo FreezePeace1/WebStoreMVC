@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 using WebStoreMVC.Application.Resources;
 using WebStoreMVC.DAL.Context;
 using WebStoreMVC.Domain.Entities;
@@ -11,27 +12,45 @@ namespace WebStoreMVC.Services;
 public class ProductsService : IProductsService
 {
     private readonly WebStoreContext _context;
+    private readonly ILogger _logger;
 
-    public ProductsService(WebStoreContext context)
+    public ProductsService(WebStoreContext context, ILogger logger)
     {
         _context = context;
+        _logger = logger;
     }
 
-    public async Task<List<Product>> GetAllProducts()
+    public async Task<ResponseDto<List<Product>>> GetAllProducts()
     {
         var productList = await _context.Products.AsNoTracking().Take(3000).ToListAsync();
 
-        return productList;
+        return new ResponseDto<List<Product>>()
+        {
+            Data = productList
+        };
     }
 
     public async Task<ResponseDto<Product>> GetProductById(int id)
     {
-        var product = await _context.Products.FirstOrDefaultAsync(x => x.Id == id);
-
-        return new ResponseDto<Product>()
+        try
         {
-            Data = product
-        };
+            var product = await _context.Products.FirstOrDefaultAsync(x => x.Id == id);
+
+            return new ResponseDto<Product>()
+            {
+                Data = product
+            };
+        }
+        catch (Exception e)
+        {
+            _logger.Error(e, e.Message);
+
+            return new ResponseDto<Product>()
+            {
+                ErrorMessage = ErrorMessage.ProductsAreNotFound,
+                ErrorCode = (int)ErrorCode.ProductsAreNotFound
+            };
+        }
     }
 
     public async Task<ResponseDto<Product>> PostProduct(Product product)
@@ -79,7 +98,7 @@ public class ProductsService : IProductsService
     public Product Edit(int id)
     {
         var product = _context.Products.FirstOrDefault(x => x.Id == id);
-        
+
         if (id < 0)
         {
             throw new ArgumentException(nameof(product));
@@ -99,25 +118,37 @@ public class ProductsService : IProductsService
             };
         }
 
-        await _context.Products.Where(x => x.Id == product.Id).ExecuteUpdateAsync(s => s
-            .SetProperty(p => p.Id, product.Id)
-            .SetProperty(c => c.Description, product.Description)
-            .SetProperty(p => p.Manufacturer, product.Manufacturer)
-            .SetProperty(p => p.Colour, product.Colour)
-            .SetProperty(p => p.ProductName, product.ProductName)
-            .SetProperty(p => p.Article, product.Article)
-            .SetProperty(p => p.Quantity, product.Quantity)
-            .SetProperty(p => p.Hashtags, product.Hashtags)
-            .SetProperty(p => p.Images, product.Images)
-            .SetProperty(p => p.Price, product.Price)
-        );
-
-        await _context.SaveChangesAsync();
-
-        return new ResponseDto()
+        try
         {
-            SuccessMessage = SuccessMessage.ProductsAreReceived
-        };
+            await _context.Products.Where(x => x.Id == product.Id).ExecuteUpdateAsync(s => s
+                .SetProperty(p => p.Id, product.Id)
+                .SetProperty(c => c.Description, product.Description)
+                .SetProperty(p => p.Manufacturer, product.Manufacturer)
+                .SetProperty(p => p.Colour, product.Colour)
+                .SetProperty(p => p.ProductName, product.ProductName)
+                .SetProperty(p => p.Article, product.Article)
+                .SetProperty(p => p.Quantity, product.Quantity)
+                .SetProperty(p => p.Hashtags, product.Hashtags)
+                .SetProperty(p => p.Images, product.Images)
+                .SetProperty(p => p.Price, product.Price));
+
+            await _context.SaveChangesAsync();
+
+            return new ResponseDto()
+            {
+                SuccessMessage = SuccessMessage.ProductsAreReceived
+            };
+        }
+        catch (Exception e)
+        {
+            _logger.Error(e, e.Message);
+
+            return new ResponseDto()
+            {
+                ErrorMessage = ErrorMessage.InternalServerError,
+                ErrorCode = (int)ErrorCode.InternalServerError
+            };
+        }
     }
 
     public async Task<ResponseDto> DeleteProduct(int? id)
@@ -131,7 +162,7 @@ public class ProductsService : IProductsService
 
             _context.Entry(product).State = EntityState.Deleted;
             await _context.SaveChangesAsync();
-            
+
             return new ResponseDto()
             {
                 SuccessMessage = SuccessMessage.ProductsAreReceived

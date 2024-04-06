@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Serilog;
 using WebStoreMVC.Application.Resources;
 using WebStoreMVC.DAL.Context;
 using WebStoreMVC.Domain.Entities;
@@ -24,10 +25,11 @@ public class AuthService : IAuthService
     private readonly IConfiguration _configuration;
     private readonly WebStoreContext _context;
     private readonly IHttpContextAccessor _httpContextAccessor;
+    private readonly ILogger _logger;
 
     public AuthService(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager,
         SignInManager<AppUser> signInManager, IConfiguration configuration, WebStoreContext context,
-        IHttpContextAccessor httpContextAccessor)
+        IHttpContextAccessor httpContextAccessor, ILogger logger)
     {
         _userManager = userManager;
         _roleManager = roleManager;
@@ -35,6 +37,7 @@ public class AuthService : IAuthService
         _configuration = configuration;
         _context = context;
         _httpContextAccessor = httpContextAccessor;
+        _logger = logger;
     }
 
     public async Task<ResponseDto> SeedRoles()
@@ -51,13 +54,26 @@ public class AuthService : IAuthService
             };
         }
 
-        await _roleManager.CreateAsync(new IdentityRole(UserRoles.USER));
-        await _roleManager.CreateAsync(new IdentityRole(UserRoles.ADMINISTRATOR));
-
-        return new ResponseDto()
+        try
         {
-            SuccessMessage = SuccessMessage.CreatingRolesIsDone,
-        };
+            await _roleManager.CreateAsync(new IdentityRole(UserRoles.USER));
+            await _roleManager.CreateAsync(new IdentityRole(UserRoles.ADMINISTRATOR));
+
+            return new ResponseDto()
+            {
+                SuccessMessage = SuccessMessage.CreatingRolesIsDone,
+            };
+        }
+        catch (Exception e)
+        {
+            _logger.Error(e, e.Message);
+
+            return new ResponseDto()
+            {
+                ErrorMessage = ErrorMessage.InternalServerError,
+                ErrorCode = (int)ErrorCode.InternalServerError
+            };
+        }
     }
 
     public async Task<ResponseDto> Register(RegisterDto registerDto)
@@ -72,78 +88,65 @@ public class AuthService : IAuthService
             };
         }
 
-        //Если пользователь существует,то создаем его
-        var user = new AppUser
+        try
         {
-            UserName = registerDto.Username,
-            Email = registerDto.Email
-        };
+            //Если пользователь существует,то создаем его
+            var user = new AppUser
+            {
+                UserName = registerDto.Username,
+                Email = registerDto.Email
+            };
 
-        var registerResult = await _userManager.CreateAsync(user, registerDto.Password);
+            var registerResult = await _userManager.CreateAsync(user, registerDto.Password);
 
-        //Если создание прошло неудачно
-        if (!registerResult.Succeeded)
-        {
-            var errors = registerResult.Errors.Select(e => e.Description);
+            //Если создание прошло неудачно
+            if (!registerResult.Succeeded)
+            {
+                var errors = registerResult.Errors.Select(e => e.Description);
+
+                return new ResponseDto()
+                {
+                    ErrorMessage = $"{ErrorMessage.ModelCreatingIsFalied} \n {errors}",
+                    ErrorCode = (int)ErrorCode.CreatingModelIsFailed
+                };
+            }
+
+            //Добавляем роль пользователю
+            await _userManager.AddToRoleAsync(user, UserRoles.USER);
+
+            //For seeing roles after registration
+            await _signInManager.SignInAsync(user, false);
+
+            //Генерируем refresh token
+            var refreshToken = GenerateRefreshToken();
+            SetRefreshToken(refreshToken);
+
+            user.RefreshToken = refreshToken.Token;
+            user.TokenCreated = refreshToken.Created;
+            user.TokenExpires = refreshToken.Expired;
+
+            await _context.SaveChangesAsync();
+            
+            var accessToken = await GetAllAndSetAccessToken(user);
+            
+            //Запоминаем пользователя после регистрации
+            await _signInManager.SignInAsync(user, true);
 
             return new ResponseDto()
             {
-                ErrorMessage = $"{ErrorMessage.ModelCreatingIsFalied} \n {errors}",
-                ErrorCode = (int)ErrorCode.CreatingModelIsFailed
+                SuccessMessage = $"{SuccessMessage.CreatingUserIsDone} ({user})",
             };
         }
-
-        //Добавляем роль пользователю
-        await _userManager.AddToRoleAsync(user, UserRoles.USER);
-
-        //For seeing roles after registration
-        await _signInManager.SignInAsync(user, false);
-
-        //Генерируем refresh token
-        var refreshToken = GenerateRefreshToken();
-        SetRefreshToken(refreshToken);
-
-        user.RefreshToken = refreshToken.Token;
-        user.TokenCreated = refreshToken.Created;
-        user.TokenExpires = refreshToken.Expired;
-
-        await _context.SaveChangesAsync();
-
-        
-        var accessToken = await GetAllAndSetAccessToken(user);
-       
-
-        //Запоминаем пользователя после регистрации
-        await _signInManager.SignInAsync(user,true);
-
-        return new ResponseDto()
+        catch (Exception e)
         {
-            SuccessMessage = $"{SuccessMessage.CreatingUserIsDone} ({user})",
-        };
-    }
+            _logger.Error(e,e.Message);
 
-    private async Task<string> GetAllAndSetAccessToken(AppUser user)
-    {
-        var userRoles = await _userManager.GetRolesAsync(user);
-
-        //Создаем доп инфу для пользователя во время авторизации
-        var claims = new List<Claim>()
-        {
-            new Claim(ClaimTypes.Name, user.UserName),
-            new Claim(ClaimTypes.NameIdentifier, user.Id),
-            new Claim("JWTID", Guid.NewGuid().ToString())
-        };
-
-        //Передаем всем пользователям клеймы
-        foreach (var userRole in userRoles)
-        {
-            claims.Add(new Claim(ClaimTypes.Role, userRole));
+            return new ResponseDto()
+            {
+                ErrorMessage = ErrorMessage.InternalServerError,
+                ErrorCode = (int)ErrorCode.InternalServerError
+            };
         }
-
-        var accessToken = GenerateJsonWebToken(claims);
-        SetAccessToken(accessToken);
-
-        return accessToken;
     }
 
     public async Task<ResponseDto> Login(LoginDto loginDto)
@@ -169,53 +172,90 @@ public class AuthService : IAuthService
             };
         }
 
-        //Adding for getting access to user roles
-        await _signInManager.PasswordSignInAsync(
-            loginDto.Username,
-            loginDto.Password,
-            //После логина сохраняем данные Identity пользователя чтобы после закрытия браузера не проподали cookie
-            true,
-            false
-        ); // если true то блокируем после всех попыток войти на аккаунт
-
-        var accessToken = await GetAllAndSetAccessToken(user);
-        
-        RefreshToken existingRefreshToken = new RefreshToken()
+        try
         {
-            Token = user.RefreshToken,
-            Expired = user.TokenExpires,
-            Created = user.TokenCreated
-        };
+            //Adding for getting access to user roles
+            await _signInManager.PasswordSignInAsync(
+                loginDto.Username,
+                loginDto.Password,
+                //После логина сохраняем данные Identity пользователя чтобы после закрытия браузера не проподали cookie
+                true,
+                false
+            ); // если true то блокируем после всех попыток войти на аккаунт
 
-        SetRefreshToken(existingRefreshToken);
+            var accessToken = await GetAllAndSetAccessToken(user);
 
-        //Проверяем на срок истечения,если истекает то обновляем и записываем новый в БД
-        if (user.TokenExpires < DateTime.Now)
-        {
-            var refreshTokenFromCookies = _httpContextAccessor.HttpContext.Request.Cookies["refreshToken"];
-
-            if (!user.RefreshToken.Equals(refreshTokenFromCookies) || user.TokenExpires < DateTime.Now)
+            RefreshToken existingRefreshToken = new RefreshToken()
             {
-                return new ResponseDto()
+                Token = user.RefreshToken,
+                Expired = user.TokenExpires,
+                Created = user.TokenCreated
+            };
+
+            SetRefreshToken(existingRefreshToken);
+
+            //Проверяем на срок истечения,если истекает то обновляем и записываем новый в БД
+            if (user.TokenExpires < DateTime.Now)
+            {
+                var refreshTokenFromCookies = _httpContextAccessor.HttpContext.Request.Cookies["refreshToken"];
+
+                if (!user.RefreshToken.Equals(refreshTokenFromCookies) || user.TokenExpires < DateTime.Now)
                 {
-                    ErrorMessage = ErrorMessage.IncorrectToken,
-                    ErrorCode = (int)ErrorCode.IncorrectToken
-                };
+                    return new ResponseDto()
+                    {
+                        ErrorMessage = ErrorMessage.IncorrectToken,
+                        ErrorCode = (int)ErrorCode.IncorrectToken
+                    };
+                }
+
+                var newRefreshToken = GenerateRefreshToken();
+
+                SetRefreshToken(newRefreshToken);
+                user.RefreshToken = newRefreshToken.Token;
+                await _context.SaveChangesAsync();
             }
 
-            var newRefreshToken = GenerateRefreshToken();
-
-            SetRefreshToken(newRefreshToken);
-            user.RefreshToken = newRefreshToken.Token;
-            await _context.SaveChangesAsync();
+            return new ResponseDto()
+            {
+                SuccessMessage = $"{accessToken}",
+            };
         }
-
-        return new ResponseDto()
+        catch (Exception e)
         {
-            SuccessMessage = $"{accessToken}",
-        };
+            _logger.Error(e,e.Message);
+
+            return new ResponseDto()
+            {
+                ErrorMessage = ErrorMessage.InternalServerError,
+                ErrorCode = (int)ErrorCode.InternalServerError
+            };
+        }
     }
 
+    private async Task<string> GetAllAndSetAccessToken(AppUser user)
+    {
+        var userRoles = await _userManager.GetRolesAsync(user);
+
+        //Создаем доп инфу для пользователя во время авторизации
+        var claims = new List<Claim>()
+        {
+            new Claim(ClaimTypes.Name, user.UserName),
+            new Claim(ClaimTypes.NameIdentifier, user.Id),
+            new Claim("JWTID", Guid.NewGuid().ToString())
+        };
+
+        //Передаем всем пользователям клеймы
+        foreach (var userRole in userRoles)
+        {
+            claims.Add(new Claim(ClaimTypes.Role, userRole));
+        }
+
+        var accessToken = GenerateJsonWebToken(claims);
+        SetAccessToken(accessToken);
+
+        return accessToken;
+    }
+    
     private string GenerateJsonWebToken(List<Claim> claims)
     {
         var secret = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtSettings:Key"]));
@@ -293,12 +333,25 @@ public class AuthService : IAuthService
             };
         }
 
-        await _userManager.AddToRoleAsync(user, UserRoles.ADMINISTRATOR);
-
-        return new ResponseDto()
+        try
         {
-            SuccessMessage = $"{SuccessMessage.UpgradeUserToAdmin} ({user})",
-        };
+            await _userManager.AddToRoleAsync(user, UserRoles.ADMINISTRATOR);
+
+            return new ResponseDto()
+            {
+                SuccessMessage = $"{SuccessMessage.UpgradeUserToAdmin} ({user})",
+            };
+        }
+        catch (Exception e)
+        {
+            _logger.Error(e,e.Message);
+
+            return new ResponseDto()
+            {
+                ErrorMessage = ErrorMessage.InternalServerError,
+                ErrorCode = (int)ErrorCode.InternalServerError
+            };
+        }
     }
 
     public async Task<ResponseDto> FromAdminToUser(UpdateDto updateDto)
@@ -323,12 +376,25 @@ public class AuthService : IAuthService
             };
         }
 
-        await _userManager.RemoveFromRoleAsync(user, UserRoles.ADMINISTRATOR);
-
-        return new ResponseDto
+        try
         {
-            SuccessMessage = $"{SuccessMessage.DowngradeAdminToUser} ({updateDto.Username})"
-        };
+            await _userManager.RemoveFromRoleAsync(user, UserRoles.ADMINISTRATOR);
+
+            return new ResponseDto
+            {
+                SuccessMessage = $"{SuccessMessage.DowngradeAdminToUser} ({updateDto.Username})"
+            };
+        }
+        catch (Exception e)
+        {
+            _logger.Error(e,e.Message);
+
+            return new ResponseDto()
+            {
+                ErrorMessage = ErrorMessage.InternalServerError,
+                ErrorCode = (int)ErrorCode.InternalServerError
+            };
+        }
     }
 
     public async Task<ResponseDto> Logout()

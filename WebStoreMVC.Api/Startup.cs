@@ -13,6 +13,8 @@ using NuGet.Protocol;
 using WebStoreMVC.DAL.Context;
 using WebStoreMVC.Domain.Entities;
 using WebStoreMVC.Policy;
+using WebStoreMVC.Services;
+using WebStoreMVC.Services.Interfaces;
 
 namespace WebStoreMVC;
 
@@ -25,7 +27,7 @@ public static class Startup
     public static void AddIdentity(this IServiceCollection services)
     {
         //Подключаем Identity
-        services.AddIdentity<AppUser, IdentityRole>(/*options => options.SignIn.RequireConfirmedAccount = true*/)
+        services.AddIdentity<AppUser, IdentityRole>( /*options => options.SignIn.RequireConfirmedAccount = true*/)
             .AddEntityFrameworkStores<WebStoreContext>()
             .AddDefaultTokenProviders();
 
@@ -43,17 +45,18 @@ public static class Startup
             opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
             opt.Lockout.MaxFailedAccessAttempts = 5;
 
-            opt.User.RequireUniqueEmail = false;
+            //Нужен нормальный email (существующий)
+            opt.User.RequireUniqueEmail = true;
         });
-        
+
         services.ConfigureApplicationCookie(opt =>
         {
             opt.Cookie.Name = "WebStoreMvc_Cookie";
             opt.Cookie.HttpOnly = true;
             opt.ExpireTimeSpan = TimeSpan.FromDays(30);
             /*opt.LoginPath = "/Account/Login";
-            opt.LogoutPath = "/Account/Logout";
-            opt.AccessDeniedPath = "/Account/AccessDenied";*/
+            opt.LogoutPath = "/Account/Logout";*/
+            opt.AccessDeniedPath = "/Account/AccessDenied";
 
             //Чтобы состояние пользователя во время сессии менялось (например если он зарегистрировался или залогинился то сразу переключаем на эти права)
             opt.SlidingExpiration = true;
@@ -123,7 +126,7 @@ public static class Startup
                 }
             });
             var xmlFileName = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-            opt.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory,xmlFileName));
+            opt.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFileName));
         });
     }
 
@@ -142,7 +145,21 @@ public static class Startup
                 opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             })
-            .AddJwtBearer("Bearer",opt =>
+            /*.AddCookie(options =>
+            {
+                options.AccessDeniedPath = "/Account/AccessDenied";
+
+                // Для дополнительного контроля можно использовать события
+                options.Events = new CookieAuthenticationEvents
+                {
+                    OnRedirectToAccessDenied = context =>
+                    {
+                        context.Response.Redirect(context.Options.AccessDeniedPath);
+                        return Task.CompletedTask;
+                    }
+                };
+            })*/
+            .AddJwtBearer("Bearer", opt =>
             {
                 opt.SaveToken = true;
                 opt.TokenValidationParameters = new TokenValidationParameters()
@@ -160,7 +177,7 @@ public static class Startup
         //Для добавления Policy
         services.AddHttpContextAccessor();
         services.AddSingleton<IAuthorizationHandler, CookieRequirementHandler>();
-        
+
         services.AddAuthorization(options =>
         {
             var defaultAuthorizationPolicyBuilder = new AuthorizationPolicyBuilder(
@@ -170,31 +187,19 @@ public static class Startup
             defaultAuthorizationPolicyBuilder =
                 defaultAuthorizationPolicyBuilder.RequireAuthenticatedUser();
             options.DefaultPolicy = defaultAuthorizationPolicyBuilder.Build();
-            
+
             options.AddPolicy("Default", new AuthorizationPolicyBuilder()
                 .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
                 .RequireAuthenticatedUser()
                 .Build());
 
-            options.AddPolicy("Admin", new AuthorizationPolicyBuilder()
-                .RequireRole("Admin")
-                .AddAuthenticationSchemes()
-                .RequireAuthenticatedUser()
-                .Build());
-
-            options.AddPolicy("User", new AuthorizationPolicyBuilder()
-                .RequireRole("Admin")
-                .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
-                .RequireAuthenticatedUser()
-                .Build());
-            
             options.AddPolicy("AdminCookie", policy =>
             {
                 policy.Requirements.Add(new CookieAdminRequirement());
                 policy.RequireAuthenticatedUser();
                 policy.RequireRole(UserRoles.ADMINISTRATOR);
             });
-            
+
             options.AddPolicy("UserCookie", policy =>
             {
                 policy.Requirements.Add(new CookieUserRequirement());
