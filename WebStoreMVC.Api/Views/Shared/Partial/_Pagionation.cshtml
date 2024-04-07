@@ -1,0 +1,36 @@
+@model PagerModel
+
+<div class="container">
+    @if (Model.TotalPages > 0)
+    {
+        <ul class="pagination justify-content-end">
+            @if (Model.CurrentPage > 1)
+            {
+                <li>
+                    <a class="page-item" asp-controller="Products" asp-action="GetAllProducts" asp-route-pg="1">Первая</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" asp-controller="Products" asp-action="GetAllProducts" asp-route-pg="@(Model.CurrentPage - 1)">Предыдущая</a>
+                </li>
+            }
+
+            @for (var pge = Model.StartPage; pge <= Model.EndPage; pge++)
+            {
+                <li class="page-item @(pge == Model.CurrentPage ? "active" : "")">
+                    <a class="page-link" asp-controller="Products" asp-action="GetAllProducts" asp-route-pg="@pge">@pge</a>
+                </li>
+            }
+
+            @if (Model.CurrentPage < Model.TotalPages)
+            {
+                <li class="page-item">
+                    <a class="page-link" asp-controller="Products" asp-action="GetAllProducts" asp-route-pg="@(Model.CurrentPage + 1)">Следующая</a>
+                </li>
+                <li>
+                    <a class="page-link" asp-controller="Products" asp-action="GetAllProducts" asp-route-pg="@(Model.TotalPages)">Последняя</a>
+                </li>
+            }
+
+        </ul>
+    }
+</div>

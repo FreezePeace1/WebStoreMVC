@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebStoreMVC.Domain.Entities;
 using WebStoreMVC.Dtos;
+using WebStoreMVC.Models;
 using WebStoreMVC.Services.Interfaces;
 
 namespace WebStoreMVC.Areas.Admin.Controllers;
@@ -34,17 +35,26 @@ public class ProductsController : Controller
     /// </remarks>
     [HttpGet("GetAllProducts")]
     [Route("GetAllProducts")]
-    public async Task<ActionResult<ResponseDto<List<Product>>>> GetAllProducts(string searchString = "")
+    public async Task<ActionResult<ResponseDto<List<Product>>>> GetAllProducts(int pg=1,string searchString = "")
     {
         ViewData["CurrentFilter"] = searchString;
         
         var productList = await _productsService.GetAllProducts();
 
+        const int pageSize = 15;
+
+        int rescCount = productList.Data.Count;
+        var pager = new PagerModel(rescCount, pg, pageSize);
+        
+        productList = await _productsService.GetProductByPage(pg, pager.PageSize);
+        
+        this.ViewBag.Pager = pager;
+        
         if (searchString != "")
         {
             productList = await _searchingProductsService.SearchingProducts(searchString);
         }
-
+        
         return View(productList);
     }
 

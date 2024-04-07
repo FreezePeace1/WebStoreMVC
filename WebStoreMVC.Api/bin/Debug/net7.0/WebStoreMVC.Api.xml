@@ -10,7 +10,7 @@
             </summary>
             <param name="productsService"></param>
         </member>
-        <member name="M:WebStoreMVC.Areas.Admin.Controllers.ProductsController.GetAllProducts(System.String)">
+        <member name="M:WebStoreMVC.Areas.Admin.Controllers.ProductsController.GetAllProducts(System.Int32,System.String)">
             <summary>
             Получение всех товаров (ограничение на 3000 товаров)
             </summary>

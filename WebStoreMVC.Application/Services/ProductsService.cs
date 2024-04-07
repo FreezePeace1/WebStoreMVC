@@ -5,6 +5,7 @@ using WebStoreMVC.DAL.Context;
 using WebStoreMVC.Domain.Entities;
 using WebStoreMVC.Domain.Enum;
 using WebStoreMVC.Dtos;
+using WebStoreMVC.Models;
 using WebStoreMVC.Services.Interfaces;
 
 namespace WebStoreMVC.Services;
@@ -22,7 +23,7 @@ public class ProductsService : IProductsService
 
     public async Task<ResponseDto<List<Product>>> GetAllProducts()
     {
-        var productList = await _context.Products.AsNoTracking().Take(3000).ToListAsync();
+        var productList = await _context.Products.AsNoTracking().ToListAsync();
 
         return new ResponseDto<List<Product>>()
         {
@@ -176,8 +177,13 @@ public class ProductsService : IProductsService
         };
     }
 
-    public async Task<ResponseDto<List<Product>>> GetProductByPage(int page, int pageSize)
+    public async Task<ResponseDto<List<Product>>> GetProductByPage(int page=1, int pageSize=15)
     {
+        if (page < 1)
+        {
+            page = 1;
+        }
+        
         return new ResponseDto<List<Product>>()
         {
             Data = await _context.Products.AsNoTracking().Skip((page - 1) * pageSize).Take(pageSize).ToListAsync()

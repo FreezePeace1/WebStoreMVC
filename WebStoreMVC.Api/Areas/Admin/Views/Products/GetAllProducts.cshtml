@@ -1,18 +1,33 @@
+@using WebStoreMVC.Models
 @model WebStoreMVC.Dtos.ResponseDto<List<Product>>
 
 @{
     ViewBag.Title = "title";
     Layout = "_Layout";
+
+    PagerModel pager = new PagerModel();
+
+    int pageNum = 0;
+
+    if (ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        pageNum = pager.CurrentPage;
+    }
 }
 
-<form asp-area="Admin" asp-controller="Products" asp-action="GetAllProducts" method="get">
-    <label for="searchString"></label>
-    <input placeholder="Поиск" style="width: 240px" type="text" name="searchString" value="@ViewData["CurrentFilter"]"/>
-    <input class="btn-primary" type="submit" value="Найти"/>
-</form>
 
 <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 tm-block-col">
     <div class="tm-bg-primary-dark tm-block tm-block-products">
+        <form asp-area="Admin" asp-controller="Products" asp-action="GetAllProducts" method="get">
+            <label for="searchString"></label>
+            <input placeholder="Поиск" style="width: 240px" type="text" name="searchString" value="@ViewData["CurrentFilter"]"/>
+            <input class="btn-primary" type="submit" value="Найти"/>
+        </form>
+
+        @*<div>
+            <a style="color: gold" asp-action="GetAllProducts">Получить все продукты</a>
+        </div>*@
         <div class="tm-product-table-container">
             <table class="table table-hover tm-table-small tm-product-table">
                 <thead>
@@ -170,3 +185,5 @@
         </button>
     </div>
 </div>*@
+
+<partial name= "_Pagination" model="@pager"/>
