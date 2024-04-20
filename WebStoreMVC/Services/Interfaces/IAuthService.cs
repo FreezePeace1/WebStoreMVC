@@ -11,4 +11,6 @@ public interface IAuthService
    public Task<AuthResponseDto> FromUserToAdmin(UpdateDto updateDto);
    public Task<AuthResponseDto> FromAdminToUser(UpdateDto updateDto);
 
+   public Task<AuthResponseDto> Login(LoginDto loginDto);
+
 }
