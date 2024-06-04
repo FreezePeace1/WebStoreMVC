@@ -15,6 +15,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddDataAccessLayer(builder.Configuration);
 
 
+
 //From Startup
 builder.Services.AddAuthenticationAndAuthorization(builder);
 builder.Services.AddSwagger();

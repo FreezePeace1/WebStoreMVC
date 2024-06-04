@@ -1,41 +1,36 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC.Application\\WebStoreMVC.Application.csproj": {}
+    "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Application/WebStoreMVC.Application.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC.Application\\WebStoreMVC.Application.csproj": {
+    "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Application/WebStoreMVC.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC.Application\\WebStoreMVC.Application.csproj",
+        "projectUniqueName": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Application/WebStoreMVC.Application.csproj",
         "projectName": "WebStoreMVC.Application",
-        "projectPath": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC.Application\\WebStoreMVC.Application.csproj",
-        "packagesPath": "C:\\Users\\Ryzen\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC.Application\\obj\\",
+        "projectPath": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Application/WebStoreMVC.Application.csproj",
+        "packagesPath": "/home/alexander/.nuget/packages/",
+        "outputPath": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Application/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Ryzen\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/alexander/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net7.0"
+          "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net7.0": {
-            "targetAlias": "net7.0",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC.DAL\\WebStoreMVC.DAL.csproj": {
-                "projectPath": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC.DAL\\WebStoreMVC.DAL.csproj"
+              "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.DAL/WebStoreMVC.DAL.csproj": {
+                "projectPath": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.DAL/WebStoreMVC.DAL.csproj"
               },
-              "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC.Domain\\WebStoreMVC.Domain.csproj": {
-                "projectPath": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC.Domain\\WebStoreMVC.Domain.csproj"
+              "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Domain/WebStoreMVC.Domain.csproj": {
+                "projectPath": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Domain/WebStoreMVC.Domain.csproj"
               }
             }
           }
@@ -47,8 +42,8 @@
         }
       },
       "frameworks": {
-        "net7.0": {
-          "targetAlias": "net7.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "dependencies": {
             "Microsoft.AspNetCore.Identity": {
               "target": "Package",
@@ -56,11 +51,11 @@
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[7.0.11, )"
+              "version": "[8.0.0, )"
             },
             "Microsoft.Extensions.Identity.Core": {
               "target": "Package",
-              "version": "[7.0.11, )"
+              "version": "[8.0.0, )"
             },
             "Microsoft.IdentityModel.Tokens": {
               "target": "Package",
@@ -76,7 +71,7 @@
             },
             "Serilog.AspNetCore": {
               "target": "Package",
-              "version": "[7.0.0, )"
+              "version": "[8.0.0, )"
             },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
@@ -99,39 +94,34 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.105/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC.DAL\\WebStoreMVC.DAL.csproj": {
+    "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.DAL/WebStoreMVC.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC.DAL\\WebStoreMVC.DAL.csproj",
+        "projectUniqueName": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.DAL/WebStoreMVC.DAL.csproj",
         "projectName": "WebStoreMVC.DAL",
-        "projectPath": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC.DAL\\WebStoreMVC.DAL.csproj",
-        "packagesPath": "C:\\Users\\Ryzen\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC.DAL\\obj\\",
+        "projectPath": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.DAL/WebStoreMVC.DAL.csproj",
+        "packagesPath": "/home/alexander/.nuget/packages/",
+        "outputPath": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.DAL/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Ryzen\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/alexander/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net7.0"
+          "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net7.0": {
-            "targetAlias": "net7.0",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC.Domain\\WebStoreMVC.Domain.csproj": {
-                "projectPath": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC.Domain\\WebStoreMVC.Domain.csproj"
+              "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Domain/WebStoreMVC.Domain.csproj": {
+                "projectPath": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Domain/WebStoreMVC.Domain.csproj"
               }
             }
           }
@@ -143,22 +133,22 @@
         }
       },
       "frameworks": {
-        "net7.0": {
-          "targetAlias": "net7.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "dependencies": {
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[7.0.11, )"
+              "version": "[8.0.0, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[7.0.11, )"
+              "version": "[8.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[7.0.11, )"
+              "version": "[8.0.0, )"
             }
           },
           "imports": [
@@ -177,36 +167,31 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.105/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC.Domain\\WebStoreMVC.Domain.csproj": {
+    "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Domain/WebStoreMVC.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC.Domain\\WebStoreMVC.Domain.csproj",
+        "projectUniqueName": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Domain/WebStoreMVC.Domain.csproj",
         "projectName": "WebStoreMVC.Domain",
-        "projectPath": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC.Domain\\WebStoreMVC.Domain.csproj",
-        "packagesPath": "C:\\Users\\Ryzen\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ryzen\\RiderProjects\\WebStoreMVC\\WebStoreMVC.Domain\\obj\\",
+        "projectPath": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Domain/WebStoreMVC.Domain.csproj",
+        "packagesPath": "/home/alexander/.nuget/packages/",
+        "outputPath": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Domain/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Ryzen\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/alexander/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net7.0"
+          "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net7.0": {
-            "targetAlias": "net7.0",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {}
           }
         },
@@ -217,16 +202,16 @@
         }
       },
       "frameworks": {
-        "net7.0": {
-          "targetAlias": "net7.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "dependencies": {
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[7.0.11, )"
+              "version": "[8.0.0, )"
             },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
-              "version": "[7.0.11, )"
+              "version": "[8.0.0, )"
             }
           },
           "imports": [
@@ -245,7 +230,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.105/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

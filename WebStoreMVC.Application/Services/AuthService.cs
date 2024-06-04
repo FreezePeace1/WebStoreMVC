@@ -15,7 +15,7 @@ using WebStoreMVC.Dtos;
 using WebStoreMVC.Models;
 using WebStoreMVC.Services.Interfaces;
 
-namespace WebStoreMVC.Services;
+namespace WebStoreMVC.Application.Services;
 
 public class AuthService : IAuthService
 {
@@ -184,18 +184,36 @@ public class AuthService : IAuthService
             ); // если true то блокируем после всех попыток войти на аккаунт
 
             var accessToken = await GetAllAndSetAccessToken(user);
-
+            
             RefreshToken existingRefreshToken = new RefreshToken()
             {
-                Token = user.RefreshToken,
-                Expired = user.TokenExpires,
-                Created = user.TokenCreated
+                Token = " ",
+                Expired = DateTime.Now,
+                Created = DateTime.Now
             };
+            
+            //Если refreshtoken оказался infinity в бд или его попросту нет
+            if (user.RefreshToken.Equals("") || user.TokenExpires <= DateTime.MinValue ||
+                user.TokenCreated <= DateTime.MinValue)
+            {
+                existingRefreshToken = GenerateRefreshToken();
+                user.RefreshToken = existingRefreshToken.Token;
+                user.TokenCreated = existingRefreshToken.Created;
+                user.TokenExpires = existingRefreshToken.Expired;
+                await _context.SaveChangesAsync();
+            }
+            //Если всё нормально с refreshtoken'ом в бд то просто передаем данные с бд
+            else
+            {
+                existingRefreshToken.Token = user.RefreshToken;
+                existingRefreshToken.Expired = user.TokenExpires;
+                existingRefreshToken.Created = user.TokenCreated;
+            }
 
             SetRefreshToken(existingRefreshToken);
 
             //Проверяем на срок истечения,если истекает то обновляем и записываем новый в БД
-            if (user.TokenExpires < DateTime.Now)
+            if (user.TokenExpires < DateTime.Now || user.TokenExpires >= DateTime.MaxValue)
             {
                 var refreshTokenFromCookies = _httpContextAccessor.HttpContext.Request.Cookies["refreshToken"];
 

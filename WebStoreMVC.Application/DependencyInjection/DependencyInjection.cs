@@ -1,4 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
+using WebStoreMVC.Application.Services;
 using WebStoreMVC.Services;
 using WebStoreMVC.Services.Data;
 using WebStoreMVC.Services.Interfaces;

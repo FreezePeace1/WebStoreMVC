@@ -1,13 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
 
         <IsPackable>false</IsPackable>
 
         <RootNamespace>WebSotoreMVC.Api</RootNamespace>
+
+        <UserSecretsId>2d2310b8-2e57-49e4-9373-8147a00b6eb7</UserSecretsId>
     </PropertyGroup>
 
     <ItemGroup>

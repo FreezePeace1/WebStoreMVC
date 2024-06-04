@@ -77,7 +77,6 @@ public static class Startup
                 opt.SubstituteApiVersionInUrl = true;
                 opt.AssumeDefaultVersionWhenUnspecified = true;
             });
-
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen(opt =>
         {

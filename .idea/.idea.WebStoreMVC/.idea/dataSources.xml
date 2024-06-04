@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:postgresql://localhost:5432/WebStoreProductsDB</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="WebStoreDB@localhost" uuid="b1741a68-c8f1-42de-adc1-0a8f80c61a10">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/WebStoreDB</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>
