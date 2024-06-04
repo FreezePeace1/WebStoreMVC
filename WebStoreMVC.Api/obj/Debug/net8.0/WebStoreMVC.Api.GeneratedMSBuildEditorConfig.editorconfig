@@ -1,0 +1,169 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = WebStoreMVC
+build_property.RootNamespace = WebStoreMVC
+build_property.ProjectDir = /home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
+build_property.MSBuildProjectDirectory = /home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api
+build_property._RazorSourceGeneratorDebug = 
+
+[/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/SearchingProducts/SearchingProducts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2VhcmNoaW5nUHJvZHVjdHMvU2VhcmNoaW5nUHJvZHVjdHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Areas/Admin/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Areas/Admin/Views/Products/DeleteById.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvUHJvZHVjdHMvRGVsZXRlQnlJZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Areas/Admin/Views/Products/EditProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvUHJvZHVjdHMvRWRpdFByb2R1Y3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Areas/Admin/Views/Products/GetAllProducts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvUHJvZHVjdHMvR2V0QWxsUHJvZHVjdHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Areas/Admin/Views/Products/PostProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvUHJvZHVjdHMvUG9zdFByb2R1Y3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Areas/Admin/Views/Products/_Pagination.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvUHJvZHVjdHMvX1BhZ2luYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Areas/Admin/Views/Shared/Partial/ProductChanging.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvU2hhcmVkL1BhcnRpYWwvUHJvZHVjdENoYW5naW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Areas/Admin/Views/Shared/Partial/ProductDescription.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvU2hhcmVkL1BhcnRpYWwvUHJvZHVjdERlc2NyaXB0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Areas/Admin/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Areas/Admin/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Areas/Admin/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Account/AccessDenied.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9BY2Nlc3NEZW5pZWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9Mb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Account/Registration.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9SZWdpc3RyYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Home/Blank.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9CbGFuay5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Home/Checkout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9DaGVja291dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Home/Partial/_GetMobilePhonesLimited.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9QYXJ0aWFsL19HZXRNb2JpbGVQaG9uZXNMaW1pdGVkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Home/Partial/_NewProductsTransitionsAndSlider.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9QYXJ0aWFsL19OZXdQcm9kdWN0c1RyYW5zaXRpb25zQW5kU2xpZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Home/Partial/_ProductCollectionsExceptPhones.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9QYXJ0aWFsL19Qcm9kdWN0Q29sbGVjdGlvbnNFeGNlcHRQaG9uZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Home/Partial/_TopSellingMiniSliders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9QYXJ0aWFsL19Ub3BTZWxsaW5nTWluaVNsaWRlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Home/Partial/_TopSellingTransitionsAndSlider.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9QYXJ0aWFsL19Ub3BTZWxsaW5nVHJhbnNpdGlvbnNBbmRTbGlkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Home/Product.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcm9kdWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Home/Store.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9TdG9yZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Shared/Components/UserInfo/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0NvbXBvbmVudHMvVXNlckluZm8vRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Shared/Components/UserInfo/UserInfo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0NvbXBvbmVudHMvVXNlckluZm8vVXNlckluZm8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Shared/Partial/SearchingProducts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL1BhcnRpYWwvU2VhcmNoaW5nUHJvZHVjdHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Shared/Partial/_Footer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL1BhcnRpYWwvX0Zvb3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Shared/Partial/_Header.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL1BhcnRpYWwvX0hlYWRlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Shared/Partial/_NavigationUpperTransitions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL1BhcnRpYWwvX05hdmlnYXRpb25VcHBlclRyYW5zaXRpb25zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Shared/Partial/_Pagionation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL1BhcnRpYWwvX1BhZ2lvbmF0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-sfyr2rm33l

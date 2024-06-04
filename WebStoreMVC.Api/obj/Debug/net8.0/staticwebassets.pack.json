@@ -1,0 +1,533 @@
+{
+  "Files": [
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/obj/Debug/net8.0/scopedcss/projectbundle/WebStoreMVC.Api.bundle.scp.css",
+      "PackagePath": "staticwebassets/WebStoreMVC.Api.bundle.scp.css"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/css/bootstrap.min.css",
+      "PackagePath": "staticwebassets/css/bootstrap.min.css"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/css/font-awesome.min.css",
+      "PackagePath": "staticwebassets/css/font-awesome.min.css"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/css/nouislider.min.css",
+      "PackagePath": "staticwebassets/css/nouislider.min.css"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/css/slick-theme.css",
+      "PackagePath": "staticwebassets/css/slick-theme.css"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/css/slick.css",
+      "PackagePath": "staticwebassets/css/slick.css"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/css/style.css",
+      "PackagePath": "staticwebassets/css/style.css"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/css/templatemo-style.css",
+      "PackagePath": "staticwebassets/css/templatemo-style.css"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/favicon.ico",
+      "PackagePath": "staticwebassets/favicon.ico"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/fonts/FontAwesome.otf",
+      "PackagePath": "staticwebassets/fonts/FontAwesome.otf"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/fonts/fontawesome-webfont.eot",
+      "PackagePath": "staticwebassets/fonts/fontawesome-webfont.eot"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/fonts/fontawesome-webfont.svg",
+      "PackagePath": "staticwebassets/fonts/fontawesome-webfont.svg"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/fonts/fontawesome-webfont.ttf",
+      "PackagePath": "staticwebassets/fonts/fontawesome-webfont.ttf"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/fonts/fontawesome-webfont.woff",
+      "PackagePath": "staticwebassets/fonts/fontawesome-webfont.woff"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/fonts/fontawesome-webfont.woff2",
+      "PackagePath": "staticwebassets/fonts/fontawesome-webfont.woff2"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/fonts/slick.eot",
+      "PackagePath": "staticwebassets/fonts/slick.eot"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/fonts/slick.svg",
+      "PackagePath": "staticwebassets/fonts/slick.svg"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/fonts/slick.ttf",
+      "PackagePath": "staticwebassets/fonts/slick.ttf"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/fonts/slick.woff",
+      "PackagePath": "staticwebassets/fonts/slick.woff"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/images/Sobes.txt",
+      "PackagePath": "staticwebassets/images/Sobes.txt"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/images/arrow-down.png",
+      "PackagePath": "staticwebassets/images/arrow-down.png"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/images/check-mark.png",
+      "PackagePath": "staticwebassets/images/check-mark.png"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/images/notification-01.jpg",
+      "PackagePath": "staticwebassets/images/notification-01.jpg"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/images/notification-02.jpg",
+      "PackagePath": "staticwebassets/images/notification-02.jpg"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/images/notification-03.jpg",
+      "PackagePath": "staticwebassets/images/notification-03.jpg"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/images/order_18821347.txt",
+      "PackagePath": "staticwebassets/images/order_18821347.txt"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/images/products/58aefac1c869e092af51ee68.png",
+      "PackagePath": "staticwebassets/images/products/58aefac1c869e092af51ee68.png"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/images/products/Alcatel.png",
+      "PackagePath": "staticwebassets/images/products/Alcatel.png"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/images/products/Apple.png",
+      "PackagePath": "staticwebassets/images/products/Apple.png"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/images/products/Arcticsky_9.png",
+      "PackagePath": "staticwebassets/images/products/Arcticsky_9.png"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/images/products/Asus.png",
+      "PackagePath": "staticwebassets/images/products/Asus.png"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/images/products/Htc.png",
+      "PackagePath": "staticwebassets/images/products/Htc.png"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/images/products/Huawei.png",
+      "PackagePath": "staticwebassets/images/products/Huawei.png"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/images/products/Lg.png",
+      "PackagePath": "staticwebassets/images/products/Lg.png"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/images/products/Meizu.png",
+      "PackagePath": "staticwebassets/images/products/Meizu.png"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/images/products/Motorola.png",
+      "PackagePath": "staticwebassets/images/products/Motorola.png"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/images/products/Nokia.png",
+      "PackagePath": "staticwebassets/images/products/Nokia.png"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/images/products/OnePlus.png",
+      "PackagePath": "staticwebassets/images/products/OnePlus.png"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/images/products/Samsung.png",
+      "PackagePath": "staticwebassets/images/products/Samsung.png"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/images/products/Sony.png",
+      "PackagePath": "staticwebassets/images/products/Sony.png"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/images/products/Xiaomi.png",
+      "PackagePath": "staticwebassets/images/products/Xiaomi.png"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/images/products/hotdeal.png",
+      "PackagePath": "staticwebassets/images/products/hotdeal.png"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/images/products/logo.png",
+      "PackagePath": "staticwebassets/images/products/logo.png"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/images/products/product01.png",
+      "PackagePath": "staticwebassets/images/products/product01.png"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/images/products/product02.png",
+      "PackagePath": "staticwebassets/images/products/product02.png"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/images/products/product03.png",
+      "PackagePath": "staticwebassets/images/products/product03.png"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/images/products/product04.png",
+      "PackagePath": "staticwebassets/images/products/product04.png"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/images/products/product05.png",
+      "PackagePath": "staticwebassets/images/products/product05.png"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/images/products/product06.png",
+      "PackagePath": "staticwebassets/images/products/product06.png"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/images/products/product07.png",
+      "PackagePath": "staticwebassets/images/products/product07.png"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/images/products/product08.png",
+      "PackagePath": "staticwebassets/images/products/product08.png"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/images/products/product09.png",
+      "PackagePath": "staticwebassets/images/products/product09.png"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/images/products/shop01.png",
+      "PackagePath": "staticwebassets/images/products/shop01.png"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/images/products/shop02.png",
+      "PackagePath": "staticwebassets/images/products/shop02.png"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/images/products/shop03.png",
+      "PackagePath": "staticwebassets/images/products/shop03.png"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/js/Chart.min.js",
+      "PackagePath": "staticwebassets/js/Chart.min.js"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/js/bootstrap.min.js",
+      "PackagePath": "staticwebassets/js/bootstrap.min.js"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/js/jquery-3.3.1.min.js",
+      "PackagePath": "staticwebassets/js/jquery-3.3.1.min.js"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/js/jquery.min.js",
+      "PackagePath": "staticwebassets/js/jquery.min.js"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/js/jquery.zoom.min.js",
+      "PackagePath": "staticwebassets/js/jquery.zoom.min.js"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/js/main.js",
+      "PackagePath": "staticwebassets/js/main.js"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/js/moment.min.js",
+      "PackagePath": "staticwebassets/js/moment.min.js"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/js/nouislider.min.js",
+      "PackagePath": "staticwebassets/js/nouislider.min.js"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/js/site.js",
+      "PackagePath": "staticwebassets/js/site.js"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/js/site.min.js",
+      "PackagePath": "staticwebassets/js/site.min.js"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/js/site.min.js.gz",
+      "PackagePath": "staticwebassets/js/site.min.js.gz"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/js/slick.min.js",
+      "PackagePath": "staticwebassets/js/slick.min.js"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/js/tooplate-scripts.js",
+      "PackagePath": "staticwebassets/js/tooplate-scripts.js"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap-grid.min.css"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/LICENSE",
+      "PackagePath": "staticwebassets/lib/bootstrap"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.css"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.css.map"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.min.css"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.css"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.css"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/css/bootstrap.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.css"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/css/bootstrap.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.css.map"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.min.css"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.min.css.map"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.css"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.js"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.js"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.js.map"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.min.js"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/js/bootstrap.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.js"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/js/bootstrap.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.js.map"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.min.js"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.min.js.map"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt",
+      "PackagePath": "staticwebassets/lib/jquery-validation-unobtrusive/LICENSE.txt"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/jquery-validation/LICENSE.md",
+      "PackagePath": "staticwebassets/lib/jquery-validation/LICENSE.md"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/jquery-validation/dist/additional-methods.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation/dist/additional-methods.js"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/jquery-validation/dist/additional-methods.min.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation/dist/additional-methods.min.js"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/jquery-validation/dist/jquery.validate.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation/dist/jquery.validate.js"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/jquery-validation/dist/jquery.validate.min.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation/dist/jquery.validate.min.js"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/jquery/LICENSE.txt",
+      "PackagePath": "staticwebassets/lib/jquery/LICENSE.txt"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/jquery/dist/jquery.js",
+      "PackagePath": "staticwebassets/lib/jquery/dist/jquery.js"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/jquery/dist/jquery.min.js",
+      "PackagePath": "staticwebassets/lib/jquery/dist/jquery.min.js"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/lib/jquery/dist/jquery.min.map",
+      "PackagePath": "staticwebassets/lib/jquery/dist/jquery.min.map"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/package.json",
+      "PackagePath": "staticwebassets/package.json"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.WebStoreMVC.Api.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.WebStoreMVC.Api.props",
+      "PackagePath": "build\\WebStoreMVC.Api.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.WebStoreMVC.Api.props",
+      "PackagePath": "buildMultiTargeting\\WebStoreMVC.Api.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.WebStoreMVC.Api.props",
+      "PackagePath": "buildTransitive\\WebStoreMVC.Api.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
