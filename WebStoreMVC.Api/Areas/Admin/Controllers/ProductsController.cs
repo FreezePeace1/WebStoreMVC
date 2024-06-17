@@ -54,6 +54,11 @@ public class ProductsController : Controller
         {
             productList = await _searchingProductsService.SearchingProducts(searchString);
         }
+
+        if (productList.Data == null)
+        {
+            RedirectToAction("GetAllProducts");
+        }
         
         return View(productList);
     }

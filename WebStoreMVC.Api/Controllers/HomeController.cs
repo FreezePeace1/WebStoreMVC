@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebStoreMVC.Domain.Entities;
+using WebStoreMVC.Dtos;
 using WebStoreMVC.Services.Interfaces;
 
 
@@ -8,10 +9,12 @@ namespace WebStoreMVC.Controllers;
 public class HomeController : Controller
 {
     private readonly IHomeService _homeService;
+    private readonly ISearchingProductsService _searchingProductsService;
 
-    public HomeController(IHomeService homeService)
+    public HomeController(IHomeService homeService,ISearchingProductsService searchingProductsService)
     {
         _homeService = homeService;
+        _searchingProductsService = searchingProductsService;
     }
 
     public IActionResult Index()
@@ -34,9 +37,19 @@ public class HomeController : Controller
         return View();
     }
 
-    public async Task<ActionResult<List<Product>>> Store()
-    {
+    public async Task<ActionResult<ResponseDto<List<Product>>>> Store(string searchString = null) {
         var products = await _homeService.Store();
-        return View(products);
+        
+        if (searchString != null)
+        {
+            products = await _searchingProductsService.SearchingProducts(searchString);
+        }
+
+        if (products.Data == null)
+        {
+            return RedirectToAction("Store");
+        }
+        
+        return View(products.Data);
     }
 }
