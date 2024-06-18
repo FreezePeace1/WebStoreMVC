@@ -1,0 +1,13 @@
+@model WebStoreMVC.Models.ViewModels.SmallCartVIewModel
+
+@if (Model != null)
+{
+    <p>Items in cart: <span class="badge badge-primary">@Model.NumberOfItems</span></p>
+    <p>Total: <b>@Model.TotalAmount.ToString("C2")</b></p>
+    <a class="btn btn-primary" asp-controller="Cart" asp-action="Index">View cart</a>
+    <a asp-controller="Cart" asp-action="Clear" class="btn btn-danger">Clear cart</a>
+}
+else
+{
+    <p class="lead m-0">Your cart is empty</p>
+}

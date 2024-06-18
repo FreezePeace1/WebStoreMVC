@@ -24,12 +24,21 @@ builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 //From application
 builder.Services.AddServices();
 
+builder.Services.AddSession(opts =>
+{
+    opts.IdleTimeout = TimeSpan.FromMinutes(30);
+    opts.Cookie.IsEssential = true;
+});
+
 //Serilog
 builder.Host.UseSerilog((context, configuration) => configuration.ReadFrom.Configuration(context.Configuration));
 
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 var app = builder.Build();
+
+app.UseSession();
+
 app.MapRazorPages();
 
 app.UseSwagger()

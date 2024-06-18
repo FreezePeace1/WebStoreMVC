@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "7VA6yKs5S3Y/YuzEq+gD3QOCP5KhKRC5kOIM4R7LGmlPSebspBw3nIEPdgR3vRipwH99XV9QDP6QdMaSMciuJg==",
+  "dgSpecHash": "jtJxY9zBS9ZGlwag5kon5TETei2BG3vqwu3WrCj7ouX7/6AbvCuKEFobaBlfjB50lZdGMLNNvINHf/LnG7tRLQ==",
   "success": true,
   "projectFilePath": "/home/alexander/RiderProjects/WebStoreMVC/WebSotoreMVC.Api.Tests/WebSotoreMVC.Api.Tests.csproj",
   "expectedPackageFiles": [

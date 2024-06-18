@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "5FC4hyRSBTJC093Wvxgr5VaJtfpZXT5s1MznV0Sfc0ougUaW+N3bhmTInQvO8jXhw9xrM6+Xl62XGvJH4/Ngcg==",
+  "dgSpecHash": "SJI1ATUeDAvHcCDqoo+gZKoEh5MZKJ8XYpx/qNj/3IVDTL64S7Be0VSNpAvrG9yBU+Ql8rXBYP3/w4RSrTduBQ==",
   "success": true,
   "projectFilePath": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Application/WebStoreMVC.Application.csproj",
   "expectedPackageFiles": [
@@ -50,7 +50,7 @@
     "/home/alexander/.nuget/packages/microsoft.net.http.headers/2.2.0/microsoft.net.http.headers.2.2.0.nupkg.sha512",
     "/home/alexander/.nuget/packages/microsoft.netcore.platforms/2.0.0/microsoft.netcore.platforms.2.0.0.nupkg.sha512",
     "/home/alexander/.nuget/packages/microsoft.win32.registry/4.5.0/microsoft.win32.registry.4.5.0.nupkg.sha512",
-    "/home/alexander/.nuget/packages/newtonsoft.json/13.0.1/newtonsoft.json.13.0.1.nupkg.sha512",
+    "/home/alexander/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512",
     "/home/alexander/.nuget/packages/npgsql/8.0.0/npgsql.8.0.0.nupkg.sha512",
     "/home/alexander/.nuget/packages/npgsql.entityframeworkcore.postgresql/8.0.0/npgsql.entityframeworkcore.postgresql.8.0.0.nupkg.sha512",
     "/home/alexander/.nuget/packages/serilog/3.1.1/serilog.3.1.1.nupkg.sha512",

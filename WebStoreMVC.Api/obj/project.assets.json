@@ -3344,7 +3344,7 @@
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.0",
           "Microsoft.Extensions.Identity.Core": "8.0.0",
           "Microsoft.IdentityModel.Tokens": "6.15.1",
-          "Newtonsoft.Json": "13.0.1",
+          "Newtonsoft.Json": "13.0.3",
           "Serilog": "3.1.1",
           "Serilog.AspNetCore": "8.0.0",
           "System.IdentityModel.Tokens.Jwt": "6.15.1",

@@ -1,13 +1,14 @@
+using Microsoft.AspNetCore.Mvc;
 using WebStoreMVC.Dtos;
-using WebStoreMVC.Models;
 
 namespace WebStoreMVC.Services.Interfaces;
 
 public interface ICartService
 {
-    public void AddToCart(int id);
-    public void DecrementFromCart(int id);
-    public void RemoveFromCart(int id);
-    public void RemoveAll();
-    public CartDto TransformFromCart();
+    public ResponseDto Index();
+    public Task<ResponseDto> Add(int id);
+    public Task<ResponseDto> Decrease(int id);
+    public Task<ResponseDto> Remove(int id);
+    public ResponseDto Clear();
+
 }

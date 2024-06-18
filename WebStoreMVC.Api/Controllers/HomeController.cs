@@ -10,11 +10,13 @@ public class HomeController : Controller
 {
     private readonly IHomeService _homeService;
     private readonly ISearchingProductsService _searchingProductsService;
+    private readonly IProductsService _productsService;
 
-    public HomeController(IHomeService homeService,ISearchingProductsService searchingProductsService)
+    public HomeController(IHomeService homeService,ISearchingProductsService searchingProductsService,IProductsService productsService)
     {
         _homeService = homeService;
         _searchingProductsService = searchingProductsService;
+        _productsService = productsService;
     }
 
     public IActionResult Index()
@@ -38,11 +40,15 @@ public class HomeController : Controller
     }
 
     public async Task<ActionResult<ResponseDto<List<Product>>>> Store(string searchString = null) {
-        var products = await _homeService.Store();
+        ResponseDto<List<Product>> products;
         
         if (searchString != null)
         {
             products = await _searchingProductsService.SearchingProducts(searchString);
+        }
+        else
+        {
+            products = await _homeService.Store();
         }
 
         if (products.Data == null)

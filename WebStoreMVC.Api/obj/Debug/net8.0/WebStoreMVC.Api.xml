@@ -4,15 +4,15 @@
         <name>WebStoreMVC.Api</name>
     </assembly>
     <members>
-        <member name="M:WebStoreMVC.Areas.Admin.Controllers.ProductsController.#ctor(WebStoreMVC.Services.Interfaces.IProductsService,WebStoreMVC.Services.Interfaces.ISearchingProductsService)">
+        <member name="M:WebStoreMVC.Areas.Admin.Controllers.ProductsForAdminController.#ctor(WebStoreMVC.Services.Interfaces.IProductsService,WebStoreMVC.Services.Interfaces.ISearchingProductsService)">
             <summary>
             DI сервиса CRUD товаров
             </summary>
             <param name="productsService"></param>
         </member>
-        <member name="M:WebStoreMVC.Areas.Admin.Controllers.ProductsController.GetAllProducts(System.Int32,System.String)">
+        <member name="M:WebStoreMVC.Areas.Admin.Controllers.ProductsForAdminController.GetAllProducts(System.Int32,System.String)">
             <summary>
-            Получение всех товаров (ограничение на 3000 товаров)
+            Получение всех товаров (
             </summary>
             <param name=""></param>
             <remarks>
@@ -20,7 +20,7 @@
                 GET
             </remarks>
         </member>
-        <member name="M:WebStoreMVC.Areas.Admin.Controllers.ProductsController.GetProductById(System.Int32)">
+        <member name="M:WebStoreMVC.Areas.Admin.Controllers.ProductsForAdminController.GetProductById(System.Int32)">
             <summary>
             Получение товара по Id
             </summary>
@@ -35,7 +35,7 @@
             <response code = "200">Получение товара прошло успешно</response>
             <response code = "500">Получение товара прошло неудачно</response>
         </member>
-        <member name="M:WebStoreMVC.Areas.Admin.Controllers.ProductsController.PostProduct(WebStoreMVC.Domain.Entities.Product)">
+        <member name="M:WebStoreMVC.Areas.Admin.Controllers.ProductsForAdminController.PostProduct(WebStoreMVC.Domain.Entities.Product)">
             <summary>
             Создание товара
             </summary>
@@ -45,7 +45,7 @@
                 POST
             </remarks>
         </member>
-        <member name="M:WebStoreMVC.Areas.Admin.Controllers.ProductsController.EditProduct(WebStoreMVC.Domain.Entities.Product)">
+        <member name="M:WebStoreMVC.Areas.Admin.Controllers.ProductsForAdminController.EditProduct(WebStoreMVC.Domain.Entities.Product)">
             <summary>
             Изменение товара
             </summary>
@@ -56,7 +56,7 @@
             </remarks>
             <response code = "404">Товар не был найден</response> 
         </member>
-        <member name="M:WebStoreMVC.Areas.Admin.Controllers.ProductsController.DeleteProduct(System.Nullable{System.Int32})">
+        <member name="M:WebStoreMVC.Areas.Admin.Controllers.ProductsForAdminController.DeleteProduct(System.Nullable{System.Int32})">
             <summary>
             Удаление товара
             </summary>
@@ -67,7 +67,7 @@
             </remarks>
             <response code = "404">Товар не был найден</response> 
         </member>
-        <member name="M:WebStoreMVC.Areas.Admin.Controllers.ProductsController.GetProductByPage(System.Int32,System.Int32)">
+        <member name="M:WebStoreMVC.Areas.Admin.Controllers.ProductsForAdminController.GetProductByPage(System.Int32,System.Int32)">
             <summary>
             Пагинация
             </summary>

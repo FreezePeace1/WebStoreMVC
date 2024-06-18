@@ -11,10 +11,12 @@ namespace WebStoreMVC.Services;
 public class HomeService : IHomeService
 {
     private readonly WebStoreContext _context;
+    private readonly IProductsService _productsService;
 
-    public HomeService(WebStoreContext context)
+    public HomeService(WebStoreContext context,IProductsService productsService)
     {
         _context = context;
+        _productsService = productsService;
     }
     
     public async Task<ResponseDto<List<Product>>> Store()

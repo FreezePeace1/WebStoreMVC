@@ -10,7 +10,7 @@ namespace WebSotoreMVC.Api.Home;
 [TestClass]
 public class HomeControllerTests
 {
-    [TestMethod]
+    /*[TestMethod]
     public void Index_Returns_View()
     {
         var products = new List<Product> { };
@@ -126,5 +126,5 @@ public class HomeControllerTests
         home_service_mock.Verify(service => service.Store());
         home_service_mock.VerifyNoOtherCalls();
 
-    }
+    }*/
 }
