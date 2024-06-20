@@ -1,8 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using WebStoreMVC.Application.JSON;
-using WebStoreMVC.DAL.Context;
-using WebStoreMVC.Models;
-using WebStoreMVC.Models.ViewModels;
 using WebStoreMVC.Services.Interfaces;
 
 namespace WebStoreMVC.Controllers;

@@ -1,13 +1,59 @@
-@model WebStoreMVC.Models.ViewModels.SmallCartVIewModel
+@model IEnumerable<CartItem>;
 
-@if (Model != null)
-{
-    <p>Items in cart: <span class="badge badge-primary">@Model.NumberOfItems</span></p>
-    <p>Total: <b>@Model.TotalAmount.ToString("C2")</b></p>
-    <a class="btn btn-primary" asp-controller="Cart" asp-action="Index">View cart</a>
-    <a asp-controller="Cart" asp-action="Clear" class="btn btn-danger">Clear cart</a>
-}
-else
-{
-    <p class="lead m-0">Your cart is empty</p>
-}
+<div class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+        <i class="fa fa-shopping-cart"></i>
+        <span>Your Cart</span>
+        <div class="qty">
+            @if (Model == null)
+            {
+                <p>0</p>
+            }
+            else
+            {
+                <p>@Model.Sum(x => x.Quantity)</p>
+            }
+        </div>
+    </a>
+    <div class="cart-dropdown">
+        <div class="cart-list">
+
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <div class="product-widget">
+                        <div class="product-img">
+                            <img src="~/images/products/@item.Image" alt="">
+                        </div>
+                        <div class="product-body">
+                            <h3 class="product-name">
+                                <a href="#">@item.ProductName</a>
+                            </h3>
+                            <h4 class="product-price">
+                                <span class="qty">@Model.Where(x => x.ProductId == item.ProductId).Sum(x => x.Price * x.Quantity).ToString("C2") @Model.Where(x => x.ProductId == item.ProductId).Sum(x => x.Quantity)x</span>
+                            </h4>
+                        </div>
+                        <a asp-controller="Cart" asp-action="Remove" asp-route-id="@item.ProductId" button class="delete">
+                            <i class="fa fa-close"></i>
+                        </a>
+                    </div>
+                }
+
+                <div class="cart-summary">
+                    <small>@Model.Sum(x => x.Quantity) Item(s) selected</small>
+                    <h5>SUBTOTAL: @Model.Sum(x => x.Quantity * x.Price).ToString("C2")</h5>
+                </div>
+                <div class="cart-btns">
+                    <a asp-controller="Cart" asp-action="Index">View Cart</a>
+                    <a href="#">Checkout <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            }
+            else
+            {
+                <p class="lead m-0">Your cart is empty</p>
+            }
+        </div>
+
+    </div>
+</div>
