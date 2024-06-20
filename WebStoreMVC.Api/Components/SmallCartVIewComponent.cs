@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using WebStoreMVC.JSON;
+using WebStoreMVC.Application.JSON;
 using WebStoreMVC.Models;
 using WebStoreMVC.Models.ViewModels;
 

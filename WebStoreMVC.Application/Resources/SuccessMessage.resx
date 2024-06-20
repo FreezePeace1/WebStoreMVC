@@ -36,4 +36,10 @@
     <data name="ProductsAreReceived" xml:space="preserve">
         <value>Товары получены</value>
     </data>
+    <data name="CreatingCartVM" xml:space="preserve">
+        <value>Создание корзины выполнено</value>
+    </data>
+    <data name="OperationForCart" xml:space="preserve">
+        <value>Операция для корзины выполнена успешно</value>
+    </data>
 </root>

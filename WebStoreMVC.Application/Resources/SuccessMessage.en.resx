@@ -29,4 +29,10 @@
     <data name="ProductsAreReceived" xml:space="preserve">
         <value>Products are received</value>
     </data>
+    <data name="CreatingCartVM" xml:space="preserve">
+        <value>Creating the cart is done</value>
+    </data>
+    <data name="OperationForCart" xml:space="preserve">
+        <value>Operation for cart is done successfully</value>
+    </data>
 </root>

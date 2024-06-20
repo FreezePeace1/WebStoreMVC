@@ -1,6 +1,7 @@
+using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 
-namespace WebStoreMVC.JSON;
+namespace WebStoreMVC.Application.JSON;
 
 public static class SessionExtensions
 {
