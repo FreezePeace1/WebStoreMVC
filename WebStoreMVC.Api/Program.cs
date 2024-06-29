@@ -1,9 +1,10 @@
 using Serilog;
 using WebStoreMVC;
 using WebStoreMVC.Application.DependencyInjection;
-using WebStoreMVC.Components;
 using WebStoreMVC.DAL.DependencyInjection;
+using WebStoreMVC.Middleware;
 using WebStoreMVC.Services.Data;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,6 +38,7 @@ AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 var app = builder.Build();
 
+
 app.UseSession();
 
 app.MapRazorPages();
@@ -59,6 +61,8 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseMiddleware<RefreshTokenMiddleware>();
 
 //Чтобы сервис включался при запуске (добавляем автоматически роли и админа если этого нет в БД)
 var scope = app.Services.CreateScope();

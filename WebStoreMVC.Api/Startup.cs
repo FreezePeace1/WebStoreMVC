@@ -6,26 +6,26 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.IdentityModel.Tokens;
-using NuGet.Protocol;
+using WebStoreMVC.BackgroundService;
 using WebStoreMVC.DAL.Context;
 using WebStoreMVC.Domain.Entities;
 using WebStoreMVC.Policy;
-using WebStoreMVC.Services;
 using WebStoreMVC.Services.Interfaces;
+using ILogger = Serilog.ILogger;
 
 namespace WebStoreMVC;
 
 public static class Startup
 {
+    
     /// <summary>
     /// Подключение и настройка Identity
     /// </summary>
     /// <param name="services"></param>
     public static void AddIdentity(this IServiceCollection services)
     {
+        
         //Подключаем Identity
         services.AddIdentity<AppUser, IdentityRole>( /*options => options.SignIn.RequireConfirmedAccount = true*/)
             .AddEntityFrameworkStores<WebStoreContext>()
@@ -48,7 +48,6 @@ public static class Startup
             //Нужен нормальный email (существующий)
             opt.User.RequireUniqueEmail = true;
         });
-
         services.ConfigureApplicationCookie(opt =>
         {
             opt.Cookie.Name = "WebStoreMvc_Cookie";
@@ -60,6 +59,7 @@ public static class Startup
 
             //Чтобы состояние пользователя во время сессии менялось (например если он зарегистрировался или залогинился то сразу переключаем на эти права)
             opt.SlidingExpiration = true;
+            
         });
     }
 
@@ -206,5 +206,6 @@ public static class Startup
                 policy.RequireRole(UserRoles.USER);
             });
         });
+        
     }
 }

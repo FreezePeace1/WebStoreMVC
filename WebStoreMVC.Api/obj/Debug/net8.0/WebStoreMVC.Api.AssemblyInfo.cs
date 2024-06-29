@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebStoreMVC.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+feedea44ba7ec432a21fd784ccf97a71c3440418")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9ca6264103a8222da6240a2b243af43f90093ea9")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebStoreMVC.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebStoreMVC.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

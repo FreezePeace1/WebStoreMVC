@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authorization;
+using WebStoreMVC.Services.Interfaces;
 
 namespace WebStoreMVC.Policy;
 
@@ -11,7 +12,7 @@ public class CookieUserRequirementHandler : AuthorizationHandler<CookieUserRequi
 {
     private readonly IHttpContextAccessor _httpContextAccessor;
 
-    public CookieUserRequirementHandler(IHttpContextAccessor httpContextAccessor)
+    public CookieUserRequirementHandler(IHttpContextAccessor httpContextAccessor,IAuthService authService)
     {
         _httpContextAccessor = httpContextAccessor;
     }
@@ -21,7 +22,7 @@ public class CookieUserRequirementHandler : AuthorizationHandler<CookieUserRequi
         var accessToken = _httpContextAccessor.HttpContext.Request.Cookies["accessToken"];
         var refreshToken = _httpContextAccessor.HttpContext.Request.Cookies["refreshToken"];
 
-        if (accessToken != null || refreshToken != null)
+        if (accessToken != null && refreshToken != null)
         {
             context.Succeed(requirement);
         }

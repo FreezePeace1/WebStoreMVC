@@ -1,9 +1,11 @@
+using System.Globalization;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
@@ -215,7 +217,7 @@ public class AuthService : IAuthService
             //Проверяем на срок истечения,если истекает то обновляем и записываем новый в БД
             if (user.TokenExpires < DateTime.Now || user.TokenExpires >= DateTime.MaxValue)
             {
-                var refreshTokenFromCookies = _httpContextAccessor.HttpContext.Request.Cookies["refreshToken"];
+                var refreshTokenFromCookies = _httpContextAccessor.HttpContext.Request.Cookies[CookieName.refreshToken];
 
                 if (!user.RefreshToken.Equals(refreshTokenFromCookies) || user.TokenExpires < DateTime.Now)
                 {
@@ -250,6 +252,11 @@ public class AuthService : IAuthService
         }
     }
 
+    public async Task<string> SetAccessTokenForBackgroundService(AppUser user)
+    {
+        return await GetAllAndSetAccessToken(user);
+    }
+
     private async Task<string> GetAllAndSetAccessToken(AppUser user)
     {
         var userRoles = await _userManager.GetRolesAsync(user);
@@ -277,16 +284,15 @@ public class AuthService : IAuthService
     private string GenerateJsonWebToken(List<Claim> claims)
     {
         var secret = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtSettings:Key"]));
-
         var tokenObject = new JwtSecurityToken(
             issuer: _configuration["JwtSettings:Issuer"],
             audience: _configuration["JwtSettings:Audience"],
-            expires: DateTime.Now.AddDays(3),
+            expires: DateTime.Now.AddMinutes(20),
             claims: claims,
             signingCredentials: new SigningCredentials(secret, SecurityAlgorithms.HmacSha256));
-
+        
         string token = new JwtSecurityTokenHandler().WriteToken(tokenObject);
-
+        
         return token;
     }
 
@@ -311,8 +317,8 @@ public class AuthService : IAuthService
             /*Secure = true,*/
             Expires = refreshToken.Expired
         };
-
-        _httpContextAccessor.HttpContext.Response.Cookies.Append("refreshToken", refreshToken.Token, cookieOpt);
+        
+        _httpContextAccessor.HttpContext.Response.Cookies.Append(CookieName.refreshToken, refreshToken.Token, cookieOpt);
     }
 
     private void SetAccessToken(string accessToken)
@@ -322,10 +328,12 @@ public class AuthService : IAuthService
             HttpOnly = true,
             //Для передачи только по https
             /*Secure = true,*/
-            Expires = DateTime.Now.AddHours(12)
+            Expires = DateTime.Now.AddMinutes(20)
         };
 
-        _httpContextAccessor.HttpContext.Response.Cookies.Append("accessToken", accessToken, cookieOpt);
+        _httpContextAccessor.HttpContext.Response.Cookies.Append(CookieName.accessToken, accessToken, cookieOpt);
+        _httpContextAccessor.HttpContext.Response.Cookies.Append(CookieName.accessTokenExpires,DateTime.Now.AddMinutes(20).Date.ToString(CultureInfo.CurrentCulture));
+        
     }
 
     public async Task<ResponseDto> FromUserToAdmin(UpdateDto updateDto)
@@ -418,8 +426,9 @@ public class AuthService : IAuthService
     public async Task<ResponseDto> Logout()
     {
         await _signInManager.SignOutAsync();
-        _httpContextAccessor.HttpContext.Response.Cookies.Delete("accessToken");
-        _httpContextAccessor.HttpContext.Response.Cookies.Delete("refreshToken");
+        _httpContextAccessor.HttpContext.Response.Cookies.Delete(CookieName.accessToken);
+        _httpContextAccessor.HttpContext.Response.Cookies.Delete(CookieName.refreshToken);
+        _httpContextAccessor.HttpContext.Response.Cookies.Delete(CookieName.accessTokenExpires);
 
         return new ResponseDto()
         {

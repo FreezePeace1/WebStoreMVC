@@ -1,3 +1,4 @@
+using WebStoreMVC.Domain.Entities;
 using WebStoreMVC.Dtos;
 
 namespace WebStoreMVC.Services.Interfaces;
@@ -13,4 +14,6 @@ public interface IAuthService
     public Task<ResponseDto> Login(LoginDto loginDto);
 
     public Task<ResponseDto> Logout();
+
+    public Task<string> SetAccessTokenForBackgroundService(AppUser user);
 }

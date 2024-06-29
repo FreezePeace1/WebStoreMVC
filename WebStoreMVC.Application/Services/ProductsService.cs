@@ -5,7 +5,6 @@ using WebStoreMVC.DAL.Context;
 using WebStoreMVC.Domain.Entities;
 using WebStoreMVC.Domain.Enum;
 using WebStoreMVC.Dtos;
-using WebStoreMVC.Models;
 using WebStoreMVC.Services.Interfaces;
 
 namespace WebStoreMVC.Services;

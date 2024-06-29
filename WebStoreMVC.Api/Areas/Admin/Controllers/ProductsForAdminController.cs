@@ -40,6 +40,11 @@ public class ProductsForAdminController : Controller
         ViewData["CurrentFilter"] = searchString;
         
         var productList = await _productsService.GetAllProducts();
+        
+        if (searchString != "")
+        {
+            productList = await _searchingProductsService.SearchingProducts(searchString);
+        }
 
         const int pageSize = 15;
 
@@ -50,10 +55,6 @@ public class ProductsForAdminController : Controller
         
         this.ViewBag.Pager = pager;
         
-        if (searchString != "")
-        {
-            productList = await _searchingProductsService.SearchingProducts(searchString);
-        }
 
         if (productList.Data == null)
         {

@@ -21,7 +21,7 @@ public class CookieRequirementHandler : AuthorizationHandler<CookieAdminRequirem
         var httpContext = _httpContextAccessor.HttpContext;
         var accessToken = httpContext.Request.Cookies["accessToken"];
         var refreshToken = httpContext.Request.Cookies["refreshToken"];
-
+        
         if (accessToken != null && refreshToken != null)
         {
             context.Succeed(adminRequirement);
