@@ -14,16 +14,23 @@
 
                     <div style="margin-bottom: 10px;">
                         <input asp-for="Username" placeholder="Логин пользователя"/>
+                    </div>
+                    <div>
                         <span asp-validation-for="Username" class="text-danger"></span>
                     </div>
 
                     <div style="margin-bottom: 10px;">
                         <input asp-for="Email" placeholder="Почта (обязательно)"/>
+
+                    </div>
+                    <div>
                         <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
 
                     <div style="margin-bottom: 10px;">
                         <input asp-for="Password" placeholder="Введите пароль"/>
+                    </div>
+                    <div>
                         <span asp-validation-for="Password" class="text-danger"></span>
                     </div>
 

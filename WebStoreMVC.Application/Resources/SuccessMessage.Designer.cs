@@ -92,5 +92,11 @@ namespace WebStoreMVC.Application.Resources {
                 return ResourceManager.GetString("OperationForCart", resourceCulture);
             }
         }
+        
+        internal static string TokenIsActivated {
+            get {
+                return ResourceManager.GetString("TokenIsActivated", resourceCulture);
+            }
+        }
     }
 }

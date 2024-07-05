@@ -1,14 +1,16 @@
+using Microsoft.AspNetCore.Authentication;
+using Nest;
 using Serilog;
 using WebStoreMVC;
 using WebStoreMVC.Application.DependencyInjection;
 using WebStoreMVC.DAL.DependencyInjection;
+using WebStoreMVC.Domain.Entities;
 using WebStoreMVC.Middleware;
 using WebStoreMVC.Services.Data;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+//Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 //From DAL
@@ -33,11 +35,11 @@ builder.Services.AddSession(opts =>
 
 //Serilog
 builder.Host.UseSerilog((context, configuration) => configuration.ReadFrom.Configuration(context.Configuration));
+builder.Services.AddElasticsearch(builder.Configuration);
 
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 var app = builder.Build();
-
 
 app.UseSession();
 
@@ -72,6 +74,5 @@ service.Initialize();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
 
 app.Run();

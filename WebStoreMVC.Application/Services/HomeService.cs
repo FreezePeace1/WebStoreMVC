@@ -21,7 +21,7 @@ public class HomeService : IHomeService
     
     public async Task<ResponseDto<List<Product>>> Store()
     {
-        var products = await _context.Products.Take(15).ToListAsync();
+        var products = await _context.Products.Take(21).ToListAsync();
 
         return new ResponseDto<List<Product>>()
         {

@@ -78,6 +78,11 @@
             </remarks>
             <response code = "200">Пагинация прошла успешно</response> 
         </member>
+        <member name="T:WebStoreMVC.Controllers.AccountController">
+            <summary>
+            Контроллер предназначенный для аутентификации и авторизации пользователей
+            </summary>
+        </member>
         <member name="M:WebStoreMVC.Controllers.AccountController.#ctor(WebStoreMVC.Services.Interfaces.IAuthService)">
             <summary>
             DI сервиса AuthService
@@ -88,13 +93,18 @@
             <summary>
             Создание ролей
             </summary>
-            <param name=""></param>
             <remarks>
                 Request for creating roles
                 POST
             </remarks>
             <response code = "200">Создание ролей прошло успешно</response>
             <response code = "400">Создание ролей прошло неудачно</response>
+        </member>
+        <member name="M:WebStoreMVC.Controllers.AccountController.Registration">
+            <summary>
+            View для регистрации
+            </summary>
+            <returns>Возвращает view с RegisterDto</returns>
         </member>
         <member name="M:WebStoreMVC.Controllers.AccountController.Registration(WebStoreMVC.Dtos.RegisterDto)">
             <summary>
@@ -113,6 +123,15 @@
             </remarks>
             <response code = "200">Регистрация пользователя прошла успешно</response>
             <response code = "400">Регистрация пользователя прошла неудачно</response>
+            <returns>При удачной отработке сервиса (записываем данные пользователя в БД и отправляем токен варификации на почту)
+            переходим на начальную страницу, иначе будет возвращаться view до тех пор,
+            пока пользователь не введет правильно данные для регистрации</returns>
+        </member>
+        <member name="M:WebStoreMVC.Controllers.AccountController.Login">
+            <summary>
+            View для логина
+            </summary>
+            <returns>Возвращает view с LoginDto</returns>
         </member>
         <member name="M:WebStoreMVC.Controllers.AccountController.Login(WebStoreMVC.Dtos.LoginDto)">
             <summary>
@@ -129,6 +148,10 @@
             </remarks>
             <response code = "200">Авторизация пользователя прошла успешно</response>
             <response code = "400">Авторизация пользователя прошла неудачно</response>
+            <returns>При удачной отработке сервиса и получения токена переходим на начальную страницу,
+            если сервис отработал правильно, но пользователь не подтверждал варификацию, то переходим на страницу верификации,
+            при этом отправляем повторное сообщение с токеном валидации на почту пользователя, иначе будет возвращаться view
+            если пользователь неправильно вводит данные для аккаунта</returns>
         </member>
         <member name="M:WebStoreMVC.Controllers.AccountController.FromUserToAdmin(WebStoreMVC.Dtos.UpdateDto)">
             <summary>
@@ -175,6 +198,27 @@
             Если пользователю отказали в доступе
             </summary>
             <returns></returns>
+        </member>
+        <member name="M:WebStoreMVC.Controllers.AccountController.VerifyAccount(WebStoreMVC.Dtos.VerifyAccountDto)">
+            <summary>
+            Варификация через токен, который отправляется на почту пользователя
+            </summary>
+            <param name="verifyAccountDto"></param>
+            <returns>При удачной отработке сервиса возвращает на начало страницы, иначе возвращает view ввода токена пока пользователь не введет правильный токен</returns>
+        </member>
+        <member name="M:WebStoreMVC.Controllers.AccountController.ForgotPassword(WebStoreMVC.Dtos.ForgotPasswordDto)">
+            <summary>
+            Ввод почты пользователя и отправка токена на сброс пароля
+            </summary>
+            <param name="forgotPasswordDto"></param>
+            <returns>При удачной отработке сервиса переходит на страницу сброса пароля, иначе пока пользователь не введет существующую почту</returns>
+        </member>
+        <member name="M:WebStoreMVC.Controllers.AccountController.ResetPassword(WebStoreMVC.Dtos.ResetPasswordDto)">
+            <summary>
+            Сброс пароля засчет ввода токена для восстановления пароля, который отправляется на почту пользователя, самого нового пароля и его повторения
+            </summary>
+            <param name="resetPasswordDto"></param>
+            <returns>При удачной отработке сервиса возвращает на начальную страницу, иначе пока не будут соблюдены условия: правильности токена и пароля</returns>
         </member>
         <member name="M:WebStoreMVC.Startup.AddIdentity(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>

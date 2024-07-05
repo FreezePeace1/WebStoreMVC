@@ -3,11 +3,15 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
+using MailKit.Net.Smtp;
+using MailKit.Security;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Caching.Memory;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using MimeKit;
+using MimeKit.Text;
 using Serilog;
 using WebStoreMVC.Application.Resources;
 using WebStoreMVC.DAL.Context;
@@ -90,6 +94,7 @@ public class AuthService : IAuthService
             };
         }
 
+        await using var transaction = await _context.Database.BeginTransactionAsync();
         try
         {
             //Если пользователь существует,то создаем его
@@ -126,18 +131,28 @@ public class AuthService : IAuthService
             user.RefreshToken = refreshToken.Token;
             user.TokenCreated = refreshToken.Created;
             user.TokenExpires = refreshToken.Expired;
-
-            await _context.SaveChangesAsync();
             
             var accessToken = await GetAllAndSetAccessToken(user);
             
             //Запоминаем пользователя после регистрации
             await _signInManager.SignInAsync(user, true);
 
+            //Отправляем сообщение пользователю что он зарегестрирован и токен для активации
+            string tokenForVerification = CreateRandomToken();
+            await SendMessageWithToken(user,$"You successfully registered!" +
+                                            $"\nPlease activate token to verify your account:" +
+                                            $"\n{tokenForVerification}");
+            user.VerificationToken = tokenForVerification;
+            
+            await _context.SaveChangesAsync();
+
+            await transaction.CommitAsync();
+            
             return new ResponseDto()
             {
                 SuccessMessage = $"{SuccessMessage.CreatingUserIsDone} ({user})",
             };
+            
         }
         catch (Exception e)
         {
@@ -145,8 +160,8 @@ public class AuthService : IAuthService
 
             return new ResponseDto()
             {
-                ErrorMessage = ErrorMessage.InternalServerError,
-                ErrorCode = (int)ErrorCode.InternalServerError
+                ErrorMessage = ErrorMessage.AccessError,
+                ErrorCode = (int)ErrorCode.AccessError
             };
         }
     }
@@ -173,7 +188,16 @@ public class AuthService : IAuthService
                 ErrorCode = (int)ErrorCode.IncorrectCredentials
             };
         }
+        
+        if (user.VerificationToken == null)
+        {
+            return new ResponseDto()
+            {
+                ErrorMessage = ErrorMessage.TokenIsNullOrNotFound
+            };
+        }
 
+        /*await using var transaction = await _context.Database.BeginTransactionAsync();*/
         try
         {
             //Adding for getting access to user roles
@@ -235,6 +259,21 @@ public class AuthService : IAuthService
                 await _context.SaveChangesAsync();
             }
 
+            /*await transaction.CommitAsync();*/
+
+            //Пользователь не активировал токен варификации, снова отправляем сообщение
+            if (user.VerifiedAt == null)
+            {
+                await SendMessageWithToken(user,$"You successfully registered!" +
+                                                $"\nPlease activate token to verify your account:" +
+                                                $"\n{user.VerificationToken}");
+                
+                return new ResponseDto()
+                {
+                    SuccessMessage = ""
+                };
+            }
+
             return new ResponseDto()
             {
                 SuccessMessage = $"{accessToken}",
@@ -255,6 +294,150 @@ public class AuthService : IAuthService
     public async Task<string> SetAccessTokenForBackgroundService(AppUser user)
     {
         return await GetAllAndSetAccessToken(user);
+    }
+
+    public async Task<ResponseDto> VerifyAccount(string verificationToken)
+    {
+        var user = await _context.Users.FirstOrDefaultAsync(x => x.VerificationToken == verificationToken);
+
+        if (user == null)
+        {
+            return new ResponseDto()
+            {
+                ErrorMessage = ErrorMessage.TokenIsNullOrNotFound,
+                ErrorCode = (int)ErrorCode.TokenIsNullOrNotFound
+            };
+        }
+
+        try
+        {
+            user.VerifiedAt = DateTime.Now;
+            user.EmailConfirmed = true;
+            await _context.SaveChangesAsync();
+
+            return new ResponseDto()
+            {
+                SuccessMessage = SuccessMessage.TokenIsActivated
+            };
+        }
+        catch (Exception e)
+        {
+            _logger.Error(e,e.Message);
+            return new ResponseDto()
+            {
+                ErrorMessage = ErrorMessage.InternalServerError,
+                ErrorCode = (int)ErrorCode.InternalServerError
+            };
+        }
+    }
+
+    public async Task<ResponseDto> ForgotPassword(string email)
+    {
+        var user = await _context.Users.FirstOrDefaultAsync(x => x.Email == email);
+
+        if (user == null)
+        {
+            return new ResponseDto()
+            {
+                ErrorMessage = ErrorMessage.UserDoesNotExist,
+                ErrorCode = (int)ErrorCode.EmailNotFound
+            };
+        }
+
+        try
+        {
+            string tokenForPasswordReseting = CreateRandomToken();
+            await SendMessageWithToken(user,$"Message from ElectroStore\nPlease, enter this token to reset your password. Token will expire through 1 hour" +
+                                            $"\n{tokenForPasswordReseting}");
+            user.ResetPasswordToken = tokenForPasswordReseting;
+            user.ResetPasswordTokenExpires = DateTime.Now.AddHours(1);
+
+            await _context.SaveChangesAsync();
+
+            return new ResponseDto()
+            {
+                SuccessMessage = SuccessMessage.TokenIsActivated
+            };
+        }
+        catch (Exception e)
+        {
+            _logger.Error(e,e.Message);
+
+            return new ResponseDto()
+            {
+                ErrorMessage = ErrorMessage.InternalServerError,
+                ErrorCode = (int)ErrorCode.InternalServerError
+            };
+        }
+    }
+
+    public async Task<ResponseDto> ResetPassword(ResetPasswordDto resetPasswordDto)
+    {
+        var user =
+            await _context.Users.FirstOrDefaultAsync(x => x.ResetPasswordToken == resetPasswordDto.TokenForPasswordReseting);
+
+        if (user == null || user.ResetPasswordTokenExpires < DateTime.Now)
+        {
+            return new ResponseDto()
+            {
+                ErrorMessage = ErrorMessage.TokenIsNullOrNotFound,
+                ErrorCode = (int)ErrorCode.TokenIsNullOrNotFound
+            };
+        }
+        
+        try
+        {
+            PasswordHasher<AppUser> passwordHasher = new PasswordHasher<AppUser>();
+            user.PasswordHash = passwordHasher.HashPassword(user, resetPasswordDto.Password);;
+            user.ResetPasswordToken = null;
+            user.ResetPasswordTokenExpires = null;
+            await _context.SaveChangesAsync();
+
+            return new ResponseDto()
+            {
+                SuccessMessage = SuccessMessage.TokenIsActivated
+            };
+        }
+        catch (Exception e)
+        {
+            _logger.Error(e,e.Message);
+            return new ResponseDto()
+            {
+                ErrorMessage = ErrorMessage.InternalServerError,
+                ErrorCode = (int)ErrorCode.InternalServerError
+            };
+        }
+        
+    }
+
+    private async Task SendMessageWithToken(AppUser user,string message)
+    {
+        try
+        {
+            var email = new MimeMessage();
+            email.From.Add(MailboxAddress.Parse(_configuration.GetSection("EmailUsername").Value));
+            email.To.Add(MailboxAddress.Parse(user.Email));
+            email.Subject = "Message from ElectroStore";
+            email.Body = new TextPart(TextFormat.Html) { Text = message };
+
+            using var smtp = new SmtpClient();
+        
+            await smtp.ConnectAsync(_configuration.GetSection("EmailHost").Value, 587,SecureSocketOptions.StartTls);
+            /*smtp.AuthenticationMechanisms.Remove("XOAUTH2");*/
+        
+            await smtp.AuthenticateAsync(_configuration.GetSection("EmailUsername").Value, _configuration.GetSection("EmailPassword").Value);
+            await smtp.SendAsync(email);
+            await smtp.DisconnectAsync(true);
+        }
+        catch (Exception e)
+        {
+            _logger.Error(e,e.Message);
+        }
+    }
+    
+    private string CreateRandomToken()
+    {
+        return Convert.ToHexString(RandomNumberGenerator.GetBytes((64)));
     }
 
     private async Task<string> GetAllAndSetAccessToken(AppUser user)

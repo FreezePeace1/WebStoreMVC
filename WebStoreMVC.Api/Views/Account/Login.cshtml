@@ -14,7 +14,6 @@
                     <form asp-controller="Account" asp-action="Login" method="post" asp-antiforgery="true">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-
                         <div style="margin-bottom: 10px;">
                             <input asp-for="Username" placeholder="Логин пользователя" id="submitLogin"/>
                         </div>
@@ -26,6 +25,11 @@
                         <div style="margin-bottom: 10px;">
                             <button type="submit" class="btn btn-default">Вход</button>
                         </div>
+
+                        <div style="margin-bottom: 10px;">
+                            <a asp-controller="Account" asp-action="ForgotPassword">Забыли пароль?</a>
+                        </div>
+
                     </form>
                 </div><!--/login form-->
             </div>

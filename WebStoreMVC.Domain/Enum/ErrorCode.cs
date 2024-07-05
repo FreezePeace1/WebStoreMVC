@@ -16,8 +16,12 @@ public enum ErrorCode
     IncorrectToken = 4,
     UserDoesNotExist = 5,
     UserAlreadyIsAdmin = 6,
+    TokenIsNullOrNotFound = 7,
+    EmailNotFound = 8,
 
     //For SearchingProducts Service 11 - 20
     ProductsAreNotFound = 11,
     ProductAlreadyExists = 12,
+    
+   
 }

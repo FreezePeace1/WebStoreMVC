@@ -35,4 +35,7 @@
     <data name="OperationForCart" xml:space="preserve">
         <value>Operation for cart is done successfully</value>
     </data>
+    <data name="TokenIsActivated" xml:space="preserve">
+        <value>Token is activated</value>
+    </data>
 </root>

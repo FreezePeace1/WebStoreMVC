@@ -35,4 +35,7 @@
     <data name="OperationForCart" xml:space="preserve">
         <value>Операция для корзины выполнена успешно</value>
     </data>
+    <data name="TokenIsActivated" xml:space="preserve">
+        <value>Токен активирован</value>
+    </data>
 </root>

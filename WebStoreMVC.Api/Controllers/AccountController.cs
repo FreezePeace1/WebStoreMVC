@@ -1,11 +1,16 @@
-using Asp.Versioning;
+using System.Security.Cryptography;
+using System.Text;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using WebStoreMVC.Dtos;
 using WebStoreMVC.Services.Interfaces;
 
 namespace WebStoreMVC.Controllers;
 
+/// <summary>
+/// Контроллер предназначенный для аутентификации и авторизации пользователей
+/// </summary>
 [Route("[controller]")]
 /*[ApiController]
 [ApiVersion("1.0")]*/
@@ -25,7 +30,6 @@ public class AccountController : Controller
     /// <summary>
     /// Создание ролей
     /// </summary>
-    /// <param name=""></param>
     /// <remarks>
     ///     Request for creating roles
     ///     POST
@@ -42,6 +46,10 @@ public class AccountController : Controller
         return Ok(await _authService.SeedRoles());
     }
 
+    /// <summary>
+    /// View для регистрации
+    /// </summary>
+    /// <returns>Возвращает view с RegisterDto</returns>
     public IActionResult Registration()
     {
         return View(new RegisterDto());
@@ -63,13 +71,17 @@ public class AccountController : Controller
     /// </remarks>
     /// <response code = "200">Регистрация пользователя прошла успешно</response>
     /// <response code = "400">Регистрация пользователя прошла неудачно</response>
+    /// <returns>При удачной отработке сервиса (записываем данные пользователя в БД и отправляем токен варификации на почту)
+    /// переходим на начальную страницу, иначе будет возвращаться view до тех пор,
+    /// пока пользователь не введет правильно данные для регистрации</returns>
     [HttpPost("Registration")]
     [Route("Registration")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult> Registration(RegisterDto registerDto)
     {
-        if (HttpContext.Request.Cookies["accessToken"] != null && HttpContext.Request.Cookies["refreshToken"] != null &&
+        if (!(HttpContext.Request.Cookies["accessToken"].IsNullOrEmpty() &&
+              HttpContext.Request.Cookies["refreshToken"].IsNullOrEmpty()) &&
             User.Identity.IsAuthenticated)
         {
             return RedirectToAction("Index", "Home");
@@ -97,6 +109,10 @@ public class AccountController : Controller
     }
 
 
+    /// <summary>
+    /// View для логина
+    /// </summary>
+    /// <returns>Возвращает view с LoginDto</returns>
     public IActionResult Login()
     {
         return View(new LoginDto());
@@ -116,29 +132,40 @@ public class AccountController : Controller
     /// </remarks>
     /// <response code = "200">Авторизация пользователя прошла успешно</response>
     /// <response code = "400">Авторизация пользователя прошла неудачно</response>
+    /// <returns>При удачной отработке сервиса и получения токена переходим на начальную страницу,
+    /// если сервис отработал правильно, но пользователь не подтверждал варификацию, то переходим на страницу верификации,
+    /// при этом отправляем повторное сообщение с токеном валидации на почту пользователя, иначе будет возвращаться view
+    /// если пользователь неправильно вводит данные для аккаунта</returns>
     [HttpPost("Login")]
     [Route("Login")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> Login([FromForm] LoginDto loginDto)
     {
-        if (HttpContext.Request.Cookies["accessToken"] != null && HttpContext.Request.Cookies["refreshToken"] != null &&
+        if (!(HttpContext.Request.Cookies["accessToken"].IsNullOrEmpty() &&
+              HttpContext.Request.Cookies["refreshToken"].IsNullOrEmpty()) &&
             User.Identity.IsAuthenticated)
         {
             return RedirectToAction("Index", "Home");
         }
+
+        var loginResult = await _authService.Login(loginDto);
 
         if (!ModelState.IsValid)
         {
             return View(loginDto);
         }
 
-        var loginResult = await _authService.Login(loginDto);
-
         if (!loginResult.IsSucceed)
         {
             var error = loginResult.ErrorMessage;
             ModelState.AddModelError(string.Empty, error.ToString());
+        }
+
+        //Пользователь не активировал токен варификации
+        if (loginResult.IsSucceed && loginResult.SuccessMessage == "")
+        {
+            return RedirectToAction("VerifyAccount");
         }
 
         if (loginResult.IsSucceed)
@@ -243,5 +270,96 @@ public class AccountController : Controller
     public IActionResult AccessDenied()
     {
         return View();
+    }
+    
+    /// <summary>
+    /// Варификация через токен, который отправляется на почту пользователя
+    /// </summary>
+    /// <param name="verifyAccountDto"></param>
+    /// <returns>При удачной отработке сервиса возвращает на начало страницы, иначе возвращает view ввода токена пока пользователь не введет правильный токен</returns>
+    [HttpPost("VerifyAccount")]
+    [Route("VerifyAccount")]
+    [Authorize(Policy = "Default")]
+    public async Task<IActionResult> VerifyAccount(VerifyAccountDto verifyAccountDto)
+    {
+        var verifyService = await _authService.VerifyAccount(verifyAccountDto.VerificationToken);
+
+        if (!ModelState.IsValid)
+        {
+            return View(verifyAccountDto);
+        }
+
+        if (!verifyService.IsSucceed)
+        {
+            var error = verifyService.ErrorMessage;
+            ModelState.AddModelError(string.Empty, error.ToString());
+        }
+
+        if (verifyService.IsSucceed)
+        {
+            return RedirectToAction("Index", "Home");
+        }
+
+        return View(verifyAccountDto);
+    }
+
+    /// <summary>
+    /// Ввод почты пользователя и отправка токена на сброс пароля
+    /// </summary>
+    /// <param name="forgotPasswordDto"></param>
+    /// <returns>При удачной отработке сервиса переходит на страницу сброса пароля, иначе пока пользователь не введет существующую почту</returns>
+    [HttpPost("ForgotPassword")]
+    [Route("ForgotPassword")]
+    public async Task<IActionResult> ForgotPassword(ForgotPasswordDto forgotPasswordDto)
+    {
+        if (!ModelState.IsValid)
+        {
+            return View(forgotPasswordDto);
+        }
+
+        var forgotPasswordService = await _authService.ForgotPassword(forgotPasswordDto.Email);
+
+        if (!forgotPasswordService.IsSucceed)
+        {
+            var error = forgotPasswordService.ErrorMessage;
+            ModelState.AddModelError(string.Empty, error.ToString());
+        }
+
+        if (forgotPasswordService.IsSucceed)
+        {
+            return RedirectToAction("ResetPassword");
+        }
+
+        return View(forgotPasswordDto);
+    }
+
+    /// <summary>
+    /// Сброс пароля засчет ввода токена для восстановления пароля, который отправляется на почту пользователя, самого нового пароля и его повторения
+    /// </summary>
+    /// <param name="resetPasswordDto"></param>
+    /// <returns>При удачной отработке сервиса возвращает на начальную страницу, иначе пока не будут соблюдены условия: правильности токена и пароля</returns>
+    [HttpPost("ResetPassword")]
+    [Route("ResetPassword")]
+    public async Task<IActionResult> ResetPassword(ResetPasswordDto resetPasswordDto)
+    {
+        if (!ModelState.IsValid)
+        {
+            return View(resetPasswordDto);
+        }
+
+        var resetPasswordService = await _authService.ResetPassword(resetPasswordDto);
+
+        if (!resetPasswordService.IsSucceed)
+        {
+            var error = resetPasswordService.ErrorMessage;
+            ModelState.AddModelError(string.Empty, error.ToString());
+        }
+
+        if (resetPasswordService.IsSucceed)
+        {
+            return RedirectToAction("Index", "Home");
+        }
+
+        return View(resetPasswordDto);
     }
 }

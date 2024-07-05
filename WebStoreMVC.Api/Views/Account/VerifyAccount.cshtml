@@ -1,0 +1,37 @@
+@model WebStoreMVC.Dtos.VerifyAccountDto
+
+@{
+    
+    ViewBag.Title = "Верификация пользователя";
+}
+
+<div class="container">
+    <div class="row">
+        <div style="margin-bottom: 10px;">
+            <b style="font-size: 22px">Пожалуйста, введите токен для варификации</b>
+        </div>
+        <div style="margin-bottom: 10px;">
+            <b style="accent-color:goldenrod">Токен варификации отправлен вам на почту</b>
+        </div>
+        <div>
+            <a style="color: darkred">Вы можете отложить прохождение варификации</a>
+        </div>
+        <div>
+            <a style="color: darkred">Данная страница будет загружаться автоматически после авторизации аккаунта</a>
+        </div>
+    </div>
+</div>
+<br/>
+<div class="container">
+        <div class="row">
+            <form asp-controller="Account" asp-action="VerifyAccount" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div style="margin-bottom: 10px;">
+                    <input asp-for="VerificationToken" placeholder="Введите токен для варификации"/>
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <button type="submit" class="btn btn-default">Подтвердить</button>
+                </div>
+            </form>
+        </div>
+</div>

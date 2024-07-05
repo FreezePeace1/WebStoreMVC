@@ -570,3 +570,8 @@
 /home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/obj/Debug/net8.0/WebStoreMVC.Api.pdb
 /home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/obj/Debug/net8.0/WebStoreMVC.Api.genruntimeconfig.cache
 /home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/obj/Debug/net8.0/ref/WebStoreMVC.Api.dll
+/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/bin/Debug/net8.0/Elasticsearch.Net.dll
+/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/bin/Debug/net8.0/Nest.dll
+/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/bin/Debug/net8.0/BouncyCastle.Cryptography.dll
+/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/bin/Debug/net8.0/MailKit.dll
+/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/bin/Debug/net8.0/MimeKit.dll

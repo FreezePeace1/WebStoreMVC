@@ -16,4 +16,10 @@ public interface IAuthService
     public Task<ResponseDto> Logout();
 
     public Task<string> SetAccessTokenForBackgroundService(AppUser user);
+    
+    public Task<ResponseDto> VerifyAccount(string verificationToken);
+
+    public Task<ResponseDto> ForgotPassword(string email);
+
+    public Task<ResponseDto> ResetPassword(ResetPasswordDto resetPasswordDto);   
 }

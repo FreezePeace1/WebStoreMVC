@@ -7,12 +7,11 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
-using WebStoreMVC.BackgroundService;
+using Nest;
+using Newtonsoft.Json.Serialization;
 using WebStoreMVC.DAL.Context;
 using WebStoreMVC.Domain.Entities;
 using WebStoreMVC.Policy;
-using WebStoreMVC.Services.Interfaces;
-using ILogger = Serilog.ILogger;
 
 namespace WebStoreMVC;
 
@@ -137,12 +136,46 @@ public static class Startup
     public static void AddAuthenticationAndAuthorization(this IServiceCollection services,
         WebApplicationBuilder builder)
     {
+        services  
+            .AddAuthentication() // Cookie by default  
+            .AddCookie(options =>  
+            {  
+                options.LoginPath = "/Account/Unauthorized/";  
+                options.AccessDeniedPath = "/Account/Forbidden/";  
+            })  
+            .AddJwtBearer(opt =>  
+            {  
+                opt.SaveToken = true;
+                opt.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidIssuer = builder.Configuration["JwtSettings:Issuer"],
+                    ValidAudience = builder.Configuration["JwtSettings:Audience"],
+                    IssuerSigningKey =
+                        new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JwtSettings:Key"]))
+                }; 
+                
+            });  
         //Подключаем JWT
-        services.AddAuthentication(opt =>
+        /*services.AddAuthentication(opt =>
             {
                 opt.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
                 opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddCookie(opt =>
+            {
+                opt.Cookie.Name = "WebStoreMvc_Cookie";
+                opt.Cookie.HttpOnly = true;
+                opt.ExpireTimeSpan = TimeSpan.FromDays(30);
+                /*opt.LoginPath = "/Account/Login";
+                opt.LogoutPath = "/Account/Logout";#1#
+                opt.AccessDeniedPath = "/Account/AccessDenied";
+
+                //Чтобы состояние пользователя во время сессии менялось (например если он зарегистрировался или залогинился то сразу переключаем на эти права)
+                opt.SlidingExpiration = true;
             })
             /*.AddCookie(options =>
             {
@@ -157,7 +190,7 @@ public static class Startup
                         return Task.CompletedTask;
                     }
                 };
-            })*/
+            })#1#
             .AddJwtBearer("Bearer", opt =>
             {
                 opt.SaveToken = true;
@@ -172,6 +205,7 @@ public static class Startup
                         new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JwtSettings:Key"]))
                 };
             });
+            */
 
         //Для добавления Policy
         services.AddHttpContextAccessor();
@@ -188,8 +222,8 @@ public static class Startup
             options.DefaultPolicy = defaultAuthorizationPolicyBuilder.Build();
 
             options.AddPolicy("Default", new AuthorizationPolicyBuilder()
-                .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
                 .RequireAuthenticatedUser()
+                .RequireRole(UserRoles.USER)
                 .Build());
 
             options.AddPolicy("AdminCookie", policy =>
@@ -202,10 +236,33 @@ public static class Startup
             options.AddPolicy("UserCookie", policy =>
             {
                 policy.Requirements.Add(new CookieUserRequirement());
-                policy.RequireAuthenticatedUser();
-                policy.RequireRole(UserRoles.USER);
             });
         });
         
+    }
+
+    public static void AddElasticsearch(this IServiceCollection services, IConfiguration configuration)
+    {
+        var baseUrl = configuration["ElasticSettings:baseUrl"];
+        var index = configuration["ElasticSettings:defaultIndex"];
+        var settings = new ConnectionSettings(new Uri(baseUrl ?? "")).PrettyJson().CertificateFingerprint("6b6a8c2ad2bc7b291a7363f7bb96a120b8de326914980c868c1c0bc6b3dc41fd")
+            .BasicAuthentication("elastic", "JbNb_unwrJy3W0OaZ07n=").DefaultIndex(index);
+        settings.EnableApiVersioningHeader();
+        AddDefaultMappings(settings);
+        var client = new ElasticClient(settings);
+        services.AddSingleton<IElasticClient>(client);
+        CreateIndex(client,index);
+
+    }
+    private static void AddDefaultMappings(ConnectionSettings settings) {
+        settings.DefaultMappingFor<Product>(m => m.
+            Ignore(p => p.Id)
+            .Ignore(p => p.Images)
+            .Ignore(p => p.Price)
+            .Ignore(p => p.Quantity)
+            .Ignore(p => p.Article));
+    }
+    private static void CreateIndex(IElasticClient client, string indexName) {
+        var createIndexResponse = client.Indices.Create(indexName, index => index.Map<Product>(x => x.AutoMap()));
     }
 }

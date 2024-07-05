@@ -44,4 +44,7 @@
     <data name="InternalServerError" xml:space="preserve">
         <value>Внутренняя ошибка сервера</value>
     </data>
+    <data name="TokenIsNullOrNotFound" xml:space="preserve">
+        <value>Токен не существует</value>
+    </data>
 </root>

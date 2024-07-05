@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.IdentityModel.Tokens;
 using WebStoreMVC.Services.Interfaces;
 
 namespace WebStoreMVC.Policy;
@@ -22,8 +23,9 @@ public class CookieUserRequirementHandler : AuthorizationHandler<CookieUserRequi
         var accessToken = _httpContextAccessor.HttpContext.Request.Cookies["accessToken"];
         var refreshToken = _httpContextAccessor.HttpContext.Request.Cookies["refreshToken"];
 
-        if (accessToken != null && refreshToken != null)
+        if (!(accessToken.IsNullOrEmpty() && refreshToken.IsNullOrEmpty()))
         {
+            
             context.Succeed(requirement);
         }
 
