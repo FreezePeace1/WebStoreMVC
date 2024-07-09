@@ -144,6 +144,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9TdG9yZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Order/SaveCustomerInfo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvT3JkZXIvU2F2ZUN1c3RvbWVySW5mby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Order/ShowCartInfo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvT3JkZXIvU2hvd0NhcnRJbmZvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Shared/Components/SmallCart/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0NvbXBvbmVudHMvU21hbGxDYXJ0L0RlZmF1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

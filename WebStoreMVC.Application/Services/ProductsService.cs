@@ -22,7 +22,7 @@ public class ProductsService : IProductsService
 
     public async Task<ResponseDto<List<Product>>> GetAllProducts()
     {
-        var productList = await _context.Products.AsNoTracking().ToListAsync();
+        var productList = await _context.Products.AsNoTracking().Take(100).ToListAsync();
 
         return new ResponseDto<List<Product>>()
         {
@@ -34,7 +34,7 @@ public class ProductsService : IProductsService
     {
         try
         {
-            var product = await _context.Products.FirstOrDefaultAsync(x => x.Id == id);
+            var product = await _context.Products.FirstOrDefaultAsync(x => x.ProductId == id);
 
             return new ResponseDto<Product>()
             {
@@ -69,7 +69,7 @@ public class ProductsService : IProductsService
             };
         }
 
-        var lastProduct = await _context.Products.OrderByDescending(x => x.Id)
+        var lastProduct = await _context.Products.OrderByDescending(x => x.ProductId)
             .FirstAsync();
 
         var newProduct = new Product()
@@ -78,7 +78,7 @@ public class ProductsService : IProductsService
             Colour = product.Colour,
             Description = product.Description,
             Hashtags = product.Hashtags,
-            Id = lastProduct.Id + 1,
+            ProductId = lastProduct.ProductId + 1,
             Images = product.Images,
             Manufacturer = product.Manufacturer,
             Price = product.Price,
@@ -97,7 +97,7 @@ public class ProductsService : IProductsService
 
     public Product Edit(int id)
     {
-        var product = _context.Products.FirstOrDefault(x => x.Id == id);
+        var product = _context.Products.FirstOrDefault(x => x.ProductId == id);
 
         if (id < 0)
         {
@@ -120,8 +120,8 @@ public class ProductsService : IProductsService
 
         try
         {
-            await _context.Products.Where(x => x.Id == product.Id).ExecuteUpdateAsync(s => s
-                .SetProperty(p => p.Id, product.Id)
+            await _context.Products.Where(x => x.ProductId == product.ProductId).ExecuteUpdateAsync(s => s
+                .SetProperty(p => p.ProductId, product.ProductId)
                 .SetProperty(c => c.Description, product.Description)
                 .SetProperty(p => p.Manufacturer, product.Manufacturer)
                 .SetProperty(p => p.Colour, product.Colour)
@@ -157,7 +157,7 @@ public class ProductsService : IProductsService
         {
             Product product = new Product()
             {
-                Id = id.Value
+                ProductId = id.Value
             };
 
             _context.Entry(product).State = EntityState.Deleted;

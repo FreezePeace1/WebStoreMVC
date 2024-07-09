@@ -256,7 +256,7 @@ public static class Startup
     }
     private static void AddDefaultMappings(ConnectionSettings settings) {
         settings.DefaultMappingFor<Product>(m => m.
-            Ignore(p => p.Id)
+            Ignore(p => p.ProductId)
             .Ignore(p => p.Images)
             .Ignore(p => p.Price)
             .Ignore(p => p.Quantity)

@@ -1,0 +1,51 @@
+@model WebStoreMVC.Dtos.ResponseDto<List<CartItem>>
+
+<div class="row">
+    <h1>Ваша корзина</h1>
+    <div>
+        <table class="table table-hover tm-table-small tm-product-table">
+            <thead>
+            <tr>
+                <th></th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model.Data)
+            {
+                <tr class="product-widget">
+                    <td>
+                        <img src="~/images/products/@item.Image" width="128"
+                             height="128"  alt=""/>
+                    </td>
+                    <td>@item.ProductName</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.Price.ToString("C2")</td>
+                    <td>
+                        @item.Total
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+    <br/>
+    <div class="text-right row">
+        <table>
+            <th>
+                <form asp-controller="Order" asp-action="SaveCustomerInfo">
+                    <button class="btn btn-primary">Оформить заказ</button>
+                </form>
+            </th>
+            <th>
+                <form asp-controller="Cart" asp-action="Index">
+                    <button class="btn btn-danger">Назад</button>
+                </form>
+            </th>
+        </table>
+    </div>
+
+</div>

@@ -48,11 +48,11 @@
                 {
                     <tr>
                         <td>
-                            <a asp-area="Admin" asp-controller="ProductsForAdmin" asp-action="EditProduct" asp-route-id="@item.Id" class="btn btn-success">
+                            <a asp-area="Admin" asp-controller="ProductsForAdmin" asp-action="EditProduct" asp-route-id="@item.ProductId" class="btn btn-success">
                                 Изменить
                             </a>
                         </td>
-                        <td>@item.Id</td>
+                        <td>@item.ProductId</td>
                         <td class="tm-product-name">@item.ProductName</td>
                         <td>@item.Price</td>
                         <td>@item.Manufacturer</td>
@@ -61,7 +61,7 @@
                         <td>@item.Article</td>
 
                         <td>
-                            <a asp-area="Admin" asp-controller="ProductsForAdmin" asp-action="DeleteProduct" asp-route-id="@item.Id" class="btn btn-danger">
+                            <a asp-area="Admin" asp-controller="ProductsForAdmin" asp-action="DeleteProduct" asp-route-id="@item.ProductId" class="btn btn-danger">
                                 Удалить
                             </a>
                         </td>

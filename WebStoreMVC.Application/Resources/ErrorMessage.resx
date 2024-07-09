@@ -54,4 +54,13 @@
     <data name="TokenIsNullOrNotFound" xml:space="preserve">
         <value>Токен не существует </value>
     </data>
+    <data name="CartIsEmpty" xml:space="preserve">
+        <value>Корзина пуста</value>
+    </data>
+    <data name="GettingOrderDataIsFailed" xml:space="preserve">
+        <value>НеудачноеПолучение данных заказа </value>
+    </data>
+    <data name="OrderDeletingIsFailed" xml:space="preserve">
+        <value>Удаление заказа неуспешно</value>
+    </data>
 </root>

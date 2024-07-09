@@ -1,0 +1,46 @@
+@model WebStoreMVC.Dtos.CustomerInfoDto
+
+<div class="row">
+    <div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 col-sm-offset-1">
+                    <div class="login-form">
+                        <form asp-controller="Order" asp-action="SaveCustomerInfo" method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                            <div style="margin-bottom: 10px;">
+                                <input asp-for="LastName" placeholder="Введите фамилию"/>
+                            </div>
+
+                            <div style="margin-bottom: 10px;">
+                                <input asp-for="FirstName" placeholder="Введите имя"/>
+                            </div>
+
+                            <div style="margin-bottom: 10px;">
+                                <input asp-for="Patronymic" placeholder="Введите Отчество(необязательно)"/>
+                            </div>
+
+                            <div style="margin-bottom: 10px;">
+                                <input asp-for="PhoneNumber" placeholder="Введите номер телефона"/>
+                            </div>
+
+                            <div style="margin-bottom: 10px;">
+                                <input asp-for="City" placeholder="Введите Город проживания"/>
+                            </div>
+
+                            <div style="margin-bottom: 10px;">
+                                <input asp-for="Address" placeholder="Введите адрес проживания"/>
+                            </div>
+
+                            <div style="margin-bottom: 10px;">
+                                <button type="submit" class="btn btn-default">Оформить заказ</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

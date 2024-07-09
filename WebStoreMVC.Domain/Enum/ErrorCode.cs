@@ -23,5 +23,10 @@ public enum ErrorCode
     ProductsAreNotFound = 11,
     ProductAlreadyExists = 12,
     
+    //OrderService 21 - 30
+    CartIsEmpty = 21,
+    GettingOrderDataIsFailed = 22,
+    OrderDeletingIsFailed = 23
+    
    
 }

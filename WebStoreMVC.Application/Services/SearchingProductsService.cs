@@ -105,28 +105,32 @@ public class SearchingProductsService : ISearchingProductsService
         string productName = words[2];
 
         IQueryable<Product> products = _context.Products;
+
+
         if (hashtag == "" || hashtag == "" && hashtag2 == "")
         {
             products = products.Where(u =>
-                u.Hashtags.ToLower().Contains(searchString) || u.ProductName.ToLower().Contains(searchString));
+                    u.Hashtags.ToLower().Contains(searchString) || u.ProductName.ToLower().Contains(searchString))
+                .AsNoTracking();
         }
 
         if (hashtag != "" && hashtag2 != "" && productName != "")
         {
             products = products.Where(u =>
                 (u.Hashtags.ToLower().Contains(hashtag) && u.Hashtags.ToLower().Contains(hashtag2) &&
-                 u.ProductName.ToLower().Contains(productName)));
+                 u.ProductName.ToLower().Contains(productName))).AsNoTracking();
         }
         else if (hashtag != "" && hashtag2 != "" && productName == "")
         {
             products = products.Where(u =>
-                u.Hashtags.ToLower().Contains(hashtag) && u.Hashtags.ToLower().Contains(hashtag2));
+                u.Hashtags.ToLower().Contains(hashtag) && u.Hashtags.ToLower().Contains(hashtag2)).AsNoTracking();
         }
         else if (hashtag != "" || productName != "")
         {
             products = products.Where(u =>
-                u.Hashtags.ToLower().Contains(hashtag) && u.ProductName.ToLower().Contains(productName));
+                u.Hashtags.ToLower().Contains(hashtag) || u.ProductName.ToLower().Contains(productName)).AsNoTracking();
         }
+
 
         if (!products.Any())
         {
@@ -139,7 +143,7 @@ public class SearchingProductsService : ISearchingProductsService
 
         return new ResponseDto<List<Product>>()
         {
-            Data = await products.Distinct().ToListAsync()
+            Data = await products.Distinct().Take(100).ToListAsync()
         };
     }
 }

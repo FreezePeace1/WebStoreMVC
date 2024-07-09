@@ -116,5 +116,23 @@ namespace WebStoreMVC.Application.Resources {
                 return ResourceManager.GetString("TokenIsNullOrNotFound", resourceCulture);
             }
         }
+        
+        internal static string CartIsEmpty {
+            get {
+                return ResourceManager.GetString("CartIsEmpty", resourceCulture);
+            }
+        }
+        
+        internal static string GettingOrderDataIsFailed {
+            get {
+                return ResourceManager.GetString("GettingOrderDataIsFailed", resourceCulture);
+            }
+        }
+        
+        internal static string OrderDeletingIsFailed {
+            get {
+                return ResourceManager.GetString("OrderDeletingIsFailed", resourceCulture);
+            }
+        }
     }
 }

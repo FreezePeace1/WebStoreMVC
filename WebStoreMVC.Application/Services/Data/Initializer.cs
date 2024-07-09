@@ -47,7 +47,10 @@ public class Initializer
             var admin = new AppUser()
             {
                 UserName = AdminUser.ADMINNAME,
-                Email = AdminUser.EMAIL
+                Email = AdminUser.EMAIL,
+                VerificationToken = "HasAutomaticallyForAdmin",
+                EmailConfirmed = true,
+                VerifiedAt = DateTime.Now
             };
 
             var createResult = await _userManager.CreateAsync(admin, AdminUser.PASSWORD);

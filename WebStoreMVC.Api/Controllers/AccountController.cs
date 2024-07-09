@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using WebStoreMVC.Dtos;
+using WebStoreMVC.Models;
 using WebStoreMVC.Services.Interfaces;
 
 namespace WebStoreMVC.Controllers;
@@ -362,4 +363,5 @@ public class AccountController : Controller
 
         return View(resetPasswordDto);
     }
+
 }

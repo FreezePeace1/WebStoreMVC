@@ -47,4 +47,13 @@
     <data name="TokenIsNullOrNotFound" xml:space="preserve">
         <value>Token does not exist</value>
     </data>
+    <data name="CartIsEmpty" xml:space="preserve">
+        <value>Cart is empty</value>
+    </data>
+    <data name="GettingOrderDataIsFailed" xml:space="preserve">
+        <value>Getting order data is failed</value>
+    </data>
+    <data name="OrderDeletingIsFailed" xml:space="preserve">
+        <value>Order deleting is failed</value>
+    </data>
 </root>

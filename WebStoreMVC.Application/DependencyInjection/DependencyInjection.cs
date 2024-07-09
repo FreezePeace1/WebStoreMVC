@@ -21,6 +21,9 @@ public static class DependencyInjection
         
         //Подключаем HomeService(будет доработан)
         services.AddScoped<IHomeService, HomeService>();
+        
+        //Подключаем сервис заказа
+        services.AddScoped<IOrderService, OrderService>();
 
         services.AddScoped<Initializer>();
     }

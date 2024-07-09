@@ -98,5 +98,23 @@ namespace WebStoreMVC.Application.Resources {
                 return ResourceManager.GetString("TokenIsActivated", resourceCulture);
             }
         }
+        
+        internal static string CreatingDataIsDone {
+            get {
+                return ResourceManager.GetString("CreatingDataIsDone", resourceCulture);
+            }
+        }
+        
+        internal static string ShowingOrderDataIsDone {
+            get {
+                return ResourceManager.GetString("ShowingOrderDataIsDone", resourceCulture);
+            }
+        }
+        
+        internal static string OrderIsDeletedSuccessfully {
+            get {
+                return ResourceManager.GetString("OrderIsDeletedSuccessfully", resourceCulture);
+            }
+        }
     }
 }

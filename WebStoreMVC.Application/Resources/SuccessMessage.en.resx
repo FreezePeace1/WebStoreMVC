@@ -38,4 +38,13 @@
     <data name="TokenIsActivated" xml:space="preserve">
         <value>Token is activated</value>
     </data>
+    <data name="CreatingDataIsDone" xml:space="preserve">
+        <value>Creating data is done</value>
+    </data>
+    <data name="ShowingOrderDataIsDone" xml:space="preserve">
+        <value>Showing order data is done</value>
+    </data>
+    <data name="OrderIsDeletedSuccessfully" xml:space="preserve">
+        <value>Order is deleted successfully</value>
+    </data>
 </root>

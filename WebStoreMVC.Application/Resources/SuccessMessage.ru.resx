@@ -38,4 +38,13 @@
     <data name="TokenIsActivated" xml:space="preserve">
         <value>Токен активирован</value>
     </data>
+    <data name="CreatingDataIsDone" xml:space="preserve">
+        <value>Создание данных завершено</value>
+    </data>
+    <data name="ShowingOrderDataIsDone" xml:space="preserve">
+        <value>Получение данных для заказа успешно выполнено</value>
+    </data>
+    <data name="OrderIsDeletedSuccessfully" xml:space="preserve">
+        <value>Заказ удален успешно</value>
+    </data>
 </root>

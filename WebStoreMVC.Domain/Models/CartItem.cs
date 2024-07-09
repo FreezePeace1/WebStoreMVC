@@ -28,7 +28,7 @@ public class CartItem
 
     public CartItem(Product product)
     {
-        ProductId = product.Id;
+        ProductId = product.ProductId;
         ProductName = product.ProductName;
         Price = product.Price;
         Quantity = 1;
