@@ -11,7 +11,7 @@
             <div class="col-sm-4 col-sm-offset-1">
                 <div class="login-form">
 
-                    <form asp-controller="Account" asp-action="Login" method="post" asp-antiforgery="true">
+                    <form asp-controller="Auth" asp-action="Login" method="post" asp-antiforgery="true">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                         <div style="margin-bottom: 10px;">
@@ -27,7 +27,7 @@
                         </div>
 
                         <div style="margin-bottom: 10px;">
-                            <a asp-controller="Account" asp-action="ForgotPassword">Забыли пароль?</a>
+                            <a asp-controller="Auth" asp-action="ForgotPassword">Забыли пароль?</a>
                         </div>
 
                     </form>

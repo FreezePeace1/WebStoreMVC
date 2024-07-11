@@ -56,4 +56,10 @@
     <data name="OrderDeletingIsFailed" xml:space="preserve">
         <value>Order deleting is failed</value>
     </data>
+    <data name="FailureToShowOrderInfo" xml:space="preserve">
+        <value>Failure to show order Info</value>
+    </data>
+    <data name="FailureToGetUserDeliveryInfo" xml:space="preserve">
+        <value>Failure to get user delivery info</value>
+    </data>
 </root>

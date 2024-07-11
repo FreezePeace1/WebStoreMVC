@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebSotoreMVC.Api.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bdb7fd66f13a98592bd8e0e6d639b52065535788")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+42eb7b26786f78b5d76ae266d32e61fb1729daf3")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebSotoreMVC.Api.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebSotoreMVC.Api.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

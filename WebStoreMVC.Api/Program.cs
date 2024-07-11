@@ -64,7 +64,7 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-/*app.UseMiddleware<RefreshTokenMiddleware>();*/
+app.UseMiddleware<RefreshTokenMiddleware>();
 
 //Чтобы сервис включался при запуске (добавляем автоматически роли и админа если этого нет в БД)
 var scope = app.Services.CreateScope();

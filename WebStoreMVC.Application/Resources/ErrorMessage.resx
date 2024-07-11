@@ -63,4 +63,10 @@
     <data name="OrderDeletingIsFailed" xml:space="preserve">
         <value>Удаление заказа неуспешно</value>
     </data>
+    <data name="FailureToShowOrderInfo" xml:space="preserve">
+        <value>Не удается получить заказ</value>
+    </data>
+    <data name="FailureToGetUserDeliveryInfo" xml:space="preserve">
+        <value>Не удается получить данные пользователя о доставке</value>
+    </data>
 </root>

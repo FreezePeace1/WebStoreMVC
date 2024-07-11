@@ -116,5 +116,23 @@ namespace WebStoreMVC.Application.Resources {
                 return ResourceManager.GetString("OrderIsDeletedSuccessfully", resourceCulture);
             }
         }
+        
+        internal static string UserInfoChanged {
+            get {
+                return ResourceManager.GetString("UserInfoChanged", resourceCulture);
+            }
+        }
+        
+        internal static string DataIsRecieved {
+            get {
+                return ResourceManager.GetString("DataIsRecieved", resourceCulture);
+            }
+        }
+        
+        internal static string UserInfoIsNotFound {
+            get {
+                return ResourceManager.GetString("UserInfoIsNotFound", resourceCulture);
+            }
+        }
     }
 }

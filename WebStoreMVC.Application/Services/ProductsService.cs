@@ -22,7 +22,7 @@ public class ProductsService : IProductsService
 
     public async Task<ResponseDto<List<Product>>> GetAllProducts()
     {
-        var productList = await _context.Products.AsNoTracking().Take(100).ToListAsync();
+        var productList = await _context.Products.AsNoTracking().ToListAsync();
 
         return new ResponseDto<List<Product>>()
         {

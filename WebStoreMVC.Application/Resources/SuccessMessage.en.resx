@@ -47,4 +47,13 @@
     <data name="OrderIsDeletedSuccessfully" xml:space="preserve">
         <value>Order is deleted successfully</value>
     </data>
+    <data name="UserInfoChanged" xml:space="preserve">
+        <value>User info is changed successfully</value>
+    </data>
+    <data name="DataIsRecieved" xml:space="preserve">
+        <value>Data is recieved successfully</value>
+    </data>
+    <data name="UserInfoIsNotFound" xml:space="preserve">
+        <value>User info is not found</value>
+    </data>
 </root>

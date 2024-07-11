@@ -24,6 +24,9 @@ public static class DependencyInjection
         
         //Подключаем сервис заказа
         services.AddScoped<IOrderService, OrderService>();
+        
+        //Подключаем сервис аккаунта
+        services.AddScoped<IAccountService, AccountService>();
 
         services.AddScoped<Initializer>();
     }

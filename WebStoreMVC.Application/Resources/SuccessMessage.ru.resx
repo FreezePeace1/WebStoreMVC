@@ -47,4 +47,13 @@
     <data name="OrderIsDeletedSuccessfully" xml:space="preserve">
         <value>Заказ удален успешно</value>
     </data>
+    <data name="UserInfoChanged" xml:space="preserve">
+        <value>Данные пользователя изменены успешно</value>
+    </data>
+    <data name="DataIsRecieved" xml:space="preserve">
+        <value>Данные получены успешно</value>
+    </data>
+    <data name="UserInfoIsNotFound" xml:space="preserve">
+        <value>Данные пользователя не найдены</value>
+    </data>
 </root>

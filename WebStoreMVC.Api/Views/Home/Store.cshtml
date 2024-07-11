@@ -258,40 +258,43 @@
 
         @foreach (var item in Model)
         {
-            <!-- product -->
-            <div class="col-md-4 col-xs-6">
-                <div class="product">
-                    <div class="product-img">
-                        <img src="~/images/products/@item.Images" alt="">
-                    </div>
-                    <div class="product-body">
-                        <p class="product-category">Category</p>
-                        <h3 class="product-name">
-                            <a href="#">@item.ProductName</a>
-                        </h3>
-                        <h4 class="product-price">
-                            @item.Price <del class="product-old-price">@(item.Price + 1500)</del>
-                        </h4>
-                        <div class="product-rating">
+            @if (item.Quantity > 0)
+            {
+                <!-- product -->
+                <div class="col-md-4 col-xs-6">
+                    <div class="product">
+                        <div class="product-img">
+                            <img src="~/images/products/@item.Images" alt="">
                         </div>
-                        <div class="product-btns">
-                            <button class="add-to-wishlist">
-                                <i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span>
-                            </button>
-                            <button class="add-to-compare">
-                                <i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span>
-                            </button>
-                            <button class="quick-view">
-                                <i class="fa fa-eye"></i><span class="tooltipp">quick view</span>
-                            </button>
+                        <div class="product-body">
+                            <p class="product-category">Category</p>
+                            <h3 class="product-name">
+                                <a href="#">@item.ProductName</a>
+                            </h3>
+                            <h4 class="product-price">
+                                @item.Price <del class="product-old-price">@(item.Price + 1500)</del>
+                            </h4>
+                            <div class="product-rating">
+                            </div>
+                            <div class="product-btns">
+                                <button class="add-to-wishlist">
+                                    <i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span>
+                                </button>
+                                <button class="add-to-compare">
+                                    <i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span>
+                                </button>
+                                <button class="quick-view">
+                                    <i class="fa fa-eye"></i><span class="tooltipp">quick view</span>
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="add-to-cart">
-                        <a asp-controller="Cart" asp-action="Add" asp-route-id="@item.ProductId" button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</a>
+                        <div class="add-to-cart">
+                            <a asp-controller="Cart" asp-action="Add" asp-route-id="@item.ProductId" button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- /product -->
+                <!-- /product -->   
+            }
         }
 
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

@@ -94,7 +94,7 @@ public class AuthService : IAuthService
             };
         }
 
-        await using var transaction = await _context.Database.BeginTransactionAsync();
+        /*await using var transaction = await _context.Database.BeginTransactionAsync();*/
         try
         {
             //Если пользователь существует,то создаем его
@@ -146,7 +146,7 @@ public class AuthService : IAuthService
             
             await _context.SaveChangesAsync();
 
-            await transaction.CommitAsync();
+            /*await transaction.CommitAsync();*/
             
             return new ResponseDto()
             {

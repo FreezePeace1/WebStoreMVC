@@ -1,4 +1,6 @@
+using System.Net;
 using System.Reflection;
+using System.Security.Claims;
 using System.Text;
 using Microsoft.OpenApi.Models;
 using Asp.Versioning;
@@ -136,7 +138,7 @@ public static class Startup
     public static void AddAuthenticationAndAuthorization(this IServiceCollection services,
         WebApplicationBuilder builder)
     {
-        services  
+        /*services  
             .AddAuthentication() // Cookie by default  
             .AddCookie(options =>  
             {  
@@ -157,40 +159,24 @@ public static class Startup
                         new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JwtSettings:Key"]))
                 }; 
                 
-            });  
+            });  */
         //Подключаем JWT
-        /*services.AddAuthentication(opt =>
+        services.AddAuthentication(opt =>
             {
                 opt.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
                 opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                /*opt.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;*/
             })
             .AddCookie(opt =>
             {
-                opt.Cookie.Name = "WebStoreMvc_Cookie";
+                /*opt.Cookie.Name = "WebStoreMvc_Cookie";
                 opt.Cookie.HttpOnly = true;
                 opt.ExpireTimeSpan = TimeSpan.FromDays(30);
-                /*opt.LoginPath = "/Account/Login";
-                opt.LogoutPath = "/Account/Logout";#1#
+                opt.LoginPath = "/Account/Login";*/
+                opt.LogoutPath = "/Account/Logout";
                 opt.AccessDeniedPath = "/Account/AccessDenied";
-
-                //Чтобы состояние пользователя во время сессии менялось (например если он зарегистрировался или залогинился то сразу переключаем на эти права)
-                opt.SlidingExpiration = true;
             })
-            /*.AddCookie(options =>
-            {
-                options.AccessDeniedPath = "/Account/AccessDenied";
-
-                // Для дополнительного контроля можно использовать события
-                options.Events = new CookieAuthenticationEvents
-                {
-                    OnRedirectToAccessDenied = context =>
-                    {
-                        context.Response.Redirect(context.Options.AccessDeniedPath);
-                        return Task.CompletedTask;
-                    }
-                };
-            })#1#
             .AddJwtBearer("Bearer", opt =>
             {
                 opt.SaveToken = true;
@@ -205,7 +191,6 @@ public static class Startup
                         new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JwtSettings:Key"]))
                 };
             });
-            */
 
         //Для добавления Policy
         services.AddHttpContextAccessor();
@@ -223,7 +208,6 @@ public static class Startup
 
             options.AddPolicy("Default", new AuthorizationPolicyBuilder()
                 .RequireAuthenticatedUser()
-                .RequireRole(UserRoles.USER)
                 .Build());
 
             options.AddPolicy("AdminCookie", policy =>
@@ -236,6 +220,7 @@ public static class Startup
             options.AddPolicy("UserCookie", policy =>
             {
                 policy.Requirements.Add(new CookieUserRequirement());
+                policy.RequireAuthenticatedUser();
             });
         });
         

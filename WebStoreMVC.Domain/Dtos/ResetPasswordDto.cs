@@ -4,12 +4,12 @@ namespace WebStoreMVC.Dtos;
 
 public class ResetPasswordDto
 {
-    [Required]
+    [Required(ErrorMessage = "Нужен токен для сброса пароля")]
     public string TokenForPasswordReseting { get; set; } = string.Empty;
 
-    [Required,MinLength(8)]
+    [Required(ErrorMessage = "Введите пароль"),MinLength(8,ErrorMessage = "Минимальное кол-во символов должно быть не меньше 8")]
     public string Password { get; set; } = string.Empty;
     
-    [Required,Compare(nameof(Password))]
+    [Required(ErrorMessage = "Проверьте правильность пароля"),Compare(nameof(Password))]
     public string ConfirmPassword { get; set; } = string.Empty;
 }

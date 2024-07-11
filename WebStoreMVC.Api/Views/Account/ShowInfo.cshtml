@@ -1,0 +1,42 @@
+@using Microsoft.IdentityModel.Tokens
+@model  WebStoreMVC.Dtos.ResponseDto<WebStoreMVC.Domain.Entities.CustomerInfo>
+
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="billing-details">
+                    <a asp-action="Index">Вернуться назад</a>
+                    <br/>
+                    <br/>
+                    <h3>Ваши данные</h3>
+                    <br/>
+                    <div class="form-group">
+                        <a>Фамилия: @Model.Data.LastName</a>
+                    </div>
+                    <div class="form-group">
+                        <a>Имя: @Model.Data.FirstName</a>
+                    </div>
+                    @if (!Model.Data.Patronymic.IsNullOrEmpty())
+                    {
+                        <a>Отчество: @Model.Data.Patronymic</a>
+                    }
+                    <div class="form-group">
+                        <a>Город: @Model.Data.City</a>
+                    </div>
+                    <div class="form-group">
+                        <a>Адрес: @Model.Data.Address</a>
+                    </div>
+                    <div class="form-group">
+                        <a>Номер телефона: @Model.Data.PhoneNumber</a>
+                    </div>
+                    <div class="form-group row">
+                        <form asp-action="ChangeInfo">
+                            <button class="btn btn-light" type="submit">Изменить данные</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -26,7 +26,11 @@ public enum ErrorCode
     //OrderService 21 - 30
     CartIsEmpty = 21,
     GettingOrderDataIsFailed = 22,
-    OrderDeletingIsFailed = 23
+    OrderDeletingIsFailed = 23,
     
+    //AccountService 31 - 40
+    FailureToShowOrderInfo = 31,
+    ProductsNotFound = 32,
+    FailureToGetUserDeliveryInfo = 33,
    
 }

@@ -134,5 +134,17 @@ namespace WebStoreMVC.Application.Resources {
                 return ResourceManager.GetString("OrderDeletingIsFailed", resourceCulture);
             }
         }
+        
+        internal static string FailureToShowOrderInfo {
+            get {
+                return ResourceManager.GetString("FailureToShowOrderInfo", resourceCulture);
+            }
+        }
+        
+        internal static string FailureToGetUserDeliveryInfo {
+            get {
+                return ResourceManager.GetString("FailureToGetUserDeliveryInfo", resourceCulture);
+            }
+        }
     }
 }
