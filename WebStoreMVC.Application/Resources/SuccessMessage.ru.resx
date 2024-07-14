@@ -56,4 +56,7 @@
     <data name="UserInfoIsNotFound" xml:space="preserve">
         <value>Данные пользователя не найдены</value>
     </data>
+    <data name="SavingOrderIsDone" xml:space="preserve">
+        <value>Сохранение заказа пользователя успешно!</value>
+    </data>
 </root>

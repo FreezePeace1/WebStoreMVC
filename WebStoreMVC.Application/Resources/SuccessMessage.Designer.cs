@@ -134,5 +134,11 @@ namespace WebStoreMVC.Application.Resources {
                 return ResourceManager.GetString("UserInfoIsNotFound", resourceCulture);
             }
         }
+        
+        internal static string SavingOrderIsDone {
+            get {
+                return ResourceManager.GetString("SavingOrderIsDone", resourceCulture);
+            }
+        }
     }
 }

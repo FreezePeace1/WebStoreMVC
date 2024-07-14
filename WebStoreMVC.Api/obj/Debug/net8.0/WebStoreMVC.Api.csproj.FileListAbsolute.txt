@@ -575,3 +575,4 @@
 /home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/bin/Debug/net8.0/BouncyCastle.Cryptography.dll
 /home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/bin/Debug/net8.0/MailKit.dll
 /home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/bin/Debug/net8.0/MimeKit.dll
+/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/bin/Debug/net8.0/Stripe.net.dll

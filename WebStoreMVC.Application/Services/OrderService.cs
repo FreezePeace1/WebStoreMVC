@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Serilog;
+using Stripe.Checkout;
 using WebStoreMVC.Application.JSON;
 using WebStoreMVC.Application.Resources;
 using WebStoreMVC.DAL.Context;
@@ -18,22 +20,29 @@ public class OrderService : IOrderService
     private readonly WebStoreContext _context;
     private readonly IHttpContextAccessor _contextAccessor;
     private readonly UserManager<AppUser> _userManager;
+    private readonly IConfiguration _configuration;
     private readonly ILogger _logger;
 
     public OrderService(WebStoreContext context, IHttpContextAccessor contextAccessor, UserManager<AppUser> userManager,
-        ILogger logger)
+        IConfiguration configuration, ILogger logger)
     {
         _context = context;
         _contextAccessor = contextAccessor;
         _userManager = userManager;
+        _configuration = configuration;
         _logger = logger;
     }
 
-    public async Task<ResponseDto<CustomerInfo>> SaveCustomerInfo(CustomerInfoDto dto)
+    public async Task<ResponseDto> SaveUserOrder()
     {
         try
         {
-            var user = await _userManager.FindByNameAsync(_contextAccessor.HttpContext.User.Identity.Name ?? "");
+            var userName = _contextAccessor.HttpContext.User.Identity.Name;
+            AppUser user = new AppUser();
+            if (userName != null)
+            {
+                user = await _userManager.FindByNameAsync(userName);
+            }
 
             var cartInfo = _contextAccessor.HttpContext.Session.GetJson<List<CartItem>>("Cart");
 
@@ -45,20 +54,6 @@ public class OrderService : IOrderService
                     ErrorCode = (int)ErrorCode.CartIsEmpty
                 };
             }
-
-            var lastId = await _context.CustomersInfo.OrderByDescending(x => x.Id).FirstAsync();
-
-            CustomerInfo customerInfo = new CustomerInfo();
-            customerInfo.FirstName = dto.FirstName;
-            customerInfo.LastName = dto.LastName;
-            customerInfo.Patronymic = dto.Patronymic;
-            customerInfo.PhoneNumber = dto.PhoneNumber;
-            customerInfo.Address = dto.Address;
-            customerInfo.City = dto.City;
-            customerInfo.Id = lastId.Id + 1;
-            customerInfo.AppUserId = user?.Id ?? $"Not authorized";
-
-            await _context.CustomersInfo.AddAsync(customerInfo);
 
             Order userOrder = new Order()
             {
@@ -92,10 +87,10 @@ public class OrderService : IOrderService
                         .SetProperty(p => p.Quantity, data.Quantity - item.Quantity)
                         .SetProperty(p => p.Hashtags, data.Hashtags)
                         .SetProperty(p => p.Images, data.Images)
-                        .SetProperty(p => p.Price, data.Price));   
+                        .SetProperty(p => p.Price, data.Price));
                 }
             }
-            
+
             await _context.OrderProducts.AddRangeAsync(products);
 
             await _context.Orders.AddAsync(userOrder);
@@ -104,10 +99,123 @@ public class OrderService : IOrderService
 
             _contextAccessor.HttpContext.Session.Clear();
 
+            return new ResponseDto()
+            {
+                SuccessMessage = SuccessMessage.SavingOrderIsDone
+            };
+        }
+        catch (Exception e)
+        {
+            _logger.Error(e,e.Message);
+            return new ResponseDto()
+            {
+                ErrorMessage = ErrorMessage.GettingOrderDataIsFailed,
+                ErrorCode = (int)ErrorCode.GettingOrderDataIsFailed
+            };
+        }
+    }
+
+    public async Task<ResponseDto> StripePayment()
+    {
+        try
+        {
+            var user = await _userManager.FindByNameAsync(_contextAccessor.HttpContext.User.Identity.Name ?? "");
+
+            string email = string.Empty;
+            if (user != null)
+            {
+                email = user.Email;
+            }
+
+            //Stripe payment system
+            string domain = _configuration.GetSection("Domain").Value;
+
+            var opts = new SessionCreateOptions()
+            {
+                SuccessUrl = domain + $"Order/OrderConfirmation",
+                CancelUrl = domain + $"Order/Failure",
+                LineItems = new List<SessionLineItemOptions>(),
+                Mode = "payment",
+                CustomerEmail = email
+            };
+
+            var cartInfo = _contextAccessor.HttpContext.Session.GetJson<List<CartItem>>("Cart");
+
+            if (cartInfo == null)
+            {
+                return new ResponseDto<CustomerInfo>()
+                {
+                    ErrorMessage = ErrorMessage.CartIsEmpty,
+                    ErrorCode = (int)ErrorCode.CartIsEmpty
+                };
+            }
+
+            foreach (var item in cartInfo)
+            {
+                var sessionListItem = new SessionLineItemOptions()
+                {
+                    PriceData = new SessionLineItemPriceDataOptions()
+                    {
+                        UnitAmount = decimal.ToInt64(item.Quantity * item.Price) * 100,
+                        Currency = "rub",
+                        ProductData = new SessionLineItemPriceDataProductDataOptions()
+                        {
+                            Name = item.ProductName
+                        }
+                    },
+                    Quantity = item.Quantity
+                };
+
+                opts.LineItems.Add(sessionListItem);
+            }
+
+            var service = new SessionService();
+            var session = await service.CreateAsync(opts);
+            
+            _contextAccessor.HttpContext.Response.Headers.Append("Location", session.Url);
+
+            return new ResponseDto()
+            {
+                SuccessMessage = session.Id
+            };
+        }
+        catch (Exception e)
+        {
+            _logger.Error(e, e.Message);
+            return new ResponseDto()
+            {
+                ErrorMessage = ErrorMessage.TransactionIsFalied,
+                ErrorCode = (int)ErrorCode.TransactionIsFailed
+            };
+        }
+    }
+
+    public async Task<ResponseDto<CustomerInfo>> SaveCustomerInfo(CustomerInfoDto dto)
+    {
+        try
+        {
+            var user = await _userManager.FindByNameAsync(_contextAccessor.HttpContext.User.Identity.Name ?? "");
+
+            var lastId = await _context.CustomersInfo.OrderByDescending(x => x.Id).FirstAsync();
+
+            CustomerInfo customerInfo = new CustomerInfo();
+            customerInfo.FirstName = dto.FirstName;
+            customerInfo.LastName = dto.LastName;
+            customerInfo.Patronymic = dto.Patronymic;
+            customerInfo.PhoneNumber = dto.PhoneNumber;
+            customerInfo.Address = dto.Address;
+            customerInfo.City = dto.City;
+            customerInfo.Id = lastId.Id + 1;
+            customerInfo.AppUserId = user?.Id ?? $"Not authorized";
+
+            await _context.CustomersInfo.AddAsync(customerInfo);
+
+            await _context.SaveChangesAsync();
+
             return new ResponseDto<CustomerInfo>()
             {
                 Data = customerInfo,
-                SuccessMessage = SuccessMessage.CreatingDataIsDone
+                SuccessMessage = SuccessMessage.DataIsRecieved
             };
         }
         catch (Exception e)

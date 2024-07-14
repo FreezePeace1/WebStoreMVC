@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication;
 using Nest;
 using Serilog;
+using Stripe;
 using WebStoreMVC;
 using WebStoreMVC.Application.DependencyInjection;
 using WebStoreMVC.DAL.DependencyInjection;
@@ -62,6 +63,10 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthentication();
+
+//Stripe
+StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
+
 app.UseAuthorization();
 
 app.UseMiddleware<RefreshTokenMiddleware>();

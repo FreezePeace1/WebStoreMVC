@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "GN/KnLewEljmUZ78bP22iTSF8wvTGyj/1f0/+ervcTOR+zaE0f78+HVMNCJjFhNnfHOk07BovC5akA35OLDmwQ==",
+  "dgSpecHash": "AQ8hmKOgJ1oZC5eq6Va/QqFxUlCrVgPfflXGE4TAuuT23EWHmSpPWc5P4yhpJlHOS4Ww1H8lckLb87x/MLoWGA==",
   "success": true,
   "projectFilePath": "/home/alexander/RiderProjects/WebStoreMVC/WebSotoreMVC.Api.Tests/WebSotoreMVC.Api.Tests.csproj",
   "expectedPackageFiles": [
@@ -176,6 +176,7 @@
     "/home/alexander/.nuget/packages/serilog.sinks.console/5.0.0/serilog.sinks.console.5.0.0.nupkg.sha512",
     "/home/alexander/.nuget/packages/serilog.sinks.debug/2.0.0/serilog.sinks.debug.2.0.0.nupkg.sha512",
     "/home/alexander/.nuget/packages/serilog.sinks.file/5.0.0/serilog.sinks.file.5.0.0.nupkg.sha512",
+    "/home/alexander/.nuget/packages/stripe.net/45.3.0/stripe.net.45.3.0.nupkg.sha512",
     "/home/alexander/.nuget/packages/swashbuckle.aspnetcore.swagger/6.5.0/swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
     "/home/alexander/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.5.0/swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
     "/home/alexander/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.5.0/swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512",

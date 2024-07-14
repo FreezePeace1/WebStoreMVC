@@ -1,9 +1,12 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Stripe.FinancialConnections;
 using WebStoreMVC.Domain.Entities;
 using WebStoreMVC.Dtos;
 using WebStoreMVC.Models;
 using WebStoreMVC.Services.Interfaces;
+using Session = Stripe.Checkout.Session;
+using SessionService = Stripe.Checkout.SessionService;
 
 namespace WebStoreMVC.Controllers;
 
@@ -21,13 +24,10 @@ public class OrderController : Controller
     }
 
     /// <summary>
-    /// Пользователь записывает данные для доставки товара, а также:
-    /// 1) Данные заказа
-    /// 2) Данные корзины (товары связываются с номером заказа)
-    /// Всё это записывается в БД
+    /// Пользователь сохраняет данные для доставки, если всё прошло успешно, то переходим к оплате
     /// </summary>
     /// <param name="dto"></param>
-    /// <returns>Данные о заказе</returns>
+    /// <returns>Данные для доставки</returns>
     [HttpPost("SaveCustomerInfo")]
     [Route("SaveCustomerInfo")]
     public async Task<ActionResult<ResponseDto<CustomerInfo>>> SaveCustomerInfo(CustomerInfoDto dto)
@@ -47,12 +47,78 @@ public class OrderController : Controller
         
         if (response.IsSucceed)
         {
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("StripePayment");
         }
 
         return View(dto);
     }
     
+    /// <summary>
+    /// Пользователь проводит оплату через Stripe
+    /// </summary>
+    /// <param name=></param>
+    /// <returns>303 status code</returns>
+    public async Task<ActionResult<ResponseDto>> StripePayment()
+    {
+        var response = await _orderService.StripePayment();
+        
+        TempData["Session"] = response.SuccessMessage;
+            
+        return new StatusCodeResult(303);
+    }
+    
+    
+    /// <summary>
+    /// Если оплата проходит успешно, то убавляем товары из БД (т к их заказали) и отправляем пользователя
+    /// к странице поздравления, иначе к странице неудачной транзакции
+    /// Также если пользователь обновит страницу, то его перекинет на начальную страницу
+    /// </summary>
+    /// <param name=></param>
+    /// <returns>View</returns>
+    public async Task<IActionResult> OrderConfirmation()
+    {
+        var service = new SessionService();
+
+        if (TempData["Session"] == null)
+        {
+            return RedirectToAction("Index", "Home");
+        }
+
+        Session session = service.Get(TempData["Session"].ToString());
+
+        if (session.PaymentStatus == "paid")
+        {
+            await _orderService.SaveUserOrder();
+            
+            return View("SuccessfulTransaction");
+        }
+
+        return View("FailureTransaction");
+    }
+
+    /// <summary>
+    /// Отправляет пользователя к странице удачной транзакции
+    /// </summary>
+    /// <param name=></param>
+    /// <returns>View</returns>
+    [HttpGet("SuccessfulTransaction")]
+    [Route("SuccessfulTransaction")]
+    public IActionResult SuccessfulTransaction()
+    {
+        return View();
+    }
+    
+    /// <summary>
+    /// Отправляет пользователя к странице неудачной транзакции
+    /// </summary>
+    /// <param name=></param>
+    /// <returns>View</returns>
+    [HttpGet("FailureTransaction")]
+    [Route("FailureTransaction")]
+    public IActionResult FailureTransaction()
+    {
+        return View();
+    }
     /// <summary>
     /// Берем с сессии данные корзины и показываем пользователю перед заполнением формы заказа
     /// </summary>

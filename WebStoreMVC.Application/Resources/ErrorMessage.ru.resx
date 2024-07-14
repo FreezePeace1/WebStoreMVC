@@ -62,4 +62,7 @@
     <data name="FailureToGetUserDeliveryInfo" xml:space="preserve">
         <value>Не удается получить данные пользователя о доставке</value>
     </data>
+    <data name="TransactionIsFalied" xml:space="preserve">
+        <value>Транзакция прошла неудачно</value>
+    </data>
 </root>

@@ -101,6 +101,14 @@
       "PackagePath": "staticwebassets/images/notification-03.jpg"
     },
     {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/images/order/payment_failed.png",
+      "PackagePath": "staticwebassets/images/order/payment_failed.png"
+    },
+    {
+      "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/images/order/payment_successfull.png",
+      "PackagePath": "staticwebassets/images/order/payment_successfull.png"
+    },
+    {
       "Id": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/wwwroot/images/order_18821347.txt",
       "PackagePath": "staticwebassets/images/order_18821347.txt"
     },

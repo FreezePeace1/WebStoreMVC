@@ -169,6 +169,10 @@
               "target": "Package",
               "version": "[7.17.5, )"
             },
+            "Stripe.net": {
+              "target": "Package",
+              "version": "[45.3.0, )"
+            },
             "Swashbuckle.AspNetCore.Swagger": {
               "target": "Package",
               "version": "[6.5.0, )"
@@ -285,6 +289,10 @@
             "Serilog.AspNetCore": {
               "target": "Package",
               "version": "[8.0.0, )"
+            },
+            "Stripe.net": {
+              "target": "Package",
+              "version": "[45.3.0, )"
             },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",

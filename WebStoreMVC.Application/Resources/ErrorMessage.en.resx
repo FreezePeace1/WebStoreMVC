@@ -62,4 +62,7 @@
     <data name="FailureToGetUserDeliveryInfo" xml:space="preserve">
         <value>Failure to get user delivery info</value>
     </data>
+    <data name="TransactionIsFalied" xml:space="preserve">
+        <value>Transaction is falied</value>
+    </data>
 </root>

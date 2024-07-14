@@ -12,5 +12,9 @@ public interface IOrderService
 
     public Task<ResponseDto> DeleteUserOrder(string id);
 
+    public Task<ResponseDto> SaveUserOrder();
+
+    public Task<ResponseDto> StripePayment();
+
     /*public Task<ResponseDto<UpdateUserOrderDto>> UpdateUserOrder(int id);*/
 }

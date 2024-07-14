@@ -27,6 +27,7 @@ public enum ErrorCode
     CartIsEmpty = 21,
     GettingOrderDataIsFailed = 22,
     OrderDeletingIsFailed = 23,
+    TransactionIsFailed = 24,
     
     //AccountService 31 - 40
     FailureToShowOrderInfo = 31,

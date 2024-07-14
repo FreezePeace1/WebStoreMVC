@@ -146,5 +146,11 @@ namespace WebStoreMVC.Application.Resources {
                 return ResourceManager.GetString("FailureToGetUserDeliveryInfo", resourceCulture);
             }
         }
+        
+        internal static string TransactionIsFalied {
+            get {
+                return ResourceManager.GetString("TransactionIsFalied", resourceCulture);
+            }
+        }
     }
 }
