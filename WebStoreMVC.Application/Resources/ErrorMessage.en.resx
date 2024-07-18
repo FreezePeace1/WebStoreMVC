@@ -65,4 +65,10 @@
     <data name="TransactionIsFalied" xml:space="preserve">
         <value>Transaction is falied</value>
     </data>
+    <data name="EmailFailure" xml:space="preserve">
+        <value>Failure to send message from email</value>
+    </data>
+    <data name="FailureToAddProductToCart" xml:space="preserve">
+        <value>Failure to add product to cart</value>
+    </data>
 </root>

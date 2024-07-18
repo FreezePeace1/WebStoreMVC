@@ -45,13 +45,13 @@
                     <h5>SUBTOTAL: @Model.Sum(x => x.Quantity * x.Price).ToString("C2")</h5>
                 </div>
                 <div class="cart-btns">
-                    <a asp-controller="Cart" asp-action="Index">View Cart</a>
-                    <a href="#">Checkout <i class="fa fa-arrow-circle-right"></i></a>
+                    <a asp-controller="Cart" asp-action="Index">Посмотреть корзину</a>
+                    <a asp-controller="Order" asp-action="ShowCartInfo">Оформить заказ <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             }
             else
             {
-                <p class="lead m-0">Your cart is empty</p>
+                <p class="lead m-0">Ваша корзина пуста</p>
             }
         </div>
 

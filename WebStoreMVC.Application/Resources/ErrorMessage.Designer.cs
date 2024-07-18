@@ -152,5 +152,17 @@ namespace WebStoreMVC.Application.Resources {
                 return ResourceManager.GetString("TransactionIsFalied", resourceCulture);
             }
         }
+        
+        internal static string EmailFailure {
+            get {
+                return ResourceManager.GetString("EmailFailure", resourceCulture);
+            }
+        }
+        
+        internal static string FailureToAddProductToCart {
+            get {
+                return ResourceManager.GetString("FailureToAddProductToCart", resourceCulture);
+            }
+        }
     }
 }

@@ -25,7 +25,7 @@ public class SearchingProductsController : Controller
     {
         var searchingResult = await _productsService.SearchingProducts(searchString);
 
-        return View((IEnumerable<ResponseDto<Product>>)searchingResult);
+        return View(searchingResult);
     }
 
     [HttpGet("GetMobilePicture")]

@@ -60,16 +60,22 @@
    }
 </style>
 
-@if (Model.Data != null)
-{
+<div>
+    @if (Model.Data != null)
+    {
     <a asp-controller="Account" asp-action="ShowInfo">Изменить данные для доставки</a>
-}
-else
-{
+    }
+    else
+    {
     <a asp-controller="Account" asp-action="ChangeInfo">Добавить данные для доставки</a>
-}
+    }
+</div>
 
-<a asp-controller="Account" asp-action="ForgotPassword">Изменить пароль</a>
+<br/>
+
+<div>
+    <a asp-controller="Account" asp-action="ForgotPassword">Изменить пароль</a>
+</div>
 
 <br/>
 

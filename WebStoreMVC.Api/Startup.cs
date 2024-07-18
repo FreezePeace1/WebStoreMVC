@@ -20,6 +20,8 @@ namespace WebStoreMVC;
 public static class Startup
 {
     
+    
+    
     /// <summary>
     /// Подключение и настройка Identity
     /// </summary>

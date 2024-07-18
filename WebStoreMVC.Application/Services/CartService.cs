@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Http;
+using Serilog;
 using WebStoreMVC.Application.JSON;
 using WebStoreMVC.Application.Resources;
 using WebStoreMVC.DAL.Context;
+using WebStoreMVC.Domain.Enum;
 using WebStoreMVC.Dtos;
 using WebStoreMVC.Models;
 using WebStoreMVC.Models.ViewModels;
@@ -13,11 +15,13 @@ public class CartService : ICartService
 {
     private readonly WebStoreContext _dbcontext;
     private readonly IHttpContextAccessor _httpContext;
+    private readonly ILogger _logger;
 
-    public CartService(WebStoreContext dbcontext,IHttpContextAccessor httpContext)
+    public CartService(WebStoreContext dbcontext,IHttpContextAccessor httpContext,ILogger logger)
     {
         _dbcontext = dbcontext;
         _httpContext = httpContext;
+        _logger = logger;
     }
     
     public ResponseDto<CartViewModel> Index()
@@ -40,29 +44,42 @@ public class CartService : ICartService
 
     public async Task<ResponseDto> Add(int id)
     {
-        var product = await _dbcontext.Products.FindAsync(id);
-
-        List<CartItem> cart = _httpContext.HttpContext.Session.GetJson<List<CartItem>>("Cart")
-                              ?? new List<CartItem>();
-
-        CartItem cartItem = cart.Where(x => x.ProductId == id).FirstOrDefault();
-
-        if (cartItem == null)
+        try
         {
-            cart.Add(new CartItem(product));
+            var product = await _dbcontext.Products.FindAsync(id);
+
+            List<CartItem> cart = _httpContext.HttpContext.Session.GetJson<List<CartItem>>("Cart")
+                                  ?? new List<CartItem>();
+
+            CartItem cartItem = cart.Where(x => x.ProductId == id).FirstOrDefault();
+
+            if (cartItem == null)
+            {
+                cart.Add(new CartItem(product));
+            }
+            else
+            {
+                cartItem.Quantity++;
+            }
+        
+            _httpContext.HttpContext.Session.SetJson("Cart",cart);
+
+            return new ResponseDto()
+            {
+                SuccessMessage = SuccessMessage.OperationForCart
+            };
+
         }
-        else
+        catch (Exception e)
         {
-            cartItem.Quantity++;
+            _logger.Error(e,e.Message);
+            return new ResponseDto()
+            {
+                ErrorMessage = ErrorMessage.FailureToAddProductToCart,
+                ErrorCode = (int)ErrorCode.FailureToAddProductToCart
+            };
         }
         
-        _httpContext.HttpContext.Session.SetJson("Cart",cart);
-
-        return new ResponseDto()
-        {
-            SuccessMessage = SuccessMessage.OperationForCart
-        };
-
     }
 
     public async Task<ResponseDto> Decrease(int id)

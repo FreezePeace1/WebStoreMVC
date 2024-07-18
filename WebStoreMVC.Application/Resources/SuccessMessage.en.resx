@@ -59,4 +59,7 @@
     <data name="SavingOrderIsDone" xml:space="preserve">
         <value>Saving user order is done successfully</value>
     </data>
+    <data name="EmailSuccess" xml:space="preserve">
+        <value>Message is sent on user email</value>
+    </data>
 </root>

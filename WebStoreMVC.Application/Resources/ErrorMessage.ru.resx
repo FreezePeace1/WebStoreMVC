@@ -65,4 +65,10 @@
     <data name="TransactionIsFalied" xml:space="preserve">
         <value>Транзакция прошла неудачно</value>
     </data>
+    <data name="EmailFailure" xml:space="preserve">
+        <value>Ошибка отправки сообщения с почты</value>
+    </data>
+    <data name="FailureToAddProductToCart" xml:space="preserve">
+        <value>Ошибка добавления товара в корзину</value>
+    </data>
 </root>

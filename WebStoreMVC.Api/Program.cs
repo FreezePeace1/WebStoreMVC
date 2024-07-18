@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.EntityFrameworkCore;
 using Nest;
 using Serilog;
 using Stripe;
 using WebStoreMVC;
 using WebStoreMVC.Application.DependencyInjection;
+using WebStoreMVC.DAL.Context;
 using WebStoreMVC.DAL.DependencyInjection;
 using WebStoreMVC.Domain.Entities;
 using WebStoreMVC.Middleware;

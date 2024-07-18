@@ -33,5 +33,11 @@ public enum ErrorCode
     FailureToShowOrderInfo = 31,
     ProductsNotFound = 32,
     FailureToGetUserDeliveryInfo = 33,
+    
+    //Cart service 41 - 50
+    FailureToAddProductToCart = 41,
+    
+    //EmailFailure
+    EmailFailure = 300,
    
 }

@@ -1,25 +1,25 @@
-@model IEnumerable<WebStoreMVC.Dtos.ResponseDto<WebStoreMVC.Domain.Entities.Product>>
+@model WebStoreMVC.Dtos.ResponseDto<List<WebStoreMVC.Domain.Entities.Product>>
 
 @{
     ViewBag.Title = "Поиск товаров";
     Layout = "_Layout";
 }
 
-@foreach (var item in Model)
+@foreach (var item in Model.Data)
 {
     <!-- product -->
     <div class="col-md-4 col-xs-6">
         <div class="product">
             <div class="product-img">
-                <img src="~/images/products/@item.Data.Price" alt="">
+                <img src="~/images/products/@item.Price" alt="">
             </div>
             <div class="product-body">
                 <p class="product-category">Category</p>
                 <h3 class="product-name">
-                    <a href="#">@item.Data.ProductName</a>
+                    <a href="#">@item.ProductName</a>
                 </h3>
                 <h4 class="product-price">
-                    @item.Data.Price <del class="product-old-price">@(item.Data.Price - 1500)</del>
+                    @item.Price <del class="product-old-price">@(item.Price - 1500)</del>
                 </h4>
                 <div class="product-rating">
                 </div>

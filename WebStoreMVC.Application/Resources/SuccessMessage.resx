@@ -66,4 +66,7 @@
     <data name="SavingOrderIsDone" xml:space="preserve">
         <value>Сохранение заказа пользователя успешно!</value>
     </data>
+    <data name="EmailSuccess" xml:space="preserve">
+        <value>Сообщение было отправлено на почту пользователя</value>
+    </data>
 </root>

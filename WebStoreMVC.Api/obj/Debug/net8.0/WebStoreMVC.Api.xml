@@ -267,14 +267,15 @@
         </member>
         <member name="M:WebStoreMVC.Controllers.OrderController.SaveCustomerInfo(WebStoreMVC.Dtos.CustomerInfoDto)">
             <summary>
-            Пользователь записывает данные для доставки товара, а также:
-            1) Данные заказа
-            2) Данные корзины (товары связываются с номером заказа)
-            Всё это записывается в БД
+            Пользователь сохраняет данные для доставки, если всё прошло успешно, то переходим к оплате
             </summary>
             <param name="dto"></param>
-            <returns>Данные о заказе</returns>
+            <returns>Данные для доставки</returns>
         </member>
+        <!-- Badly formed XML comment ignored for member "M:WebStoreMVC.Controllers.OrderController.StripePayment" -->
+        <!-- Badly formed XML comment ignored for member "M:WebStoreMVC.Controllers.OrderController.OrderConfirmation" -->
+        <!-- Badly formed XML comment ignored for member "M:WebStoreMVC.Controllers.OrderController.SuccessfulTransaction" -->
+        <!-- Badly formed XML comment ignored for member "M:WebStoreMVC.Controllers.OrderController.FailureTransaction" -->
         <member name="M:WebStoreMVC.Controllers.OrderController.ShowCartInfo">
             <summary>
             Берем с сессии данные корзины и показываем пользователю перед заполнением формы заказа

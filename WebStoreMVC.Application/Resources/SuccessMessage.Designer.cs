@@ -140,5 +140,11 @@ namespace WebStoreMVC.Application.Resources {
                 return ResourceManager.GetString("SavingOrderIsDone", resourceCulture);
             }
         }
+        
+        internal static string EmailSuccess {
+            get {
+                return ResourceManager.GetString("EmailSuccess", resourceCulture);
+            }
+        }
     }
 }

@@ -84,7 +84,7 @@ public class OrderController : Controller
             return RedirectToAction("Index", "Home");
         }
 
-        Session session = service.Get(TempData["Session"].ToString());
+        Session session = await service.GetAsync(TempData["Session"].ToString());
 
         if (session.PaymentStatus == "paid")
         {

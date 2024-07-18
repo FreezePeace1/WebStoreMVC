@@ -410,7 +410,7 @@ public class AuthService : IAuthService
         
     }
 
-    private async Task SendMessageWithToken(AppUser user,string message)
+    private async Task<ResponseDto> SendMessageWithToken(AppUser user,string message)
     {
         try
         {
@@ -428,10 +428,20 @@ public class AuthService : IAuthService
             await smtp.AuthenticateAsync(_configuration.GetSection("EmailUsername").Value, _configuration.GetSection("EmailPassword").Value);
             await smtp.SendAsync(email);
             await smtp.DisconnectAsync(true);
+
+            return new ResponseDto()
+            {
+                SuccessMessage = SuccessMessage.EmailSuccess
+            };
         }
         catch (Exception e)
         {
             _logger.Error(e,e.Message);
+            return new ResponseDto()
+            {
+                ErrorMessage = ErrorMessage.EmailFailure,
+                ErrorCode = (int)ErrorCode.EmailFailure
+            };
         }
     }
     

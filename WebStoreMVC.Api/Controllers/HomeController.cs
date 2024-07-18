@@ -11,15 +11,11 @@ public class HomeController : Controller
 {
     private readonly IHomeService _homeService;
     private readonly ISearchingProductsService _searchingProductsService;
-    private readonly IProductsService _productsService;
-    private readonly IElasticClient _client;
 
-    public HomeController(IHomeService homeService,ISearchingProductsService searchingProductsService,IProductsService productsService,IElasticClient client)
+    public HomeController(IHomeService homeService,ISearchingProductsService searchingProductsService)
     {
         _homeService = homeService;
         _searchingProductsService = searchingProductsService;
-        _productsService = productsService;
-        _client = client;
     }
 
     public IActionResult Index()
