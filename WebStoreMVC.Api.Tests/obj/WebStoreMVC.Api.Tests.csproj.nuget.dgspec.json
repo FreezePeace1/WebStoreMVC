@@ -1,0 +1,475 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api.Tests/WebStoreMVC.Api.Tests.csproj": {}
+  },
+  "projects": {
+    "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api.Tests/WebStoreMVC.Api.Tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api.Tests/WebStoreMVC.Api.Tests.csproj",
+        "projectName": "WebStoreMVC.Api.Tests",
+        "projectPath": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api.Tests/WebStoreMVC.Api.Tests.csproj",
+        "packagesPath": "/home/alexander/.nuget/packages/",
+        "outputPath": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api.Tests/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/alexander/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/WebStoreMVC.Api.csproj": {
+                "projectPath": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/WebStoreMVC.Api.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "FluentAssertions": {
+              "target": "Package",
+              "version": "[6.12.0, )"
+            },
+            "MSTest.TestAdapter": {
+              "target": "Package",
+              "version": "[2.2.10, )"
+            },
+            "MSTest.TestFramework": {
+              "target": "Package",
+              "version": "[2.2.10, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Testing": {
+              "target": "Package",
+              "version": "[8.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[8.0.7, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.3.2, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.20.70, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.7.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.107/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/WebStoreMVC.Api.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/WebStoreMVC.Api.csproj",
+        "projectName": "WebStoreMVC.Api",
+        "projectPath": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/WebStoreMVC.Api.csproj",
+        "packagesPath": "/home/alexander/.nuget/packages/",
+        "outputPath": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/alexander/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Application/WebStoreMVC.Application.csproj": {
+                "projectPath": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Application/WebStoreMVC.Application.csproj"
+              },
+              "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.DAL/WebStoreMVC.DAL.csproj": {
+                "projectPath": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.DAL/WebStoreMVC.DAL.csproj"
+              },
+              "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Domain/WebStoreMVC.Domain.csproj": {
+                "projectPath": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Domain/WebStoreMVC.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Asp.Versioning.Mvc.ApiExplorer": {
+              "target": "Package",
+              "version": "[7.1.0, )"
+            },
+            "BuildBundlerMinifier": {
+              "target": "Package",
+              "version": "[3.2.449, )"
+            },
+            "Elasticsearch.Net": {
+              "target": "Package",
+              "version": "[7.17.5, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "NEST": {
+              "target": "Package",
+              "version": "[7.17.5, )"
+            },
+            "Stripe.net": {
+              "target": "Package",
+              "version": "[45.3.0, )"
+            },
+            "Swashbuckle.AspNetCore.Swagger": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerGen": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerUI": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[7.6.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.107/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Application/WebStoreMVC.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Application/WebStoreMVC.Application.csproj",
+        "projectName": "WebStoreMVC.Application",
+        "projectPath": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Application/WebStoreMVC.Application.csproj",
+        "packagesPath": "/home/alexander/.nuget/packages/",
+        "outputPath": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Application/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/alexander/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.DAL/WebStoreMVC.DAL.csproj": {
+                "projectPath": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.DAL/WebStoreMVC.DAL.csproj"
+              },
+              "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Domain/WebStoreMVC.Domain.csproj": {
+                "projectPath": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Domain/WebStoreMVC.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Elasticsearch.Net": {
+              "target": "Package",
+              "version": "[7.17.5, )"
+            },
+            "MailKit": {
+              "target": "Package",
+              "version": "[4.7.0, )"
+            },
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.Identity.Core": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[7.6.3, )"
+            },
+            "NEST": {
+              "target": "Package",
+              "version": "[7.17.5, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "Serilog": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Stripe.net": {
+              "target": "Package",
+              "version": "[45.3.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[7.6.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.107/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.DAL/WebStoreMVC.DAL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.DAL/WebStoreMVC.DAL.csproj",
+        "projectName": "WebStoreMVC.DAL",
+        "projectPath": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.DAL/WebStoreMVC.DAL.csproj",
+        "packagesPath": "/home/alexander/.nuget/packages/",
+        "outputPath": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.DAL/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/alexander/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Domain/WebStoreMVC.Domain.csproj": {
+                "projectPath": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Domain/WebStoreMVC.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.107/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Domain/WebStoreMVC.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Domain/WebStoreMVC.Domain.csproj",
+        "projectName": "WebStoreMVC.Domain",
+        "projectPath": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Domain/WebStoreMVC.Domain.csproj",
+        "packagesPath": "/home/alexander/.nuget/packages/",
+        "outputPath": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Domain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/alexander/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.107/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
