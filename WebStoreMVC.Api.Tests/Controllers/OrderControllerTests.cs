@@ -37,21 +37,21 @@ public class OrderControllerTests
         var redirectToAction_result = Assert.IsType<RedirectToActionResult>(result.Result);
     }
 
-    /*[Fact]
-    public async Task OrderConfirmation_Returns_View()
+    [Fact]
+    public void SuccessfulTransaction_Returns_View()
     {
-
-        var sessionServiceMock = new Mock<SessionService>();
-        sessionServiceMock.Setup(x => x.Get(It.IsAny<string>(),It.IsAny<SessionGetOptions>(),It.IsAny<RequestOptions>()))
-            .Returns(It.IsAny<Session>());
-        
-        _orderServiceMock.Setup(x => x.SaveUserOrder())
-            .ReturnsAsync(new ResponseDto());
-
         var controller = new OrderController(_orderServiceMock.Object);
-        var result = await controller.OrderConfirmation();
+        var result = controller.SuccessfulTransaction();
         Assert.IsType<ViewResult>(result);
-    }*/
+    }
+    
+    [Fact]
+    public void FailureTransaction_Returns_View()
+    {
+        var controller = new OrderController(_orderServiceMock.Object);
+        var result = controller.FailureTransaction();
+        Assert.IsType<ViewResult>(result);
+    }
 
     [Fact]
     public void ShowCartInfo_Returns_ListCartItemWithView()

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using WebStoreMVC.Domain.Entities;
 using WebStoreMVC.Dtos;
 using WebStoreMVC.Services.Interfaces;
 
@@ -78,8 +79,8 @@ public class AuthController : Controller
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult> Registration(RegisterDto registerDto)
     {
-        if (HttpContext.Request.Cookies["accessToken"] != null &&
-            HttpContext.Request.Cookies["refreshToken"] != null &&
+        if (HttpContext.Request.Cookies[CookieName.accessToken] != null &&
+            HttpContext.Request.Cookies[CookieName.refreshToken] != null &&
             HttpContext.User.Identity.IsAuthenticated)
         {
             return RedirectToAction("Index", "Home");
@@ -140,8 +141,8 @@ public class AuthController : Controller
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> Login([FromForm] LoginDto loginDto)
     {
-        if (HttpContext.Request.Cookies["accessToken"] != null &&
-            HttpContext.Request.Cookies["refreshToken"] != null &&
+        if (HttpContext.Request.Cookies[CookieName.accessToken] != null &&
+            HttpContext.Request.Cookies[CookieName.refreshToken] != null &&
             HttpContext.User.Identity.IsAuthenticated)
         {
             return RedirectToAction("Index", "Home");
@@ -279,9 +280,12 @@ public class AuthController : Controller
     [Route("VerifyAccount")]
     public async Task<ActionResult<ResponseDto<VerifyAccountDto>>> VerifyAccount(VerifyAccountDto verifyAccountDto)
     {
-        if (HttpContext.Request.Cookies["accessToken"] != null &&
-            HttpContext.Request.Cookies["refreshToken"] != null &&
+        if (HttpContext.Request.Cookies[CookieName.accessToken] != null &&
+            HttpContext.Request.Cookies[CookieName.refreshToken] != null &&
             HttpContext.User.Identity.IsAuthenticated)
+        {
+            return RedirectToAction("Index", "Home");
+        }
         
         if (!ModelState.IsValid)
         {

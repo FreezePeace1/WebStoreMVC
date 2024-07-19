@@ -57,7 +57,7 @@ public class CartControllerTests
         Assert.Equal(expected_lastCartItem_Name,model.CartItems.Last().ProductName);
         Assert.NotNull(result);
     }
-
+    
     [Fact]
     public void Clear_Returns_RedirectToAction()
     {

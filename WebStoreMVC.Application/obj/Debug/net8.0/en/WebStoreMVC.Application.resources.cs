@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebStoreMVC.Application")]
 [assembly: System.Reflection.AssemblyCopyrightAttribute(" ")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b11884edf1838d8cfd1c8da259331b0cc70a0c64")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+16a4c123fbfb18406425217a452ac60af3c6ed55")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebStoreMVC.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebStoreMVC.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

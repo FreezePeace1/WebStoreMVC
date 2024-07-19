@@ -17,6 +17,24 @@
     &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebStoreMVC.Api.Controllers.SearchingProductsControllerTests.SearchingProducts_Returns_ListProductsWithView&lt;/TestId&gt;
     &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebStoreMVC.Api.Controllers.SearchingProductsControllerTests&lt;/TestId&gt;
     &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.AccountControllerTests.Index_Returns_ListProductOrderWithView&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.AccountControllerTests.Index_Returns_RedirectToAction&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.AccountControllerTests&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.AuthControllerTests.SeedingRoles_Returns_OkStatusCodeWithResponseDto&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.AuthControllerTests.Registration_Returns_RedirectToAction&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.AuthControllerTests.Registration_Returns_RedirectToActionWithSucceedService&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.AuthControllerTests.Registration_Returns_View&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.AuthControllerTests.Login_Returns_View&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.AuthControllerTests.Login_Returns_RedirectToAction&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.AuthControllerTests.Login_Returns_RedirectToActionWithSucceedService&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.AuthControllerTests.FromUserToAdmin_Returns_StatusCodeOkWithResponseDto&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.AuthControllerTests.Logout_Returns_RedirectToAction&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.AuthControllerTests.FromAdminToUser_Returns_StatusCodeOkWithResponseDto&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.AuthControllerTests.VerifyAccount_Returns_RedirectToAction&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.AuthControllerTests.VerifyAccount_Returns_View&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.AuthControllerTests.ForgotPassword_Returns_RedirectToAction&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.AuthControllerTests.ForgotPassword_Returns_View&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.AuthControllerTests.ResetPassword_Returns_RedirectToAction&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.AuthControllerTests.ResetPassword_Returns_ViewWithResetPasswordDto&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=Core_002FWebStoreMVC_002EApplication_002FResources_002FErrorMessage/@EntryIndexedValue">True</s:Boolean>
