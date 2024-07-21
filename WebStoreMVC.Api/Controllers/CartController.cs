@@ -77,7 +77,7 @@ public class CartController : Controller
     {
         var cartServiceRemove = await _cartService.Remove(id);
         
-        return RedirectToAction("Index");
+         return Redirect(Request.Headers["Referer"].ToString());
     }
     
     /// <summary>
@@ -89,6 +89,6 @@ public class CartController : Controller
     {
         var cartServiceClear = _cartService.Clear();
         
-        return RedirectToAction("Index");
+        return Redirect(Request.Headers.Referer.ToString());
     }
 }

@@ -1,9 +1,10 @@
 using WebStoreMVC.Domain.Entities;
 using WebStoreMVC.Dtos;
+using WebStoreMVC.Models;
 
 namespace WebStoreMVC.Services.Interfaces;
 
 public interface ISearchingProductsService
 {
-    public Task<ResponseDto<List<Product>>> SearchingProducts(string searchString = "");
+    public Task<ResponseDto<ProductSearchingModel>> SearchingProducts(string searchString = "",int currentPage = 1);
 }

@@ -4,6 +4,7 @@ using Moq;
 using WebStoreMVC.Controllers;
 using WebStoreMVC.Domain.Entities;
 using WebStoreMVC.Dtos;
+using WebStoreMVC.Models;
 using WebStoreMVC.Services.Interfaces;
 using Assert = Xunit.Assert;
 
@@ -46,74 +47,48 @@ public class HomeControllerTests
     }
 
     [TestMethod]
-    public void Product_Returns_View()
+    public async Task Product_Returns_View()
     {
+        int expected_productId = 10;
+        decimal expected_productPrice = 15000;
+        _homeServiceMock.Setup(x => x.GetProductById(It.IsAny<int>()))
+            .ReturnsAsync(new ResponseDto<Product>()
+            {
+                Data = new Product()
+                {
+                    ProductId = 10,
+                    Price = 15000
+                }
+            });
+        
         var controller = new HomeController(_homeServiceMock.Object, _searchingProductsServiceMock.Object);
 
-        var result = controller.Product();
+        var result = await controller.Product(It.IsAny<int>());
 
-        Assert.IsType<ViewResult>(result);
+        var view_result = Assert.IsType<ViewResult>(result.Result);
+        var model = Assert.IsAssignableFrom<ResponseDto<Product>>(view_result.Model);
+        Assert.NotNull(model.Data);
+        Assert.Equal(expected_productId,model.Data.ProductId);
+        Assert.Equal(expected_productPrice,model.Data.Price);
     }
 
     [TestMethod]
     public async Task Store_Returns_View_With_Products()
     {
-        const int expected_id_count = 15;
-        const decimal expected_price_count = 15000M;
-        const string expected_productName_Of_First_Product = "Smartphone";
-        const int expected_taken_items_count = 5;
-        
-        var products = new List<Product>
-        {
-            new Product()
+        _searchingProductsServiceMock.Setup(service => service.SearchingProducts(It.IsAny<string>(),It.IsAny<int>()))
+            .ReturnsAsync(new ResponseDto<ProductSearchingModel>()
             {
-                ProductId = 1,
-                Price = 1000M,
-                ProductName = "Smartphone"
-            },
-            new Product()
-            {
-                ProductId = 2,
-                Price = 2000M
-            },
-            new Product()
-            {
-                ProductId = 3,
-                Price = 3000M
-            },
-            new Product()
-            {
-                ProductId = 4,
-                Price = 4000M
-            },
-            new Product()
-            {
-                ProductId = 5,
-                Price = 5000M
-            }
-        };
-
-        ResponseDto<List<Product>> resProducts = new()
-        {
-            Data = products
-        };
-        
-        _homeServiceMock.Setup(service => service.Store())
-            .ReturnsAsync(resProducts);
+                Data = new ProductSearchingModel()
+            });
 
         var controller = new HomeController(_homeServiceMock.Object,_searchingProductsServiceMock.Object);
         
-        var result = await controller.Store();
+        var result = await controller.Store(It.IsAny<string>(),It.IsAny<int>());
         var view_result = Assert.IsType<ViewResult>(result.Result);
-        var model = Assert.IsAssignableFrom<List<Product>>(view_result.Model);
+        var model = Assert.IsAssignableFrom<ResponseDto<ProductSearchingModel>>(view_result.Model);
 
-        Assert.NotNull(resProducts.Data);
-        Assert.Equal(expected_id_count,model.Sum(x => x.ProductId));
-        Assert.Equal(expected_price_count,model.Sum(x => x.Price));
-        Assert.Equal(expected_productName_Of_First_Product,model.First().ProductName);
-        Assert.Equal(expected_taken_items_count,model.Count);
+        Assert.NotNull(model.Data);
         
-        _homeServiceMock.Verify(service => service.Store());
         _homeServiceMock.VerifyNoOtherCalls();
 
     }

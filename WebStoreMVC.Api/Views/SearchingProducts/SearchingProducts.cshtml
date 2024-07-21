@@ -1,11 +1,11 @@
-@model WebStoreMVC.Dtos.ResponseDto<List<WebStoreMVC.Domain.Entities.Product>>
+@model WebStoreMVC.Dtos.ResponseDto<ProductSearchingModel>
 
 @{
     ViewBag.Title = "Поиск товаров";
     Layout = "_Layout";
 }
 
-@foreach (var item in Model.Data)
+@foreach (var item in Model.Data.Products)
 {
     <!-- product -->
     <div class="col-md-4 col-xs-6">

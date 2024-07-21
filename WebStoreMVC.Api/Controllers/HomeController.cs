@@ -2,6 +2,7 @@
 using Nest;
 using WebStoreMVC.Domain.Entities;
 using WebStoreMVC.Dtos;
+using WebStoreMVC.Models;
 using WebStoreMVC.Services.Interfaces;
 
 
@@ -33,28 +34,16 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Product()
+    public async Task<ActionResult<ResponseDto<Product>>> Product(int id)
     {
-        return View();
+        var product = await _homeService.GetProductById(id);
+        
+        return View(product);
     }
     
-    public async Task<ActionResult<ResponseDto<List<Product>>>> Store(string searchString = null) {
-        ResponseDto<List<Product>> products;
+    public async Task<ActionResult<ResponseDto<ProductSearchingModel>>> Store(string searchString = "",int currentPage = 1) {
+        ResponseDto<ProductSearchingModel> products = await _searchingProductsService.SearchingProducts(searchString,currentPage);
         
-        if (searchString != null)
-        {
-            products = await _searchingProductsService.SearchingProducts(searchString);
-        }
-        else
-        {
-            products = await _homeService.Store();
-        }
-
-        if (products.Data == null)
-        {
-            return RedirectToAction("Store");
-        }
-        
-        return View(products.Data);
+        return View(products);
     }
 }

@@ -1,10 +1,9 @@
 using System.Text.RegularExpressions;
-using Microsoft.EntityFrameworkCore;
 using WebStoreMVC.Application.Resources;
 using WebStoreMVC.DAL.Context;
-using WebStoreMVC.Domain.Entities;
 using WebStoreMVC.Domain.Enum;
 using WebStoreMVC.Dtos;
+using WebStoreMVC.Models;
 using WebStoreMVC.Services.Interfaces;
 
 namespace WebStoreMVC.Services;
@@ -85,65 +84,102 @@ public class SearchingProductsService : ISearchingProductsService
         return words;
     }
 
-    public async Task<ResponseDto<List<Product>>> SearchingProducts(string searchString = "")
+    private ProductSearchingModel FillingDataForPagination(ProductSearchingModel productSearchingModel,int currentPage,int pageSize,int totalPages,string searchString)
+    {
+        productSearchingModel.CurrentPage = currentPage;
+        productSearchingModel.PageSize = pageSize;
+        productSearchingModel.TotalPages = totalPages;
+        productSearchingModel.Products = productSearchingModel.Products.Skip((currentPage - 1) * pageSize).Take(pageSize);
+        productSearchingModel.SearchString = searchString;
+
+        productSearchingModel.StartedPage = productSearchingModel.CurrentPage - 5;
+        productSearchingModel.EndedPage = productSearchingModel.CurrentPage + 4;
+
+        if (productSearchingModel.StartedPage <= 0)
+        {
+            productSearchingModel.EndedPage = productSearchingModel.EndedPage
+                                              - (productSearchingModel.StartedPage - 1);
+            productSearchingModel.StartedPage = 1;
+        }
+
+        if (productSearchingModel.EndedPage > productSearchingModel.TotalPages)
+        {
+            productSearchingModel.EndedPage = productSearchingModel.TotalPages;
+            if (productSearchingModel.EndedPage > 10)
+            {
+                productSearchingModel.StartedPage = productSearchingModel.EndedPage - 9;
+            }
+        }
+
+        return productSearchingModel;
+    }
+
+    public async Task<ResponseDto<ProductSearchingModel>> SearchingProducts(string searchString = "",int currentPage = 1)
     {
         // Исключение, которые приводят сразу к выводу ошибки 
-        if (searchString == "")
+        /*if (searchString == "")
         {
             return new ResponseDto<List<Product>>()
             {
                 ErrorMessage = ErrorMessage.ProductsAreNotFound,
                 ErrorCode = (int)ErrorCode.ProductsAreNotFound
             };
-        }
+        }*/
 
-        searchString = StringTransformation(searchString);
-        string[] words = StringDistribution(searchString);
-
-        string hashtag = words[0];
-        string hashtag2 = words[1];
-        string productName = words[2];
-
-        IQueryable<Product> products = _context.Products;
-
-
-        if (hashtag == "" || hashtag == "" && hashtag2 == "")
+        ProductSearchingModel productSearchingModel = new ProductSearchingModel();
+        if (searchString != "")
         {
-            products = products.Where(u =>
-                    u.Hashtags.ToLower().Contains(searchString) || u.ProductName.ToLower().Contains(searchString))
-                .AsNoTracking();
-        }
+            searchString = StringTransformation(searchString);
+            string[] words = StringDistribution(searchString);
 
-        if (hashtag != "" && hashtag2 != "" && productName != "")
-        {
-            products = products.Where(u =>
-                (u.Hashtags.ToLower().Contains(hashtag) && u.Hashtags.ToLower().Contains(hashtag2) &&
-                 u.ProductName.ToLower().Contains(productName))).AsNoTracking();
-        }
-        else if (hashtag != "" && hashtag2 != "" && productName == "")
-        {
-            products = products.Where(u =>
-                u.Hashtags.ToLower().Contains(hashtag) && u.Hashtags.ToLower().Contains(hashtag2)).AsNoTracking();
-        }
-        else if (hashtag != "" || productName != "")
-        {
-            products = products.Where(u =>
-                u.Hashtags.ToLower().Contains(hashtag) || u.ProductName.ToLower().Contains(productName)).AsNoTracking();
-        }
-
-
-        if (!products.Any())
-        {
-            return new ResponseDto<List<Product>>()
+            string hashtag = words[0];
+            string hashtag2 = words[1];
+            string productName = words[2];
+            
+            productSearchingModel.Products = _context.Products;
+        
+            if (hashtag != "" && hashtag2 != "" && productName != "")
             {
-                ErrorMessage = ErrorMessage.ProductsAreNotFound,
-                ErrorCode = (int)ErrorCode.ProductsAreNotFound
-            };
-        }
+                productSearchingModel.Products = productSearchingModel.Products.Where(u =>( u.Hashtags.ToLower().Contains(hashtag) && u.Hashtags.ToLower().Contains(hashtag2) && u.ProductName.ToLower().Contains(productName)));
 
-        return new ResponseDto<List<Product>>()
+            }
+            else if (hashtag != "" && hashtag2 != "" && productName == "")
+            {
+                productSearchingModel.Products = productSearchingModel.Products.Where(u => u.Hashtags.ToLower().Contains(hashtag) && u.Hashtags.ToLower().Contains(hashtag2));
+
+            }
+            else if (hashtag != "" || productName != "")
+            {
+                productSearchingModel.Products = productSearchingModel.Products.Where(u => u.Hashtags.ToLower().Contains(hashtag) && u.ProductName.ToLower().Contains(productName));
+            }
+            else if (hashtag != "" || productName != "")
+            {
+                productSearchingModel.Products = productSearchingModel.Products.Where(u => u.Hashtags.ToLower().Contains(searchString) || u.ProductName.ToLower().Contains(searchString));   
+            }
+
+            if (!productSearchingModel.Products.Any())
+            {
+                return new ResponseDto<ProductSearchingModel>()
+                {
+                    ErrorMessage = ErrorMessage.ProductsAreNotFound,
+                    ErrorCode = (int)ErrorCode.ProductsAreNotFound
+                };
+            }
+        }
+        else
         {
-            Data = await products.Distinct().Take(100).ToListAsync()
+            productSearchingModel.Products = _context.Products;
+        }
+        
+        int totalProducts = productSearchingModel.Products.Count();
+        int pageSize = 15;
+        int totalPages = (int)Math.Ceiling(totalProducts / (double)pageSize);
+
+        productSearchingModel = FillingDataForPagination(productSearchingModel, currentPage, pageSize, totalPages, searchString);
+        
+        return new ResponseDto<ProductSearchingModel>()
+        {
+            Data =  productSearchingModel/*.Distinct()*/
         };
     }
 }

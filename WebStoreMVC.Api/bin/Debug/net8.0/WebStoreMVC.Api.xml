@@ -10,7 +10,7 @@
             </summary>
             <param name="productsService"></param>
         </member>
-        <member name="M:WebStoreMVC.Areas.Admin.Controllers.ProductsForAdminController.GetAllProducts(System.Int32,System.String)">
+        <member name="M:WebStoreMVC.Areas.Admin.Controllers.ProductsForAdminController.GetAllProducts(System.String,System.Int32)">
             <summary>
             Получение всех товаров (
             </summary>

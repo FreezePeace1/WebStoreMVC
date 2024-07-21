@@ -1,21 +1,5 @@
 @using WebStoreMVC.Models
-@model WebStoreMVC.Dtos.ResponseDto<List<Product>>
-
-@{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
-
-    PagerModel pager = new PagerModel();
-
-    int pageNum = 0;
-
-    if (ViewBag.Pager != null)
-    {
-        pager = ViewBag.Pager;
-        pageNum = pager.CurrentPage;
-    }
-}
-
+@model WebStoreMVC.Dtos.ResponseDto<ProductSearchingModel>
 
 <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 tm-block-col">
     <div class="tm-bg-primary-dark tm-block tm-block-products">
@@ -44,7 +28,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach (var item in Model.Data)
+                @foreach (var item in Model.Data.Products)
                 {
                     <tr>
                         <td>
@@ -79,6 +63,39 @@
             Delete selected products
         </button>*@
     </div>
+</div>
+
+<div class="store-filter clearfix">
+    <ul class="pagination">
+
+        @if (Model.Data.CurrentPage > 1)
+        {
+        <li class="page-item">
+            <a class="page-link" asp-action="GetAllProducts" asp-route-searchString="@Model.Data.SearchString" asp-route-currentPage="@(Model.Data.CurrentPage - 1)" aria-label="Previous">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        </li>
+        }
+        @for (int i = Model.Data.StartedPage; i < @Model.Data.EndedPage; i++)
+        {
+        if (i == Model.Data.CurrentPage)
+        {
+        <li class="page-item active"><a class="active page-link" asp-action="GetAllProducts" asp-route-searchString="@Model.Data.SearchString" asp-route-currentPage="@i">@i</a></li>
+        }
+        else
+        {
+        <li class="page-item"><a class="page-link" asp-action="GetAllProducts" asp-route-searchString="@Model.Data.SearchString" asp-route-currentPage="@i">@i</a></li>
+        }
+        }
+        @if (Model.Data.CurrentPage < Model.Data.TotalPages)
+        {
+        <li class="page-item">
+            <a class="page-link" asp-action="GetAllProducts" asp-route-searchString="@Model.Data.SearchString" asp-route-currentPage="@(Model.Data.CurrentPage + 1)" aria-label="Next">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+        }
+    </ul>
 </div>
 
 @* Категори *@
@@ -185,5 +202,3 @@
         </button>
     </div>
 </div>*@
-
-<partial name= "_Pagination" model="@pager"/>

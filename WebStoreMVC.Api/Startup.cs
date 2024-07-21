@@ -19,9 +19,6 @@ namespace WebStoreMVC;
 
 public static class Startup
 {
-    
-    
-    
     /// <summary>
     /// Подключение и настройка Identity
     /// </summary>
@@ -53,15 +50,15 @@ public static class Startup
         });
         services.ConfigureApplicationCookie(opt =>
         {
-            opt.Cookie.Name = "WebStoreMvc_Cookie";
+            /*opt.Cookie.Name = "WebStoreMvc_Cookie";
             opt.Cookie.HttpOnly = true;
-            opt.ExpireTimeSpan = TimeSpan.FromDays(30);
-            /*opt.LoginPath = "/Account/Login";
-            opt.LogoutPath = "/Account/Logout";*/
-            opt.AccessDeniedPath = "/Account/AccessDenied";
+            opt.ExpireTimeSpan = TimeSpan.FromDays(30);*/
+            opt.LoginPath = "/Account/Login";
+            opt.LogoutPath = "/Account/Logout";
+            opt.AccessDeniedPath = "/Home/";
 
             //Чтобы состояние пользователя во время сессии менялось (например если он зарегистрировался или залогинился то сразу переключаем на эти права)
-            opt.SlidingExpiration = true;
+            /*opt.SlidingExpiration = true;*/
             
         });
     }
@@ -172,12 +169,12 @@ public static class Startup
             })
             .AddCookie(opt =>
             {
-                /*opt.Cookie.Name = "WebStoreMvc_Cookie";
+                opt.Cookie.Name = "WebStoreMvc_Cookie";
                 opt.Cookie.HttpOnly = true;
                 opt.ExpireTimeSpan = TimeSpan.FromDays(30);
-                opt.LoginPath = "/Account/Login";*/
+                opt.LoginPath = "/Account/Login";
                 opt.LogoutPath = "/Account/Logout";
-                opt.AccessDeniedPath = "/Account/AccessDenied";
+                /*opt.AccessDeniedPath = "/Home/Index";*/
             })
             .AddJwtBearer("Bearer", opt =>
             {
@@ -190,7 +187,9 @@ public static class Startup
                     ValidIssuer = builder.Configuration["JwtSettings:Issuer"],
                     ValidAudience = builder.Configuration["JwtSettings:Audience"],
                     IssuerSigningKey =
-                        new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JwtSettings:Key"]))
+                        new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JwtSettings:Key"])),
+                    
+                    RoleClaimType = UserRoles.ADMINISTRATOR
                 };
             });
 

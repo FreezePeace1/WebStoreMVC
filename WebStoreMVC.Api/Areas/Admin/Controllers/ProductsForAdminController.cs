@@ -35,33 +35,16 @@ public class ProductsForAdminController : Controller
     /// </remarks>
     [HttpGet("GetAllProducts")]
     [Route("GetAllProducts")]
-    public async Task<ActionResult<ResponseDto<List<Product>>>> GetAllProducts(int pg=1,string searchString = "")
+    public async Task<ActionResult<ResponseDto<ProductSearchingModel>>> GetAllProducts(string searchString = "",int currentPage = 1)
     {
-        ViewData["CurrentFilter"] = searchString;
-        
-        var productList = await _productsService.GetAllProducts();
-        
-        if (searchString != "")
-        {
-            productList = await _searchingProductsService.SearchingProducts(searchString);
-        }
+        var products = await _searchingProductsService.SearchingProducts(searchString, currentPage);
 
-        const int pageSize = 15;
-
-        int rescCount = productList.Data.Count;
-        var pager = new PagerModel(rescCount, pg, pageSize);
-        
-        productList = await _productsService.GetProductByPage(pg, pager.PageSize);
-        
-        this.ViewBag.Pager = pager;
-        
-
-        if (productList.Data == null)
+        if (products.Data.Products == null)
         {
             RedirectToAction("GetAllProducts");
         }
         
-        return View(productList);
+        return View(products);
     }
 
     /// <summary>

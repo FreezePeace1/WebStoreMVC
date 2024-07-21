@@ -7,6 +7,7 @@ using WebStoreMVC.Areas.Admin.Controllers;
 using WebStoreMVC.DAL.Context;
 using WebStoreMVC.Domain.Entities;
 using WebStoreMVC.Dtos;
+using WebStoreMVC.Models;
 using WebStoreMVC.Services.Interfaces;
 using Xunit;
 
@@ -20,78 +21,21 @@ public class ProductsForAdminControllerTests
     [Fact]
     public async Task GetAllProducts_Returns_ProductsListWithView()
     {
-        int expected_product_count = 3;
-        decimal expected_lastProduct_price = 50000;
-        var products = new List<Product>()
-        {
-            new Product()
+        _searchingProductsServiceMock.Setup(x => x.SearchingProducts(It.IsAny<string>(), It.IsAny<int>()))
+            .ReturnsAsync(new ResponseDto<ProductSearchingModel>()
             {
-                ProductId = 1,
-                Article = 1,
-                CategoryId = 1,
-                CategoryName = "Смартфоны",
-                Colour = "Черный",
-                Description = "Описание",
-                Hashtags = "Хештеги",
-                Images = "source",
-                Manufacturer = "Xiaomi",
-                Price = 15000,
-                ProductName = "Смартфон",
-                Quantity = 1,
-            },
-            new Product()
-            {
-                ProductId = 2,
-                Article = 2,
-                CategoryId = 3,
-                CategoryName = "Телевизоры",
-                Colour = "Черный",
-                Description = "Описание",
-                Hashtags = "Хештеги",
-                Images = "source",
-                Manufacturer = "LG",
-                Price = 30000,
-                ProductName = "Телевизор",
-                Quantity = 1,
-            },
-            new Product()
-            {
-                ProductId = 3,
-                Article = 3,
-                CategoryId = 2,
-                CategoryName = "Ноутбуки",
-                Colour = "Черный",
-                Description = "Описание",
-                Hashtags = "Хештеги",
-                Images = "source",
-                Manufacturer = "LG",
-                Price = 50000,
-                ProductName = "Ноутбук",
-                Quantity = 1,
-            }
-        };
+                Data = new ProductSearchingModel()
 
-        _productsServiceMock.Setup(x => x.GetProductByPage(It.IsAny<int>(), It.IsAny<int>()))
-            .ReturnsAsync(new ResponseDto<List<Product>>()
-            {
-                Data = products
-            });
-
-        _productsServiceMock.Setup(x => x.GetAllProducts())
-            .ReturnsAsync(new ResponseDto<List<Product>>()
-            {
-                Data = products
             });
 
         var controller =
             new ProductsForAdminController(_productsServiceMock.Object, _searchingProductsServiceMock.Object);
         var result = await controller.GetAllProducts();
         var view_result = Assert.IsType<ViewResult>(result.Result);
-        Assert.IsType<ActionResult<ResponseDto<List<Product>>>>(result);
+        Assert.IsType<ActionResult<ResponseDto<ProductSearchingModel>>>(result);
         Assert.NotNull(result);
-        var model = Assert.IsAssignableFrom<ResponseDto<List<Product>>>(view_result.Model);
-        Assert.Equal(expected_product_count, model.Data.Count);
-        Assert.Equal(expected_lastProduct_price, model.Data.Last().Price);
+        var model = Assert.IsAssignableFrom<ResponseDto<ProductSearchingModel>>(view_result.Model);
+        Assert.NotNull(model.Data);
     }
 
     [Fact]

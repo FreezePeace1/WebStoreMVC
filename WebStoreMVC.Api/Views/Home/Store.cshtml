@@ -1,4 +1,5 @@
-@model List<WebStoreMVC.Domain.Entities.Product>
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model WebStoreMVC.Dtos.ResponseDto<ProductSearchingModel>
 
 <!-- BREADCRUMB -->
 <div id="breadcrumb" class="section">
@@ -256,7 +257,7 @@
     <!-- store products -->
     <div class="row">
 
-        @foreach (var item in Model)
+        @foreach (var item in Model.Data.Products)
         {
             @if (item.Quantity > 0)
             {
@@ -269,10 +270,11 @@
                         <div class="product-body">
                             <p class="product-category">Category</p>
                             <h3 class="product-name">
-                                <a href="#">@item.ProductName</a>
+                                <a asp-controller="Home" asp-action="Product" asp-route-id="@item.ProductId">@item.ProductName</a>
                             </h3>
                             <h4 class="product-price">
-                                @item.Price <del class="product-old-price">@(item.Price + 1500)</del>
+                                @{ decimal oldPrice = item.Price + 1500;}
+                                @item.Price.ToString("C2") <del class="product-old-price">@oldPrice.ToString("C2")</del>
                             </h4>
                             <div class="product-rating">
                             </div>
@@ -305,23 +307,36 @@
 
     <!-- store bottom filter -->
     <div class="store-filter clearfix">
-        <span class="store-qty">Showing 20-100 products</span>
+        <span class="store-qty">Показывается 15@*20-100*@ товаров</span>
         <ul class="store-pagination">
-            <li class="active">1</li>
-            <li>
-                <a href="#">2</a>
+
+            @if (Model.Data.CurrentPage > 1)
+            {
+            <li class="page-item">
+                <a class="page-link" asp-action="Store" asp-route-searchString="@Model.Data.SearchString" asp-route-currentPage="@(Model.Data.CurrentPage - 1)" aria-label="Previous">
+                    <i class="fa fa-angle-left"></i>
+                </a>
             </li>
-            <li>
-                <a href="#">3</a>
-            </li>
-            <li>
-                <a href="#">4</a>
-            </li>
-            <li>
-                <a href="#">
+            }
+            @for (int i = Model.Data.StartedPage; i < @Model.Data.EndedPage; i++)
+            {
+            if (i == Model.Data.CurrentPage)
+            {
+            <li class="page-item active"><a class="active page-link" asp-action="Store" asp-route-searchString="@Model.Data.SearchString" asp-route-currentPage="@i">@i</a></li>
+            }
+            else
+            {
+            <li class="page-item"><a class="page-link" asp-action="Store" asp-route-searchString="@Model.Data.SearchString" asp-route-currentPage="@i">@i</a></li>
+            }
+            }
+            @if (Model.Data.CurrentPage < Model.Data.TotalPages)
+            {
+            <li class="page-item">
+                <a class="page-link" asp-action="Store" asp-route-searchString="@Model.Data.SearchString" asp-route-currentPage="@(Model.Data.CurrentPage + 1)" aria-label="Next">
                     <i class="fa fa-angle-right"></i>
                 </a>
             </li>
+            }
         </ul>
     </div>
     <!-- /store bottom filter -->
