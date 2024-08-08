@@ -146,5 +146,23 @@ namespace WebStoreMVC.Application.Resources {
                 return ResourceManager.GetString("EmailSuccess", resourceCulture);
             }
         }
+        
+        internal static string OrderIsFound {
+            get {
+                return ResourceManager.GetString("OrderIsFound", resourceCulture);
+            }
+        }
+        
+        internal static string ReviewHasCreated {
+            get {
+                return ResourceManager.GetString("ReviewHasCreated", resourceCulture);
+            }
+        }
+        
+        internal static string ReviewsAreFound {
+            get {
+                return ResourceManager.GetString("ReviewsAreFound", resourceCulture);
+            }
+        }
     }
 }

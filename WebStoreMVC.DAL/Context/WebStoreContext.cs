@@ -16,4 +16,5 @@ public class WebStoreContext : IdentityDbContext<AppUser, IdentityRole, string>
     public DbSet<Order> Orders { get; set; }
     public DbSet<CustomerInfo> CustomersInfo { get; set; }
     public DbSet<OrderProduct> OrderProducts { get; set; }
+    public DbSet<UserReview> UserReviews { get; set; }
 }

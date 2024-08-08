@@ -1,0 +1,37 @@
+@model WebStoreMVC.Dtos.PostReviewDto
+
+<!-- Review Form -->
+<div class="col-md-3">
+    <div id="review-form">
+        <form asp-controller="Home" asp-action="PostReview" method="post" class="review-form">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input asp-for="UserName" class="input" type="text" placeholder="Ваше имя">
+            <div>
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <input asp-for="UserEmail" class="input" type="email" placeholder="Ваша почта">
+            <div>
+                <span asp-validation-for="UserEmail" class="text-danger"></span>
+            </div>
+            <textarea asp-for="ReviewDescription" class="input" placeholder="Ваша оценка"></textarea>
+            <div>
+                <span asp-validation-for="ReviewDescription" class="text-danger"></span>
+            </div>
+            <div class="input-rating">
+                <span>Ваша оценка: </span>
+                <div class="stars">
+                    <input asp-for="Rating" id="star5" name="rating" value="5" type="radio"><label for="star5"></label>
+                    <input asp-for="Rating" id="star4" name="rating" value="4" type="radio"><label for="star4"></label>
+                    <input asp-for="Rating" id="star3" name="rating" value="3" type="radio"><label for="star3"></label>
+                    <input asp-for="Rating" id="star2" name="rating" value="2" type="radio"><label for="star2"></label>
+                    <input asp-for="Rating" id="star1" name="rating" value="1" type="radio"><label for="star1"></label>
+                    <div>
+                        <span asp-validation-for="Rating" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <button class="primary-btn">Submit</button>
+        </form>
+    </div>
+</div>
+<!-- /Review Form -->

@@ -1,10 +1,26 @@
 @model WebStoreMVC.Dtos.CustomerInfoDto
 
+@if (!User.Identity.IsAuthenticated)
+{
+    <div style="display: flex; align-items: center; justify-content: center;">
+        <div >
+            <h3>Вы не авторизованы! Войдите в аккаунт для сохранения заказа</h3>
+        </div>
+    </div>
+}
+
 <div class="row">
     <div>
         <div class="container">
             <div class="row">
                 <div class="col-sm-4 col-sm-offset-1">
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <div>
+                            <a asp-controller="Auth" asp-action="Login">Войти/зарегистрироваться</a>
+                        </div>   
+                    }
+                    <br/>
                     <div class="login-form">
                         <form asp-controller="Order" asp-action="SaveCustomerInfo" method="post">
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -23,6 +39,10 @@
 
                             <div style="margin-bottom: 10px;">
                                 <input asp-for="PhoneNumber" placeholder="Введите номер телефона"/>
+                            </div>
+
+                            <div style="margin-bottom: 10px;">
+                                <input asp-for="UserEmail" placeholder="Введите почту"/>
                             </div>
 
                             <div style="margin-bottom: 10px;">

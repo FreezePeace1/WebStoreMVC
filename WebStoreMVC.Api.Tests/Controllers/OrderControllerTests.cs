@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Moq;
 using Stripe;
 using Stripe.Checkout;
@@ -14,6 +16,7 @@ namespace WebSotoreMVC.Api.Controllers;
 public class OrderControllerTests
 {
     private readonly Mock<IOrderService> _orderServiceMock = new();
+    private readonly Mock<IAuthService> _authServiceMock = new();
 
     [Fact]
     public async Task SaveCustomerInfo_Returns_RedirectToAction()
@@ -32,7 +35,14 @@ public class OrderControllerTests
                 }
             });
 
-        var controller = new OrderController(_orderServiceMock.Object);
+        var httpContext = new DefaultHttpContext();
+        var tempData = new TempDataDictionary(httpContext, Mock.Of<ITempDataProvider>());
+        tempData["UserEmail"] = "testEmail";
+        
+        var controller = new OrderController(_orderServiceMock.Object,_authServiceMock.Object)
+        {
+           TempData = tempData
+        };
         var result = await controller.SaveCustomerInfo(customerInfo);
         var redirectToAction_result = Assert.IsType<RedirectToActionResult>(result.Result);
     }
@@ -40,7 +50,7 @@ public class OrderControllerTests
     [Fact]
     public void SuccessfulTransaction_Returns_View()
     {
-        var controller = new OrderController(_orderServiceMock.Object);
+        var controller = new OrderController(_orderServiceMock.Object,_authServiceMock.Object);
         var result = controller.SuccessfulTransaction();
         Assert.IsType<ViewResult>(result);
     }
@@ -48,7 +58,7 @@ public class OrderControllerTests
     [Fact]
     public void FailureTransaction_Returns_View()
     {
-        var controller = new OrderController(_orderServiceMock.Object);
+        var controller = new OrderController(_orderServiceMock.Object,_authServiceMock.Object);
         var result = controller.FailureTransaction();
         Assert.IsType<ViewResult>(result);
     }
@@ -76,7 +86,7 @@ public class OrderControllerTests
                 }
             });
 
-        var controller = new OrderController(_orderServiceMock.Object);
+        var controller = new OrderController(_orderServiceMock.Object,_authServiceMock.Object);
         var result = controller.ShowCartInfo();
         var view_result = Assert.IsType<ViewResult>(result.Result);
         var model = Assert.IsAssignableFrom<ResponseDto<List<CartItem>>>(view_result.Model);

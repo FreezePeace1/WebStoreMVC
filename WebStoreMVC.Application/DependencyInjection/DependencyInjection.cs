@@ -27,6 +27,9 @@ public static class DependencyInjection
         
         //Подключаем сервис аккаунта
         services.AddScoped<IAccountService, AccountService>();
+        
+        //Подключаем сервис отзывов
+        services.AddScoped<IReviewService, ReviewService>();
 
         services.AddScoped<Initializer>();
     }

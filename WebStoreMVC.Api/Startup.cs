@@ -50,9 +50,9 @@ public static class Startup
         });
         services.ConfigureApplicationCookie(opt =>
         {
-            /*opt.Cookie.Name = "WebStoreMvc_Cookie";
+            opt.Cookie.Name = "WebStoreMvc_Cookie";
             opt.Cookie.HttpOnly = true;
-            opt.ExpireTimeSpan = TimeSpan.FromDays(30);*/
+            opt.ExpireTimeSpan = TimeSpan.FromDays(30);
             opt.LoginPath = "/Account/Login";
             opt.LogoutPath = "/Account/Logout";
             opt.AccessDeniedPath = "/Home/";
@@ -169,9 +169,9 @@ public static class Startup
             })
             .AddCookie(opt =>
             {
-                opt.Cookie.Name = "WebStoreMvc_Cookie";
+                /*opt.Cookie.Name = "WebStoreMvc_Cookie";
                 opt.Cookie.HttpOnly = true;
-                opt.ExpireTimeSpan = TimeSpan.FromDays(30);
+                opt.ExpireTimeSpan = TimeSpan.FromDays(30);*/
                 opt.LoginPath = "/Account/Login";
                 opt.LogoutPath = "/Account/Logout";
                 /*opt.AccessDeniedPath = "/Home/Index";*/

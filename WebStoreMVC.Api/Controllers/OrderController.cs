@@ -1,6 +1,6 @@
+using System.Security.Cryptography;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Stripe.FinancialConnections;
 using WebStoreMVC.Domain.Entities;
 using WebStoreMVC.Dtos;
 using WebStoreMVC.Models;
@@ -10,17 +10,18 @@ using SessionService = Stripe.Checkout.SessionService;
 
 namespace WebStoreMVC.Controllers;
 
-
 /// <summary>
 /// Контроллер для сервиса заказов
 /// </summary>
 public class OrderController : Controller
 {
     private readonly IOrderService _orderService;
+    private readonly IAuthService _authService;
 
-    public OrderController(IOrderService orderService)
+    public OrderController(IOrderService orderService, IAuthService authService)
     {
         _orderService = orderService;
+        _authService = authService;
     }
 
     /// <summary>
@@ -36,7 +37,7 @@ public class OrderController : Controller
         {
             return View(dto);
         }
-        
+
         var response = await _orderService.SaveCustomerInfo(dto);
 
         if (!response.IsSucceed)
@@ -44,15 +45,16 @@ public class OrderController : Controller
             var error = response.ErrorMessage;
             ModelState.AddModelError(string.Empty, error.ToString());
         }
-        
+
         if (response.IsSucceed)
         {
+            TempData["UserEmail"] = dto.UserEmail;
             return RedirectToAction("StripePayment");
         }
 
         return View(dto);
     }
-    
+
     /// <summary>
     /// Пользователь проводит оплату через Stripe
     /// </summary>
@@ -61,13 +63,13 @@ public class OrderController : Controller
     public async Task<ActionResult<ResponseDto>> StripePayment()
     {
         var response = await _orderService.StripePayment();
-        
+
         TempData["Session"] = response.SuccessMessage;
-            
+
         return new StatusCodeResult(303);
     }
-    
-    
+
+
     /// <summary>
     /// Если оплата проходит успешно, то убавляем товары из БД (т к их заказали) и отправляем пользователя
     /// к странице поздравления, иначе к странице неудачной транзакции
@@ -84,13 +86,45 @@ public class OrderController : Controller
             return RedirectToAction("Index", "Home");
         }
 
-        Session session = await service.GetAsync(TempData["Session"].ToString());
+        Session session = await service.GetAsync(TempData["Session"]?.ToString());
 
         if (session.PaymentStatus == "paid")
         {
+            string userPassword = Convert.ToBase64String(RandomNumberGenerator.GetBytes(16));
+            var isUserExists = await _authService.IsUserExists(TempData["UserEmail"].ToString());
+            if (!User.Identity.IsAuthenticated && !isUserExists)
+            {
+                RegisterDto registerDto = new()
+                {
+                    Email = TempData["UserEmail"].ToString(),
+                    Username = $"User{Guid.NewGuid().ToString("N").Substring(0,5)}",
+                    Password = userPassword,
+                    ConfirmedPassword = userPassword
+                };
+
+                var registration = await _authService.Register(registerDto);
+                if (registration.IsSucceed)
+                {
+                    await _orderService.SendUserInfoAfterSuccessfulOrder(registerDto);
+                }
+            }
+
             await _orderService.SaveUserOrder();
-            
-            return View("SuccessfulTransaction");
+
+            var lastOrder = await _orderService.GetLastOrder();
+
+            if (User.Identity.IsAuthenticated)
+            {
+                var orderWithUserMail = new OrderWithUserMail()
+                {
+                    Order = lastOrder.Data,
+                    UserEmail = TempData["UserEmail"].ToString()
+                };
+
+                await _orderService.SendOrderToUserEmail(orderWithUserMail);
+            }
+
+            return View("SuccessfulTransaction", lastOrder.Data);
         }
 
         return View("FailureTransaction");
@@ -105,9 +139,9 @@ public class OrderController : Controller
     [Route("SuccessfulTransaction")]
     public IActionResult SuccessfulTransaction()
     {
-        return View();
+        return View(new Order());
     }
-    
+
     /// <summary>
     /// Отправляет пользователя к странице неудачной транзакции
     /// </summary>
@@ -119,6 +153,7 @@ public class OrderController : Controller
     {
         return View();
     }
+
     /// <summary>
     /// Берем с сессии данные корзины и показываем пользователю перед заполнением формы заказа
     /// </summary>
@@ -133,7 +168,7 @@ public class OrderController : Controller
         {
             return View(response);
         }
-        
+
         if (!response.IsSucceed)
         {
             var error = response.ErrorMessage;
@@ -145,8 +180,33 @@ public class OrderController : Controller
             ErrorMessage = response.ErrorMessage,
             ErrorCode = response.ErrorCode
         };
-
     }
+
+    [HttpGet("FindOrder")]
+    [Route("FindOrder")]
+    public async Task<IActionResult> FindOrder(FindOrderModel model)
+    {
+        if (!ModelState.IsValid)
+        {
+            return View(model);
+        }
+
+        var orderInfo = await _orderService.FindUserOrder(model.OrderId);
+
+        if (orderInfo.IsSucceed)
+        {
+            return View("../Account/Index", orderInfo);
+        }
+
+        if (!orderInfo.IsSucceed)
+        {
+            var error = orderInfo.ErrorMessage;
+            ModelState.AddModelError(string.Empty, error.ToString());
+        }
+
+        return View(model);
+    }
+
 
     /// <summary>
     /// Удаление заказа пользователя, доступ только у Админа

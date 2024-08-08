@@ -164,5 +164,35 @@ namespace WebStoreMVC.Application.Resources {
                 return ResourceManager.GetString("FailureToAddProductToCart", resourceCulture);
             }
         }
+        
+        internal static string OrderIsNotFound {
+            get {
+                return ResourceManager.GetString("OrderIsNotFound", resourceCulture);
+            }
+        }
+        
+        internal static string AccessErrorToReviewProduct {
+            get {
+                return ResourceManager.GetString("AccessErrorToReviewProduct", resourceCulture);
+            }
+        }
+        
+        internal static string FailureToCreateUserReview {
+            get {
+                return ResourceManager.GetString("FailureToCreateUserReview", resourceCulture);
+            }
+        }
+        
+        internal static string DBDoesNotHaveAnyReviews {
+            get {
+                return ResourceManager.GetString("DBDoesNotHaveAnyReviews", resourceCulture);
+            }
+        }
+        
+        internal static string FailureToGetAnyReviewsFromDB {
+            get {
+                return ResourceManager.GetString("FailureToGetAnyReviewsFromDB", resourceCulture);
+            }
+        }
     }
 }

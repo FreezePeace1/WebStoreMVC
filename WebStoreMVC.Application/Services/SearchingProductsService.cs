@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Text.RegularExpressions;
 using WebStoreMVC.Application.Resources;
 using WebStoreMVC.DAL.Context;
@@ -89,7 +90,7 @@ public class SearchingProductsService : ISearchingProductsService
         productSearchingModel.CurrentPage = currentPage;
         productSearchingModel.PageSize = pageSize;
         productSearchingModel.TotalPages = totalPages;
-        productSearchingModel.Products = productSearchingModel.Products.Skip((currentPage - 1) * pageSize).Take(pageSize);
+        productSearchingModel.Products = productSearchingModel.Products.OrderBy(x => x.CategoryId).Skip((currentPage - 1) * pageSize).Take(pageSize);
         productSearchingModel.SearchString = searchString;
 
         productSearchingModel.StartedPage = productSearchingModel.CurrentPage - 5;
@@ -114,6 +115,7 @@ public class SearchingProductsService : ISearchingProductsService
         return productSearchingModel;
     }
 
+    [SuppressMessage("ReSharper.DPA", "DPA0000: DPA issues")]
     public async Task<ResponseDto<ProductSearchingModel>> SearchingProducts(string searchString = "",int currentPage = 1)
     {
         // Исключение, которые приводят сразу к выводу ошибки 
@@ -179,7 +181,7 @@ public class SearchingProductsService : ISearchingProductsService
         
         return new ResponseDto<ProductSearchingModel>()
         {
-            Data =  productSearchingModel/*.Distinct()*/
+            Data =  productSearchingModel
         };
     }
 }

@@ -16,4 +16,8 @@ public class CustomerInfoDto
     public string City { get; set; } = string.Empty;
     [Required(ErrorMessage = "Требуется ввести адрес для доставки")]
     public string Address { get; set; } = string.Empty;
+    [Required(ErrorMessage = "Требуется ввести почту для доставки")]
+    public string UserEmail { get; set; } = string.Empty;
+    
+    
 }

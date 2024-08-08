@@ -37,7 +37,7 @@
     &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.AuthControllerTests.ResetPassword_Returns_ViewWithResetPasswordDto&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
-	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=Core_002FWebStoreMVC_002EApplication_002FResources_002FErrorMessage/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=Core_002FWebStoreMVC_002EApplication_002FResources_002FErrorMessage/@EntryIndexedValue">False</s:Boolean>
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=Core_002FWebStoreMVC_002EApplication_002FResources_002FSuccessMessage/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/Initialized/@EntryValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/ShowOnlyStringResources/@EntryValue">False</s:Boolean></wpf:ResourceDictionary>

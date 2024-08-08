@@ -15,11 +15,13 @@ public class HomeControllerTests
 {
     private readonly Mock<IHomeService> _homeServiceMock = new();
     private readonly Mock<ISearchingProductsService> _searchingProductsServiceMock = new();
-    
+    private readonly Mock<IReviewService> _reviewServiceMock = new();
+
     [TestMethod]
     public void Index_Returns_View()
     {
-        var controller = new HomeController(_homeServiceMock.Object, _searchingProductsServiceMock.Object);
+        var controller = new HomeController(_homeServiceMock.Object, _searchingProductsServiceMock.Object,
+            _reviewServiceMock.Object);
 
         var result = controller.Index();
 
@@ -29,7 +31,8 @@ public class HomeControllerTests
     [TestMethod]
     public void Checkout_Returns_View()
     {
-        var controller = new HomeController(_homeServiceMock.Object, _searchingProductsServiceMock.Object);
+        var controller = new HomeController(_homeServiceMock.Object, _searchingProductsServiceMock.Object,
+            _reviewServiceMock.Object);
 
         var result = controller.Checkout();
 
@@ -39,7 +42,8 @@ public class HomeControllerTests
     [TestMethod]
     public void Blank_Returns_View()
     {
-        var controller = new HomeController(_homeServiceMock.Object, _searchingProductsServiceMock.Object);
+        var controller = new HomeController(_homeServiceMock.Object, _searchingProductsServiceMock.Object,
+            _reviewServiceMock.Object);
 
         var result = controller.Blank();
 
@@ -51,45 +55,49 @@ public class HomeControllerTests
     {
         int expected_productId = 10;
         decimal expected_productPrice = 15000;
-        _homeServiceMock.Setup(x => x.GetProductById(It.IsAny<int>()))
-            .ReturnsAsync(new ResponseDto<Product>()
+        _homeServiceMock.Setup(x => x.ShowProductInfo(It.IsAny<int>(), It.IsAny<int>()))
+            .ReturnsAsync(new ResponseDto<AllInfoProductModel>()
             {
-                Data = new Product()
+                Data = new AllInfoProductModel()
                 {
-                    ProductId = 10,
-                    Price = 15000
+                    ProductInfo = new Product()
+                    {
+                        ProductId = 10,
+                        Price = 15000
+                    }
                 }
             });
-        
-        var controller = new HomeController(_homeServiceMock.Object, _searchingProductsServiceMock.Object);
 
-        var result = await controller.Product(It.IsAny<int>());
+        var controller = new HomeController(_homeServiceMock.Object, _searchingProductsServiceMock.Object,
+            _reviewServiceMock.Object);
+
+        var result = await controller.Product(expected_productId);
 
         var view_result = Assert.IsType<ViewResult>(result.Result);
-        var model = Assert.IsAssignableFrom<ResponseDto<Product>>(view_result.Model);
+        var model = Assert.IsAssignableFrom<ResponseDto<AllInfoProductModel>>(view_result.Model);
         Assert.NotNull(model.Data);
-        Assert.Equal(expected_productId,model.Data.ProductId);
-        Assert.Equal(expected_productPrice,model.Data.Price);
+        Assert.Equal(expected_productId, model.Data.ProductInfo.ProductId);
+        Assert.Equal(expected_productPrice, model.Data.ProductInfo.Price);
     }
 
     [TestMethod]
     public async Task Store_Returns_View_With_Products()
     {
-        _searchingProductsServiceMock.Setup(service => service.SearchingProducts(It.IsAny<string>(),It.IsAny<int>()))
+        _searchingProductsServiceMock.Setup(service => service.SearchingProducts(It.IsAny<string>(), It.IsAny<int>()))
             .ReturnsAsync(new ResponseDto<ProductSearchingModel>()
             {
                 Data = new ProductSearchingModel()
             });
 
-        var controller = new HomeController(_homeServiceMock.Object,_searchingProductsServiceMock.Object);
-        
-        var result = await controller.Store(It.IsAny<string>(),It.IsAny<int>());
+        var controller = new HomeController(_homeServiceMock.Object, _searchingProductsServiceMock.Object,
+            _reviewServiceMock.Object);
+
+        var result = await controller.Store(It.IsAny<string>(), It.IsAny<int>());
         var view_result = Assert.IsType<ViewResult>(result.Result);
         var model = Assert.IsAssignableFrom<ResponseDto<ProductSearchingModel>>(view_result.Model);
 
         Assert.NotNull(model.Data);
-        
-        _homeServiceMock.VerifyNoOtherCalls();
 
+        _homeServiceMock.VerifyNoOtherCalls();
     }
 }

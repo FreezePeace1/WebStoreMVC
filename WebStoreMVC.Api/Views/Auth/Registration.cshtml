@@ -1,3 +1,4 @@
+@using Microsoft.AspNetCore.Mvc.TagHelpers
 @model WebStoreMVC.Dtos.RegisterDto
 
 @{
@@ -21,7 +22,6 @@
 
                     <div style="margin-bottom: 10px;">
                         <input asp-for="Email" placeholder="Почта (обязательно)"/>
-
                     </div>
                     <div>
                         <span asp-validation-for="Email" class="text-danger"></span>

@@ -1,0 +1,13 @@
+@model FindOrderModel
+
+<h3>Введите номер заказа</h3>
+<form asp-action="FindOrder">
+    <div>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input asp-for="@Model.OrderId" placeholder="Введите номер заказа"/>
+
+    </div>
+    <div>
+        <button type="submit">Подтвердить</button>
+    </div>
+</form>

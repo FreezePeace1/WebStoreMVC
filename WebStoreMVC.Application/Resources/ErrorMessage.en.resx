@@ -71,4 +71,19 @@
     <data name="FailureToAddProductToCart" xml:space="preserve">
         <value>Failure to add product to cart</value>
     </data>
+    <data name="OrderIsNotFound" xml:space="preserve">
+        <value>Order is not found</value>
+    </data>
+    <data name="AccessErrorToReviewProduct" xml:space="preserve">
+        <value>User did not order this product</value>
+    </data>
+    <data name="FailureToCreateUserReview" xml:space="preserve">
+        <value>Failure to create user review</value>
+    </data>
+    <data name="DBDoesNotHaveAnyReviews" xml:space="preserve">
+        <value>Database does not have any reviews</value>
+    </data>
+    <data name="FailureToGetAnyReviewsFromDB" xml:space="preserve">
+        <value>Failure to get any reviews from database</value>
+    </data>
 </root>

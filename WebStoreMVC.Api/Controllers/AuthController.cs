@@ -221,15 +221,9 @@ public class AuthController : Controller
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult> Logout()
     {
-        /*if ((HttpContext.Request.Cookies["accessToken"] == null || HttpContext.Request.Cookies["refreshToken"]) == null &&
-            !(User.Identity.IsAuthenticated))
-        {
-            return RedirectToAction("Index", "Home");
-        }*/
-
         await _authService.Logout();
 
-        return RedirectToAction("Index", "Home");
+        return RedirectToAction("Index","Home");
     }
 
     /// <summary>
@@ -286,7 +280,7 @@ public class AuthController : Controller
         {
             return RedirectToAction("Index", "Home");
         }
-        
+
         if (!ModelState.IsValid)
         {
             return View(verifyAccountDto);

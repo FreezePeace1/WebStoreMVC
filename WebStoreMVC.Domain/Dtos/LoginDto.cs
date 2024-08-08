@@ -5,7 +5,7 @@ namespace WebStoreMVC.Dtos;
 public class LoginDto
 {
     [Required(ErrorMessage = "Нужно ввести логин")]
-    [MaxLength(32)]
+    [MaxLength(64)]
     [Display(Name = "Имя пользователя")]
     public string Username { get; set; } = String.Empty;
 

@@ -62,4 +62,13 @@
     <data name="EmailSuccess" xml:space="preserve">
         <value>Сообщение было отправлено на почту пользователя</value>
     </data>
+    <data name="OrderIsFound" xml:space="preserve">
+        <value>Заказ найден</value>
+    </data>
+    <data name="ReviewHasCreated" xml:space="preserve">
+        <value>Отзыв создан успешно</value>
+    </data>
+    <data name="ReviewsAreFound" xml:space="preserve">
+        <value>Отзывы найдены успешно</value>
+    </data>
 </root>

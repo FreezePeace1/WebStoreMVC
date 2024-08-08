@@ -156,6 +156,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9QYXJ0aWFsL19Ub3BTZWxsaW5nVHJhbnNpdGlvbnNBbmRTbGlkZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Home/PostReview.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qb3N0UmV2aWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Home/Product.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcm9kdWN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -166,6 +170,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Order/FailureTransaction.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvT3JkZXIvRmFpbHVyZVRyYW5zYWN0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Order/FindOrder.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvT3JkZXIvRmluZE9yZGVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Api/Views/Order/SaveCustomerInfo.cshtml]

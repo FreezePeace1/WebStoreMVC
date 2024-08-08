@@ -628,4 +628,11 @@ public class AuthService : IAuthService
             SuccessMessage = SuccessMessage.LogoutIsDone
         };
     }
+
+    public async Task<bool> IsUserExists(string? userEmail)
+    {
+        var user = await _userManager.FindByEmailAsync(userEmail ?? "");
+
+        return user != null;
+    }
 }

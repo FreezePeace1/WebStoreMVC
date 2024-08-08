@@ -62,4 +62,13 @@
     <data name="EmailSuccess" xml:space="preserve">
         <value>Message is sent on user email</value>
     </data>
+    <data name="OrderIsFound" xml:space="preserve">
+        <value>Order is found</value>
+    </data>
+    <data name="ReviewHasCreated" xml:space="preserve">
+        <value>Review has created successfully</value>
+    </data>
+    <data name="ReviewsAreFound" xml:space="preserve">
+        <value>Reviews are found successfully</value>
+    </data>
 </root>

@@ -28,6 +28,7 @@ public enum ErrorCode
     GettingOrderDataIsFailed = 22,
     OrderDeletingIsFailed = 23,
     TransactionIsFailed = 24,
+    OrderIsNotFound = 25,
     
     //AccountService 31 - 40
     FailureToShowOrderInfo = 31,
@@ -36,6 +37,12 @@ public enum ErrorCode
     
     //Cart service 41 - 50
     FailureToAddProductToCart = 41,
+    
+    //Review service 51 - 60
+    AccessErrorToReviewProduct = 51,
+    FailureToCreateUserReview = 52,
+    DBDoesNotHaveAnyReviews = 53,
+    FailureToGetAnyReviewsFromDB = 54,
     
     //EmailFailure
     EmailFailure = 300,

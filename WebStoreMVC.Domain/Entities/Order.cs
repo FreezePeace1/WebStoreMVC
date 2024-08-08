@@ -10,6 +10,7 @@ public class Order
     public string OrderId { get; set; }
     public int TotalPrice { get; set; }
     public DateTime OrderDate { get; set; }
+    public string OrderStatus { get; set; } = string.Empty;
     
     [DataType("Text")]
     public string? AppUserId { get; set; }

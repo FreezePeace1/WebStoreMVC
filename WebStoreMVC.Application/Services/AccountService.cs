@@ -43,10 +43,12 @@ public class AccountService : IAccountService
         {
             var userName = _httpContext.HttpContext.User.Identity.Name;
             var user = await _userManager.FindByNameAsync(userName);
+            var customerInfo = await _context.CustomersInfo
+                .Where(x => x.AppUserId == user.Id || x.UserEmail == user.Email).ToListAsync();
+            
             var productOrder = (from o in _context.Orders
                 join op in _context.OrderProducts on o.OrderId equals op.OrderId
                 join p in _context.Products on op.ProductId equals p.ProductId
-                join c in _context.CustomersInfo on o.AppUserId equals c.AppUserId
                 where o.AppUserId == user.Id
                 select new
                 {
@@ -57,30 +59,31 @@ public class AccountService : IAccountService
                     ProductName = p.ProductName,
                     Colour = p.Colour,
                     Price = p.Price,
-                    Images = p.Images,
-                    Address = c.Address,
-                    City = c.City
+                    Images = p.Images
                 });
 
-            if (productOrder.Count() > 0)
+            if (productOrder.Distinct().Any())
             {
                 var orders = new List<ProductOrderModel>();
-                foreach (var item in productOrder)
-                {
-                    var order = new ProductOrderModel();
+                    foreach (var info in customerInfo)
+                    {
+                        foreach (var item in productOrder)
+                        {
+                            var order = new ProductOrderModel();
+                            order.ProductName = item.ProductName;
+                            order.Colour = item.Colour;
+                            order.Images = item.Images;
+                            order.OrderDate = item.OrderDate;
+                            order.Price = item.Price;
+                            order.Quantity = item.ProductCount;
+                            order.TotalPrice = item.TotalPrice;
+                            order.OrderId = item.OrderId;
+                            order.City = info.City;
+                            order.Address = info.Address;
 
-                    order.ProductName = item.ProductName;
-                    order.Colour = item.Colour;
-                    order.Images = item.Images;
-                    order.OrderDate = item.OrderDate;
-                    order.Price = item.Price;
-                    order.Quantity = item.ProductCount;
-                    order.TotalPrice = item.TotalPrice;
-                    order.Address = item.Address;
-                    order.City = item.City;
-                    order.OrderId = item.OrderId;
-                    orders.Add(order);
-                }
+                            orders.Add(order);   
+                        }
+                    }
 
                 return new ResponseDto<List<ProductOrderModel>>()
                 {
@@ -281,7 +284,6 @@ public class AccountService : IAccountService
             using var smtp = new SmtpClient();
         
             await smtp.ConnectAsync(_configuration.GetSection("EmailHost").Value, 587,SecureSocketOptions.StartTls);
-            /*smtp.AuthenticationMechanisms.Remove("XOAUTH2");*/
         
             await smtp.AuthenticateAsync(_configuration.GetSection("EmailUsername").Value, _configuration.GetSection("EmailPassword").Value);
             await smtp.SendAsync(email);

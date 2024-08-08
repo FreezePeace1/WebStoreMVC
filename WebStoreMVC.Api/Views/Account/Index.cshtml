@@ -60,22 +60,26 @@
    }
 </style>
 
-<div>
-    @if (Model.Data != null)
-    {
-    <a asp-controller="Account" asp-action="ShowInfo">Изменить данные для доставки</a>
-    }
-    else
-    {
-    <a asp-controller="Account" asp-action="ChangeInfo">Добавить данные для доставки</a>
-    }
-</div>
+@if (User.Identity.IsAuthenticated)
+{
+    <div>
+        @if (Model.Data != null)
+        {
+            <a asp-controller="Account" asp-action="ShowInfo">Изменить данные для доставки</a>
+        }
+        else
+        {
+            <a asp-controller="Account" asp-action="ChangeInfo">Добавить данные для доставки</a>
+        }
+    </div>
+    
+    <br/>
 
-<br/>
-
-<div>
-    <a asp-controller="Account" asp-action="ForgotPassword">Изменить пароль</a>
-</div>
+    <div>
+        <a asp-controller="Account" asp-action="ForgotPassword">Изменить пароль</a>
+    </div>
+    
+}
 
 <br/>
 

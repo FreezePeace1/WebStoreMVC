@@ -78,4 +78,19 @@
     <data name="FailureToAddProductToCart" xml:space="preserve">
         <value>Ошибка добавления товара в корзину</value>
     </data>
+    <data name="OrderIsNotFound" xml:space="preserve">
+        <value>Заказ не найден</value>
+    </data>
+    <data name="AccessErrorToReviewProduct" xml:space="preserve">
+        <value>Пользователь не заказывал данный товар</value>
+    </data>
+    <data name="FailureToCreateUserReview" xml:space="preserve">
+        <value>Ошибка создания отзыва пользователя</value>
+    </data>
+    <data name="DBDoesNotHaveAnyReviews" xml:space="preserve">
+        <value>В Базе данных нет каких либо отзывов</value>
+    </data>
+    <data name="FailureToGetAnyReviewsFromDB" xml:space="preserve">
+        <value>Ошибка получения каких-либо отзывов с базы данных</value>
+    </data>
 </root>

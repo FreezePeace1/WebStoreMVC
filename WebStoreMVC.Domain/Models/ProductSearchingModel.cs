@@ -12,5 +12,4 @@ public class ProductSearchingModel
     public int StartedPage { get; set; }
     public int EndedPage { get; set; }
     public string SearchString { get; set; } = string.Empty;
-
 }

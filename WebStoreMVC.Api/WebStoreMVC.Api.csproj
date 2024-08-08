@@ -42,6 +42,7 @@
     <ItemGroup>
       <_ContentIncludedByDefault Remove="Views\SearchingProducts\SearchingProducts.cshtml" />
       <_ContentIncludedByDefault Remove="Areas\Admin\Shared\_Layout.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Review\ShowReviews.cshtml" />
     </ItemGroup>
 
     <ItemGroup>
