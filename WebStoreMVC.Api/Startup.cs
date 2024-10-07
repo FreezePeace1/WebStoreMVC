@@ -69,7 +69,7 @@ public static class Startup
     /// <param name="services"></param>
     public static void AddSwagger(this IServiceCollection services)
     {
-        services.AddApiVersioning()
+        services.AddApiVersioning() 
             .AddApiExplorer(opt =>
             {
                 opt.DefaultApiVersion = new ApiVersion(1, 0);

@@ -1,41 +1,11 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	
 	
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=ca9581b6_002D112d_002D4131_002Da5fa_002Dca3985d2a896/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from &amp;lt;Tests&amp;gt;" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::3438DFF4-E621-4ABC-B5CC-BCB5885482D8::net8.0::WebStoreMVC.Application.Tests.Services.CartServiceTests&lt;/TestId&gt;
-    &lt;TestId&gt;MSTest::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Home.HomeControllerTests.Store_Returns_View_With_Products&lt;/TestId&gt;
-    &lt;TestId&gt;MSTest::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Home.HomeControllerTests.Index_Returns_View&lt;/TestId&gt;
-    &lt;TestId&gt;MSTest::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebStoreMVC.Api.Home.HomeControllerTests&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Cart.CartControllerTests&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::DBD89ACE-7D1A-4595-B5F6-15CB3DB2E3BC::net8.0::TestProject1.UnitTest1&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.ProductsForAdmin.ProductsForAdminControllerTests&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.OrderControllerTests.SaveCustomerInfo_Returns_CustomerInfoWithView&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.OrderControllerTests.SaveCustomerInfo_Returns_RedirectToAction&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.OrderControllerTests.StripePayment_Returns_303StatusCode&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.OrderControllerTests&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebStoreMVC.Api.Controllers.SearchingProductsControllerTests.SearchingProducts_Returns_ListProductsWithView&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebStoreMVC.Api.Controllers.SearchingProductsControllerTests&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.AccountControllerTests.Index_Returns_ListProductOrderWithView&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.AccountControllerTests.Index_Returns_RedirectToAction&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.AccountControllerTests&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.AuthControllerTests.SeedingRoles_Returns_OkStatusCodeWithResponseDto&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.AuthControllerTests.Registration_Returns_RedirectToAction&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.AuthControllerTests.Registration_Returns_RedirectToActionWithSucceedService&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.AuthControllerTests.Registration_Returns_View&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.AuthControllerTests.Login_Returns_View&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.AuthControllerTests.Login_Returns_RedirectToAction&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.AuthControllerTests.Login_Returns_RedirectToActionWithSucceedService&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.AuthControllerTests.FromUserToAdmin_Returns_StatusCodeOkWithResponseDto&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.AuthControllerTests.Logout_Returns_RedirectToAction&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.AuthControllerTests.FromAdminToUser_Returns_StatusCodeOkWithResponseDto&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.AuthControllerTests.VerifyAccount_Returns_RedirectToAction&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.AuthControllerTests.VerifyAccount_Returns_View&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.AuthControllerTests.ForgotPassword_Returns_RedirectToAction&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.AuthControllerTests.ForgotPassword_Returns_View&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.AuthControllerTests.ResetPassword_Returns_RedirectToAction&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::01A232F2-8484-4B7C-A14A-DFE8A088E1BC::net8.0::WebSotoreMVC.Api.Controllers.AuthControllerTests.ResetPassword_Returns_ViewWithResetPasswordDto&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
+	
+	
+	
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=e4986c0f_002Dcd22_002D476c_002Da435_002D472bebc202ab/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="GetAllProducts_Returns_AllProuductsInDb" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;Project Location="/home/alexander/RiderProjects/WebStoreMVC" Presentation="&amp;lt;Tests&amp;gt;" /&gt;
 &lt;/SessionState&gt;</s:String>
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=Core_002FWebStoreMVC_002EApplication_002FResources_002FErrorMessage/@EntryIndexedValue">False</s:Boolean>
 	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=Core_002FWebStoreMVC_002EApplication_002FResources_002FSuccessMessage/@EntryIndexedValue">True</s:Boolean>

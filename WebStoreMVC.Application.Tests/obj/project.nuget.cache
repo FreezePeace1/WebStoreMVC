@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "BvmstAzuvJbk32XbuknBb1RpBYGqve8mrjlrdH1NtBFVsMmrnOHxtc4uiBOrppzu4pahJo8OPtj9LUb0Gi0O4Q==",
+  "dgSpecHash": "w4LBAoo3ahlw3ndyTFQQo1Cy8iaE146s8OfHKaMp5WLfZZjnItODKz9v8Cv9ZQNhR6bh7/kySsHaA5afzefoVg==",
   "success": true,
   "projectFilePath": "/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Application.Tests/WebStoreMVC.Application.Tests.csproj",
   "expectedPackageFiles": [

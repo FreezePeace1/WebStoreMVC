@@ -1,8 +1,4 @@
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.IdentityModel.Tokens;
 using WebStoreMVC.Domain.Entities;
 using WebStoreMVC.Services.Interfaces;
 
@@ -43,6 +39,13 @@ public class RefreshTokenMiddleware
                 using var scope = _serviceProvider.CreateScope();
                 var authService = scope.ServiceProvider.GetRequiredService<IAuthService>();
                 await authService.SetAccessTokenForBackgroundService(user);
+                
+                var refreshTokenFromCookies = context.Request.Cookies[CookieName.refreshToken];
+                
+                if (!user.RefreshToken.Equals(refreshTokenFromCookies))
+                {
+                    await authService.Logout();
+                }
             }
         }
 

@@ -6,18 +6,18 @@ using WebStoreMVC.Domain.Entities;
 using WebStoreMVC.Dtos;
 using WebStoreMVC.Models;
 using WebStoreMVC.Services.Interfaces;
+using Xunit;
 using Assert = Xunit.Assert;
 
 namespace WebStoreMVC.Api.Home;
 
-[TestClass]
 public class HomeControllerTests
 {
     private readonly Mock<IHomeService> _homeServiceMock = new();
     private readonly Mock<ISearchingProductsService> _searchingProductsServiceMock = new();
     private readonly Mock<IReviewService> _reviewServiceMock = new();
 
-    [TestMethod]
+    [Fact]
     public void Index_Returns_View()
     {
         var controller = new HomeController(_homeServiceMock.Object, _searchingProductsServiceMock.Object,
@@ -28,7 +28,7 @@ public class HomeControllerTests
         Assert.IsType<ViewResult>(result);
     }
 
-    [TestMethod]
+    [Fact]
     public void Checkout_Returns_View()
     {
         var controller = new HomeController(_homeServiceMock.Object, _searchingProductsServiceMock.Object,
@@ -39,7 +39,7 @@ public class HomeControllerTests
         Assert.IsType<ViewResult>(result);
     }
 
-    [TestMethod]
+    [Fact]
     public void Blank_Returns_View()
     {
         var controller = new HomeController(_homeServiceMock.Object, _searchingProductsServiceMock.Object,
@@ -50,7 +50,7 @@ public class HomeControllerTests
         Assert.IsType<ViewResult>(result);
     }
 
-    [TestMethod]
+    [Fact]
     public async Task Product_Returns_View()
     {
         int expected_productId = 10;
@@ -79,8 +79,8 @@ public class HomeControllerTests
         Assert.Equal(expected_productId, model.Data.ProductInfo.ProductId);
         Assert.Equal(expected_productPrice, model.Data.ProductInfo.Price);
     }
-
-    [TestMethod]
+    
+    [Fact]
     public async Task Store_Returns_View_With_Products()
     {
         _searchingProductsServiceMock.Setup(service => service.SearchingProducts(It.IsAny<string>(), It.IsAny<int>()))
@@ -99,5 +99,27 @@ public class HomeControllerTests
         Assert.NotNull(model.Data);
 
         _homeServiceMock.VerifyNoOtherCalls();
+    }
+
+    [Fact]
+    public async Task PostReview_Returns_Views_With_PostReviewModel()
+    {
+        _reviewServiceMock.Setup(x => x.PostReview(It.IsAny<PostReviewDto>(), It.IsAny<int>()))
+            .ReturnsAsync(new ResponseDto<PostReviewDto>()
+            {
+                Data = new PostReviewDto()
+                {
+                    
+                }
+            });
+
+        var controller = new HomeController(_homeServiceMock.Object, _searchingProductsServiceMock.Object,
+            _reviewServiceMock.Object);
+
+        var result = await controller.PostReview(It.IsAny<PostReviewDto>(), It.IsAny<int>());
+
+        var redirectToAction_result = Assert.IsType<RedirectToActionResult>(result.Result);
+        Assert.NotNull(redirectToAction_result);
+
     }
 }

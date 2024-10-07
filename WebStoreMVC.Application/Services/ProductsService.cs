@@ -36,6 +36,15 @@ public class ProductsService : IProductsService
         {
             var product = await _context.Products.FirstOrDefaultAsync(x => x.ProductId == id);
 
+            if (product == null)
+            {
+                return new ResponseDto<Product>()
+                {
+                    ErrorMessage = ErrorMessage.ProductsAreNotFound,
+                    ErrorCode = (int)ErrorCode.ProductsAreNotFound
+                };
+            }
+            
             return new ResponseDto<Product>()
             {
                 Data = product
@@ -99,9 +108,9 @@ public class ProductsService : IProductsService
     {
         var product = _context.Products.FirstOrDefault(x => x.ProductId == id);
 
-        if (id < 0)
+        if (product == null)
         {
-            throw new ArgumentException(nameof(product));
+            throw new NullReferenceException();
         }
 
         return product;
@@ -130,7 +139,9 @@ public class ProductsService : IProductsService
                 .SetProperty(p => p.Quantity, product.Quantity)
                 .SetProperty(p => p.Hashtags, product.Hashtags)
                 .SetProperty(p => p.Images, product.Images)
-                .SetProperty(p => p.Price, product.Price));
+                .SetProperty(p => p.Price, product.Price)
+                /*.SetProperty(p => p.CategoryName,product.CategoryName)
+                .SetProperty(p => p.CategoryId,product.CategoryId)*/);
 
             await _context.SaveChangesAsync();
 

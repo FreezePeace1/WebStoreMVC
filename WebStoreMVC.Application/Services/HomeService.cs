@@ -77,7 +77,7 @@ public class HomeService : IHomeService
         return productModel;
     }
     
-    /*[SuppressMessage("ReSharper.DPA", "DPA0007: Large number of DB records", MessageId = "count: 113")]*/
+    [SuppressMessage("ReSharper.DPA", "DPA0007: Large number of DB records", MessageId = "count: 113")]
     public async Task<ResponseDto<AllInfoProductModel>> ShowProductInfo(int id,int currentPage = 1)
     {
         try

@@ -241,24 +241,29 @@ public class AuthService : IAuthService
             //Проверяем на срок истечения,если истекает то обновляем и записываем новый в БД
             if (user.TokenExpires < DateTime.Now || user.TokenExpires >= DateTime.MaxValue)
             {
-                var refreshTokenFromCookies = _httpContextAccessor.HttpContext.Request.Cookies[CookieName.refreshToken];
-
-                if (!user.RefreshToken.Equals(refreshTokenFromCookies) || user.TokenExpires < DateTime.Now)
-                {
-                    return new ResponseDto()
-                    {
-                        ErrorMessage = ErrorMessage.IncorrectToken,
-                        ErrorCode = (int)ErrorCode.IncorrectToken
-                    };
-                }
-
                 var newRefreshToken = GenerateRefreshToken();
 
                 SetRefreshToken(newRefreshToken);
                 user.RefreshToken = newRefreshToken.Token;
+                user.TokenExpires = newRefreshToken.Expired;
+                user.TokenCreated = newRefreshToken.Created;
                 await _context.SaveChangesAsync();
             }
 
+            //TODO 
+            /*
+            var refreshTokenFromCookies = _httpContextAccessor.HttpContext.Request.Cookies[CookieName.refreshToken];
+
+            if (!user.RefreshToken.Equals(refreshTokenFromCookies))
+            {
+                return new ResponseDto()
+                {
+                    ErrorMessage = ErrorMessage.IncorrectToken,
+                    ErrorCode = (int)ErrorCode.IncorrectToken
+                };
+            }
+            */
+            
             /*await transaction.CommitAsync();*/
 
             //Пользователь не активировал токен варификации, снова отправляем сообщение
