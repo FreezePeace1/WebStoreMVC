@@ -15,4 +15,6 @@ public class Order
     [DataType("Text")]
     public string? AppUserId { get; set; }
     
+    public AppUser AppUser { get; set; } = null!;
+    
 }

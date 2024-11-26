@@ -7,6 +7,9 @@ using Asp.Versioning;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.DataProtection;
+using Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption;
+using Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using Nest;
@@ -25,7 +28,6 @@ public static class Startup
     /// <param name="services"></param>
     public static void AddIdentity(this IServiceCollection services)
     {
-        
         //Подключаем Identity
         services.AddIdentity<AppUser, IdentityRole>( /*options => options.SignIn.RequireConfirmedAccount = true*/)
             .AddEntityFrameworkStores<WebStoreContext>()

@@ -17,4 +17,10 @@ public class WebStoreContext : IdentityDbContext<AppUser, IdentityRole, string>
     public DbSet<CustomerInfo> CustomersInfo { get; set; }
     public DbSet<OrderProduct> OrderProducts { get; set; }
     public DbSet<UserReview> UserReviews { get; set; }
-}
+    
+    public DbSet<Color> Colors { get; set; }
+    
+    public DbSet<Category> Categories { get; set; }
+    
+    public DbSet<Manufacturer> Manufacturers { get; set; }
+ }

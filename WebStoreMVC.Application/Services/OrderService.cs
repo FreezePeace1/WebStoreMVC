@@ -80,12 +80,12 @@ public class OrderService : IOrderService
                     await _context.Products.Where(x => x.ProductId == item.ProductId).ExecuteUpdateAsync(s => s
                         .SetProperty(p => p.ProductId, data.ProductId)
                         .SetProperty(c => c.Description, data.Description)
-                        .SetProperty(p => p.Manufacturer, data.Manufacturer)
-                        .SetProperty(p => p.Colour, data.Colour)
+                        .SetProperty(p => p.ColorId,data.ColorId)
+                        .SetProperty(p => p.CategoryId,data.CategoryId)
+                        .SetProperty(p => p.ManufacturerId,data.ManufacturerId)
                         .SetProperty(p => p.ProductName, data.ProductName)
                         .SetProperty(p => p.Article, data.Article)
                         .SetProperty(p => p.Quantity, data.Quantity - item.Quantity)
-                        .SetProperty(p => p.Hashtags, data.Hashtags)
                         .SetProperty(p => p.Images, data.Images)
                         .SetProperty(p => p.Price, data.Price));
                 }
@@ -301,11 +301,12 @@ public class OrderService : IOrderService
                 ErrorCode = (int)ErrorCode.OrderIsNotFound
             };
         }
-
+        
         var productOrder = (from o in _context.Orders
             join op in _context.OrderProducts on o.OrderId equals op.OrderId
             join p in _context.Products on op.ProductId equals p.ProductId
             join c in _context.CustomersInfo on o.AppUserId equals c.AppUserId
+            join col in _context.Colors on p.ColorId equals col.Id
             where op.OrderId == userOrder.OrderId
             select new
             {
@@ -314,11 +315,11 @@ public class OrderService : IOrderService
                 OrderDate = o.OrderDate,
                 ProductCount = op.ProductCount,
                 ProductName = p.ProductName,
-                Colour = p.Colour,
                 Price = p.Price,
                 Images = p.Images,
                 Address = c.Address,
-                City = c.City
+                City = c.City,
+                Color = col.ColorName
             });
 
 
@@ -326,9 +327,9 @@ public class OrderService : IOrderService
         foreach (var item in productOrder)
         {
             var order = new ProductOrderModel();
-
+            
             order.ProductName = item.ProductName;
-            order.Colour = item.Colour;
+            order.Colour = item.Color;
             order.Images = item.Images;
             order.OrderDate = item.OrderDate;
             order.Price = item.Price;
@@ -338,6 +339,7 @@ public class OrderService : IOrderService
             order.City = item.City;
             order.OrderId = item.OrderId;
             orders.Add(order);
+            
         }
 
         return new ResponseDto<List<ProductOrderModel>>()

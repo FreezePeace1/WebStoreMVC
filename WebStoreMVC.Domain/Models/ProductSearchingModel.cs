@@ -4,7 +4,7 @@ namespace WebStoreMVC.Models;
 
 public class ProductSearchingModel
 {
-    public IQueryable<Product> Products { get; set; }
+    public IQueryable<Product>? Products { get; set; }
     
     public int CurrentPage { get; set; }
     public int PageSize { get; set; }

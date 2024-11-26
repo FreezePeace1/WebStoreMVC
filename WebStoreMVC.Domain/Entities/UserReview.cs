@@ -12,7 +12,9 @@ public class UserReview
     public DateTime ReviewDateTime { get; set; }
     
     [DataType("Text")]
-    public string? AppUserId { get; set; }
+    public string AppUserId { get; set; }
+
+    public AppUser AppUser { get; set; } = null!;
     
-    public int ProductId { get; set; }
+    public int ProductId { get; set; } 
 }

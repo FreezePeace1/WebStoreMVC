@@ -84,12 +84,12 @@ public class ProductsService : IProductsService
         var newProduct = new Product()
         {
             Article = product.Article,
-            Colour = product.Colour,
+            ColorId = product.ColorId,
             Description = product.Description,
-            Hashtags = product.Hashtags,
             ProductId = lastProduct.ProductId + 1,
             Images = product.Images,
-            Manufacturer = product.Manufacturer,
+            ManufacturerId = product.ManufacturerId,
+            CategoryId = product.CategoryId,
             Price = product.Price,
             ProductName = product.ProductName,
             Quantity = product.Quantity
@@ -132,16 +132,15 @@ public class ProductsService : IProductsService
             await _context.Products.Where(x => x.ProductId == product.ProductId).ExecuteUpdateAsync(s => s
                 .SetProperty(p => p.ProductId, product.ProductId)
                 .SetProperty(c => c.Description, product.Description)
-                .SetProperty(p => p.Manufacturer, product.Manufacturer)
-                .SetProperty(p => p.Colour, product.Colour)
+                .SetProperty(p => p.ColorId,product.ColorId)
                 .SetProperty(p => p.ProductName, product.ProductName)
                 .SetProperty(p => p.Article, product.Article)
                 .SetProperty(p => p.Quantity, product.Quantity)
-                .SetProperty(p => p.Hashtags, product.Hashtags)
                 .SetProperty(p => p.Images, product.Images)
                 .SetProperty(p => p.Price, product.Price)
-                /*.SetProperty(p => p.CategoryName,product.CategoryName)
-                .SetProperty(p => p.CategoryId,product.CategoryId)*/);
+                .SetProperty(p => p.CategoryId,product.CategoryId)
+                .SetProperty(p => p.ManufacturerId,product.ManufacturerId)
+                );
 
             await _context.SaveChangesAsync();
 

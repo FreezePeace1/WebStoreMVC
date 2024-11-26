@@ -72,16 +72,17 @@
             <a asp-controller="Account" asp-action="ChangeInfo">Добавить данные для доставки</a>
         }
     </div>
-    
+
     <br/>
 
     <div>
         <a asp-controller="Account" asp-action="ForgotPassword">Изменить пароль</a>
     </div>
-    
 }
 
 <br/>
+
+@{ int productId = -1; }
 
 @if (Model.Data != null)
 {
@@ -91,58 +92,62 @@
     <h2>Информация о товарах</h2>
     @foreach (var item in Model.Data)
     {
-        <div class="order-container">
-            <div class="order-header">
-                <p>Номер заказа: <span id="order-id">@item.OrderId</span></p>
-                <br/>
-            </div>
+        if (productId != item.ProductId)
+        {
+            <div class="order-container">
+                <div class="order-header">
+                    <p>Номер заказа: <span id="order-id">@item.OrderId</span></p>
+                    <br/>
+                </div>
 
-            <div class="order-details">
-                <table>
-                    <tr>
-                        <th>Адрес доставки:</th>
-                        @{ var deliveryInfo = $"{item.City}, {item.Address}"; }
-                        <td id="shipping-address">@deliveryInfo</td>
-                    </tr>
-                </table>
-            </div>
-            <div class="order-items">
-                <table>
-                    <thead>
-                    <tr>
-                        <th>Дата заказа</th>
-                        <th></th>
-                        <th>Название</th>
-                        <th>Цвет</th>
-                        <th>Цена</th>
-                        <th>Количество</th>
-                        <th>Сумма</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        @{ var totalProductPrice = item.Price * item.Quantity; }
-                        <td>@item.OrderDate</td>
-                        <td id="item-image">
-                            <img width="128"
-                                 height="128" src="~/images/products/@item.Images" alt=""/>
-                        </td>
+                <div class="order-details">
+                    <table>
+                        <tr>
+                            <th>Адрес доставки:</th>
+                            @{ var deliveryInfo = $"{item.City}, {item.Address}"; }
+                            <td id="shipping-address">@deliveryInfo</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="order-items">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Дата заказа</th>
+                            <th></th>
+                            <th>Название</th>
+                            <th>Цвет</th>
+                            <th>Цена</th>
+                            <th>Количество</th>
+                            <th>Сумма</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            @{ var totalProductPrice = item.Price * item.Quantity; }
+                            <td>@item.OrderDate</td>
+                            <td id="item-image">
+                                <img width="128"
+                                     height="128" src="~/images/products/@item.Images" alt=""/>
+                            </td>
 
-                        <td id="item-name-1">@item.ProductName</td>
-                        <td>@item.Colour</td>
-                        <td id="item-price-1">@item.Price.ToString("C2") x 1</td>
-                        <td id="item-quantity-1">@item.Quantity</td>
-                        <td id="item-total-1">@totalProductPrice.ToString("C2")</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            @*
+                            <td id="item-name-1">@item.ProductName</td>
+                            <td>@item.Colour</td>
+                            <td id="item-price-1">@item.Price.ToString("C2") x 1</td>
+                            <td id="item-quantity-1">@item.Quantity</td>
+                            <td id="item-total-1">@totalProductPrice.ToString("C2")</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                @*
             <div class="order-total">
                 <p>Итого: <span id="order-total-price">@item.TotalPrice.ToString("C2")</span></p>
             </div>*@
-        </div>
+            </div>
+        }
+        
+        productId = item.ProductId;
     }
 }
 else

@@ -30,40 +30,35 @@ public class HomeServiceTests
                     ProductId = 1,
                     ProductName = "Smartphone",
                     Price = 15000,
-                    CategoryId = 1,
-                    CategoryName = "Smartphones"
+                    CategoryId = 1
                 },
                 new Product
                 {
                     ProductId = 2,
                     ProductName = "Notebook",
                     Price = 50000,
-                    CategoryId = 2,
-                    CategoryName = "Notebooks"
+                    CategoryId = 2
                 },
                 new Product
                 {
                     ProductId = 3,
                     ProductName = "Camera",
                     Price = 30000,
-                    CategoryId = 3,
-                    CategoryName = "Cameras"
+                    CategoryId = 3
                 },
                 new Product
                 {
                     ProductId = 4,
                     ProductName = "Computer",
                     Price = 80000,
-                    CategoryId = 4,
-                    CategoryName = "Computers"
+                    CategoryId = 4
                 },
                 new Product
                 {
                     ProductId = 5,
                     ProductName = "Headphone",
                     Price = 6000,
-                    CategoryId = 5,
-                    CategoryName = "Headphones"
+                    CategoryId = 5
                 }
             );
 
