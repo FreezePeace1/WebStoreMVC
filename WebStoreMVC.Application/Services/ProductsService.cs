@@ -173,6 +173,13 @@ public class ProductsService : IProductsService
             _context.Entry(product).State = EntityState.Deleted;
             await _context.SaveChangesAsync();
 
+            /*var pr = await _context.Products.FirstOrDefaultAsync(x => x.ProductId == id);
+            if (pr != null)
+            {
+                _context.Products.Remove(pr);
+                await _context.SaveChangesAsync();
+            }*/
+
             return new ResponseDto()
             {
                 SuccessMessage = SuccessMessage.ProductsAreReceived

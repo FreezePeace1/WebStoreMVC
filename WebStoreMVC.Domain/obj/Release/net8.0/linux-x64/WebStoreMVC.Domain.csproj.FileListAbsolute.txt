@@ -1,0 +1,13 @@
+/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Domain/bin/Release/net8.0/linux-x64/WebStoreMVC.Domain.deps.json
+/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Domain/bin/Release/net8.0/linux-x64/WebStoreMVC.Domain.dll
+/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Domain/bin/Release/net8.0/linux-x64/WebStoreMVC.Domain.pdb
+/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Domain/obj/Release/net8.0/linux-x64/WebStoreMVC.Domain.csproj.AssemblyReference.cache
+/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Domain/obj/Release/net8.0/linux-x64/WebStoreMVC.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Domain/obj/Release/net8.0/linux-x64/WebStoreMVC.Domain.AssemblyInfoInputs.cache
+/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Domain/obj/Release/net8.0/linux-x64/WebStoreMVC.Domain.AssemblyInfo.cs
+/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Domain/obj/Release/net8.0/linux-x64/WebStoreMVC.Domain.csproj.CoreCompileInputs.cache
+/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Domain/obj/Release/net8.0/linux-x64/WebStoreMVC.Domain.sourcelink.json
+/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Domain/obj/Release/net8.0/linux-x64/WebStoreMVC.Domain.dll
+/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Domain/obj/Release/net8.0/linux-x64/refint/WebStoreMVC.Domain.dll
+/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Domain/obj/Release/net8.0/linux-x64/WebStoreMVC.Domain.pdb
+/home/alexander/RiderProjects/WebStoreMVC/WebStoreMVC.Domain/obj/Release/net8.0/linux-x64/ref/WebStoreMVC.Domain.dll

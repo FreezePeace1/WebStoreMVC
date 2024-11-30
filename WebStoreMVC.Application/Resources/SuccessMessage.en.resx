@@ -71,4 +71,7 @@
     <data name="ReviewsAreFound" xml:space="preserve">
         <value>Reviews are found successfully</value>
     </data>
+    <data name="CreatingDBBackupIsDone" xml:space="preserve">
+        <value>Creating database backup is done</value>
+    </data>
 </root>

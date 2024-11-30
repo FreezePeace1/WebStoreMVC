@@ -78,4 +78,7 @@
     <data name="ReviewsAreFound" xml:space="preserve">
         <value>Отзывы найдены успешно</value>
     </data>
+    <data name="CreatingDBBackupIsDone" xml:space="preserve">
+        <value>Создание резервной копии БД готово</value>
+    </data>
 </root>

@@ -82,7 +82,11 @@
 
 <br/>
 
-@{ int productId = -1; }
+@{
+    int productId = -1;
+    string orderId = "";
+    DateTime orderDate = new DateTime(9999,3,3);
+}
 
 @if (Model.Data != null)
 {
@@ -92,7 +96,7 @@
     <h2>Информация о товарах</h2>
     @foreach (var item in Model.Data)
     {
-        if (productId != item.ProductId)
+        if (productId != item.ProductId && item.OrderDate != orderDate)
         {
             <div class="order-container">
                 <div class="order-header">
@@ -148,6 +152,8 @@
         }
         
         productId = item.ProductId;
+        orderId = item.OrderId;
+        orderDate = item.OrderDate;
     }
 }
 else

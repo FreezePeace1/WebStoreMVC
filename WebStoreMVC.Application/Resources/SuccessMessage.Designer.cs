@@ -164,5 +164,11 @@ namespace WebStoreMVC.Application.Resources {
                 return ResourceManager.GetString("ReviewsAreFound", resourceCulture);
             }
         }
+        
+        internal static string CreatingDBBackupIsDone {
+            get {
+                return ResourceManager.GetString("CreatingDBBackupIsDone", resourceCulture);
+            }
+        }
     }
 }

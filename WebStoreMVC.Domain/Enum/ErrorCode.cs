@@ -46,5 +46,8 @@ public enum ErrorCode
     
     //EmailFailure
     EmailFailure = 300,
+    
+    //Backup service 61-70
+    FailureToCreateBackupForDb = 61,
    
 }
