@@ -21,16 +21,16 @@ public class Product
     [MaxLength(1024)]
     [DataType(DataType.Text)]
     public string Description { get; set; } = string.Empty;
-    [MaxLength(64)]
-    public string Manufacturer { get; set; } = string.Empty;
-    [MaxLength(64)]
-    public string Colour { get; set; } = string.Empty;
-    [MaxLength(128)]
-    public string Hashtags { get; set; } = string.Empty;
+    
     [MaxLength(128)]
     public string Images { get; set; } = string.Empty;
     
     public int CategoryId { get; set; }
-
-    public string CategoryName { get; set; } = string.Empty;
+    public Category? Category { get; set; } 
+    
+    public int ColorId { get; set; }
+    public Color? Color { get; set; }
+    
+    public int ManufacturerId { get; set; }
+    public Manufacturer? Manufacturer { get; set; }
 }

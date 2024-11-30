@@ -49,6 +49,7 @@ public class AccountService : IAccountService
             var productOrder = (from o in _context.Orders
                 join op in _context.OrderProducts on o.OrderId equals op.OrderId
                 join p in _context.Products on op.ProductId equals p.ProductId
+                join c in _context.Colors on p.ColorId equals c.Id
                 where o.AppUserId == user.Id
                 select new
                 {
@@ -57,9 +58,10 @@ public class AccountService : IAccountService
                     OrderDate = o.OrderDate,
                     ProductCount = op.ProductCount,
                     ProductName = p.ProductName,
-                    Colour = p.Colour,
                     Price = p.Price,
-                    Images = p.Images
+                    Images = p.Images,
+                    Color = c.ColorName,
+                    ProductId = p.ProductId
                 });
 
             if (productOrder.Distinct().Any())
@@ -71,7 +73,6 @@ public class AccountService : IAccountService
                         {
                             var order = new ProductOrderModel();
                             order.ProductName = item.ProductName;
-                            order.Colour = item.Colour;
                             order.Images = item.Images;
                             order.OrderDate = item.OrderDate;
                             order.Price = item.Price;
@@ -80,6 +81,8 @@ public class AccountService : IAccountService
                             order.OrderId = item.OrderId;
                             order.City = info.City;
                             order.Address = info.Address;
+                            order.Colour = item.Color;
+                            order.ProductId = item.ProductId;
 
                             orders.Add(order);   
                         }

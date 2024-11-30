@@ -1,0 +1,5 @@
+/home/alexander/RiderProjects/WebStoreMVC/Backup/publish/Backup
+/home/alexander/RiderProjects/WebStoreMVC/Backup/publish/Backup.dll
+/home/alexander/RiderProjects/WebStoreMVC/Backup/publish/Backup.deps.json
+/home/alexander/RiderProjects/WebStoreMVC/Backup/publish/Backup.runtimeconfig.json
+/home/alexander/RiderProjects/WebStoreMVC/Backup/publish/Backup.pdb

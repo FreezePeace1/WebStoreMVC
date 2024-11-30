@@ -7,7 +7,7 @@ public class LoginDto
     [Required(ErrorMessage = "Нужно ввести логин")]
     [MaxLength(64)]
     [Display(Name = "Имя пользователя")]
-    public string Username { get; set; } = String.Empty;
+    public string Username { get; set; } = string.Empty;
 
     [Required(ErrorMessage = "Нужно ввести пароль")]
     [MaxLength(64)]

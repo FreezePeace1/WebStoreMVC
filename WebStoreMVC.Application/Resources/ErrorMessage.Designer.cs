@@ -194,5 +194,11 @@ namespace WebStoreMVC.Application.Resources {
                 return ResourceManager.GetString("FailureToGetAnyReviewsFromDB", resourceCulture);
             }
         }
+        
+        internal static string FailureToCreateBackupForDb {
+            get {
+                return ResourceManager.GetString("FailureToCreateBackupForDb", resourceCulture);
+            }
+        }
     }
 }

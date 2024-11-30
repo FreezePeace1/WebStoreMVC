@@ -86,4 +86,7 @@
     <data name="FailureToGetAnyReviewsFromDB" xml:space="preserve">
         <value>Ошибка получения каких-либо отзывов с базы данных</value>
     </data>
+    <data name="FailureToCreateBackupForDb" xml:space="preserve">
+        <value>Ошибка создания резервной копии базы данных</value>
+    </data>
 </root>

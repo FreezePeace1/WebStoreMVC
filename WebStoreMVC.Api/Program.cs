@@ -61,7 +61,6 @@ app.UseRouting();
 
 app.UseAuthentication();
 
-
 //Stripe
 StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
 

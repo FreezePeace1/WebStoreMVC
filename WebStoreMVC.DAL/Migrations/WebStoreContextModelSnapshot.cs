@@ -240,6 +240,40 @@ namespace WebStoreMVC.DAL.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("WebStoreMVC.Domain.Entities.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CategoryName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("WebStoreMVC.Domain.Entities.Color", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ColorName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Colors");
+                });
+
             modelBuilder.Entity("WebStoreMVC.Domain.Entities.CustomerInfo", b =>
                 {
                     b.Property<int>("Id")
@@ -280,7 +314,26 @@ namespace WebStoreMVC.DAL.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AppUserId");
+
                     b.ToTable("CustomersInfo");
+                });
+
+            modelBuilder.Entity("WebStoreMVC.Domain.Entities.Manufacturer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ManufacturerName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Manufacturers");
                 });
 
             modelBuilder.Entity("WebStoreMVC.Domain.Entities.Order", b =>
@@ -302,6 +355,8 @@ namespace WebStoreMVC.DAL.Migrations
                         .HasColumnType("integer");
 
                     b.HasKey("OrderId");
+
+                    b.HasIndex("AppUserId");
 
                     b.ToTable("Orders");
                 });
@@ -347,34 +402,21 @@ namespace WebStoreMVC.DAL.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("integer");
 
-                    b.Property<string>("CategoryName")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Colour")
-                        .IsRequired()
-                        .HasMaxLength(64)
-                        .HasColumnType("character varying(64)");
+                    b.Property<int>("ColorId")
+                        .HasColumnType("integer");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(1024)
                         .HasColumnType("character varying(1024)");
 
-                    b.Property<string>("Hashtags")
-                        .IsRequired()
-                        .HasMaxLength(128)
-                        .HasColumnType("character varying(128)");
-
                     b.Property<string>("Images")
                         .IsRequired()
                         .HasMaxLength(128)
                         .HasColumnType("character varying(128)");
 
-                    b.Property<string>("Manufacturer")
-                        .IsRequired()
-                        .HasMaxLength(64)
-                        .HasColumnType("character varying(64)");
+                    b.Property<int>("ManufacturerId")
+                        .HasColumnType("integer");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
@@ -389,6 +431,12 @@ namespace WebStoreMVC.DAL.Migrations
 
                     b.HasKey("ProductId");
 
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("ColorId");
+
+                    b.HasIndex("ManufacturerId");
+
                     b.ToTable("Products");
                 });
 
@@ -401,6 +449,7 @@ namespace WebStoreMVC.DAL.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("AppUserId")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("ProductId")
@@ -425,6 +474,8 @@ namespace WebStoreMVC.DAL.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
 
                     b.ToTable("UserReviews");
                 });
@@ -480,6 +531,24 @@ namespace WebStoreMVC.DAL.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("WebStoreMVC.Domain.Entities.CustomerInfo", b =>
+                {
+                    b.HasOne("WebStoreMVC.Domain.Entities.AppUser", "AppUser")
+                        .WithMany("CustomerInfo")
+                        .HasForeignKey("AppUserId");
+
+                    b.Navigation("AppUser");
+                });
+
+            modelBuilder.Entity("WebStoreMVC.Domain.Entities.Order", b =>
+                {
+                    b.HasOne("WebStoreMVC.Domain.Entities.AppUser", "AppUser")
+                        .WithMany("Order")
+                        .HasForeignKey("AppUserId");
+
+                    b.Navigation("AppUser");
+                });
+
             modelBuilder.Entity("WebStoreMVC.Domain.Entities.OrderProduct", b =>
                 {
                     b.HasOne("WebStoreMVC.Domain.Entities.Order", "Order")
@@ -496,6 +565,68 @@ namespace WebStoreMVC.DAL.Migrations
 
                     b.Navigation("Order");
 
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("WebStoreMVC.Domain.Entities.Product", b =>
+                {
+                    b.HasOne("WebStoreMVC.Domain.Entities.Category", "Category")
+                        .WithMany("Product")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WebStoreMVC.Domain.Entities.Color", "Color")
+                        .WithMany("Product")
+                        .HasForeignKey("ColorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WebStoreMVC.Domain.Entities.Manufacturer", "Manufacturer")
+                        .WithMany("Product")
+                        .HasForeignKey("ManufacturerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+
+                    b.Navigation("Color");
+
+                    b.Navigation("Manufacturer");
+                });
+
+            modelBuilder.Entity("WebStoreMVC.Domain.Entities.UserReview", b =>
+                {
+                    b.HasOne("WebStoreMVC.Domain.Entities.AppUser", "AppUser")
+                        .WithMany("UserReview")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+                });
+
+            modelBuilder.Entity("WebStoreMVC.Domain.Entities.AppUser", b =>
+                {
+                    b.Navigation("CustomerInfo");
+
+                    b.Navigation("Order");
+
+                    b.Navigation("UserReview");
+                });
+
+            modelBuilder.Entity("WebStoreMVC.Domain.Entities.Category", b =>
+                {
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("WebStoreMVC.Domain.Entities.Color", b =>
+                {
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("WebStoreMVC.Domain.Entities.Manufacturer", b =>
+                {
                     b.Navigation("Product");
                 });
 #pragma warning restore 612, 618

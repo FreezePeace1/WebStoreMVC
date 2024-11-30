@@ -90,10 +90,11 @@ public class OrderController : Controller
 
         if (session.PaymentStatus == "paid")
         {
-            string userPassword = Convert.ToBase64String(RandomNumberGenerator.GetBytes(16));
             var isUserExists = await _authService.IsUserExists(TempData["UserEmail"].ToString());
             if (!User.Identity.IsAuthenticated && !isUserExists)
             {
+                string userPassword = Convert.ToBase64String(RandomNumberGenerator.GetBytes(16));
+                
                 RegisterDto registerDto = new()
                 {
                     Email = TempData["UserEmail"].ToString(),

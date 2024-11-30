@@ -1,0 +1,15 @@
+/home/alexander/RiderProjects/WebStoreMVC/Backup/bin/Release/net8.0/Backup
+/home/alexander/RiderProjects/WebStoreMVC/Backup/bin/Release/net8.0/Backup.deps.json
+/home/alexander/RiderProjects/WebStoreMVC/Backup/bin/Release/net8.0/Backup.runtimeconfig.json
+/home/alexander/RiderProjects/WebStoreMVC/Backup/bin/Release/net8.0/Backup.dll
+/home/alexander/RiderProjects/WebStoreMVC/Backup/bin/Release/net8.0/Backup.pdb
+/home/alexander/RiderProjects/WebStoreMVC/Backup/obj/Release/net8.0/Backup.GeneratedMSBuildEditorConfig.editorconfig
+/home/alexander/RiderProjects/WebStoreMVC/Backup/obj/Release/net8.0/Backup.AssemblyInfoInputs.cache
+/home/alexander/RiderProjects/WebStoreMVC/Backup/obj/Release/net8.0/Backup.AssemblyInfo.cs
+/home/alexander/RiderProjects/WebStoreMVC/Backup/obj/Release/net8.0/Backup.csproj.CoreCompileInputs.cache
+/home/alexander/RiderProjects/WebStoreMVC/Backup/obj/Release/net8.0/Backup.sourcelink.json
+/home/alexander/RiderProjects/WebStoreMVC/Backup/obj/Release/net8.0/Backup.dll
+/home/alexander/RiderProjects/WebStoreMVC/Backup/obj/Release/net8.0/refint/Backup.dll
+/home/alexander/RiderProjects/WebStoreMVC/Backup/obj/Release/net8.0/Backup.pdb
+/home/alexander/RiderProjects/WebStoreMVC/Backup/obj/Release/net8.0/Backup.genruntimeconfig.cache
+/home/alexander/RiderProjects/WebStoreMVC/Backup/obj/Release/net8.0/ref/Backup.dll

@@ -86,4 +86,7 @@
     <data name="FailureToGetAnyReviewsFromDB" xml:space="preserve">
         <value>Failure to get any reviews from database</value>
     </data>
+    <data name="FailureToCreateBackupForDb" xml:space="preserve">
+        <value>Failure to create backup for database</value>
+    </data>
 </root>
