@@ -5,6 +5,7 @@ public enum ErrorCode
     //GeneralErrors 200 - ?
     AccessError = 200,
     InternalServerError = 201,
+    FailureToGetData = 202,
 
     //For models 100 - ?
     CreatingModelIsFailed = 100,
@@ -47,7 +48,9 @@ public enum ErrorCode
     //EmailFailure
     EmailFailure = 300,
     
-    //Backup service 61-70
-    FailureToCreateBackupForDb = 61,
+    //ExportToFile service 61-70
+    FailureToGetTableNames = 61,
+    FailureToFindFileByName = 62,
+    FailureToConvertFile = 63,
    
 }

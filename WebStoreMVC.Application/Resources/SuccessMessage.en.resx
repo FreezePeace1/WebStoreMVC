@@ -74,4 +74,7 @@
     <data name="CreatingDBBackupIsDone" xml:space="preserve">
         <value>Creating database backup is done</value>
     </data>
+    <data name="GettingTableNamesIsDone" xml:space="preserve">
+        <value>Getting table names is done</value>
+    </data>
 </root>

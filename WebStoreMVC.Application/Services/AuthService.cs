@@ -32,6 +32,7 @@ public class AuthService : IAuthService
     private readonly WebStoreContext _context;
     private readonly IHttpContextAccessor _httpContextAccessor;
     private readonly ILogger _logger;
+  
 
     public AuthService(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager,
         SignInManager<AppUser> signInManager, IConfiguration configuration, WebStoreContext context,
@@ -548,7 +549,9 @@ public class AuthService : IAuthService
             };
         }
 
-        if (updateDto.Username == AdminUser.ADMINNAME)
+        var adminName = _configuration["AdminUser:ADMINNAME"];
+        
+        if (updateDto.Username == adminName)
         {
             return new ResponseDto
             {
@@ -591,7 +594,9 @@ public class AuthService : IAuthService
             };
         }
 
-        if (updateDto.Username == AdminUser.ADMINNAME)
+        var adminName = _configuration["AdminUser:ADMINNAME"];
+        
+        if (updateDto.Username == adminName)
         {
             return new ResponseDto
             {

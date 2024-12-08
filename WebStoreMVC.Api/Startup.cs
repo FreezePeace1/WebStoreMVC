@@ -139,6 +139,7 @@ public static class Startup
     public static void AddAuthenticationAndAuthorization(this IServiceCollection services,
         WebApplicationBuilder builder)
     {
+        
         /*services  
             .AddAuthentication() // Cookie by default  
             .AddCookie(options =>  

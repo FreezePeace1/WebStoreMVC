@@ -41,3 +41,5 @@
 /home/alexander/RiderProjects/WebStoreMVC/Backup/bin/Debug/net8.0/System.Text.Encodings.Web.dll
 /home/alexander/RiderProjects/WebStoreMVC/Backup/bin/Debug/net8.0/System.Text.Json.dll
 /home/alexander/RiderProjects/WebStoreMVC/Backup/bin/Debug/net8.0/runtimes/browser/lib/net8.0/System.Text.Encodings.Web.dll
+/home/alexander/RiderProjects/WebStoreMVC/Backup/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/home/alexander/RiderProjects/WebStoreMVC/Backup/bin/Debug/net8.0/Microsoft.Extensions.Logging.Abstractions.dll

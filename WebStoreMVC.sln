@@ -20,11 +20,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{176B93F3
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStoreMVC.Application.Tests", "WebStoreMVC.Application.Tests\WebStoreMVC.Application.Tests.csproj", "{3438DFF4-E621-4ABC-B5CC-BCB5885482D8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{726E35B4-D895-4F4A-B2B8-AC134E14F12A}"
-	ProjectSection(SolutionItems) = preProject
-		docker-compose.yml = docker-compose.yml
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BackupLogic", "BackupLogic", "{274CCAB5-45E4-4751-A753-D8E4AD212DAC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backup", "Backup\Backup.csproj", "{EE1EA080-3230-4B9F-9436-A66876DCE0E2}"

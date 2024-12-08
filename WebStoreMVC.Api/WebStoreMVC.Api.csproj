@@ -7,6 +7,7 @@
         <RootNamespace>WebStoreMVC</RootNamespace>
         <UserSecretsId>626fa7a2-37b8-4715-97ba-2b65113404ab</UserSecretsId>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     </PropertyGroup>
 
     <ItemGroup>
@@ -20,6 +21,7 @@
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
+      <PackageReference Include="Microsoft.Extensions.Configuration.KeyPerFile" Version="9.0.0" />
       <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.0" />
       <PackageReference Include="NEST" Version="7.17.5" />
       <PackageReference Include="Stripe.net" Version="45.3.0" />

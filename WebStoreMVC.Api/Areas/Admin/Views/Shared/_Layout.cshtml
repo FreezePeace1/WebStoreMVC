@@ -43,7 +43,7 @@
                         aria-haspopup="true"
                         aria-expanded="false">
                         <i class="far fa-file-alt"></i>
-                        <span> Reports <i class="fas fa-angle-down"></i> </span>
+                        <span> Reports  </span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">Daily Report</a>
@@ -53,13 +53,18 @@
                 </li>
                 <li class="nav-item">
                     <a asp-area="Admin" asp-controller="ProductsForAdmin" asp-action="GetAllProducts" class="nav-link active">
-                        <i class="fas fa-shopping-cart"></i> Products
+                         Products
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-area="Admin" asp-controller="ExportToFile" asp-action="GetAllTableNames" class="nav-link active">
+                        Exporting files
                     </a>
                 </li>
 
                 <li class="nav-item">
                     <a class="nav-link" @*href="accounts.html"*@>
-                        <i class="far fa-user"></i> Accounts
+                       Accounts
                     </a>
                 </li>
                 <li class="nav-item dropdown">
@@ -72,7 +77,7 @@
                         aria-haspopup="true"
                         aria-expanded="false">
                         <i class="fas fa-cog"></i>
-                        <span> Settings <i class="fas fa-angle-down"></i> </span>
+                        <span> Settings </span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">Profile</a>

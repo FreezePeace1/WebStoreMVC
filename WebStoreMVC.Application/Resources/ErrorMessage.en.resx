@@ -89,4 +89,16 @@
     <data name="FailureToCreateBackupForDb" xml:space="preserve">
         <value>Failure to create backup for database</value>
     </data>
+    <data name="FailureToGetTableNames" xml:space="preserve">
+        <value>Failure to get table names</value>
+    </data>
+    <data name="FailureToFindFileByName" xml:space="preserve">
+        <value>Failure to finde file by name</value>
+    </data>
+    <data name="FailureToConvertFile" xml:space="preserve">
+        <value>Failure to convert file</value>
+    </data>
+    <data name="FailureToGetData" xml:space="preserve">
+        <value>Failure to get data</value>
+    </data>
 </root>

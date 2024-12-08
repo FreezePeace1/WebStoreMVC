@@ -200,5 +200,29 @@ namespace WebStoreMVC.Application.Resources {
                 return ResourceManager.GetString("FailureToCreateBackupForDb", resourceCulture);
             }
         }
+        
+        internal static string FailureToGetTableNames {
+            get {
+                return ResourceManager.GetString("FailureToGetTableNames", resourceCulture);
+            }
+        }
+        
+        internal static string FailureToFindFileByName {
+            get {
+                return ResourceManager.GetString("FailureToFindFileByName", resourceCulture);
+            }
+        }
+        
+        internal static string FailureToConvertFile {
+            get {
+                return ResourceManager.GetString("FailureToConvertFile", resourceCulture);
+            }
+        }
+        
+        internal static string FailureToGetData {
+            get {
+                return ResourceManager.GetString("FailureToGetData", resourceCulture);
+            }
+        }
     }
 }

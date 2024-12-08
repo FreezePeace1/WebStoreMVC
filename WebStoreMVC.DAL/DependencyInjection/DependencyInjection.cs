@@ -10,6 +10,7 @@ public static class DependencyInjection
     public static void AddDataAccessLayer(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<WebStoreContext>(options =>
-            options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
+            options.UseNpgsql(configuration.GetConnectionString("DockerConnection"))); // ConnectionString in user secrets!
+        //Example: Host=postgres_db;Database=database_name;Username=postgres;Password=password
     }
 }

@@ -18,6 +18,7 @@
     <Import Project="$(NuGetPackageRoot)microsoft.entityframeworkcore.design/8.0.0/build/net8.0/Microsoft.EntityFrameworkCore.Design.props" Condition="Exists('$(NuGetPackageRoot)microsoft.entityframeworkcore.design/8.0.0/build/net8.0/Microsoft.EntityFrameworkCore.Design.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgDocX Condition=" '$(PkgDocX)' == '' ">/home/alexander/.nuget/packages/docx/3.0.1</PkgDocX>
     <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">/home/alexander/.nuget/packages/microsoft.codeanalysis.analyzers/3.3.4</PkgMicrosoft_CodeAnalysis_Analyzers>
     <PkgMicrosoft_CodeAnalysis_AnalyzerUtilities Condition=" '$(PkgMicrosoft_CodeAnalysis_AnalyzerUtilities)' == '' ">/home/alexander/.nuget/packages/microsoft.codeanalysis.analyzerutilities/3.3.0</PkgMicrosoft_CodeAnalysis_AnalyzerUtilities>
     <PkgBuildBundlerMinifier Condition=" '$(PkgBuildBundlerMinifier)' == '' ">/home/alexander/.nuget/packages/buildbundlerminifier/3.2.449</PkgBuildBundlerMinifier>

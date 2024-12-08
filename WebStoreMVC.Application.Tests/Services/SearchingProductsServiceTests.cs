@@ -27,8 +27,7 @@ public class SearchingProductsServiceTests
                     ProductId = 1,
                     ProductName = "Smartphone",
                     Price = 15000,
-                    CategoryId = 1,
-                    ManufacturerId = 2 //Xiaomi
+                    CategoryId = 1
                 },
                 new Product
                 {
@@ -49,7 +48,7 @@ public class SearchingProductsServiceTests
                     ProductId = 4,
                     ProductName = "Computer",
                     Price = 80000,
-                    CategoryId = 4
+                    CategoryId = 1
                 },
                 new Product
                 {

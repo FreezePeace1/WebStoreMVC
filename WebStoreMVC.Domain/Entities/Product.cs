@@ -12,18 +12,19 @@ public class Product
     public int Article { get; set; }
 
     [MaxLength(512)] 
+    [Column(TypeName = "text")] 
     public string ProductName { get; set; } = string.Empty;
 
     [Column(TypeName = "decimal(18,2)")] 
     public decimal Price { get; set; }
 
     public int Quantity { get; set; }
-    [MaxLength(1024)]
     [DataType(DataType.Text)]
-    public string Description { get; set; } = string.Empty;
+    [Column(TypeName = "text")] 
+    public string? Description { get; set; } = string.Empty;
     
     [MaxLength(128)]
-    public string Images { get; set; } = string.Empty;
+    public string? Images { get; set; } = string.Empty;
     
     public int CategoryId { get; set; }
     public Category? Category { get; set; } 

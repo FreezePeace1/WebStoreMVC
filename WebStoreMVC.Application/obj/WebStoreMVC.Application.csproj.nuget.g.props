@@ -15,4 +15,7 @@
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)microsoft.entityframeworkcore/8.0.0/buildTransitive/net8.0/Microsoft.EntityFrameworkCore.props" Condition="Exists('$(NuGetPackageRoot)microsoft.entityframeworkcore/8.0.0/buildTransitive/net8.0/Microsoft.EntityFrameworkCore.props')" />
   </ImportGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgDocX Condition=" '$(PkgDocX)' == '' ">/home/alexander/.nuget/packages/docx/3.0.1</PkgDocX>
+  </PropertyGroup>
 </Project>

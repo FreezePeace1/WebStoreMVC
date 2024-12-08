@@ -1,0 +1,19 @@
+@model WebStoreMVC.Dtos.ResponseDto<List<string?>>
+
+<h1>JSON</h1>
+<br/>
+@foreach (var table in Model.Data)
+{
+    <a class="btn-primary" asp-controller="ExportToFile" asp-action="GetJsonFile" asp-route-tableName="@table">Получить данные из @table по JSON</a>
+    <br/>
+    <br/>
+}
+
+<h1>CSV</h1>
+<br/>
+@foreach (var table in Model.Data)
+{
+    <a class="btn-primary" asp-controller="ExportToFile" asp-action="GetCsvFile" asp-route-tableName="@table">Получить данные из @table по CSV</a>
+    <br/>
+    <br/>
+}

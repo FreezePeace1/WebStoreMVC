@@ -264,6 +264,4 @@ public class ProductsServiceTests
         Assert.NotNull(result.Data.Find(x => x.Price == expected_findedComputerPrice));
 
     }
-    
-    
 }

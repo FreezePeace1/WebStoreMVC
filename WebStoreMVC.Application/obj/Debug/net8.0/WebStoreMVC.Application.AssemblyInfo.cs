@@ -10,10 +10,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("90f1aa65-f7e4-43fa-b036-cc57d48493cc")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebStoreMVC.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+305addc859aefb7e723f4f2ab7a791b345dc3fd9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c8ed28cfc0a34fedd10143cf88141a5ba343b767")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebStoreMVC.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebStoreMVC.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

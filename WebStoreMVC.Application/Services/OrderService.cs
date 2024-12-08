@@ -354,7 +354,7 @@ public class OrderService : IOrderService
         try
         {
             var email = new MimeMessage();
-            email.From.Add(MailboxAddress.Parse(_configuration.GetSection("EmailUsername").Value));
+            email.From.Add(MailboxAddress.Parse(_configuration.GetSection("Gmail:EmailUsername").Value));
             email.To.Add(MailboxAddress.Parse(orderWithUserMail.UserEmail));
             email.Subject = "Message from ElectroStore";
             email.Body = new TextPart(TextFormat.Html)
@@ -368,7 +368,7 @@ public class OrderService : IOrderService
         
             await smtp.ConnectAsync(_configuration.GetSection("EmailHost").Value, 587,SecureSocketOptions.StartTls);
         
-            await smtp.AuthenticateAsync(_configuration.GetSection("EmailUsername").Value, _configuration.GetSection("EmailPassword").Value);
+            await smtp.AuthenticateAsync(_configuration.GetSection("Gmail:EmailUsername").Value, _configuration.GetSection("Gmail:EmailPassword").Value);
             await smtp.SendAsync(email);
             await smtp.DisconnectAsync(true);
 
@@ -393,7 +393,7 @@ public class OrderService : IOrderService
         try
         {
             var email = new MimeMessage();
-            email.From.Add(MailboxAddress.Parse(_configuration.GetSection("EmailUsername").Value));
+            email.From.Add(MailboxAddress.Parse(_configuration.GetSection("Gmail:EmailUsername").Value));
             email.To.Add(MailboxAddress.Parse(dto.Email));
             email.Subject = "Message from ElectroStore";
             email.Body = new TextPart(TextFormat.Html)
@@ -409,7 +409,7 @@ public class OrderService : IOrderService
         
             await smtp.ConnectAsync(_configuration.GetSection("EmailHost").Value, 587,SecureSocketOptions.StartTls);
         
-            await smtp.AuthenticateAsync(_configuration.GetSection("EmailUsername").Value, _configuration.GetSection("EmailPassword").Value);
+            await smtp.AuthenticateAsync(_configuration.GetSection("Gmail:EmailUsername").Value, _configuration.GetSection("Gmail:EmailPassword").Value);
             await smtp.SendAsync(email);
             await smtp.DisconnectAsync(true);
 

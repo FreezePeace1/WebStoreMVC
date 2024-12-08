@@ -74,4 +74,7 @@
     <data name="CreatingDBBackupIsDone" xml:space="preserve">
         <value>Создание резервной копии БД готово</value>
     </data>
+    <data name="GettingTableNamesIsDone" xml:space="preserve">
+        <value>Получение названий таблиц из БД выполнено успешно</value>
+    </data>
 </root>

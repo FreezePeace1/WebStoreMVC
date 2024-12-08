@@ -95,8 +95,7 @@ public class SearchingProductsService : ISearchingProductsService
         productSearchingModel.CurrentPage = currentPage;
         productSearchingModel.PageSize = pageSize;
         productSearchingModel.TotalPages = totalPages;
-        productSearchingModel.Products = productSearchingModel.Products.OrderBy(x => x.CategoryId)
-            .Skip((currentPage - 1) * pageSize).Take(pageSize);
+        productSearchingModel.Products = productSearchingModel.Products.Skip((currentPage - 1) * pageSize).Take(pageSize);
         productSearchingModel.SearchString = searchString;
 
         productSearchingModel.StartedPage = productSearchingModel.CurrentPage - 5;

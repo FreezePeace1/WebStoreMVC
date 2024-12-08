@@ -406,12 +406,9 @@ namespace WebStoreMVC.DAL.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(1024)
-                        .HasColumnType("character varying(1024)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Images")
-                        .IsRequired()
                         .HasMaxLength(128)
                         .HasColumnType("character varying(128)");
 
@@ -424,7 +421,7 @@ namespace WebStoreMVC.DAL.Migrations
                     b.Property<string>("ProductName")
                         .IsRequired()
                         .HasMaxLength(512)
-                        .HasColumnType("character varying(512)");
+                        .HasColumnType("text");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("integer");

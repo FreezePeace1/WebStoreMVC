@@ -30,6 +30,9 @@ public static class DependencyInjection
         
         //Подключаем сервис отзывов
         services.AddScoped<IReviewService, ReviewService>();
+        
+        //Подключаем сервис экспорта данных из БД 
+        services.AddScoped<IExportToFileService, ExportToFileService>();
 
         services.AddScoped<Initializer>();
     }
