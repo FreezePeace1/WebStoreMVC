@@ -14,9 +14,11 @@
   postgres_db:
     image: postgres:latest
     container_name: postgres_container
+    secrets:
+      - pass
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: secret
+      POSTGRES_PASSWORD: pass
       POSTGRES_DB: WebStore
     ports:
       - "5555:5555"
@@ -25,6 +27,10 @@
       - db_data:/var/lib/postgresql/data
     networks:
       - webstore-network
+
+secrets:
+  pass:
+    file: ./secret
 
 networks:
   webstore-network:
