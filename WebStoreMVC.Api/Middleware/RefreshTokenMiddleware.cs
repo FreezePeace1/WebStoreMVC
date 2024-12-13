@@ -1,3 +1,4 @@
+using System.Globalization;
 using Microsoft.AspNetCore.Identity;
 using WebStoreMVC.Domain.Entities;
 using WebStoreMVC.Services.Interfaces;
@@ -18,34 +19,40 @@ public class RefreshTokenMiddleware
 
     public async Task Invoke(HttpContext context)
     {
-        string accessTokenExpires = context.Request.Cookies[CookieName.accessTokenExpires] ?? $"{DateTime.MinValue}";
-        string accessToken = context.Request.Cookies[CookieName.accessToken] ?? string.Empty;
+        //Время будет больше для избежания лишнего обновления access токена
+        var accessTokenExpires = DateTime.Now.AddMinutes(Cookie.accessTokenExpiresTime + 1);
+        string accessToken = context.Request.Cookies[Cookie.accessToken] ?? string.Empty;
 
-        if (context.Request.Cookies.ContainsKey(CookieName.accessToken) || accessToken == string.Empty ||
-            accessTokenExpires != $"{DateTime.MinValue}")
+        if (accessToken == "")
         {
-            string refreshToken = context.Request.Cookies[CookieName.refreshToken] ?? string.Empty;
-            var expires = DateTime.Parse(accessTokenExpires);
-
+            accessTokenExpires = DateTime.Now;
+        }
+        
+        string refreshToken = context.Request.Cookies[Cookie.refreshToken] ?? string.Empty;
+        string userCookie = context.Request.Cookies[Cookie.userCookie] ?? string.Empty;
+        if (!string.IsNullOrEmpty(refreshToken) && !string.IsNullOrEmpty(userCookie) && accessTokenExpires != DateTime.Now)
+        {
+            var expires = accessTokenExpires;
+            
             using var scoped = _serviceProvider.CreateScope();
             var userManager = scoped.ServiceProvider.GetRequiredService<UserManager<AppUser>>();
             var user = await userManager.GetUserAsync(context.User);
-            string userCookie = context.Request.Cookies["WebStoreMvc_Cookie"] ?? string.Empty;
-            
-            if (DateTime.Now > expires && refreshToken != string.Empty && user != null && userCookie != string.Empty)
-            {
-                context.Response.Cookies.Delete(CookieName.accessToken);
 
-                using var scope = _serviceProvider.CreateScope();
-                var authService = scope.ServiceProvider.GetRequiredService<IAuthService>();
-                await authService.SetAccessTokenForBackgroundService(user);
-                
-                var refreshTokenFromCookies = context.Request.Cookies[CookieName.refreshToken];
-                
-                if (!user.RefreshToken.Equals(refreshTokenFromCookies))
-                {
-                    await authService.Logout();
-                }
+            using var scope = _serviceProvider.CreateScope();
+            var authService = scope.ServiceProvider.GetRequiredService<IAuthService>();
+
+            if (DateTime.Now > expires && user != null)
+            {
+                context.Response.Cookies.Delete(Cookie.accessToken);
+
+                await authService.SetAccessTokenForMiddleware(user);
+            }
+
+            var refreshTokenFromCookies = context.Request.Cookies[Cookie.refreshToken];
+
+            if (!user.RefreshToken.Equals(refreshTokenFromCookies))
+            {
+                await authService.Logout();
             }
         }
 

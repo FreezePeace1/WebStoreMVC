@@ -6,5 +6,5 @@ namespace WebStoreMVC.Services.Interfaces;
 
 public interface ISearchingProductsService
 {
-    public Task<ResponseDto<ProductSearchingModel>> SearchingProducts(string searchString = "",int currentPage = 1);
+    public Task<ResponseDto<ProductSearchingModel>> SearchingProducts(/*ProductFilter? productFilter,*/string searchString = "",int currentPage = 1);
 }

@@ -8,6 +8,7 @@ using WebStoreMVC.Services.Interfaces;
 
 namespace WebStoreMVC.Controllers;
 
+
 public class HomeController : Controller
 {
     private readonly IHomeService _homeService;

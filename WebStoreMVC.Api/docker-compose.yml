@@ -4,7 +4,7 @@
       context: ..
       dockerfile: WebStoreMVC.Api/Dockerfile
     ports:
-      - "8080:8080"
+      - "5022:8080"
     container_name: webstore_api
     depends_on:
       - postgres_db
@@ -21,7 +21,7 @@
       POSTGRES_PASSWORD: pass
       POSTGRES_DB: WebStore
     ports:
-      - "5555:5555"
+      - "5432:5432"
     restart: always
     volumes:
       - db_data:/var/lib/postgresql/data

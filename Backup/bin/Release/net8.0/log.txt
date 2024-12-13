@@ -27,7 +27,6 @@ pg_dump: reading event triggers
 pg_dump: finding extension tables
 pg_dump: finding inheritance relationships
 pg_dump: reading column info for interesting tables
-pg_dump: finding table default expressions
 pg_dump: flagging inherited columns in subtables
 pg_dump: reading partitioning data
 pg_dump: reading indexes

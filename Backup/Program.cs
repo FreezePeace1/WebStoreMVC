@@ -21,29 +21,23 @@ namespace Backup
             {
                 var client = new MegaApiClient();
                 await client.LoginAsync(email, accountPassword);
-
-                // Specify the folder where you want to upload the file
+                
                 var rootNode = await client.GetNodesAsync();
                 var uploadsFolder = rootNode.FirstOrDefault(n => n.Type == NodeType.Directory && n.Name == "backups");
-
-                // Get the list of all folders within the uploads folder
+                
                 var uploadsFolders = await client.GetNodesAsync(uploadsFolder);
-
-                // Search for the uploads folder within the list of folders
+                
                 var backupsFolder = uploadsFolders.FirstOrDefault(n => n.Type == NodeType.Directory && n.Name == "backups");
 
                 if (backupsFolder == null)
                 {
-                    // Create uploads folder if it does not exist
                     backupsFolder = await client.CreateFolderAsync("backups", uploadsFolder);
                 }
-
-                // Generate a unique filename using GUID
-                string uniqueFileName = Guid.NewGuid().ToString("N") + Path.GetExtension(_fileName);
+                
+                string uniqueFileName = "backup_" + $"{DateTime.Now}" + Path.GetExtension(_fileName) + ".backup";
 
                 await using (var stream = new FileStream(_filePath, FileMode.Open))
                 {
-                    // Upload the file to the uploads folder with the unique filename
                     await client.UploadAsync(stream, uniqueFileName, backupsFolder);   
                 }
 
@@ -52,7 +46,6 @@ namespace Backup
             }
             catch (Exception ex)
             {
-                // Log the error or handle it appropriately
                 Console.WriteLine($"An error occurred during file upload: {ex.Message}");
             }
         }
@@ -85,8 +78,6 @@ namespace Backup
 
         static async Task Main()
         {
-            
-            
             await BackupDatabase();
 
             await UploadFileToMega();

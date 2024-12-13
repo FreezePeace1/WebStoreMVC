@@ -17,12 +17,12 @@
                         <a href="#">All Categories</a>
                     </li>
                     <li>
-                        <a href="#">Accessories</a>
+                        <a href="#">Categories</a>
                     </li>
                     <li>
-                        <a href="#">Headphones</a>
+                        <a href="#">@Model.Data.ProductInfo.Category.CategoryName</a>
                     </li>
-                    <li class="active">Product name goes here</li>
+                    <li class="active">@Model.Data.ProductInfo.ProductName</li>
                 </ul>
             </div>
         </div>
@@ -86,20 +86,39 @@
 <div class="col-md-5">
     <div class="product-details">
         <h2 class="product-name">@Model.Data.ProductInfo.ProductName</h2>
+        @if (Model.Data.ProductInfo.Color != null)
+        {
+            <h4>Цвет: @Model.Data.ProductInfo.Color.ColorName</h4>
+        }
+        @if (Model.Data.ProductInfo.Manufacturer != null)
+        {
+            <h4>Производитель: @Model.Data.ProductInfo.Manufacturer.ManufacturerName</h4>
+        }
+
         <div>
             <div class="product-rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-o"></i>
+                @if (Model.Data.MiddleRateAmount == null)
+                {
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="fa fa-star-o"></i>
+                }
+                else
+                {
+                    for (int minStar = 0; minStar < Math.Ceiling(Model.Data.MiddleRateAmount); minStar++)
+                    {
+                        <i class="fa fa-star"></i>
+                    }
+                }
             </div>
             <a class="review-link" href="#">@Model.Data.RatingAmount Review(s) | Add your review</a>
         </div>
         <div>
             @{ decimal oldPrice = Model.Data.ProductInfo.Price + 1500; }
             <h3 class="product-price">
-                @Model.Data.ProductInfo.Price.ToString("C2") <del class="product-old-price">@oldPrice.ToString("C2")</del>
+                ₽@Model.Data.ProductInfo.Price <del class="product-old-price">₽@oldPrice</del>
             </h3>
             @*<span class="product-available">In Stock</span>*@
         </div>
@@ -137,7 +156,7 @@
         <ul class="product-links">
             <li>Category:</li>
             <li>
-                    //TODO 
+                //TODO
             </li>
         </ul>
 
@@ -591,7 +610,7 @@ else
                             </ul>
                         }
 
-                        
+
                         <script>
                             document.addEventListener("DOMContentLoaded", function(event) {
                                 var scrollpos = localStorage.getItem('scrollpos');
@@ -602,9 +621,9 @@ else
                                 localStorage.setItem('scrollpos', window.scrollY);
                             };
                         </script>
-                        
+
                         <ul class="reviews-pagination">
-                            
+
                             @if (Model.Data.CurrentPage > 1)
                             {
                                 <li class="page-item">

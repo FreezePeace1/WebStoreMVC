@@ -27,7 +27,7 @@ public class SearchingProductsServiceTests
                     ProductId = 1,
                     ProductName = "Smartphone",
                     Price = 15000,
-                    CategoryId = 1
+                    CategoryId = 1,
                 },
                 new Product
                 {

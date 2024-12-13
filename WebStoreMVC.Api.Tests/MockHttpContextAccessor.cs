@@ -11,9 +11,9 @@ public class MockHttpContextAccessor
         httpContextAccessorMock.Setup(x => x.HttpContext.User.Identity.IsAuthenticated)
             .Returns(true);
 
-        httpContextAccessorMock.Setup(x => x.HttpContext.Request.Cookies[CookieName.refreshToken])
+        httpContextAccessorMock.Setup(x => x.HttpContext.Request.Cookies[Cookie.refreshToken])
             .Returns("token");
-        httpContextAccessorMock.Setup(x => x.HttpContext.Request.Cookies[CookieName.accessToken])
+        httpContextAccessorMock.Setup(x => x.HttpContext.Request.Cookies[Cookie.accessToken])
             .Returns("token");
     }
 
@@ -21,7 +21,7 @@ public class MockHttpContextAccessor
     {
         httpContextAccessorMock.Setup(x => x.HttpContext.User.Identity.IsAuthenticated)
             .Returns(false);
-        httpContextAccessorMock.Setup(x => x.HttpContext.Request.Cookies[CookieName.refreshToken]);
-        httpContextAccessorMock.Setup(x => x.HttpContext.Request.Cookies[CookieName.accessToken]);
+        httpContextAccessorMock.Setup(x => x.HttpContext.Request.Cookies[Cookie.refreshToken]);
+        httpContextAccessorMock.Setup(x => x.HttpContext.Request.Cookies[Cookie.accessToken]);
     }
 }

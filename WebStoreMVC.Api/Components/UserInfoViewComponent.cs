@@ -2,17 +2,16 @@ using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using WebStoreMVC.Domain.Entities;
+using Cookie = WebStoreMVC.Domain.Entities.Cookie;
 
 namespace WebStoreMVC.Components;
 
-[ViewComponent(Name = "UserInfo")]
 public class UserInfoViewComponent : ViewComponent
 {
     public IViewComponentResult Invoke()
     {
-        return HttpContext.Request.Cookies[CookieName.accessTokenExpires].IsNullOrEmpty() == false &&
-               HttpContext.Request.Cookies[CookieName.refreshToken].IsNullOrEmpty() == false &&
-               User.Identity.IsAuthenticated
+        return !string.IsNullOrEmpty(HttpContext.Request.Cookies[Cookie.refreshToken])
+               && User.Identity.IsAuthenticated
             ? View("UserInfo")
             : View();
     }

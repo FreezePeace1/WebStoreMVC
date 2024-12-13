@@ -123,7 +123,20 @@ public class SearchingProductsService : ISearchingProductsService
     public async Task<ResponseDto<ProductSearchingModel>> SearchingProducts(string searchString = "",
         int currentPage = 1)
     {
+
+        var colors = await _context.Colors.ToListAsync();
+        var categories = await _context.Categories.ToListAsync();
+        var manufacturers = await _context.Manufacturers.ToListAsync();
+        
         ProductSearchingModel productSearchingModel = new ProductSearchingModel();
+        productSearchingModel.Colors = colors;
+        productSearchingModel.Categories = categories;
+        productSearchingModel.Manufacturers = manufacturers;
+        var maxPrice = await _context.Products.OrderByDescending(x => x.Price).FirstOrDefaultAsync();
+        var minPrice = await _context.Products.OrderByDescending(x => x.Price).LastAsync();
+        /*productSearchingModel.MaxPrice = productFilter?.MaxPrice ?? maxPrice?.Price ?? 9999999;
+        productSearchingModel.MinPrice = productFilter?.MinPrice ?? minPrice.Price;*/
+        
         if (searchString != "")
         {
             searchString = StringTransformation(searchString);
@@ -168,6 +181,7 @@ public class SearchingProductsService : ISearchingProductsService
             {
                 productSearchingModel.Products = productSearchingModel.Products.Where(u => u.ColorId == colorId.Id || u.ProductName.ToLower().Contains(searchString));
             }
+            
             
             if (!productSearchingModel.Products.Any())
             {

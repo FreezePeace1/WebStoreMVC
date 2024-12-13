@@ -23,8 +23,8 @@ public class AccountController : Controller
     [Route("Index")]
     public async Task<ActionResult<ResponseDto<List<ProductOrderModel>>>> Index()
     {
-        if (HttpContext.Request.Cookies[CookieName.accessToken].IsNullOrEmpty() ||
-            HttpContext.Request.Cookies[CookieName.refreshToken].IsNullOrEmpty() || !HttpContext.User.Identity.IsAuthenticated)
+        if (HttpContext.Request.Cookies[Cookie.accessToken].IsNullOrEmpty() ||
+            HttpContext.Request.Cookies[Cookie.refreshToken].IsNullOrEmpty() || !HttpContext.User.Identity.IsAuthenticated)
         {
             return RedirectToAction("Index", "Home");
         }
@@ -38,8 +38,8 @@ public class AccountController : Controller
     [Route("ChangeInfo")]
     public async Task<ActionResult<ResponseDto>> ChangeInfo(CustomerInfoDto dto)
     {
-        if (HttpContext.Request.Cookies[CookieName.accessToken].IsNullOrEmpty() ||
-            HttpContext.Request.Cookies[CookieName.refreshToken].IsNullOrEmpty() || !HttpContext.User.Identity.IsAuthenticated)
+        if (HttpContext.Request.Cookies[Cookie.accessToken].IsNullOrEmpty() ||
+            HttpContext.Request.Cookies[Cookie.refreshToken].IsNullOrEmpty() || !HttpContext.User.Identity.IsAuthenticated)
         {
             return RedirectToAction("Index", "Home");
         }
@@ -69,8 +69,8 @@ public class AccountController : Controller
     [Route("ShowInfo")]
     public async Task<ActionResult<ResponseDto<CustomerInfo>>> ShowInfo()
     {
-        if (HttpContext.Request.Cookies[CookieName.accessToken].IsNullOrEmpty() ||
-            HttpContext.Request.Cookies[CookieName.refreshToken].IsNullOrEmpty() || !HttpContext.User.Identity.IsAuthenticated)
+        if (HttpContext.Request.Cookies[Cookie.accessToken].IsNullOrEmpty() ||
+            HttpContext.Request.Cookies[Cookie.refreshToken].IsNullOrEmpty() || !HttpContext.User.Identity.IsAuthenticated)
         {
             return RedirectToAction("Index", "Home");
         }

@@ -15,7 +15,7 @@ public interface IAuthService
 
     public Task<ResponseDto> Logout();
 
-    public Task<string> SetAccessTokenForBackgroundService(AppUser user);
+    public Task<string> SetAccessTokenForMiddleware(AppUser user);
     
     public Task<ResponseDto> VerifyAccount(string verificationToken);
 

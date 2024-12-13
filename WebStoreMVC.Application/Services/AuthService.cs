@@ -297,7 +297,7 @@ public class AuthService : IAuthService
         }
     }
 
-    public async Task<string> SetAccessTokenForBackgroundService(AppUser user)
+    public async Task<string> SetAccessTokenForMiddleware(AppUser user)
     {
         return await GetAllAndSetAccessToken(user);
     }
@@ -486,7 +486,7 @@ public class AuthService : IAuthService
         var tokenObject = new JwtSecurityToken(
             issuer: _configuration["JwtSettings:Issuer"],
             audience: _configuration["JwtSettings:Audience"],
-            expires: DateTime.Now.AddMinutes(20),
+            expires: DateTime.Now.AddMinutes(Cookie.accessTokenExpiresTime),
             claims: claims,
             signingCredentials: new SigningCredentials(secret, SecurityAlgorithms.HmacSha256));
         
@@ -517,7 +517,7 @@ public class AuthService : IAuthService
             Expires = refreshToken.Expired
         };
         
-        _httpContextAccessor.HttpContext.Response.Cookies.Append(CookieName.refreshToken, refreshToken.Token, cookieOpt);
+        _httpContextAccessor.HttpContext.Response.Cookies.Append(Cookie.refreshToken, refreshToken.Token, cookieOpt);
     }
 
     private void SetAccessToken(string accessToken)
@@ -527,11 +527,10 @@ public class AuthService : IAuthService
             HttpOnly = true,
             //Для передачи только по https
             /*Secure = true,*/
-            Expires = DateTime.Now.AddMinutes(20)
+            Expires = DateTime.Now.AddMinutes(Cookie.accessTokenExpiresTime)
         };
 
-        _httpContextAccessor.HttpContext.Response.Cookies.Append(CookieName.accessToken, accessToken, cookieOpt);
-        _httpContextAccessor.HttpContext.Response.Cookies.Append(CookieName.accessTokenExpires,DateTime.Now.AddMinutes(20).Date.ToString(CultureInfo.CurrentCulture));
+        _httpContextAccessor.HttpContext.Response.Cookies.Append(Cookie.accessToken, accessToken, cookieOpt);
         
     }
 
@@ -629,9 +628,8 @@ public class AuthService : IAuthService
     public async Task<ResponseDto> Logout()
     {
         await _signInManager.SignOutAsync();
-        _httpContextAccessor.HttpContext.Response.Cookies.Delete(CookieName.accessToken);
-        _httpContextAccessor.HttpContext.Response.Cookies.Delete(CookieName.refreshToken);
-        _httpContextAccessor.HttpContext.Response.Cookies.Delete(CookieName.accessTokenExpires);
+        _httpContextAccessor.HttpContext.Response.Cookies.Delete(Cookie.accessToken);
+        _httpContextAccessor.HttpContext.Response.Cookies.Delete(Cookie.refreshToken);
 
         return new ResponseDto()
         {
